@@ -48,12 +48,24 @@ An internet connection is currently required for Tailwind CSS, which is loaded f
 |-- app.js                 # Roulette, practice rules, and UI behavior
 |-- data/heroes.js         # Canonical hero roster
 |-- services/              # Practice state, preferences, and hero selection
+|-- tests/                 # Dependency-free Node test suite
 |-- style.css              # Custom roulette animation styling
 |-- assets/                # Hero images, role icons, and sound effects
+|-- package.json           # Test command and project metadata
 `-- compress_animated.js   # Optional animated WebP optimization utility
 ```
 
 The asset utility uses the `sharp` Node.js package and is not required to run the web app.
+
+## Automated tests
+
+The test suite uses Node's built-in test runner, so no packages need to be installed. Run:
+
+```bash
+npm test
+```
+
+The tests currently cover roster integrity, asset references, stable hero identities, official page mappings, random selection boundaries, storage versioning, legacy migration, and preference validation.
 
 ## Practice-block flow
 
