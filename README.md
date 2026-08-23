@@ -8,9 +8,10 @@ The project began as a simple hero roulette and is being developed incrementally
 
 - Random hero selection with Vanguard, Duelist, and Strategist role filters
 - Animated roulette with sound effects and a mute control
+- Selected hero image links to the hero's official Marvel Rivals page
 - Three-match practice blocks
 - Optional extension from three to five matches
-- Persistent hero ban list for excluding heroes from future spins
+- Persistent, searchable hero ban list with role browsing and portraits
 - Roulette locking while a practice block is unfinished
 - Automatic practice-block persistence using browser local storage
 - Automatic recovery of the active block after a page reload

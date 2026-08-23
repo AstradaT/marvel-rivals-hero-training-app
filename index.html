@@ -57,9 +57,12 @@
 
         <!-- Contenedor del Héroe (Resolución Estricta 1:1) -->
         <div id="card-container" class="bg-slate-900 border-4 border-slate-700 rounded-2xl p-6 shadow-2xl transition-all duration-300 transform mb-8">
-            <div class="w-full aspect-square flex items-center justify-center overflow-hidden rounded-lg bg-slate-950/50 mb-4 relative">
-                <img id="hero-img" src="https://placehold.co/300x300/1e293b/ffffff?text=?" alt="Selected Hero" class="w-full h-full object-cover transition-all duration-150">
-            </div>
+            <a id="hero-page-link" class="group w-full aspect-square flex items-center justify-center overflow-hidden rounded-lg bg-slate-950/50 mb-4 relative pointer-events-none focus:outline-none focus:ring-2 focus:ring-amber-400" target="_blank" rel="noopener noreferrer" aria-disabled="true" tabindex="-1">
+                <img id="hero-img" src="https://placehold.co/300x300/1e293b/ffffff?text=?" alt="Selected Hero" class="w-full h-full object-cover transition-all duration-150 group-hover:scale-[1.02]">
+                <span id="hero-page-hint" class="hidden absolute bottom-3 right-3 bg-slate-950/85 border border-slate-600 rounded-lg px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-white shadow-lg group-hover:border-amber-400 group-hover:text-amber-300 transition-colors">
+                    Official Hero Page &#8599;
+                </span>
+            </a>
             
             <h2 id="hero-name" class="text-2xl font-bold tracking-wide">Who will step up?</h2>
             <p id="hero-role" class="text-sm font-semibold tracking-widest uppercase text-slate-500 mt-1">-</p>
@@ -72,7 +75,7 @@
                     <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">Practice block</p>
                     <p id="practice-status" class="text-sm text-slate-300 mt-1">0 of 3 matches completed</p>
                 </div>
-                <span id="practice-count" class="text-2xl font-black text-amber-400">0 / 3</span>
+                <span id="practice-count" class="text-2xl font-black text-amber-400 whitespace-nowrap shrink-0">0 / 3</span>
             </div>
 
             <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden mb-4">
@@ -96,9 +99,9 @@
     </main>
 
     <!-- Ban List Modal -->
-    <div id="ban-modal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm p-4 items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="ban-modal-title">
-        <section class="bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl w-full max-w-2xl max-h-[85vh] flex flex-col text-left">
-            <header class="flex items-start justify-between gap-4 p-5 border-b border-slate-800">
+    <div id="ban-modal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm p-0 sm:p-4 items-end sm:items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="ban-modal-title">
+        <section class="bg-slate-900 border border-slate-700 rounded-t-2xl sm:rounded-2xl shadow-2xl w-full max-w-2xl max-h-[92dvh] sm:max-h-[85vh] flex flex-col text-left">
+            <header class="flex items-start justify-between gap-4 p-4 sm:p-5 border-b border-slate-800 shrink-0">
                 <div>
                     <h2 id="ban-modal-title" class="text-xl font-black uppercase tracking-wide">Hero Ban List</h2>
                     <p class="text-sm text-slate-400 mt-1">Banned heroes will be excluded from future spins.</p>
@@ -108,9 +111,24 @@
                 </button>
             </header>
 
-            <div id="ban-hero-list" class="grid grid-cols-2 sm:grid-cols-3 gap-2 p-5 overflow-y-auto"></div>
+            <div class="p-4 sm:p-5 pb-3 space-y-3 shrink-0">
+                <label for="ban-search" class="sr-only">Search heroes</label>
+                <input id="ban-search" type="search" placeholder="Search heroes..." autocomplete="off" class="w-full bg-slate-950 border border-slate-700 focus:border-amber-400 focus:outline-none rounded-lg px-4 py-3 text-sm text-white placeholder:text-slate-600">
 
-            <footer class="flex items-center justify-between gap-3 p-5 border-t border-slate-800">
+                <div class="flex gap-2 overflow-x-auto pb-1" aria-label="Filter ban list by role">
+                    <button data-ban-role="All" class="ban-role-filter shrink-0 px-3 py-2 rounded-lg border text-[10px] font-bold uppercase tracking-wider cursor-pointer transition-colors">All</button>
+                    <button data-ban-role="Vanguard" class="ban-role-filter shrink-0 px-3 py-2 rounded-lg border text-[10px] font-bold uppercase tracking-wider cursor-pointer transition-colors">Vanguard</button>
+                    <button data-ban-role="Duelist" class="ban-role-filter shrink-0 px-3 py-2 rounded-lg border text-[10px] font-bold uppercase tracking-wider cursor-pointer transition-colors">Duelist</button>
+                    <button data-ban-role="Strategist" class="ban-role-filter shrink-0 px-3 py-2 rounded-lg border text-[10px] font-bold uppercase tracking-wider cursor-pointer transition-colors">Strategist</button>
+                </div>
+
+                <p id="ban-warning" class="hidden rounded-lg border border-amber-700/60 bg-amber-950/30 px-3 py-2 text-xs text-amber-300" role="status"></p>
+            </div>
+
+            <div id="ban-hero-list" class="grid grid-cols-1 min-[420px]:grid-cols-2 sm:grid-cols-3 gap-2 px-4 sm:px-5 pb-4 overflow-y-auto min-h-0"></div>
+            <p id="ban-empty-state" class="hidden px-5 pb-6 text-sm text-center text-slate-500">No heroes match this search and role filter.</p>
+
+            <footer class="flex items-center justify-between gap-3 p-4 sm:p-5 border-t border-slate-800 shrink-0">
                 <p id="ban-summary" class="text-sm text-slate-400">No heroes banned</p>
                 <button id="clear-bans-btn" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-slate-200 text-xs font-bold uppercase tracking-wide cursor-pointer disabled:cursor-not-allowed">
                     Clear All

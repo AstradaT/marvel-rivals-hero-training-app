@@ -1,5 +1,68 @@
 // Canonical hero roster. Multi-role heroes share one stable id so future
 // player statistics can identify the hero independently from the selected role.
+const officialHeroPageIds = Object.freeze({
+    "adam-warlock": "ef4511de-a2ff-43f0-b061-d915f0ccb37d",
+    "angela": "03af29d0-1a53-4077-9062-8201ed327635",
+    "black-cat": "84b3b29a-326a-443d-bf18-4ebb9f2948fc",
+    "black-panther": "fa01bc79-aba9-4559-9a0e-fc4fb5666f0a",
+    "black-widow": "baa0fe39-41ff-42f3-b48f-3e453317503a",
+    "blade": "4bb813d7-30ab-4c36-bd05-b9d299e4c1e3",
+    "captain-america": "b3e3bc0b-0a15-4fa8-8139-e08f7fcd9beb",
+    "cloak-and-dagger": "5b5a8c7a-c9c0-4f4c-89a3-dae465db8c7f",
+    "cyclops": "4b46591b-a837-43ba-ae41-571de988c190",
+    "daredevil": "043108d4-fd6b-4884-aee1-1ccbefb79790",
+    "deadpool": "3ef6b679-d1b4-4757-a8ee-0ea53379c754",
+    "devil-dinosaur": "d579e90a-46a7-45fd-975f-4d63c7755d27",
+    "doctor-strange": "692c786c-08f4-4502-9803-a55f3bc8f83b",
+    "elsa-bloodstone": "91b586e3-4d55-455c-bd7d-69fbe0563d26",
+    "emma-frost": "011f4b5b-f020-4187-93f5-8a64df44ad48",
+    "gambit": "46e47f1b-a312-4686-ae9f-328318c544dd",
+    "groot": "f29f3cf1-e8dd-4188-acce-e519dd94206d",
+    "hawkeye": "e7e0573d-ac83-4d1e-b286-7c7e4c79fc81",
+    "hela": "7db8153e-f7fd-4889-b234-af4e06a0cabe",
+    "hulk": "9471f35c-3f81-4ae2-9726-b2944dd431e9",
+    "human-torch": "f0ec2612-649f-48bb-a18b-48ef1fe9ba56",
+    "invisible-woman": "9cc13662-5669-460f-adbf-f53aba63bb46",
+    "iron-fist": "c90562b1-0bf1-4f90-94ed-d24a7650a2b0",
+    "iron-man": "ef114434-6c2a-48ff-a4f7-05dc278aedde",
+    "jeff-the-land-shark": "49e078be-c0c3-4efc-ad01-9c6f4b4f043e",
+    "jubilee": "dc1d68ab-9f3f-465a-80c0-e77bb51a66bc",
+    "loki": "c6011abe-8d17-4962-ac88-7232dc3d208f",
+    "luna-snow": "1077f07b-2178-49d3-80be-d915de78d17c",
+    "magik": "dd9a323f-da66-4ba8-9e37-1d3e8398a9b4",
+    "magneto": "2dffcc89-3280-4d43-907a-646eea9d3a74",
+    "mantis": "bbb138f7-80d3-4db4-a608-4ee2d29c5fc0",
+    "mister-fantastic": "fccfe09c-c34c-40d6-b546-a34386612729",
+    "moon-knight": "7dc8b934-fe12-49ae-ac3b-7d7c3a688443",
+    "namor": "afbd915c-3505-4660-9815-bebe2c96370b",
+    "peni-parker": "3929765b-c856-44c9-b97a-eb965f3fbdf6",
+    "phoenix": "f2521fc5-3180-477d-945c-403fa65fd7f5",
+    "psylocke": "1c8d092c-74b9-4988-82ba-151a4b4f1308",
+    "rocket-raccoon": "e1fb7cc4-a1a0-473b-8809-68b04dcc9420",
+    "rogue": "deb6b426-c97e-4449-b345-4d7131336a64",
+    "scarlet-witch": "1d3f08cf-abee-4eb9-b2fd-31ce9947e5a1",
+    "spider-man": "feef5830-45b0-435e-8f7b-829241918b4d",
+    "squirrel-girl": "4ed51741-f094-46ef-b5ca-bb2025b15c50",
+    "star-lord": "f052a66a-d95a-4062-911a-0c4cd35386ac",
+    "storm": "93784596-43d9-42f9-bb0c-86a5140f4917",
+    "the-hood": "6be6a532-3f6f-471c-a717-6e4ae69902bf",
+    "the-punisher": "77ad32c5-b42c-405d-afeb-bd452681b8e8",
+    "the-thing": "10bfa106-6a69-4dac-85f5-8b327e98e566",
+    "thor": "fcddbb53-6a99-45f6-9cc8-65c68edd96e0",
+    "ultron": "dddc5632-ed86-4312-b8da-1616183fd909",
+    "venom": "fa12017d-641d-4734-b459-187c2a6cdeb1",
+    "white-fox": "bff0c7c6-3042-4384-8735-7ec6354baa1e",
+    "winter-soldier": "7b26015b-e5f2-4d01-983b-885540b6236d",
+    "wolverine": "a9b308ab-f0d8-412a-9362-e60091e57ded"
+});
+
+function getOfficialHeroPageUrl(heroId) {
+    const officialPageId = officialHeroPageIds[heroId];
+    return officialPageId
+        ? `https://www.marvelrivals.com/heroes/index.html?id=${officialPageId}`
+        : null;
+}
+
 const heroes = [
     // --- DUELISTS ---
     { id: "black-cat", name: "Black Cat", role: "Duelist", img: "assets/blackcat.webp", staticImg: "assets/static/blackcat.jpg" },
@@ -42,6 +105,7 @@ const heroes = [
     { id: "magneto", name: "Magneto", role: "Vanguard", img: "assets/magneto.webp", staticImg: "assets/static/magneto.jpg" },
     { id: "peni-parker", name: "Peni Parker", role: "Vanguard", img: "assets/peniparker.webp", staticImg: "assets/static/peniparker.jpg" },
     { id: "rogue", name: "Rogue", role: "Vanguard", img: "assets/rogue.webp", staticImg: "assets/static/rogue.jpg" },
+    { id: "the-hood", name: "The Hood", role: "Vanguard", img: "assets/thehood.webp", staticImg: "assets/static/thehood.jpg" },
     { id: "the-thing", name: "The Thing", role: "Vanguard", img: "assets/thething.webp", staticImg: "assets/static/thething.jpg" },
     { id: "thor", name: "Thor", role: "Vanguard", img: "assets/thor.webp", staticImg: "assets/static/thor.jpg" },
     { id: "venom", name: "Venom", role: "Vanguard", img: "assets/venom.webp", staticImg: "assets/static/venom.jpg" },

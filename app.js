@@ -18,6 +18,8 @@ const roleColors = {
 // DOM elements
 const spinBtn = document.getElementById('spin-btn');
 const heroImg = document.getElementById('hero-img');
+const heroPageLink = document.getElementById('hero-page-link');
+const heroPageHint = document.getElementById('hero-page-hint');
 const heroName = document.getElementById('hero-name');
 const heroRole = document.getElementById('hero-role');
 const cardContainer = document.getElementById('card-container');
@@ -35,6 +37,10 @@ const banCount = document.getElementById('ban-count');
 const banModal = document.getElementById('ban-modal');
 const closeBanModalBtn = document.getElementById('close-ban-modal-btn');
 const banHeroList = document.getElementById('ban-hero-list');
+const banSearch = document.getElementById('ban-search');
+const banRoleFilters = document.querySelectorAll('.ban-role-filter');
+const banWarning = document.getElementById('ban-warning');
+const banEmptyState = document.getElementById('ban-empty-state');
 const banSummary = document.getElementById('ban-summary');
 const clearBansBtn = document.getElementById('clear-bans-btn');
 const selectionMessage = document.getElementById('selection-message');
@@ -47,12 +53,14 @@ const savedPreferences = preferencesStorage.load();
 let bannedHeroIds = new Set(
     savedPreferences.bannedHeroIds.filter(id => validHeroIds.has(id))
 );
+let banListRoleFilter = 'All';
 
 const uniqueHeroes = Array.from(heroes.reduce((heroMap, hero) => {
     if (!heroMap.has(hero.id)) {
         heroMap.set(hero.id, {
             id: hero.id,
             name: hero.name,
+            staticImg: hero.staticImg,
             roles: []
         });
     }
@@ -87,18 +95,58 @@ function savePreferences() {
 }
 
 function updateBanListUI() {
+    const availableHeroCount = uniqueHeroes.length - bannedHeroIds.size;
+
     banCount.innerText = bannedHeroIds.size;
     banSummary.innerText = bannedHeroIds.size === 0
         ? 'No heroes banned'
         : `${bannedHeroIds.size} ${bannedHeroIds.size === 1 ? 'hero' : 'heroes'} banned`;
     clearBansBtn.disabled = bannedHeroIds.size === 0;
 
+    if (availableHeroCount <= 5) {
+        banWarning.innerText = availableHeroCount === 0
+            ? 'Every hero is banned. The roulette cannot select a hero.'
+            : `Only ${availableHeroCount} ${availableHeroCount === 1 ? 'hero remains' : 'heroes remain'} available.`;
+        banWarning.classList.remove('hidden');
+    } else {
+        banWarning.classList.add('hidden');
+    }
+
     banHeroList.querySelectorAll('[data-hero-id]').forEach(button => {
         const isBanned = bannedHeroIds.has(button.dataset.heroId);
         button.setAttribute('aria-pressed', String(isBanned));
         button.className = isBanned
-            ? 'p-3 rounded-lg border border-red-500 bg-red-950/40 text-red-300 text-left cursor-pointer transition-all'
-            : 'p-3 rounded-lg border border-slate-700 bg-slate-950/50 hover:border-slate-500 text-slate-200 text-left cursor-pointer transition-all';
+            ? 'p-2 rounded-lg border border-red-500 bg-red-950/40 text-red-300 text-left cursor-pointer transition-all flex items-center gap-3 min-w-0'
+            : 'p-2 rounded-lg border border-slate-700 bg-slate-950/50 hover:border-slate-500 text-slate-200 text-left cursor-pointer transition-all flex items-center gap-3 min-w-0';
+    });
+
+    updateBanListFilters();
+}
+
+function updateBanListFilters() {
+    const searchTerm = banSearch.value.trim().toLowerCase();
+    let visibleHeroCount = 0;
+
+    banHeroList.querySelectorAll('[data-hero-id]').forEach(button => {
+        const matchesSearch = button.dataset.heroName.includes(searchTerm);
+        const matchesRole = banListRoleFilter === 'All'
+            || button.dataset.heroRoles.split('|').includes(banListRoleFilter);
+        const isVisible = matchesSearch && matchesRole;
+
+        button.classList.toggle('hidden', !isVisible);
+        if (isVisible) visibleHeroCount += 1;
+    });
+
+    banEmptyState.classList.toggle('hidden', visibleHeroCount !== 0);
+
+    banRoleFilters.forEach(button => {
+        const isActive = button.dataset.banRole === banListRoleFilter;
+        button.setAttribute('aria-pressed', String(isActive));
+        button.classList.toggle('border-amber-400', isActive);
+        button.classList.toggle('bg-amber-400/10', isActive);
+        button.classList.toggle('text-amber-300', isActive);
+        button.classList.toggle('border-slate-700', !isActive);
+        button.classList.toggle('text-slate-400', !isActive);
     });
 }
 
@@ -109,9 +157,14 @@ function renderBanList() {
         const button = document.createElement('button');
         button.type = 'button';
         button.dataset.heroId = hero.id;
+        button.dataset.heroName = hero.name.toLowerCase();
+        button.dataset.heroRoles = hero.roles.join('|');
         button.innerHTML = `
-            <span class="block text-sm font-bold">${hero.name}</span>
-            <span class="block text-[10px] uppercase tracking-wider text-slate-500 mt-1">${hero.roles.join(' · ')}</span>
+            <img src="${hero.staticImg}" alt="" class="w-11 h-11 rounded-md object-cover shrink-0">
+            <span class="min-w-0">
+                <span class="block text-sm font-bold truncate">${hero.name}</span>
+                <span class="block text-[9px] uppercase tracking-wider text-slate-500 mt-1 truncate">${hero.roles.join(' · ')}</span>
+            </span>
         `;
 
         button.addEventListener('click', () => {
@@ -135,7 +188,7 @@ function renderBanList() {
 function openBanModal() {
     banModal.classList.remove('hidden');
     banModal.classList.add('flex');
-    closeBanModalBtn.focus();
+    banSearch.focus();
 }
 
 function closeBanModal() {
@@ -229,6 +282,7 @@ function restorePracticeState() {
     // Re-save to migrate older storage formats after successful validation.
     savePracticeState();
     updateUI(currentHero, false);
+    updateHeroPageLink(currentHero, true);
     updatePracticeUI();
 }
 
@@ -288,6 +342,7 @@ function spinRoulette() {
     matchesCompleted = 0;
     matchTarget = 3;
     savePracticeState();
+    updateHeroPageLink(null, false);
 
     isSpinning = true;
     spinBtn.disabled = true;
@@ -339,6 +394,7 @@ function spinRoulette() {
 
             // Keep the static image when the animation cannot be loaded.
             updateUI(finalHero, !useAnimatedImage);
+            updateHeroPageLink(finalHero, true);
 
             // Play success.wav
             if (!isMuted) {
@@ -365,10 +421,34 @@ function spinRoulette() {
     }, duration);
 }
 
+function updateHeroPageLink(hero, isEnabled) {
+    const officialUrl = hero ? getOfficialHeroPageUrl(hero.id) : null;
+
+    if (!isEnabled || !officialUrl) {
+        heroPageLink.removeAttribute('href');
+        heroPageLink.removeAttribute('title');
+        heroPageLink.removeAttribute('aria-label');
+        heroPageLink.setAttribute('aria-disabled', 'true');
+        heroPageLink.setAttribute('tabindex', '-1');
+        heroPageLink.classList.add('pointer-events-none');
+        heroPageHint.classList.add('hidden');
+        return;
+    }
+
+    heroPageLink.href = officialUrl;
+    heroPageLink.title = `Open ${hero.name} on the official Marvel Rivals website`;
+    heroPageLink.setAttribute('aria-label', `Open ${hero.name} on the official Marvel Rivals website in a new tab`);
+    heroPageLink.setAttribute('aria-disabled', 'false');
+    heroPageLink.setAttribute('tabindex', '0');
+    heroPageLink.classList.remove('pointer-events-none');
+    heroPageHint.classList.remove('hidden');
+}
+
 // updateUI Function
 function updateUI(hero, isSpinningPhase) {
     // If it's spinning, use staticImg. If it's the result, drop the animated one.
     heroImg.src = isSpinningPhase ? hero.staticImg : hero.img;
+    heroImg.alt = `${hero.name} hero portrait`;
     
     heroName.innerText = hero.name;
     heroRole.innerText = hero.role;
@@ -388,6 +468,13 @@ extendBtn.addEventListener('click', extendPracticeBlock);
 
 banListBtn.addEventListener('click', openBanModal);
 closeBanModalBtn.addEventListener('click', closeBanModal);
+banSearch.addEventListener('input', updateBanListFilters);
+banRoleFilters.forEach(button => {
+    button.addEventListener('click', () => {
+        banListRoleFilter = button.dataset.banRole;
+        updateBanListFilters();
+    });
+});
 clearBansBtn.addEventListener('click', () => {
     bannedHeroIds.clear();
     savePreferences();
