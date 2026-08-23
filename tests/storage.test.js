@@ -59,6 +59,8 @@ test('preferences provide defaults for existing ban-only saves', () => {
     assert.deepEqual(preferences.bannedHeroIds, ['magneto']);
     assert.deepEqual(preferences.activeRoles, ['Vanguard', 'Duelist', 'Strategist']);
     assert.equal(preferences.isMuted, false);
+    assert.equal(preferences.playerUid, '');
+    assert.equal(preferences.playerUsername, '');
 });
 
 test('preferences sanitize duplicates, invalid roles, and invalid ban values', () => {
@@ -84,12 +86,14 @@ test('preferences save and restore all current settings together', () => {
     const localStorage = createLocalStorage();
     const harness = loadBrowserScripts(['services/preferencesStorage.js'], { localStorage });
 
-    harness.evaluate("preferencesStorage.save({ bannedHeroIds: ['hela'], activeRoles: ['Duelist'], isMuted: true })");
+    harness.evaluate("preferencesStorage.save({ bannedHeroIds: ['hela'], activeRoles: ['Duelist'], isMuted: true, playerUid: '556779284', playerUsername: 'taskmaster07' })");
     const restored = JSON.parse(harness.evaluate('JSON.stringify(preferencesStorage.load())'));
 
     assert.deepEqual(restored, {
         bannedHeroIds: ['hela'],
         activeRoles: ['Duelist'],
-        isMuted: true
+        isMuted: true,
+        playerUid: '556779284',
+        playerUsername: 'taskmaster07'
     });
 });

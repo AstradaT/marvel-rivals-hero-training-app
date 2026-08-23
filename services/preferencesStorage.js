@@ -5,7 +5,9 @@ const preferencesStorage = (() => {
     const defaultPreferences = {
         bannedHeroIds: [],
         activeRoles: ['Vanguard', 'Duelist', 'Strategist'],
-        isMuted: false
+        isMuted: false,
+        playerUid: '',
+        playerUsername: ''
     };
 
     function load() {
@@ -26,7 +28,13 @@ const preferencesStorage = (() => {
             return {
                 bannedHeroIds: [...new Set(bannedHeroIds)],
                 activeRoles: [...new Set(activeRoles)],
-                isMuted: saved.preferences?.isMuted === true
+                isMuted: saved.preferences?.isMuted === true,
+                playerUid: typeof saved.preferences?.playerUid === 'string'
+                    ? saved.preferences.playerUid.trim()
+                    : '',
+                playerUsername: typeof saved.preferences?.playerUsername === 'string'
+                    ? saved.preferences.playerUsername.trim()
+                    : ''
             };
         } catch (error) {
             console.warn('Could not restore preferences:', error);

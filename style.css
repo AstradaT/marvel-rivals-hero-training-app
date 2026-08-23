@@ -5,3 +5,29 @@
     transform: scale(1.05); /* Slightly scales up the image to hide any white bleeding at the blurred edges */
     transition: filter 0.1s ease;
 }
+
+.external-stats-link {
+    align-items: center;
+    background: rgb(15 23 42 / 0.7);
+    border: 1px solid rgb(51 65 85);
+    border-radius: 0.5rem;
+    color: rgb(203 213 225);
+    display: flex;
+    font-size: 0.75rem;
+    font-weight: 700;
+    justify-content: space-between;
+    padding: 0.875rem;
+    text-transform: uppercase;
+    transition: border-color 150ms, color 150ms, opacity 150ms;
+}
+
+.external-stats-link:not([aria-disabled="true"]):hover {
+    border-color: rgb(251 191 36);
+    color: rgb(252 211 77);
+}
+
+.external-stats-link[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.35;
+    pointer-events: none;
+}

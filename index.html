@@ -21,9 +21,14 @@
     <main class="text-center max-w-md lg:max-w-5xl w-full px-4 lg:px-6">
         <!-- Mute Toggle Button -->
         <div class="flex justify-between lg:justify-end lg:gap-3 mb-4">
-            <button id="ban-list-btn" class="px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-600 text-slate-300 cursor-pointer transition-all active:scale-95 text-xs font-bold uppercase tracking-wider" aria-haspopup="dialog" aria-controls="ban-modal">
-                Ban List <span id="ban-count" class="text-red-400">0</span>
-            </button>
+            <div class="flex gap-2">
+                <button id="ban-list-btn" class="px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-600 text-slate-300 cursor-pointer transition-all active:scale-95 text-xs font-bold uppercase tracking-wider" aria-haspopup="dialog" aria-controls="ban-modal">
+                    Ban List <span id="ban-count" class="text-red-400">0</span>
+                </button>
+                <button id="external-stats-btn" class="px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-amber-500 text-slate-300 hover:text-amber-300 cursor-pointer transition-all active:scale-95 text-xs font-bold uppercase tracking-wider" aria-haspopup="dialog" aria-controls="external-stats-modal">
+                    Player Stats
+                </button>
+            </div>
             <button id="mute-btn" class="p-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-600 text-slate-400 cursor-pointer transition-all active:scale-95 flex items-center justify-center" title="Toggle Sound">
                 <!-- Speaker Icon (SVG) -->
                 <svg id="mute-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -105,6 +110,50 @@
         </button>
         </div>
     </main>
+
+    <!-- External Player Stats -->
+    <div id="external-stats-modal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm p-0 sm:p-4 items-end sm:items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="external-stats-title">
+        <section class="bg-slate-900 border border-slate-700 rounded-t-2xl sm:rounded-2xl shadow-2xl w-full max-w-lg max-h-[92dvh] overflow-y-auto text-left">
+            <header class="flex items-start justify-between gap-4 p-5 border-b border-slate-800">
+                <div>
+                    <h2 id="external-stats-title" class="text-xl font-black uppercase tracking-wide">External Player Stats</h2>
+                    <p class="text-sm text-slate-400 mt-1">Save your account once, then open it on independent stat trackers.</p>
+                </div>
+                <button id="close-external-stats-btn" class="p-2 text-slate-400 hover:text-white cursor-pointer" aria-label="Close external stats">
+                    <span aria-hidden="true" class="text-2xl leading-none">&times;</span>
+                </button>
+            </header>
+
+            <form id="player-profile-form" class="p-5 border-b border-slate-800">
+                <div class="grid sm:grid-cols-2 gap-3">
+                    <label class="text-xs font-bold uppercase tracking-wider text-slate-400">
+                        Player UID
+                        <input id="player-uid" type="text" inputmode="numeric" autocomplete="off" placeholder="556779284" class="block w-full mt-2 bg-slate-950 border border-slate-700 focus:border-amber-400 focus:outline-none rounded-lg px-4 py-3 text-sm normal-case tracking-normal text-white placeholder:text-slate-600">
+                    </label>
+                    <label class="text-xs font-bold uppercase tracking-wider text-slate-400">
+                        Username
+                        <input id="player-username" type="text" autocomplete="off" placeholder="taskmaster07" class="block w-full mt-2 bg-slate-950 border border-slate-700 focus:border-amber-400 focus:outline-none rounded-lg px-4 py-3 text-sm normal-case tracking-normal text-white placeholder:text-slate-600">
+                    </label>
+                </div>
+                <p id="player-profile-message" class="hidden text-xs mt-3" role="status"></p>
+                <button type="submit" class="w-full mt-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-3 px-4 rounded-lg uppercase tracking-wide text-xs cursor-pointer transition-colors">
+                    Save Player
+                </button>
+            </form>
+
+            <div class="p-5">
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">Open your profile</p>
+                <div id="external-stats-links" class="grid grid-cols-2 gap-3">
+                    <a data-tracker="rivalstracker" target="_blank" rel="noopener noreferrer" class="external-stats-link">RivalsTracker <span aria-hidden="true">&#8599;</span></a>
+                    <a data-tracker="rivalsanalytics" target="_blank" rel="noopener noreferrer" class="external-stats-link">Rivals Analytics <span aria-hidden="true">&#8599;</span></a>
+                    <a data-tracker="rivalsmeta" target="_blank" rel="noopener noreferrer" class="external-stats-link">Rivals Meta <span aria-hidden="true">&#8599;</span></a>
+                    <a data-tracker="rivalsdata" target="_blank" rel="noopener noreferrer" class="external-stats-link">Rivals Data <span aria-hidden="true">&#8599;</span></a>
+                    <a data-tracker="trackergg" target="_blank" rel="noopener noreferrer" class="external-stats-link col-span-2">Tracker.gg <span aria-hidden="true">&#8599;</span></a>
+                </div>
+                <p class="text-[11px] leading-relaxed text-slate-500 mt-4">These independent websites may show delayed or incomplete data, especially when a profile is private.</p>
+            </div>
+        </section>
+    </div>
 
     <!-- Abandon Practice Confirmation -->
     <div id="abandon-modal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm p-4 items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="abandon-modal-title" aria-describedby="abandon-modal-description">

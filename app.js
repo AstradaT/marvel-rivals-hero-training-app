@@ -7,6 +7,8 @@ successSFX.volume = 0.4;
 // Persisted player preferences
 const savedPreferences = preferencesStorage.load();
 let isMuted = savedPreferences.isMuted;
+let playerUid = savedPreferences.playerUid;
+let playerUsername = savedPreferences.playerUsername;
 
 // UI role colors
 const roleColors = {
@@ -51,6 +53,14 @@ const banEmptyState = document.getElementById('ban-empty-state');
 const banSummary = document.getElementById('ban-summary');
 const clearBansBtn = document.getElementById('clear-bans-btn');
 const selectionMessage = document.getElementById('selection-message');
+const externalStatsBtn = document.getElementById('external-stats-btn');
+const externalStatsModal = document.getElementById('external-stats-modal');
+const closeExternalStatsBtn = document.getElementById('close-external-stats-btn');
+const playerProfileForm = document.getElementById('player-profile-form');
+const playerUidInput = document.getElementById('player-uid');
+const playerUsernameInput = document.getElementById('player-username');
+const playerProfileMessage = document.getElementById('player-profile-message');
+const externalStatsLinks = document.querySelectorAll('.external-stats-link');
 
 // Guardamos los roles activos. Por defecto arrancan los 3 seleccionados
 let activeRoles = new Set(savedPreferences.activeRoles);
@@ -98,8 +108,72 @@ function savePreferences() {
     preferencesStorage.save({
         bannedHeroIds: Array.from(bannedHeroIds),
         activeRoles: Array.from(activeRoles),
-        isMuted
+        isMuted,
+        playerUid,
+        playerUsername
     });
+}
+
+function updateExternalStatsLinks() {
+    const trackerUrls = {
+        rivalstracker: playerUid && `https://rivalstracker.com/profile/${encodeURIComponent(playerUid)}`,
+        rivalsanalytics: playerUid && `https://rivalsanalytics.com/player/${encodeURIComponent(playerUid)}`,
+        rivalsmeta: playerUid && `https://rivalsmeta.com/player/${encodeURIComponent(playerUid)}`,
+        rivalsdata: playerUid && `https://rivalsdata.com/player/${encodeURIComponent(playerUid)}`,
+        trackergg: playerUsername && `https://tracker.gg/marvel-rivals/profile/ign/${encodeURIComponent(playerUsername)}/`
+    };
+
+    externalStatsLinks.forEach(link => {
+        const url = trackerUrls[link.dataset.tracker];
+
+        if (url) {
+            link.href = url;
+            link.removeAttribute('aria-disabled');
+            link.removeAttribute('tabindex');
+        } else {
+            link.removeAttribute('href');
+            link.setAttribute('aria-disabled', 'true');
+            link.setAttribute('tabindex', '-1');
+        }
+    });
+}
+
+function openExternalStatsModal() {
+    playerUidInput.value = playerUid;
+    playerUsernameInput.value = playerUsername;
+    playerProfileMessage.classList.add('hidden');
+    updateExternalStatsLinks();
+    externalStatsModal.classList.remove('hidden');
+    externalStatsModal.classList.add('flex');
+    (playerUid ? playerUsernameInput : playerUidInput).focus();
+}
+
+function closeExternalStatsModal() {
+    externalStatsModal.classList.add('hidden');
+    externalStatsModal.classList.remove('flex');
+    externalStatsBtn.focus();
+}
+
+function savePlayerProfile(event) {
+    event.preventDefault();
+
+    const nextUid = playerUidInput.value.trim();
+    const nextUsername = playerUsernameInput.value.trim();
+
+    if (nextUid && !/^\d+$/.test(nextUid)) {
+        playerProfileMessage.innerText = 'Player UID should contain numbers only.';
+        playerProfileMessage.className = 'text-xs mt-3 text-red-400';
+        return;
+    }
+
+    playerUid = nextUid;
+    playerUsername = nextUsername;
+    savePreferences();
+    updateExternalStatsLinks();
+    playerProfileMessage.innerText = playerUid || playerUsername
+        ? 'Player saved. Your available profile links are ready.'
+        : 'Player details cleared.';
+    playerProfileMessage.className = 'text-xs mt-3 text-emerald-400';
 }
 
 function updateRoleFiltersUI() {
@@ -594,6 +668,13 @@ banModal.addEventListener('click', event => {
     if (event.target === banModal) closeBanModal();
 });
 
+externalStatsBtn.addEventListener('click', openExternalStatsModal);
+closeExternalStatsBtn.addEventListener('click', closeExternalStatsModal);
+playerProfileForm.addEventListener('submit', savePlayerProfile);
+externalStatsModal.addEventListener('click', event => {
+    if (event.target === externalStatsModal) closeExternalStatsModal();
+});
+
 document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && !abandonModal.classList.contains('hidden')) {
         closeAbandonModal();
@@ -602,6 +683,11 @@ document.addEventListener('keydown', event => {
 
     if (event.key === 'Escape' && !banModal.classList.contains('hidden')) {
         closeBanModal();
+        return;
+    }
+
+    if (event.key === 'Escape' && !externalStatsModal.classList.contains('hidden')) {
+        closeExternalStatsModal();
     }
 });
 
