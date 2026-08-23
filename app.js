@@ -4,8 +4,9 @@ const successSFX = new Audio('assets/success.wav');
 tickSFX.volume = 0.4; 
 successSFX.volume = 0.4;
 
-// Mute State
-let isMuted = false;
+// Persisted player preferences
+const savedPreferences = preferencesStorage.load();
+let isMuted = savedPreferences.isMuted;
 
 // UI role colors
 const roleColors = {
@@ -46,10 +47,9 @@ const clearBansBtn = document.getElementById('clear-bans-btn');
 const selectionMessage = document.getElementById('selection-message');
 
 // Guardamos los roles activos. Por defecto arrancan los 3 seleccionados
-let activeRoles = new Set(['Vanguard', 'Duelist', 'Strategist']);
+let activeRoles = new Set(savedPreferences.activeRoles);
 let isSpinning = false;
 const validHeroIds = new Set(heroes.map(hero => hero.id));
-const savedPreferences = preferencesStorage.load();
 let bannedHeroIds = new Set(
     savedPreferences.bannedHeroIds.filter(id => validHeroIds.has(id))
 );
@@ -90,8 +90,61 @@ function savePracticeState() {
 
 function savePreferences() {
     preferencesStorage.save({
-        bannedHeroIds: Array.from(bannedHeroIds)
+        bannedHeroIds: Array.from(bannedHeroIds),
+        activeRoles: Array.from(activeRoles),
+        isMuted
     });
+}
+
+function updateRoleFiltersUI() {
+    const activeStyles = {
+        Vanguard: ['border-2', 'border-blue-500', 'text-blue-400'],
+        Duelist: ['border-2', 'border-red-500', 'text-red-400'],
+        Strategist: ['border-2', 'border-emerald-500', 'text-emerald-400']
+    };
+
+    roleButtons.forEach(button => {
+        const role = button.dataset.role;
+        const isActive = activeRoles.has(role);
+
+        button.classList.remove(
+            'border', 'border-2', 'border-slate-800', 'border-blue-500',
+            'border-red-500', 'border-emerald-500', 'bg-slate-900',
+            'bg-slate-950', 'text-blue-400', 'text-red-400',
+            'text-emerald-400', 'text-slate-500'
+        );
+
+        if (isActive) {
+            button.classList.add('bg-slate-900', ...activeStyles[role]);
+        } else {
+            button.classList.add('border', 'border-slate-800', 'bg-slate-950', 'text-slate-500');
+        }
+
+        button.setAttribute('aria-pressed', String(isActive));
+    });
+}
+
+function updateMuteUI() {
+    muteBtn.setAttribute('aria-pressed', String(isMuted));
+    muteBtn.title = isMuted ? 'Unmute sound' : 'Mute sound';
+
+    if (isMuted) {
+        muteBtn.classList.remove('text-slate-400', 'border-slate-800');
+        muteBtn.classList.add('text-red-500', 'border-red-900/50', 'bg-red-950/10');
+        muteIcon.innerHTML = `
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+        `;
+    } else {
+        muteBtn.classList.remove('text-red-500', 'border-red-900/50', 'bg-red-950/10');
+        muteBtn.classList.add('text-slate-400', 'border-slate-800');
+        muteIcon.innerHTML = `
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+        `;
+    }
 }
 
 function updateBanListUI() {
@@ -296,23 +349,13 @@ roleButtons.forEach(btn => {
         const role = btn.getAttribute('data-role');
 
         if (activeRoles.has(role)) {
-            // Si ya está activo, lo removemos (Apagar filtro)
             activeRoles.delete(role);
-            // Estilos visuales de botón desactivado/apagado
-            btn.className = btn.className.replace(/border-2 border-\w+-500/, 'border border-slate-800');
-            btn.classList.remove('bg-slate-900', 'text-blue-400', 'text-red-400', 'text-emerald-400');
-            btn.classList.add('bg-slate-950', 'text-slate-500');
         } else {
-            // Si está apagado, lo encendemos
             activeRoles.add(role);
-            // Restauramos sus colores dinámicos originales según el rol
-            btn.classList.remove('bg-slate-950', 'text-slate-500', 'border-slate-800');
-            btn.classList.add('bg-slate-900');
-            
-            if (role === 'Vanguard') btn.classList.add('border-2', 'border-blue-500', 'text-blue-400');
-            if (role === 'Duelist') btn.classList.add('border-2', 'border-red-500', 'text-red-400');
-            if (role === 'Strategist') btn.classList.add('border-2', 'border-emerald-500', 'text-emerald-400');
         }
+
+        savePreferences();
+        updateRoleFiltersUI();
     });
 });
 
@@ -456,7 +499,7 @@ function updateUI(hero, isSpinningPhase) {
     const classes = roleColors[hero.role] || roleColors['default'];
     const [borderColor, textColor, bgColor] = classes.split(' ');
 
-    cardContainer.className = `border-4 rounded-2xl p-6 shadow-2xl transition-all duration-300 transform mb-8 ${borderColor} ${bgColor}`;
+    cardContainer.className = `border-4 rounded-2xl p-6 lg:p-4 shadow-2xl transition-all duration-300 transform mb-8 lg:mb-0 lg:col-start-1 lg:row-start-1 lg:row-span-4 lg:self-center lg:w-full lg:max-w-[460px] ${borderColor} ${bgColor}`;
     heroRole.className = `text-sm font-semibold tracking-widest uppercase mt-1 ${textColor}`;
 }
 
@@ -493,31 +536,9 @@ document.addEventListener('keydown', event => {
 
 // Mute Button Listener
 muteBtn.addEventListener('click', () => {
-    isMuted = !isMuted; // Toggle the state
-
-    if (isMuted) {
-        // Change icon styling to "Muted" (Adds a visual cross/slash line to the SVG)
-        muteBtn.classList.remove('text-slate-400', 'border-slate-800');
-        muteBtn.classList.add('text-red-500', 'border-red-900/50', 'bg-red-950/10');
-        
-        // Dynamically inject a slash line into the SVG and hide sound waves
-        muteIcon.innerHTML = `
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <line x1="23" y1="9" x2="17" y2="15"></line>
-            <line x1="17" y1="9" x2="23" y2="15"></line>
-        `;
-    } else {
-        // Restore icon styling to "Active"
-        muteBtn.classList.remove('text-red-500', 'border-red-900/50', 'bg-red-950/10');
-        muteBtn.classList.add('text-slate-400', 'border-slate-800');
-        
-        // Restore original waves inside the SVG
-        muteIcon.innerHTML = `
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <path id="audio-wave-1" d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-            <path id="audio-wave-2" d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-        `;
-    }
+    isMuted = !isMuted;
+    savePreferences();
+    updateMuteUI();
 });
 
 // --- Cache Logic ---
@@ -531,6 +552,8 @@ window.addEventListener('DOMContentLoaded', () => {
         imageCache.push(img);
     });
     console.log(`Cached ${heroes.length} static assets for ultra-fast spinning.`);
+    updateRoleFiltersUI();
+    updateMuteUI();
     renderBanList();
     restorePracticeState();
 });

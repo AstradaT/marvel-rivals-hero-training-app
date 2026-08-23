@@ -16,11 +16,11 @@
         .anim-ticking { animation: pulse-fast 0.1s infinite; }
     </style>
 </head>
-<body class="bg-slate-950 text-white min-h-screen flex flex-col items-center justify-center font-sans">
+<body class="bg-slate-950 text-white min-h-screen lg:h-dvh lg:overflow-y-hidden flex flex-col items-center justify-center font-sans py-4 lg:py-3">
 
-    <main class="text-center max-w-md w-full px-4">
+    <main class="text-center max-w-md lg:max-w-5xl w-full px-4 lg:px-6">
         <!-- Mute Toggle Button -->
-        <div class="flex justify-between mb-4">
+        <div class="flex justify-between lg:justify-end lg:gap-3 mb-4">
             <button id="ban-list-btn" class="px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-600 text-slate-300 cursor-pointer transition-all active:scale-95 text-xs font-bold uppercase tracking-wider" aria-haspopup="dialog" aria-controls="ban-modal">
                 Ban List <span id="ban-count" class="text-red-400">0</span>
             </button>
@@ -34,8 +34,9 @@
             </button>
         </div>
 
+        <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.85fr)] lg:grid-rows-[auto_auto_auto_auto] lg:gap-x-8 lg:gap-y-4 lg:items-center">
         <!-- Role Filters (Multiselect con Íconos) -->
-        <div class="flex justify-center gap-3 mb-6">
+        <div class="flex justify-center gap-3 mb-6 lg:mb-0 lg:col-start-2 lg:row-start-1 lg:self-end">
             <!-- Vanguard Button -->
             <button data-role="Vanguard" class="role-btn flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-900 text-blue-400 border-2 border-blue-500 shadow-md shadow-blue-950/50 cursor-pointer transition-all active:scale-95">
                 <img src="assets/icon-vanguard.webp" alt="Vanguard" class="w-4 h-4 object-contain">
@@ -53,10 +54,10 @@
             </button>
         </div>
 
-        <p id="selection-message" class="hidden text-sm text-red-400 mb-4" role="alert"></p>
+        <p id="selection-message" class="hidden text-sm text-red-400 mb-4 lg:mb-0 lg:col-start-2 lg:row-start-2" role="alert"></p>
 
         <!-- Contenedor del Héroe (Resolución Estricta 1:1) -->
-        <div id="card-container" class="bg-slate-900 border-4 border-slate-700 rounded-2xl p-6 shadow-2xl transition-all duration-300 transform mb-8">
+        <div id="card-container" class="bg-slate-900 border-4 border-slate-700 rounded-2xl p-6 lg:p-4 shadow-2xl transition-all duration-300 transform mb-8 lg:mb-0 lg:col-start-1 lg:row-start-1 lg:row-span-4 lg:self-center lg:w-full lg:max-w-[460px]">
             <a id="hero-page-link" class="group w-full aspect-square flex items-center justify-center overflow-hidden rounded-lg bg-slate-950/50 mb-4 relative pointer-events-none focus:outline-none focus:ring-2 focus:ring-amber-400" target="_blank" rel="noopener noreferrer" aria-disabled="true" tabindex="-1">
                 <img id="hero-img" src="https://placehold.co/300x300/1e293b/ffffff?text=?" alt="Selected Hero" class="w-full h-full object-cover transition-all duration-150 group-hover:scale-[1.02]">
                 <span id="hero-page-hint" class="hidden absolute bottom-3 right-3 bg-slate-950/85 border border-slate-600 rounded-lg px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-white shadow-lg group-hover:border-amber-400 group-hover:text-amber-300 transition-colors">
@@ -69,7 +70,7 @@
         </div>
 
         <!-- Practice Block -->
-        <section id="practice-panel" class="hidden mb-4 bg-slate-900/80 border border-slate-700 rounded-xl p-4 text-left">
+        <section id="practice-panel" class="hidden mb-4 lg:mb-0 bg-slate-900/80 border border-slate-700 rounded-xl p-4 text-left lg:col-start-2 lg:row-start-3">
             <div class="flex items-center justify-between gap-4 mb-3">
                 <div>
                     <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">Practice block</p>
@@ -93,9 +94,10 @@
         </section>
 
         <!-- Botón de Acción -->
-        <button id="spin-btn" class="w-full bg-gradient-to-r from-red-600 to-amber-500 hover:from-red-500 hover:to-amber-400 disabled:from-slate-800 disabled:to-slate-800 disabled:text-slate-600 text-slate-950 font-black text-xl py-4 px-8 rounded-xl uppercase tracking-widest shadow-lg shadow-red-900/30 active:scale-98 transition-all cursor-pointer disabled:cursor-not-allowed">
+        <button id="spin-btn" class="w-full bg-gradient-to-r from-red-600 to-amber-500 hover:from-red-500 hover:to-amber-400 disabled:from-slate-800 disabled:to-slate-800 disabled:text-slate-600 text-slate-950 font-black text-xl py-4 px-8 rounded-xl uppercase tracking-widest shadow-lg shadow-red-900/30 active:scale-98 transition-all cursor-pointer disabled:cursor-not-allowed lg:col-start-2 lg:row-start-4 lg:self-start">
             Spin Roulette
         </button>
+        </div>
     </main>
 
     <!-- Ban List Modal -->

@@ -3,7 +3,9 @@ const preferencesStorage = (() => {
     const STORAGE_VERSION = 1;
 
     const defaultPreferences = {
-        bannedHeroIds: []
+        bannedHeroIds: [],
+        activeRoles: ['Vanguard', 'Duelist', 'Strategist'],
+        isMuted: false
     };
 
     function load() {
@@ -16,8 +18,16 @@ const preferencesStorage = (() => {
             const bannedHeroIds = Array.isArray(saved.preferences?.bannedHeroIds)
                 ? saved.preferences.bannedHeroIds.filter(id => typeof id === 'string')
                 : [];
+            const validRoles = ['Vanguard', 'Duelist', 'Strategist'];
+            const activeRoles = Array.isArray(saved.preferences?.activeRoles)
+                ? saved.preferences.activeRoles.filter(role => validRoles.includes(role))
+                : defaultPreferences.activeRoles;
 
-            return { bannedHeroIds: [...new Set(bannedHeroIds)] };
+            return {
+                bannedHeroIds: [...new Set(bannedHeroIds)],
+                activeRoles: [...new Set(activeRoles)],
+                isMuted: saved.preferences?.isMuted === true
+            };
         } catch (error) {
             console.warn('Could not restore preferences:', error);
             return { ...defaultPreferences };
