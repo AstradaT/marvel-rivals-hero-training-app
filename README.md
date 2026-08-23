@@ -10,6 +10,7 @@ The project began as a simple hero roulette and is being developed incrementally
 - Animated roulette with sound effects and a mute control
 - Three-match practice blocks
 - Optional extension from three to five matches
+- Persistent hero ban list for excluding heroes from future spins
 - Roulette locking while a practice block is unfinished
 - Automatic practice-block persistence using browser local storage
 - Automatic recovery of the active block after a page reload
@@ -37,7 +38,7 @@ An internet connection is currently required for Tailwind CSS, which is loaded f
 |-- index.html             # Page structure and interface
 |-- app.js                 # Roulette, practice rules, and UI behavior
 |-- data/heroes.js         # Canonical hero roster
-|-- services/              # Persistence and hero-selection strategies
+|-- services/              # Practice state, preferences, and hero selection
 |-- style.css              # Custom roulette animation styling
 |-- assets/                # Hero images, role icons, and sound effects
 `-- compress_animated.js   # Optional animated WebP optimization utility
@@ -55,6 +56,8 @@ The asset utility uses the `sharp` Node.js package and is not required to run th
 6. Spin again after the block is complete.
 
 The current block is stored locally in the browser. Clearing site data will remove that saved progress.
+
+The ban list is also stored locally. Banning a multi-role hero excludes that hero from every role while leaving the current practice block unchanged.
 
 ## Development direction
 

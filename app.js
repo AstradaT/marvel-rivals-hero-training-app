@@ -30,10 +30,36 @@ const practiceCount = document.getElementById('practice-count');
 const practiceProgress = document.getElementById('practice-progress');
 const matchCompleteBtn = document.getElementById('match-complete-btn');
 const extendBtn = document.getElementById('extend-btn');
+const banListBtn = document.getElementById('ban-list-btn');
+const banCount = document.getElementById('ban-count');
+const banModal = document.getElementById('ban-modal');
+const closeBanModalBtn = document.getElementById('close-ban-modal-btn');
+const banHeroList = document.getElementById('ban-hero-list');
+const banSummary = document.getElementById('ban-summary');
+const clearBansBtn = document.getElementById('clear-bans-btn');
+const selectionMessage = document.getElementById('selection-message');
 
 // Guardamos los roles activos. Por defecto arrancan los 3 seleccionados
 let activeRoles = new Set(['Vanguard', 'Duelist', 'Strategist']);
 let isSpinning = false;
+const validHeroIds = new Set(heroes.map(hero => hero.id));
+const savedPreferences = preferencesStorage.load();
+let bannedHeroIds = new Set(
+    savedPreferences.bannedHeroIds.filter(id => validHeroIds.has(id))
+);
+
+const uniqueHeroes = Array.from(heroes.reduce((heroMap, hero) => {
+    if (!heroMap.has(hero.id)) {
+        heroMap.set(hero.id, {
+            id: hero.id,
+            name: hero.name,
+            roles: []
+        });
+    }
+
+    heroMap.get(hero.id).roles.push(hero.role);
+    return heroMap;
+}, new Map()).values()).sort((a, b) => a.name.localeCompare(b.name));
 
 // Practice block state
 let currentHero = null;
@@ -52,6 +78,70 @@ function savePracticeState() {
         matchesCompleted,
         matchTarget
     });
+}
+
+function savePreferences() {
+    preferencesStorage.save({
+        bannedHeroIds: Array.from(bannedHeroIds)
+    });
+}
+
+function updateBanListUI() {
+    banCount.innerText = bannedHeroIds.size;
+    banSummary.innerText = bannedHeroIds.size === 0
+        ? 'No heroes banned'
+        : `${bannedHeroIds.size} ${bannedHeroIds.size === 1 ? 'hero' : 'heroes'} banned`;
+    clearBansBtn.disabled = bannedHeroIds.size === 0;
+
+    banHeroList.querySelectorAll('[data-hero-id]').forEach(button => {
+        const isBanned = bannedHeroIds.has(button.dataset.heroId);
+        button.setAttribute('aria-pressed', String(isBanned));
+        button.className = isBanned
+            ? 'p-3 rounded-lg border border-red-500 bg-red-950/40 text-red-300 text-left cursor-pointer transition-all'
+            : 'p-3 rounded-lg border border-slate-700 bg-slate-950/50 hover:border-slate-500 text-slate-200 text-left cursor-pointer transition-all';
+    });
+}
+
+function renderBanList() {
+    const fragment = document.createDocumentFragment();
+
+    uniqueHeroes.forEach(hero => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.dataset.heroId = hero.id;
+        button.innerHTML = `
+            <span class="block text-sm font-bold">${hero.name}</span>
+            <span class="block text-[10px] uppercase tracking-wider text-slate-500 mt-1">${hero.roles.join(' · ')}</span>
+        `;
+
+        button.addEventListener('click', () => {
+            if (bannedHeroIds.has(hero.id)) {
+                bannedHeroIds.delete(hero.id);
+            } else {
+                bannedHeroIds.add(hero.id);
+            }
+
+            savePreferences();
+            updateBanListUI();
+        });
+
+        fragment.appendChild(button);
+    });
+
+    banHeroList.appendChild(fragment);
+    updateBanListUI();
+}
+
+function openBanModal() {
+    banModal.classList.remove('hidden');
+    banModal.classList.add('flex');
+    closeBanModalBtn.focus();
+}
+
+function closeBanModal() {
+    banModal.classList.add('hidden');
+    banModal.classList.remove('flex');
+    banListBtn.focus();
 }
 
 function updatePracticeUI() {
@@ -147,6 +237,8 @@ roleButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         if (isSpinning || (currentHero && matchesCompleted < matchTarget)) return;
 
+        selectionMessage.classList.add('hidden');
+
         const role = btn.getAttribute('data-role');
 
         if (activeRoles.has(role)) {
@@ -174,20 +266,28 @@ roleButtons.forEach(btn => {
 function spinRoulette() {
     if (isSpinning) return;
     if (currentHero && matchesCompleted < matchTarget) return;
-
-    // A completed block is replaced only when a new spin begins.
-    currentHero = null;
-    matchesCompleted = 0;
-    matchTarget = 3;
-    savePracticeState();
     
     const rolesToFilter = activeRoles.size === 0 
         ? ['Vanguard', 'Duelist', 'Strategist'] 
         : Array.from(activeRoles);
 
-    const filteredPool = heroes.filter(h => rolesToFilter.includes(h.role));
+    const filteredPool = heroes.filter(hero => (
+        rolesToFilter.includes(hero.role) && !bannedHeroIds.has(hero.id)
+    ));
 
-    if (filteredPool.length === 0) return;
+    if (filteredPool.length === 0) {
+        selectionMessage.innerText = 'No available heroes. Adjust your role filters or ban list.';
+        selectionMessage.classList.remove('hidden');
+        return;
+    }
+
+    selectionMessage.classList.add('hidden');
+
+    // A completed block is replaced only when a valid new spin begins.
+    currentHero = null;
+    matchesCompleted = 0;
+    matchTarget = 3;
+    savePracticeState();
 
     isSpinning = true;
     spinBtn.disabled = true;
@@ -286,6 +386,24 @@ spinBtn.addEventListener('click', spinRoulette);
 matchCompleteBtn.addEventListener('click', finishMatch);
 extendBtn.addEventListener('click', extendPracticeBlock);
 
+banListBtn.addEventListener('click', openBanModal);
+closeBanModalBtn.addEventListener('click', closeBanModal);
+clearBansBtn.addEventListener('click', () => {
+    bannedHeroIds.clear();
+    savePreferences();
+    updateBanListUI();
+});
+
+banModal.addEventListener('click', event => {
+    if (event.target === banModal) closeBanModal();
+});
+
+document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !banModal.classList.contains('hidden')) {
+        closeBanModal();
+    }
+});
+
 // Mute Button Listener
 muteBtn.addEventListener('click', () => {
     isMuted = !isMuted; // Toggle the state
@@ -326,5 +444,6 @@ window.addEventListener('DOMContentLoaded', () => {
         imageCache.push(img);
     });
     console.log(`Cached ${heroes.length} static assets for ultra-fast spinning.`);
+    renderBanList();
     restorePracticeState();
 });
