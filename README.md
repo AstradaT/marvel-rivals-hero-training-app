@@ -16,6 +16,8 @@ The project began as a simple hero roulette and is being developed incrementally
 - Responsive mobile-first layout with a two-column desktop workspace
 - Three-match practice blocks
 - Optional extension from three to five matches
+- Undo control for accidental match completions
+- Confirmed abandonment of unfinished practice blocks
 - Persistent, searchable hero ban list with role browsing and portraits
 - Persistent mute and roulette role-filter preferences
 - Roulette locking while a practice block is unfinished

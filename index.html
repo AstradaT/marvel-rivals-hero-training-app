@@ -87,8 +87,14 @@
                 <button id="match-complete-btn" class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-800 disabled:text-slate-600 text-white font-bold py-3 px-3 rounded-lg uppercase tracking-wide text-xs transition-all cursor-pointer disabled:cursor-not-allowed">
                     Match Complete
                 </button>
+                <button id="undo-match-btn" class="bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-slate-200 font-bold py-3 px-3 rounded-lg uppercase tracking-wide text-xs transition-all cursor-pointer disabled:cursor-not-allowed">
+                    Undo Match
+                </button>
                 <button id="extend-btn" class="bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-slate-200 font-bold py-3 px-3 rounded-lg uppercase tracking-wide text-xs transition-all cursor-pointer disabled:cursor-not-allowed">
                     Extend to 5
+                </button>
+                <button id="abandon-block-btn" class="bg-red-950/40 hover:bg-red-950/70 border border-red-900/60 disabled:opacity-40 text-red-300 font-bold py-3 px-3 rounded-lg uppercase tracking-wide text-xs transition-all cursor-pointer disabled:cursor-not-allowed">
+                    Abandon Hero
                 </button>
             </div>
         </section>
@@ -99,6 +105,23 @@
         </button>
         </div>
     </main>
+
+    <!-- Abandon Practice Confirmation -->
+    <div id="abandon-modal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm p-4 items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="abandon-modal-title" aria-describedby="abandon-modal-description">
+        <section class="bg-slate-900 border border-red-900/60 rounded-2xl shadow-2xl w-full max-w-sm p-5 text-left">
+            <h2 id="abandon-modal-title" class="text-xl font-black uppercase tracking-wide">Abandon Practice Hero?</h2>
+            <p id="abandon-modal-description" class="text-sm text-slate-400 mt-2">Your progress for this practice block will be cleared.</p>
+
+            <div class="grid grid-cols-2 gap-3 mt-5">
+                <button id="keep-practicing-btn" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold py-3 px-3 rounded-lg uppercase tracking-wide text-xs cursor-pointer">
+                    Keep Practicing
+                </button>
+                <button id="confirm-abandon-btn" class="bg-red-700 hover:bg-red-600 text-white font-bold py-3 px-3 rounded-lg uppercase tracking-wide text-xs cursor-pointer">
+                    Abandon Hero
+                </button>
+            </div>
+        </section>
+    </div>
 
     <!-- Ban List Modal -->
     <div id="ban-modal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm p-0 sm:p-4 items-end sm:items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="ban-modal-title">

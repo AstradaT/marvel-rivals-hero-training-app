@@ -32,7 +32,13 @@ const practiceStatus = document.getElementById('practice-status');
 const practiceCount = document.getElementById('practice-count');
 const practiceProgress = document.getElementById('practice-progress');
 const matchCompleteBtn = document.getElementById('match-complete-btn');
+const undoMatchBtn = document.getElementById('undo-match-btn');
 const extendBtn = document.getElementById('extend-btn');
+const abandonBlockBtn = document.getElementById('abandon-block-btn');
+const abandonModal = document.getElementById('abandon-modal');
+const abandonModalDescription = document.getElementById('abandon-modal-description');
+const keepPracticingBtn = document.getElementById('keep-practicing-btn');
+const confirmAbandonBtn = document.getElementById('confirm-abandon-btn');
 const banListBtn = document.getElementById('ban-list-btn');
 const banCount = document.getElementById('ban-count');
 const banModal = document.getElementById('ban-modal');
@@ -254,6 +260,7 @@ function updatePracticeUI() {
     if (!currentHero) {
         practicePanel.classList.add('hidden');
         spinBtn.disabled = isSpinning;
+        if (!isSpinning) spinBtn.innerText = 'Spin Roulette';
         return;
     }
 
@@ -275,7 +282,9 @@ function updatePracticeUI() {
     }
 
     matchCompleteBtn.disabled = blockComplete || isSpinning;
+    undoMatchBtn.disabled = matchesCompleted === 0 || isSpinning;
     extendBtn.disabled = matchTarget === 5 || isSpinning;
+    abandonBlockBtn.disabled = blockComplete || isSpinning;
     extendBtn.innerText = matchTarget === 5 ? 'Extended to 5' : 'Extend to 5';
 
     // The roulette stays locked while the current practice block is unfinished.
@@ -299,12 +308,61 @@ function finishMatch() {
     updatePracticeUI();
 }
 
+function undoMatch() {
+    if (!currentHero || matchesCompleted === 0 || isSpinning) return;
+
+    matchesCompleted -= 1;
+    savePracticeState();
+    updatePracticeUI();
+}
+
 function extendPracticeBlock() {
     if (!currentHero || matchTarget === 5 || isSpinning) return;
 
     matchTarget = 5;
     savePracticeState();
     updatePracticeUI();
+}
+
+function openAbandonModal() {
+    if (!currentHero || matchesCompleted >= matchTarget || isSpinning) return;
+
+    abandonModalDescription.innerText = `${matchesCompleted} of ${matchTarget} matches are complete for ${currentHero.name}. This practice-block progress will be cleared.`;
+    abandonModal.classList.remove('hidden');
+    abandonModal.classList.add('flex');
+    keepPracticingBtn.focus();
+}
+
+function closeAbandonModal(returnFocus = true) {
+    abandonModal.classList.add('hidden');
+    abandonModal.classList.remove('flex');
+    if (returnFocus) abandonBlockBtn.focus();
+}
+
+function resetHeroSelectionUI() {
+    heroImg.src = 'https://placehold.co/300x300/1e293b/ffffff?text=?';
+    heroImg.alt = 'No hero selected';
+    heroName.innerText = 'Who will step up?';
+    heroRole.innerText = '-';
+    cardContainer.className = 'border-4 border-slate-700 bg-slate-900 rounded-2xl p-6 lg:p-4 shadow-2xl transition-all duration-300 transform mb-8 lg:mb-0 lg:col-start-1 lg:row-start-1 lg:row-span-4 lg:self-center lg:w-full lg:max-w-[460px]';
+    heroRole.className = 'text-sm font-semibold tracking-widest uppercase text-slate-500 mt-1';
+    updateHeroPageLink(null, false);
+}
+
+function confirmAbandonPracticeBlock() {
+    if (!currentHero || matchesCompleted >= matchTarget || isSpinning) {
+        closeAbandonModal();
+        return;
+    }
+
+    currentHero = null;
+    matchesCompleted = 0;
+    matchTarget = 3;
+    savePracticeState();
+    resetHeroSelectionUI();
+    updatePracticeUI();
+    closeAbandonModal(false);
+    spinBtn.focus();
 }
 
 function restorePracticeState() {
@@ -507,7 +565,15 @@ function updateUI(hero, isSpinningPhase) {
 spinBtn.addEventListener('click', spinRoulette);
 
 matchCompleteBtn.addEventListener('click', finishMatch);
+undoMatchBtn.addEventListener('click', undoMatch);
 extendBtn.addEventListener('click', extendPracticeBlock);
+abandonBlockBtn.addEventListener('click', openAbandonModal);
+keepPracticingBtn.addEventListener('click', closeAbandonModal);
+confirmAbandonBtn.addEventListener('click', confirmAbandonPracticeBlock);
+
+abandonModal.addEventListener('click', event => {
+    if (event.target === abandonModal) closeAbandonModal();
+});
 
 banListBtn.addEventListener('click', openBanModal);
 closeBanModalBtn.addEventListener('click', closeBanModal);
@@ -529,6 +595,11 @@ banModal.addEventListener('click', event => {
 });
 
 document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !abandonModal.classList.contains('hidden')) {
+        closeAbandonModal();
+        return;
+    }
+
     if (event.key === 'Escape' && !banModal.classList.contains('hidden')) {
         closeBanModal();
     }
