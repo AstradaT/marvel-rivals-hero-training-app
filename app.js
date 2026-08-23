@@ -7,69 +7,6 @@ successSFX.volume = 0.4;
 // Mute State
 let isMuted = false;
 
-// Hero data
-const heroes = [
-    // --- DUELISTS ---
-    { id: "black-cat", name: "Black Cat", role: "Duelist", img: "assets/blackcat.webp", staticImg: "assets/static/blackcat.jpg" },
-    { id: "black-panther", name: "Black Panther", role: "Duelist", img: "assets/blackpanther.webp", staticImg: "assets/static/blackpanther.jpg" },
-    { id: "black-widow", name: "Black Widow", role: "Duelist", img: "assets/blackwidow.webp", staticImg: "assets/static/blackwidow.jpg" },
-    { id: "blade", name: "Blade", role: "Duelist", img: "assets/blade.webp", staticImg: "assets/static/blade.jpg" },
-    { id: "cyclops", name: "Cyclops", role: "Duelist", img: "assets/cyclops.webp", staticImg: "assets/static/cyclops.jpg" },
-    { id: "daredevil", name: "Daredevil", role: "Duelist", img: "assets/daredevil.webp", staticImg: "assets/static/daredevil.jpg" },
-    { id: "deadpool", name: "Deadpool", role: "Duelist", img: "assets/deadpool.webp", staticImg: "assets/static/deadpool.jpg" },
-    { id: "elsa-bloodstone", name: "Elsa Bloodstone", role: "Duelist", img: "assets/elsabloodstone.webp", staticImg: "assets/static/elsabloodstone.jpg" },
-    { id: "hawkeye", name: "Hawkeye", role: "Duelist", img: "assets/hawkeye.webp", staticImg: "assets/static/hawkeye.jpg" },
-    { id: "hela", name: "Hela", role: "Duelist", img: "assets/hela.webp", staticImg: "assets/static/hela.jpg" },
-    { id: "human-torch", name: "Human Torch", role: "Duelist", img: "assets/humantorch.webp", staticImg: "assets/static/humantorch.jpg" },
-    { id: "iron-fist", name: "Iron Fist", role: "Duelist", img: "assets/ironfist.webp", staticImg: "assets/static/ironfist.jpg" },
-    { id: "iron-man", name: "Iron Man", role: "Duelist", img: "assets/ironman.webp", staticImg: "assets/static/ironman.jpg" },
-    { id: "magik", name: "Magik", role: "Duelist", img: "assets/magik.webp", staticImg: "assets/static/magik.jpg" },
-    { id: "mister-fantastic", name: "Mister Fantastic", role: "Duelist", img: "assets/misterfantastic.webp", staticImg: "assets/static/misterfantastic.jpg" },
-    { id: "moon-knight", name: "Moon Knight", role: "Duelist", img: "assets/moonknight.webp", staticImg: "assets/static/moonknight.jpg" },
-    { id: "namor", name: "Namor", role: "Duelist", img: "assets/namor.webp", staticImg: "assets/static/namor.jpg" },
-    { id: "phoenix", name: "Phoenix", role: "Duelist", img: "assets/phoenix.webp", staticImg: "assets/static/phoenix.jpg" },
-    { id: "psylocke", name: "Psylocke", role: "Duelist", img: "assets/psylocke.webp", staticImg: "assets/static/psylocke.jpg" },
-    { id: "scarlet-witch", name: "Scarlet Witch", role: "Duelist", img: "assets/scarletwitch.webp", staticImg: "assets/static/scarletwitch.jpg" },
-    { id: "spider-man", name: "Spider-Man", role: "Duelist", img: "assets/spiderman.webp", staticImg: "assets/static/spiderman.jpg" },
-    { id: "squirrel-girl", name: "Squirrel Girl", role: "Duelist", img: "assets/squirrelgirl.webp", staticImg: "assets/static/squirrelgirl.jpg" },
-    { id: "star-lord", name: "Star-Lord", role: "Duelist", img: "assets/starlord.webp", staticImg: "assets/static/starlord.jpg" },
-    { id: "storm", name: "Storm", role: "Duelist", img: "assets/storm.webp", staticImg: "assets/static/storm.jpg" },
-    { id: "the-punisher", name: "The Punisher", role: "Duelist", img: "assets/thepunisher.webp", staticImg: "assets/static/thepunisher.jpg" },
-    { id: "winter-soldier", name: "Winter Soldier", role: "Duelist", img: "assets/wintersoldier.webp", staticImg: "assets/static/wintersoldier.jpg" },
-    { id: "wolverine", name: "Wolverine", role: "Duelist", img: "assets/wolverine.webp", staticImg: "assets/static/wolverine.jpg" },
-
-    // --- VANGUARDS ---
-    { id: "angela", name: "Angela", role: "Vanguard", img: "assets/angela.webp", staticImg: "assets/static/angela.jpg" },
-    { id: "captain-america", name: "Captain America", role: "Vanguard", img: "assets/captainamerica.webp", staticImg: "assets/static/captainamerica.jpg" },
-    { id: "deadpool", name: "Deadpool", role: "Vanguard", img: "assets/deadpool.webp", staticImg: "assets/static/deadpool.jpg" },
-    { id: "devil-dinosaur", name: "Devil Dinosaur", role: "Vanguard", img: "assets/devildinosaur.webp", staticImg: "assets/static/devildinosaur.jpg" },
-    { id: "doctor-strange", name: "Doctor Strange", role: "Vanguard", img: "assets/doctorstrange.webp", staticImg: "assets/static/doctorstrange.jpg" },
-    { id: "emma-frost", name: "Emma Frost", role: "Vanguard", img: "assets/emmafrost.webp", staticImg: "assets/static/emmafrost.jpg" },
-    { id: "groot", name: "Groot", role: "Vanguard", img: "assets/groot.webp", staticImg: "assets/static/groot.jpg" },
-    { id: "hulk", name: "Hulk", role: "Vanguard", img: "assets/hulk.webp", staticImg: "assets/static/hulk.jpg" },
-    { id: "magneto", name: "Magneto", role: "Vanguard", img: "assets/magneto.webp", staticImg: "assets/static/magneto.jpg" },
-    { id: "peni-parker", name: "Peni Parker", role: "Vanguard", img: "assets/peniparker.webp", staticImg: "assets/static/peniparker.jpg" },
-    { id: "rogue", name: "Rogue", role: "Vanguard", img: "assets/rogue.webp", staticImg: "assets/static/rogue.jpg" },
-    { id: "the-thing", name: "The Thing", role: "Vanguard", img: "assets/thething.webp", staticImg: "assets/static/thething.jpg" },
-    { id: "thor", name: "Thor", role: "Vanguard", img: "assets/thor.webp", staticImg: "assets/static/thor.jpg" },
-    { id: "venom", name: "Venom", role: "Vanguard", img: "assets/venom.webp", staticImg: "assets/static/venom.jpg" },
-
-    // --- STRATEGISTS ---
-    { id: "adam-warlock", name: "Adam Warlock", role: "Strategist", img: "assets/adamwarlock.webp", staticImg: "assets/static/adamwarlock.jpg" },
-    { id: "cloak-and-dagger", name: "Cloak & Dagger", role: "Strategist", img: "assets/cloakanddagger.webp", staticImg: "assets/static/cloakanddagger.jpg" },
-    { id: "deadpool", name: "Deadpool", role: "Strategist", img: "assets/deadpool.webp", staticImg: "assets/static/deadpool.jpg" },
-    { id: "gambit", name: "Gambit", role: "Strategist", img: "assets/gambit.webp", staticImg: "assets/static/gambit.jpg" },
-    { id: "invisible-woman", name: "Invisible Woman", role: "Strategist", img: "assets/invisiblewoman.webp", staticImg: "assets/static/invisiblewoman.jpg" },
-    { id: "jeff-the-land-shark", name: "Jeff the Land Shark", role: "Strategist", img: "assets/jeffthelandshark.webp", staticImg: "assets/static/jeffthelandshark.jpg" },
-    { id: "jubilee", name: "Jubilee", role: "Strategist", img: "assets/jubilee.webp", staticImg: "assets/static/jubilee.jpg"},
-    { id: "loki", name: "Loki", role: "Strategist", img: "assets/loki.webp", staticImg: "assets/static/loki.jpg" },
-    { id: "luna-snow", name: "Luna Snow", role: "Strategist", img: "assets/lunasnow.webp", staticImg: "assets/static/lunasnow.jpg" },
-    { id: "mantis", name: "Mantis", role: "Strategist", img: "assets/mantis.webp", staticImg: "assets/static/mantis.jpg" },
-    { id: "rocket-raccoon", name: "Rocket Raccoon", role: "Strategist", img: "assets/rocketraccoon.webp", staticImg: "assets/static/rocketraccoon.jpg" },
-    { id: "ultron", name: "Ultron", role: "Strategist", img: "assets/ultron.webp", staticImg: "assets/static/ultron.jpg" },
-    { id: "white-fox", name: "White Fox", role: "Strategist", img: "assets/whitefox.webp", staticImg: "assets/static/whitefox.jpg" }
-];
-
 // UI role colors
 const roleColors = {
     "Duelist": "border-red-500 text-red-400 bg-red-950/20",
@@ -102,24 +39,19 @@ let isSpinning = false;
 let currentHero = null;
 let matchesCompleted = 0;
 let matchTarget = 3;
-const PRACTICE_STORAGE_KEY = 'marvelRivalsPracticeBlock';
-const PRACTICE_STORAGE_VERSION = 1;
 
 function savePracticeState() {
     if (!currentHero) {
-        localStorage.removeItem(PRACTICE_STORAGE_KEY);
+        practiceStorage.clear();
         return;
     }
 
-    localStorage.setItem(PRACTICE_STORAGE_KEY, JSON.stringify({
-        version: PRACTICE_STORAGE_VERSION,
-        activePracticeBlock: {
-            heroId: currentHero.id,
-            heroRole: currentHero.role,
-            matchesCompleted,
-            matchTarget
-        }
-    }));
+    practiceStorage.save({
+        heroId: currentHero.id,
+        heroRole: currentHero.role,
+        matchesCompleted,
+        matchTarget
+    });
 }
 
 function updatePracticeUI() {
@@ -180,49 +112,34 @@ function extendPracticeBlock() {
 }
 
 function restorePracticeState() {
-    try {
-        const saved = JSON.parse(localStorage.getItem(PRACTICE_STORAGE_KEY));
-        if (!saved) return;
+    const savedBlock = practiceStorage.load();
+    if (!savedBlock) return;
 
-        // Older saves stored the practice block directly. Supporting both shapes
-        // lets existing progress migrate without asking the player to start over.
-        const savedBlock = saved.version === PRACTICE_STORAGE_VERSION
-            ? saved.activePracticeBlock
-            : saved;
+    const hero = heroes.find(h => {
+        const hasStableId = typeof savedBlock.heroId === 'string';
+        const heroMatches = hasStableId
+            ? h.id === savedBlock.heroId
+            : h.name === savedBlock.heroName;
 
-        if (!savedBlock || typeof savedBlock !== 'object') {
-            localStorage.removeItem(PRACTICE_STORAGE_KEY);
-            return;
-        }
+        return heroMatches && h.role === savedBlock.heroRole;
+    });
 
-        const hero = heroes.find(h => {
-            const hasStableId = typeof savedBlock.heroId === 'string';
-            const heroMatches = hasStableId
-                ? h.id === savedBlock.heroId
-                : h.name === savedBlock.heroName;
-
-            return heroMatches && h.role === savedBlock.heroRole;
-        });
-
-        if (!hero) {
-            localStorage.removeItem(PRACTICE_STORAGE_KEY);
-            return;
-        }
-
-        currentHero = hero;
-        matchTarget = Number(savedBlock.matchTarget) === 5 ? 5 : 3;
-        matchesCompleted = Math.min(
-            matchTarget,
-            Math.max(0, Math.floor(Number(savedBlock.matchesCompleted) || 0))
-        );
-
-        savePracticeState();
-        updateUI(currentHero, false);
-        updatePracticeUI();
-    } catch (error) {
-        console.warn('Could not restore practice block:', error);
-        localStorage.removeItem(PRACTICE_STORAGE_KEY);
+    if (!hero) {
+        practiceStorage.clear();
+        return;
     }
+
+    currentHero = hero;
+    matchTarget = Number(savedBlock.matchTarget) === 5 ? 5 : 3;
+    matchesCompleted = Math.min(
+        matchTarget,
+        Math.max(0, Math.floor(Number(savedBlock.matchesCompleted) || 0))
+    );
+
+    // Re-save to migrate older storage formats after successful validation.
+    savePracticeState();
+    updateUI(currentHero, false);
+    updatePracticeUI();
 }
 
 // Manejo de clicks con lógica Multiselect
@@ -285,7 +202,7 @@ function spinRoulette() {
 
     // Intervalo de giro (Efecto ruleta)
     const interval = setInterval(() => {
-        const randomHero = filteredPool[Math.floor(Math.random() * filteredPool.length)];
+        const randomHero = heroSelector.selectRandom(filteredPool);
         
         // Pass a custom flag 'true' to show it's just spinning
         updateUI(randomHero, true);
@@ -301,7 +218,7 @@ function spinRoulette() {
     setTimeout(() => {
         clearInterval(interval);
         
-        const finalHero = filteredPool[Math.floor(Math.random() * filteredPool.length)];
+        const finalHero = heroSelector.selectRandom(filteredPool);
         
         // Remove the spinning blur effect right away
         heroImg.classList.remove('roulette-blur', 'anim-ticking');

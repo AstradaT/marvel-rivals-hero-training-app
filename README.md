@@ -35,7 +35,9 @@ An internet connection is currently required for Tailwind CSS, which is loaded f
 ```text
 .
 |-- index.html             # Page structure and interface
-|-- app.js                 # Roster, roulette, practice state, and UI behavior
+|-- app.js                 # Roulette, practice rules, and UI behavior
+|-- data/heroes.js         # Canonical hero roster
+|-- services/              # Persistence and hero-selection strategies
 |-- style.css              # Custom roulette animation styling
 |-- assets/                # Hero images, role icons, and sound effects
 `-- compress_animated.js   # Optional animated WebP optimization utility
