@@ -4,6 +4,10 @@ A personal Marvel Rivals training companion that helps players practice a wider 
 
 The project began as a simple hero roulette and is being developed incrementally into a smarter training tool. Its current focus is deliberate practice: once a hero is selected, the player completes several matches with that hero before rolling again.
 
+## Live app
+
+**[Open the Marvel Rivals Hero Training Assistant](https://marvel-rivals-hero-training-app.vercel.app/)**
+
 ## Current features
 
 - Random hero selection with Vanguard, Duelist, and Strategist role filters
@@ -20,7 +24,7 @@ The project began as a simple hero roulette and is being developed incrementally
 - Static image fallback when an animated hero image cannot be loaded
 - Stable hero IDs and versioned saved data for future expansion
 
-## Running the app locally
+## Local development
 
 The application is built with plain HTML, CSS, and JavaScript. It does not require a build step.
 
