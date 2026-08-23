@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marvel Rivals Roulette</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Animación de parpadeo para el efecto de carga */
+        @keyframes pulse-fast {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .anim-ticking { animation: pulse-fast 0.1s infinite; }
+    </style>
+</head>
+<body class="bg-slate-950 text-white min-h-screen flex flex-col items-center justify-center font-sans">
+
+    <main class="text-center max-w-md w-full px-4">
+        <!-- Mute Toggle Button -->
+        <div class="flex justify-end mb-2">
+            <button id="mute-btn" class="p-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-600 text-slate-400 cursor-pointer transition-all active:scale-95 flex items-center justify-center" title="Toggle Sound">
+                <!-- Speaker Icon (SVG) -->
+                <svg id="mute-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <path id="audio-wave-1" d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    <path id="audio-wave-2" d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                </svg>
+            </button>
+        </div>
+
+        <h1 class="text-4xl font-extrabold tracking-wider uppercase mb-2 text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-400">
+            Marvel Rivals Hero Picker
+        </h1>
+        <p class="text-slate-400 mb-6 text-sm">Can't decide who to pick? Let destiny choose.</p>
+
+        <!-- Role Filters (Multiselect con Íconos) -->
+        <div class="flex justify-center gap-3 mb-6">
+            <!-- Vanguard Button -->
+            <button data-role="Vanguard" class="role-btn flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-900 text-blue-400 border-2 border-blue-500 shadow-md shadow-blue-950/50 cursor-pointer transition-all active:scale-95">
+                <img src="assets/icon-vanguard.webp" alt="Vanguard" class="w-4 h-4 object-contain">
+                Vanguard
+            </button>
+            <!-- Duelist Button -->
+            <button data-role="Duelist" class="role-btn flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-900 text-red-400 border-2 border-red-500 shadow-md shadow-red-950/50 cursor-pointer transition-all active:scale-95">
+                <img src="assets/icon-duelist.webp" alt="Duelist" class="w-4 h-4 object-contain">
+                Duelist
+            </button>
+            <!-- Strategist Button -->
+            <button data-role="Strategist" class="role-btn flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-900 text-emerald-400 border-2 border-emerald-500 shadow-md shadow-emerald-950/50 cursor-pointer transition-all active:scale-95">
+                <img src="assets/icon-strategist.webp" alt="Strategist" class="w-4 h-4 object-contain">
+                Strategist
+            </button>
+        </div>
+
+        <!-- Contenedor del Héroe (Resolución Estricta 1:1) -->
+        <div id="card-container" class="bg-slate-900 border-4 border-slate-700 rounded-2xl p-6 shadow-2xl transition-all duration-300 transform mb-8">
+            <div class="w-full aspect-square flex items-center justify-center overflow-hidden rounded-lg bg-slate-950/50 mb-4 relative">
+                <img id="hero-img" src="https://placehold.co/300x300/1e293b/ffffff?text=?" alt="Selected Hero" class="w-full h-full object-cover transition-all duration-150">
+            </div>
+            
+            <h2 id="hero-name" class="text-2xl font-bold tracking-wide">Who will step up?</h2>
+            <p id="hero-role" class="text-sm font-semibold tracking-widest uppercase text-slate-500 mt-1">-</p>
+        </div>
+
+        <!-- Practice Block -->
+        <section id="practice-panel" class="hidden mb-4 bg-slate-900/80 border border-slate-700 rounded-xl p-4 text-left">
+            <div class="flex items-center justify-between gap-4 mb-3">
+                <div>
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">Practice block</p>
+                    <p id="practice-status" class="text-sm text-slate-300 mt-1">0 of 3 matches completed</p>
+                </div>
+                <span id="practice-count" class="text-2xl font-black text-amber-400">0 / 3</span>
+            </div>
+
+            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden mb-4">
+                <div id="practice-progress" class="h-full bg-gradient-to-r from-red-500 to-amber-400 transition-all duration-300" style="width: 0%"></div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <button id="match-complete-btn" class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-800 disabled:text-slate-600 text-white font-bold py-3 px-3 rounded-lg uppercase tracking-wide text-xs transition-all cursor-pointer disabled:cursor-not-allowed">
+                    Match Complete
+                </button>
+                <button id="extend-btn" class="bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-slate-200 font-bold py-3 px-3 rounded-lg uppercase tracking-wide text-xs transition-all cursor-pointer disabled:cursor-not-allowed">
+                    Extend to 5
+                </button>
+            </div>
+        </section>
+
+        <!-- Botón de Acción -->
+        <button id="spin-btn" class="w-full bg-gradient-to-r from-red-600 to-amber-500 hover:from-red-500 hover:to-amber-400 disabled:from-slate-800 disabled:to-slate-800 disabled:text-slate-600 text-slate-950 font-black text-xl py-4 px-8 rounded-xl uppercase tracking-widest shadow-lg shadow-red-900/30 active:scale-98 transition-all cursor-pointer disabled:cursor-not-allowed">
+            Spin Roulette
+        </button>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

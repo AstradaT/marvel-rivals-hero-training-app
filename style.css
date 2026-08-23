@@ -1,0 +1,7 @@
+/* Custom motion blur effect for the spinning phase */
+.roulette-blur {
+    filter: blur(8px); /* Adjust the pixels to get the perfect amount of blur */
+    image-rendering: auto; /* Forces the browser to smooth out low-res pixels instead of pixelating them */
+    transform: scale(1.05); /* Slightly scales up the image to hide any white bleeding at the blurred edges */
+    transition: filter 0.1s ease;
+}
