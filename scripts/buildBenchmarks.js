@@ -7,7 +7,15 @@ const defaultCsvPaths = [
     'marvel_rivals_silver_s9_5_benchmark.csv',
     'marvel_rivals_gold_s9_5_benchmark.csv',
     'marvel_rivals_platinum_s9_5_benchmark.csv',
-    'marvel_rivals_diamond_s9_5_benchmark.csv'
+    'marvel_rivals_diamond_s9_5_benchmark.csv',
+    'marvel_rivals_diamond_plus_s9_5_benchmark.csv',
+    'marvel_rivals_grandmaster_s9_5_benchmark.csv',
+    'marvel_rivals_grandmaster_plus_s9_5_benchmark.csv',
+    'marvel_rivals_celestial_s9_5_benchmark.csv',
+    'marvel_rivals_celestial_plus_s9_5_benchmark.csv',
+    'marvel_rivals_eternity_s9_5_benchmark.csv',
+    'marvel_rivals_eternity_plus_s9_5_benchmark.csv',
+    'marvel_rivals_one_above_all_s9_5_benchmark.csv'
 ].map(fileName => path.join(projectRoot, 'data', fileName));
 const defaultSupplementalPath = path.join(projectRoot, 'data', 'benchmarkSupplemental.json');
 const defaultOutputPath = path.join(projectRoot, 'data', 'benchmarks.json');
@@ -71,6 +79,18 @@ function normalizeSeasonId(value) {
     return `season-${numericSeason.replace('.', '-')}`;
 }
 
+function normalizeRankTier(value) {
+    const normalized = String(value)
+        .trim()
+        .toLowerCase()
+        .replace(/\s*\+$/, '-plus')
+        .replace(/[\s_]+/g, '-');
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(normalized)) {
+        throw new Error(`Invalid rank tier: ${value}`);
+    }
+    return normalized;
+}
+
 function nullableInteger(value, fieldName) {
     if (value === '') return null;
     const number = Number(value);
@@ -101,15 +121,14 @@ function buildCsvRecords(csvText, supplemental) {
         }
         return Object.fromEntries(headers.map((header, column) => [header, values[column]]));
     });
-    if (rows.length !== 165) throw new Error(`Expected 165 metric rows; found ${rows.length}.`);
-
     const groups = rows.reduce((result, row) => {
         result[row.benchmark_group_id] ||= [];
         result[row.benchmark_group_id].push(row);
         return result;
     }, {});
-    if (Object.keys(groups).length !== 55) {
-        throw new Error(`Expected 55 benchmark groups; found ${Object.keys(groups).length}.`);
+    const groupCount = Object.keys(groups).length;
+    if (groupCount === 0 || groupCount > 55 || rows.length !== groupCount * REQUIRED_METRICS.length) {
+        throw new Error(`Expected three metric rows for each of up to 55 benchmark groups; found ${rows.length} rows across ${groupCount} groups.`);
     }
 
     const seasonalRecords = Object.entries(groups).map(([groupId, groupRows]) => {
@@ -128,14 +147,18 @@ function buildCsvRecords(csvText, supplemental) {
         );
         const sourceRole = assertSame(groupId, groupRows, 'source_role');
         if (sourceRole !== 'primary') throw new Error(`${groupId} must use a primary source.`);
-        if (assertSame(groupId, groupRows, 'context_type') !== 'seasonalRank') {
-            throw new Error(`${groupId} must use seasonalRank context.`);
+        const contextType = assertSame(groupId, groupRows, 'context_type');
+        if (!['seasonalRank', 'seasonalRankThreshold'].includes(contextType)) {
+            throw new Error(`${groupId} has an unsupported context type.`);
         }
         if (assertSame(groupId, groupRows, 'game_mode') !== 'competitive') {
             throw new Error(`${groupId} must use Competitive data.`);
         }
 
-        const rankTier = assertSame(groupId, groupRows, 'rank_tier');
+        const rankTier = normalizeRankTier(assertSame(groupId, groupRows, 'rank_tier'));
+        if (contextType === 'seasonalRankThreshold' && !rankTier.endsWith('-plus')) {
+            throw new Error(`${groupId} threshold rank must end in plus.`);
+        }
         const unavailableMetrics = [];
         const metrics = Object.fromEntries(groupRows.flatMap(row => {
             if (row.average === '') {
@@ -172,12 +195,23 @@ function buildCsvRecords(csvText, supplemental) {
 
         return {
             heroId: assertSame(groupId, groupRows, 'hero_id'),
-            context: {
-                type: 'seasonalRank',
-                seasonId: normalizeSeasonId(assertSame(groupId, groupRows, 'season')),
-                gameMode: 'competitive',
-                rankTier
-            },
+            context: contextType === 'seasonalRank'
+                ? {
+                    type: 'seasonalRank',
+                    seasonId: normalizeSeasonId(assertSame(groupId, groupRows, 'season')),
+                    gameMode: 'competitive',
+                    rankTier
+                }
+                : {
+                    type: 'seasonalRankThreshold',
+                    seasonId: normalizeSeasonId(assertSame(groupId, groupRows, 'season')),
+                    gameMode: 'competitive',
+                    rankTier,
+                    population: {
+                        type: 'rankThreshold',
+                        minimumRank: rankTier.replace(/-plus$/, '')
+                    }
+                },
             metrics,
             sampleSize: { matches: sampleMatches, players: samplePlayers },
             collectedAt: assertSame(groupId, groupRows, 'collected_at'),
@@ -228,7 +262,7 @@ function buildDataset(csvTexts, supplemental) {
     const latestCollectionDate = rows.map(row => row.collected_at).sort().at(-1);
     return {
         schemaVersion: 2,
-        datasetVersion: 'season-9-5-bronze-silver-gold-platinum-diamond-rivalstracker-2026-08-25',
+        datasetVersion: 'season-9-5-all-rivalstracker-rank-filters-2026-08-25',
         updatedAt: latestCollectionDate,
         records: [...seasonalRecords, ...(supplemental.records || [])]
     };
@@ -244,4 +278,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { buildDataset, normalizeSeasonId, parseCsv };
+module.exports = { buildDataset, normalizeRankTier, normalizeSeasonId, parseCsv };

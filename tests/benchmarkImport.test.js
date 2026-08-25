@@ -11,8 +11,23 @@ const csvPaths = [
     'marvel_rivals_silver_s9_5_benchmark.csv',
     'marvel_rivals_gold_s9_5_benchmark.csv',
     'marvel_rivals_platinum_s9_5_benchmark.csv',
-    'marvel_rivals_diamond_s9_5_benchmark.csv'
+    'marvel_rivals_diamond_s9_5_benchmark.csv',
+    'marvel_rivals_diamond_plus_s9_5_benchmark.csv',
+    'marvel_rivals_grandmaster_s9_5_benchmark.csv',
+    'marvel_rivals_grandmaster_plus_s9_5_benchmark.csv',
+    'marvel_rivals_celestial_s9_5_benchmark.csv',
+    'marvel_rivals_celestial_plus_s9_5_benchmark.csv',
+    'marvel_rivals_eternity_s9_5_benchmark.csv',
+    'marvel_rivals_eternity_plus_s9_5_benchmark.csv',
+    'marvel_rivals_one_above_all_s9_5_benchmark.csv'
 ].map(fileName => path.join(projectRoot, 'data', fileName));
+const FULL_EXACT_RANKS = [
+    'bronze', 'silver', 'gold', 'platinum', 'diamond',
+    'grandmaster', 'celestial', 'eternity'
+];
+const THRESHOLD_RANKS = [
+    'diamond-plus', 'grandmaster-plus', 'celestial-plus', 'eternity-plus'
+];
 const supplementalPath = path.join(projectRoot, 'data', 'benchmarkSupplemental.json');
 
 function buildProductionFixture() {
@@ -22,22 +37,27 @@ function buildProductionFixture() {
     );
 }
 
-test('all five rank CSVs import 55 source entries each without averaging', () => {
+test('all 13 rank-filter CSVs import without averaging or changing context', () => {
     const dataset = buildProductionFixture();
-    const seasonal = dataset.records.filter(record => record.context.type === 'seasonalRank');
+    const seasonal = dataset.records.filter(record => (
+        ['seasonalRank', 'seasonalRankThreshold'].includes(record.context.type)
+    ));
+    const exact = seasonal.filter(record => record.context.type === 'seasonalRank');
+    const thresholds = seasonal.filter(record => record.context.type === 'seasonalRankThreshold');
 
-    assert.equal(seasonal.length, 275);
-    assert.equal(dataset.records.length, 280);
+    assert.equal(exact.length, 483);
+    assert.equal(thresholds.length, 220);
+    assert.equal(dataset.records.length, 708);
     assert.deepEqual(
         [...new Set(seasonal.map(record => record.context.rankTier))].sort(),
-        ['bronze', 'diamond', 'gold', 'platinum', 'silver']
+        [...FULL_EXACT_RANKS, ...THRESHOLD_RANKS, 'one-above-all'].sort()
     );
     assert.ok(seasonal.every(record => (
         record.source.id === 'rivalstracker'
         && record.source.type === 'primary'
         && record.context.seasonId === 'season-9-5'
     )));
-    assert.ok(seasonal.filter(record => ['gold', 'platinum', 'diamond'].includes(
+    assert.ok(seasonal.filter(record => !['bronze', 'silver'].includes(
         record.context.rankTier
     )).every(record => Object.keys(record.metrics).sort().join('|') === 'banRate|pickRate|winRate'));
     assert.ok(seasonal.filter(record => ['bronze', 'silver'].includes(
@@ -45,6 +65,10 @@ test('all five rank CSVs import 55 source entries each without averaging', () =>
     )).every(record => (
         Object.keys(record.metrics).sort().join('|') === 'pickRate|winRate'
         && record.sourceMetadata.unavailableMetrics.join('|') === 'banRate'
+    )));
+    assert.ok(thresholds.every(record => (
+        record.context.population.type === 'rankThreshold'
+        && record.context.rankTier === `${record.context.population.minimumRank}-plus`
     )));
 });
 
@@ -94,22 +118,36 @@ test('Emma Frost retains primary CSV values and independent pilot validations', 
     assert.equal(emma.validations[0].source.type, 'validation');
 });
 
-test('Deadpool source forms stay distinct instead of being silently merged', () => {
+test('Deadpool source forms stay distinct and missing top-rank rows are not fabricated', () => {
     const dataset = buildProductionFixture();
     const deadpoolRecords = dataset.records
-        .filter(record => record.context.type === 'seasonalRank' && record.heroId.startsWith('deadpool-'))
+        .filter(record => (
+            ['seasonalRank', 'seasonalRankThreshold'].includes(record.context.type)
+            && record.heroId.startsWith('deadpool-')
+        ));
     const deadpoolIdsByRank = Object.groupBy(
         deadpoolRecords,
         record => record.context.rankTier
     );
 
-    ['bronze', 'silver', 'gold', 'platinum', 'diamond'].forEach(rankTier => {
+    [...FULL_EXACT_RANKS, ...THRESHOLD_RANKS].forEach(rankTier => {
         assert.deepEqual(deadpoolIdsByRank[rankTier].map(record => record.heroId).sort(), [
             'deadpool-duelist',
             'deadpool-strategist',
             'deadpool-vanguard'
         ]);
     });
+    assert.deepEqual(deadpoolIdsByRank['one-above-all'].map(record => record.heroId).sort(), [
+        'deadpool-duelist',
+        'deadpool-vanguard'
+    ]);
+    assert.equal(
+        dataset.records.filter(record => (
+            record.context.type === 'seasonalRank'
+            && record.context.rankTier === 'one-above-all'
+        )).length,
+        43
+    );
     assert.equal(dataset.records.some(record => (
         record.context.type === 'seasonalRank' && record.heroId === 'deadpool'
     )), false);

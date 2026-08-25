@@ -14,6 +14,16 @@ const benchmarkCatalog = (() => {
         return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(normalized) ? normalized : null;
     }
 
+    function normalizeRankTier(value) {
+        if (typeof value !== 'string') return null;
+
+        return normalizeId(value
+            .trim()
+            .toLowerCase()
+            .replace(/\s*\+$/, '-plus')
+            .replace(/[\s_]+/g, '-'));
+    }
+
     function sanitizeSampleSize(sampleSize) {
         if (!isPlainObject(sampleSize)) return { matches: null, players: null };
 
@@ -47,6 +57,12 @@ const benchmarkCatalog = (() => {
     function sanitizeSourceMetadata(metadata) {
         if (!isPlainObject(metadata)) return null;
 
+        const unavailableMetrics = Array.isArray(metadata.unavailableMetrics)
+            ? metadata.unavailableMetrics.filter(metricName => (
+                typeof metricName === 'string' && /^[a-z][a-zA-Z0-9]*$/.test(metricName)
+            ))
+            : [];
+
         return {
             sourceUpdatedAt: typeof metadata.sourceUpdatedAt === 'string'
                 ? metadata.sourceUpdatedAt.trim() || null
@@ -57,7 +73,8 @@ const benchmarkCatalog = (() => {
                 ? metadata.tierLabel.trim() || null
                 : null,
             heroRank: sanitizeSampleSize({ matches: metadata.heroRank }).matches,
-            heroPoolSize: sanitizeSampleSize({ matches: metadata.heroPoolSize }).matches
+            heroPoolSize: sanitizeSampleSize({ matches: metadata.heroPoolSize }).matches,
+            ...(unavailableMetrics.length > 0 ? { unavailableMetrics } : {})
         };
     }
 
@@ -90,7 +107,7 @@ const benchmarkCatalog = (() => {
 
         if (context.type === 'seasonalRank') {
             const seasonId = normalizeId(context.seasonId);
-            const rankTier = normalizeId(context.rankTier);
+            const rankTier = normalizeRankTier(context.rankTier);
             if (!seasonId || !rankTier) return null;
 
             return {
@@ -98,6 +115,23 @@ const benchmarkCatalog = (() => {
                 seasonId,
                 gameMode: 'competitive',
                 rankTier
+            };
+        }
+
+        if (context.type === 'seasonalRankThreshold') {
+            const seasonId = normalizeId(context.seasonId);
+            const rankTier = normalizeRankTier(context.rankTier);
+            const minimumRank = context.population?.type === 'rankThreshold'
+                ? normalizeRankTier(context.population.minimumRank)
+                : null;
+            if (!seasonId || !rankTier || !minimumRank || !rankTier.endsWith('-plus')) return null;
+
+            return {
+                type: 'seasonalRankThreshold',
+                seasonId,
+                gameMode: 'competitive',
+                rankTier,
+                population: { type: 'rankThreshold', minimumRank }
             };
         }
 
@@ -183,11 +217,24 @@ const benchmarkCatalog = (() => {
 
         function findSeasonalCompetitive({ seasonId, rankTier, heroId }) {
             const normalizedSeasonId = normalizeId(seasonId);
-            const normalizedRank = normalizeId(rankTier);
+            const normalizedRank = normalizeRankTier(rankTier);
             const normalizedHeroId = normalizeId(heroId);
 
             return records.find(record => (
                 record.context.type === 'seasonalRank'
+                && record.context.seasonId === normalizedSeasonId
+                && record.context.rankTier === normalizedRank
+                && record.heroId === normalizedHeroId
+            )) || null;
+        }
+
+        function findSeasonalCompetitiveThreshold({ seasonId, rankTier, heroId }) {
+            const normalizedSeasonId = normalizeId(seasonId);
+            const normalizedRank = normalizeRankTier(rankTier);
+            const normalizedHeroId = normalizeId(heroId);
+
+            return records.find(record => (
+                record.context.type === 'seasonalRankThreshold'
                 && record.context.seasonId === normalizedSeasonId
                 && record.context.rankTier === normalizedRank
                 && record.heroId === normalizedHeroId
@@ -201,7 +248,8 @@ const benchmarkCatalog = (() => {
                 : 'unknown',
             updatedAt: typeof source.updatedAt === 'string' ? source.updatedAt : null,
             records,
-            findSeasonalCompetitive
+            findSeasonalCompetitive,
+            findSeasonalCompetitiveThreshold
         };
     }
 

@@ -26,18 +26,22 @@ test('the production catalog contains all sourced Season 9.5 rank datasets', () 
     );
 
     assert.equal(dataset.schemaVersion, 2);
-    assert.equal(dataset.datasetVersion, 'season-9-5-bronze-silver-gold-platinum-diamond-rivalstracker-2026-08-25');
-    assert.equal(dataset.updatedAt, '2026-08-25T18:18:25.445Z');
-    assert.equal(dataset.records.length, 280);
+    assert.equal(dataset.datasetVersion, 'season-9-5-all-rivalstracker-rank-filters-2026-08-25');
+    assert.equal(dataset.updatedAt, '2026-08-25T18:57:56.232Z');
+    assert.equal(dataset.records.length, 708);
 
     const seasonalRecords = dataset.records.filter(record => record.context.type === 'seasonalRank');
+    const thresholdRecords = dataset.records.filter(
+        record => record.context.type === 'seasonalRankThreshold'
+    );
     const seasonal = seasonalRecords.find(record => (
         record.heroId === 'emma-frost' && record.context.rankTier === 'gold'
     ));
     const platinum = seasonalRecords.find(record => (
         record.heroId === 'emma-frost' && record.context.rankTier === 'platinum'
     ));
-    assert.equal(seasonalRecords.length, 275);
+    assert.equal(seasonalRecords.length, 483);
+    assert.equal(thresholdRecords.length, 220);
     assert.equal(seasonal.heroId, 'emma-frost');
     assert.equal(seasonal.context.seasonId, 'season-9-5');
     assert.equal(seasonal.context.rankTier, 'gold');
@@ -57,6 +61,16 @@ test('the production catalog contains all sourced Season 9.5 rank datasets', () 
     assert.equal(bronze.metrics.winRate.average, 0.4629);
     assert.equal(bronze.metrics.banRate, undefined);
     assert.deepEqual(bronze.sourceMetadata.unavailableMetrics, ['banRate']);
+    const oneAboveAll = seasonalRecords.find(record => (
+        record.heroId === 'emma-frost' && record.context.rankTier === 'one-above-all'
+    ));
+    const celestialPlus = thresholdRecords.find(record => (
+        record.heroId === 'emma-frost' && record.context.rankTier === 'celestial-plus'
+    ));
+    assert.equal(oneAboveAll.metrics.winRate.average, 0.3636);
+    assert.equal(oneAboveAll.sourceMetadata.heroPoolSize, 43);
+    assert.equal(celestialPlus.context.population.minimumRank, 'celestial');
+    assert.equal(celestialPlus.metrics.winRate.average, 0.4526);
 });
 
 test('the production dataset survives validation and resolves only an exact rank lookup', () => {
@@ -72,7 +86,7 @@ test('the production dataset survives validation and resolves only an exact rank
         })
     )`));
 
-    assert.equal(harness.evaluate('catalog.records.length'), 280);
+    assert.equal(harness.evaluate('catalog.records.length'), 708);
     assert.equal(seasonal.metrics.winRate.average, 0.4737);
     assert.equal(seasonal.validations[0].metrics.banRate.average, 0.0366);
     assert.equal(seasonal.validations[0].sampleSize.matches, 11001);
@@ -98,7 +112,16 @@ test('the production dataset survives validation and resolves only an exact rank
     }).metrics.winRate.average`), 0.4569);
     assert.equal(harness.evaluate(`catalog.findSeasonalCompetitive({
         seasonId: 'season-9-5', rankTier: 'grandmaster', heroId: 'emma-frost'
+    }).metrics.winRate.average`), 0.4481);
+    assert.equal(harness.evaluate(`catalog.findSeasonalCompetitive({
+        seasonId: 'season-9-5', rankTier: 'One Above All', heroId: 'emma-frost'
+    }).metrics.winRate.average`), 0.3636);
+    assert.equal(harness.evaluate(`catalog.findSeasonalCompetitive({
+        seasonId: 'season-9-5', rankTier: 'celestial-plus', heroId: 'emma-frost'
     })`), null);
+    assert.equal(harness.evaluate(`catalog.findSeasonalCompetitiveThreshold({
+        seasonId: 'season-9-5', rankTier: 'Celestial+', heroId: 'emma-frost'
+    }).metrics.winRate.average`), 0.4526);
     assert.equal(harness.evaluate(`catalog.findSeasonalCompetitive({
         seasonId: 'season-9-5', rankTier: 'gold', heroId: 'ultron'
     }).metrics.winRate.average`), 0.6007);
@@ -107,25 +130,45 @@ test('the production dataset survives validation and resolves only an exact rank
     })`), null);
 });
 
-test('all five rank benchmarks cover every roster identity, including each Deadpool form', () => {
+test('exact and threshold rank filters preserve their published roster coverage', () => {
     const dataset = JSON.parse(
         fs.readFileSync(path.join(projectRoot, 'data', 'benchmarks.json'), 'utf8')
     );
     const harness = loadBrowserScripts(['data/heroes.js', 'services/benchmarkCatalog.js']);
     harness.evaluate(`catalog = benchmarkCatalog.create(${JSON.stringify(dataset)})`);
-    const coverage = JSON.parse(harness.evaluate(`JSON.stringify(
-        ['bronze', 'silver', 'gold', 'platinum', 'diamond'].flatMap(rankTier => heroes.map(hero => ({
+    const coverage = JSON.parse(harness.evaluate(`JSON.stringify({
+        exact: [
+            'bronze', 'silver', 'gold', 'platinum', 'diamond',
+            'grandmaster', 'celestial', 'eternity', 'one-above-all'
+        ].flatMap(rankTier => heroes.map(hero => ({
             rankTier,
             heroId: hero.id,
             covered: Boolean(catalog.findSeasonalCompetitive({
                 seasonId: 'season-9-5', rankTier, heroId: hero.id
             }))
+        }))),
+        thresholds: [
+            'diamond-plus', 'grandmaster-plus', 'celestial-plus', 'eternity-plus'
+        ].flatMap(rankTier => heroes.map(hero => ({
+            rankTier,
+            heroId: hero.id,
+            covered: Boolean(catalog.findSeasonalCompetitiveThreshold({
+                seasonId: 'season-9-5', rankTier, heroId: hero.id
+            }))
         })))
-    )`));
-    const uncovered = coverage.filter(item => !item.covered).map(item => item.heroId);
+    })`));
+    const exactUncovered = coverage.exact
+        .filter(item => !item.covered)
+        .map(item => `${item.rankTier}:${item.heroId}`);
+    const expectedTopRankGaps = [
+        'captain-america', 'deadpool-strategist', 'devil-dinosaur', 'hawkeye',
+        'hulk', 'iron-man', 'moon-knight', 'namor', 'peni-parker', 'phoenix',
+        'ultron', 'white-fox'
+    ].map(heroId => `one-above-all:${heroId}`).sort();
 
-    assert.deepEqual(uncovered, []);
-    assert.equal(coverage.filter(item => item.covered).length, 275);
+    assert.deepEqual(exactUncovered.sort(), expectedTopRankGaps);
+    assert.equal(coverage.exact.filter(item => item.covered).length, 483);
+    assert.equal(coverage.thresholds.filter(item => item.covered).length, 220);
 });
 
 test('seasonal Competitive lookup requires exact season, rank, and hero compatibility', () => {
