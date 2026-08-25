@@ -35,6 +35,15 @@ const playerDataStorage = (() => {
             : null;
     }
 
+    function sanitizeSeasonId(value) {
+        const seasonId = sanitizeId(value);
+        if (!seasonId) return null;
+
+        return /^\d+(?:-\d+)*$/.test(seasonId)
+            ? `season-${seasonId}`
+            : seasonId;
+    }
+
     function sanitizeOptionalString(value) {
         if (typeof value !== 'string') return null;
 
@@ -124,7 +133,7 @@ const playerDataStorage = (() => {
 
         const seasons = isPlainObject(heroStats.seasons)
             ? Object.entries(heroStats.seasons).reduce((sanitizedSeasons, [seasonId, period]) => {
-                const validSeasonId = sanitizeId(seasonId);
+                const validSeasonId = sanitizeSeasonId(seasonId);
                 if (validSeasonId) sanitizedSeasons[validSeasonId] = sanitizePeriod(period);
                 return sanitizedSeasons;
             }, {})
@@ -140,7 +149,7 @@ const playerDataStorage = (() => {
         const source = isPlainObject(profile) ? profile : {};
         const competitiveRanks = isPlainObject(source.competitiveRanks)
             ? Object.entries(source.competitiveRanks).reduce((ranks, [seasonId, rank]) => {
-                const validSeasonId = sanitizeId(seasonId);
+                const validSeasonId = sanitizeSeasonId(seasonId);
                 const validRank = sanitizeOptionalString(rank);
                 if (validSeasonId && validRank) ranks[validSeasonId] = validRank;
                 return ranks;
@@ -148,7 +157,7 @@ const playerDataStorage = (() => {
             : {};
 
         return {
-            currentSeasonId: sanitizeId(source.currentSeasonId),
+            currentSeasonId: sanitizeSeasonId(source.currentSeasonId),
             competitiveRanks
         };
     }
@@ -167,7 +176,7 @@ const playerDataStorage = (() => {
             id,
             heroId,
             gameMode: GAME_MODES.includes(session.gameMode) ? session.gameMode : null,
-            seasonId: sanitizeId(session.seasonId),
+            seasonId: sanitizeSeasonId(session.seasonId),
             playedAt,
             matches,
             metrics: sanitizeMetrics(session.metrics)

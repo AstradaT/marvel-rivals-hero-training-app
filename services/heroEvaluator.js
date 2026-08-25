@@ -131,7 +131,7 @@ const heroEvaluator = (() => {
         ) / comparedWeight;
         const skillScore = Math.round((50 + weightedDifference * 100) * 10) / 10;
         const proficiency = getProficiency(skillScore);
-        const needsMoreEvidence = confidence.key === 'veryLow';
+        const needsMoreEvidence = ['veryLow', 'low'].includes(confidence.key);
         const displayCategory = needsMoreEvidence
             ? { key: 'needsMoreData', label: 'Needs more data' }
             : proficiency;

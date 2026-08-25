@@ -221,3 +221,33 @@ test('the real Emma Frost pilot flows through catalog, resolver, and evaluation'
     assert.equal(result.evaluation.evaluationState, 'known');
     assert.equal(result.evaluation.confidence.benchmarkMatches, 11001);
 });
+
+test('the user Gold pilot remains unknown with four season and eight overall matches', () => {
+    const dataset = JSON.parse(
+        fs.readFileSync(path.join(projectRoot, 'data', 'benchmarks.json'), 'utf8')
+    );
+    const harness = createHarness(true);
+    harness.evaluate(`catalog = benchmarkCatalog.create(${JSON.stringify(dataset)})`);
+    installPlayerData(harness, {
+        competitive: `{ matchesPlayed: 4, metrics: { winRate: 0.25 } }`,
+        overallCompetitive: `{ matchesPlayed: 8, metrics: { winRate: 0.375 } }`
+    });
+
+    const result = JSON.parse(harness.evaluate(`
+        resolved = performanceResolver.resolve({ playerData, catalog, heroId: 'emma-frost' });
+        evaluation = heroEvaluator.evaluate({
+            heroId: 'emma-frost', heroName: 'Emma Frost', role: 'Vanguard',
+            playerStats: resolved.playerStats, benchmark: resolved.benchmark
+        });
+        JSON.stringify({ resolved, evaluation })
+    `));
+
+    assert.equal(result.resolved.status, 'resolved');
+    assert.equal(result.resolved.playerStats.matchesPlayed, 9);
+    assert.equal(result.resolved.playerStats.metrics.winRate, 0.33125000000000004);
+    assert.deepEqual(result.resolved.source.historyWeights, { currentSeason: 0.35, overall: 0.65 });
+    assert.deepEqual(result.resolved.source.sourceMatches, { currentSeason: 4, overall: 8 });
+    assert.equal(result.evaluation.evaluationState, 'unknown');
+    assert.equal(result.evaluation.confidence.label, 'Low');
+    assert.equal(result.evaluation.displayCategory.label, 'Needs more data');
+});

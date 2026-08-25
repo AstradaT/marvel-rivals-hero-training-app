@@ -286,6 +286,43 @@ test('player data migrates percentage and per-10 metrics to canonical version 2 
     assert.equal(stored.version, 2);
 });
 
+test('player data canonicalizes bare numeric season IDs for benchmark lookup', () => {
+    const localStorage = createLocalStorage({
+        marvelRivalsPlayerData: JSON.stringify({
+            version: 2,
+            playerData: {
+                profile: {
+                    currentSeasonId: '9-5',
+                    competitiveRanks: { '9-5': 'Gold' }
+                },
+                heroStats: {
+                    'emma-frost': {
+                        overall: {},
+                        seasons: {
+                            '9-5': {
+                                competitive: {
+                                    matchesPlayed: 4,
+                                    metrics: { winRate: 0.25 }
+                                }
+                            }
+                        }
+                    }
+                },
+                trainingSessions: []
+            }
+        })
+    });
+    const harness = loadBrowserScripts(['services/playerDataStorage.js'], { localStorage });
+    const restored = JSON.parse(harness.evaluate('JSON.stringify(playerDataStorage.load())'));
+
+    assert.equal(restored.profile.currentSeasonId, 'season-9-5');
+    assert.equal(restored.profile.competitiveRanks['season-9-5'], 'Gold');
+    assert.equal(
+        restored.heroStats['emma-frost'].seasons['season-9-5'].competitive.matchesPlayed,
+        4
+    );
+});
+
 test('player data clears malformed JSON safely', () => {
     const localStorage = createLocalStorage({ [PLAYER_DATA_KEY]: '{invalid json' });
     const harness = loadBrowserScripts(['services/playerDataStorage.js'], { localStorage });

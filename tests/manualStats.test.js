@@ -45,7 +45,7 @@ test('manual stats normalize a season snapshot without mutating existing player 
     harness.evaluate(`updated = manualStats.createUpdatedPlayerData(original, {
         heroId: 'magneto',
         scope: 'season',
-        seasonId: ' Season 5 ',
+        seasonId: '5',
         mode: 'competitive',
         competitiveRank: 'Gold',
         matchesPlayed: '12',
@@ -74,6 +74,18 @@ test('manual stats normalize a season snapshot without mutating existing player 
         },
         updatedAt: '2026-08-24T12:00:00.000Z'
     });
+});
+
+test('bare numeric season labels normalize to benchmark-compatible IDs', () => {
+    const harness = loadBrowserScripts(['services/manualStats.js']);
+
+    assert.equal(harness.evaluate("manualStats.normalizeSeasonId('9.5')"), 'season-9-5');
+    assert.equal(harness.evaluate("manualStats.normalizeSeasonId('9')"), 'season-9');
+    assert.equal(harness.evaluate("manualStats.normalizeSeasonId('season-9-5')"), 'season-9-5');
+    assert.equal(harness.evaluate("manualStats.normalizeSeasonId('Season 9.5')"), null);
+    assert.equal(harness.evaluate("manualStats.normalizeSeasonId('nine')"), null);
+    assert.equal(harness.evaluate("manualStats.formatSeasonInputValue('season-9-5')"), '9.5');
+    assert.equal(harness.evaluate("manualStats.formatSeasonInputValue('season-9')"), '9');
 });
 
 test('manual overall Quick Play stats remain independent from season Competitive stats', () => {
@@ -119,7 +131,7 @@ test('manual stats reject invalid values before they reach storage', () => {
             matchesPlayed: 3,
             metrics: { winRate: 50 }
         })`),
-        /Season is required/
+        /numeric season/
     );
     assert.throws(
         () => harness.evaluate(`manualStats.createUpdatedPlayerData(playerData, {

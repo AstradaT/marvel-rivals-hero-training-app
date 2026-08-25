@@ -45,6 +45,21 @@ test('low player sample stays unknown even when comparison is computable', () =>
     assert.ok(result.skillScore > 50);
 });
 
+test('low confidence remains unknown instead of declaring weak performance', () => {
+    const harness = createHarness();
+    const result = JSON.parse(harness.evaluate(`JSON.stringify(heroEvaluator.evaluate({
+        heroId: 'emma-frost', heroName: 'Emma Frost', role: 'Vanguard',
+        playerStats: { matchesPlayed: 9, metrics: { winRate: 0.33125 } },
+        benchmark: ${benchmark({ winRate: { average: 0.4737, unit: 'ratio' } }, 11001)}
+    }))`));
+
+    assert.equal(result.status, 'unknown');
+    assert.equal(result.evaluationState, 'unknown');
+    assert.equal(result.reason, 'insufficientEvidence');
+    assert.equal(result.confidence.label, 'Low');
+    assert.equal(result.displayCategory.label, 'Needs more data');
+});
+
 test('missing benchmark sample metadata conservatively limits confidence', () => {
     const harness = createHarness();
     const result = JSON.parse(harness.evaluate(`JSON.stringify(heroEvaluator.evaluate({

@@ -110,6 +110,31 @@
                 </div>
             </div>
 
+            <section id="hero-evaluation-panel" class="hidden mb-4 rounded-lg border border-slate-700 bg-slate-950/60 p-4" aria-live="polite">
+                <div class="flex items-start justify-between gap-3">
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Gold peer evaluation</p>
+                        <p id="hero-evaluation-summary" class="text-sm font-bold text-white mt-1"></p>
+                    </div>
+                    <span id="hero-evaluation-badge" class="shrink-0 rounded-full border px-2.5 py-1 text-[9px] font-black uppercase tracking-wider"></span>
+                </div>
+                <div id="hero-evaluation-comparison" class="hidden grid grid-cols-2 gap-2 mt-3">
+                    <div class="rounded-md bg-slate-900/80 p-2.5">
+                        <p class="text-[9px] font-bold uppercase tracking-wider text-slate-500">Your blended win rate</p>
+                        <p id="hero-evaluation-player-value" class="text-lg font-black text-white mt-0.5"></p>
+                    </div>
+                    <div class="rounded-md bg-slate-900/80 p-2.5">
+                        <p class="text-[9px] font-bold uppercase tracking-wider text-slate-500">Gold benchmark</p>
+                        <p id="hero-evaluation-benchmark-value" class="text-lg font-black text-white mt-0.5"></p>
+                    </div>
+                </div>
+                <p id="hero-evaluation-evidence" class="text-[11px] text-slate-400 mt-3"></p>
+                <p id="hero-evaluation-explanation" class="text-[11px] leading-relaxed text-slate-500 mt-1"></p>
+                <p id="hero-evaluation-source-row" class="hidden text-[10px] text-slate-600 mt-2">
+                    Source: <a id="hero-evaluation-source" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:text-amber-300 underline underline-offset-2"></a>
+                </p>
+            </section>
+
             <div class="grid grid-cols-2 gap-3">
                 <button id="match-complete-btn" class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-800 disabled:text-slate-600 text-white font-bold py-3 px-3 rounded-lg uppercase tracking-wide text-xs transition-all cursor-pointer disabled:cursor-not-allowed">
                     Match Complete
@@ -167,8 +192,8 @@
 
                 <div id="manual-season-fields" class="grid grid-cols-2 gap-3 mt-3">
                     <label class="text-xs font-bold uppercase tracking-wider text-slate-400">
-                        Season
-                        <input id="manual-season-id" type="text" autocomplete="off" placeholder="Season 5" class="block w-full mt-2 bg-slate-950 border border-slate-700 focus:border-amber-400 focus:outline-none rounded-lg px-3 py-3 text-sm normal-case tracking-normal text-white placeholder:text-slate-600">
+                        Season number
+                        <input id="manual-season-id" type="number" min="0" step="0.5" inputmode="decimal" autocomplete="off" placeholder="9.5" class="block w-full mt-2 bg-slate-950 border border-slate-700 focus:border-amber-400 focus:outline-none rounded-lg px-3 py-3 text-sm normal-case tracking-normal text-white placeholder:text-slate-600">
                     </label>
                     <label id="manual-rank-field" class="hidden text-xs font-bold uppercase tracking-wider text-slate-400">
                         Competitive rank <span class="normal-case text-slate-600">(optional)</span>
@@ -300,11 +325,15 @@
 
     <script src="data/heroes.js"></script>
     <script src="data/heroStatFields.js"></script>
+    <script src="data/evaluationModels.js"></script>
     <script src="services/practiceStorage.js"></script>
     <script src="services/preferencesStorage.js"></script>
-    <script src="services/playerDataStorage.js"></script>
-    <script src="services/manualStats.js"></script>
+    <script src="services/playerDataStorage.js?v=2"></script>
+    <script src="services/manualStats.js?v=3"></script>
+    <script src="services/benchmarkCatalog.js"></script>
+    <script src="services/performanceResolver.js"></script>
+    <script src="services/heroEvaluator.js"></script>
     <script src="services/heroSelector.js"></script>
-    <script src="app.js"></script>
+    <script src="app.js?v=3"></script>
 </body>
 </html>

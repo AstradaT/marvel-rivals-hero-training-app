@@ -3,15 +3,22 @@ const manualStats = (() => {
     const VALID_SCOPES = ['overall', 'season'];
 
     function normalizeSeasonId(value) {
-        if (typeof value !== 'string') return null;
+        if (typeof value !== 'string' && typeof value !== 'number') return null;
 
-        const seasonId = value
-            .trim()
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/^-+|-+$/g, '');
+        const seasonInput = String(value).trim().toLowerCase();
+        if (/^season-\d+(?:-\d+)?$/.test(seasonInput)) return seasonInput;
+        if (!/^\d+(?:\.\d+)?$/.test(seasonInput)) return null;
 
-        return seasonId || null;
+        return `season-${seasonInput.replace('.', '-')}`;
+    }
+
+    function formatSeasonInputValue(value) {
+        if (typeof value !== 'string') return '';
+
+        const match = value.trim().toLowerCase().match(/^season-(\d+)(?:-(\d+))?$/);
+        if (!match) return '';
+
+        return match[2] ? `${match[1]}.${match[2]}` : match[1];
     }
 
     function requireNonNegativeNumber(value, fieldName) {
@@ -32,7 +39,9 @@ const manualStats = (() => {
         const seasonId = entry.scope === 'season'
             ? normalizeSeasonId(entry.seasonId)
             : null;
-        if (entry.scope === 'season' && !seasonId) throw new Error('Season is required.');
+        if (entry.scope === 'season' && !seasonId) {
+            throw new Error('Enter a numeric season such as 9 or 9.5.');
+        }
 
         const matchesPlayed = Math.floor(requireNonNegativeNumber(
             entry.matchesPlayed,
@@ -87,5 +96,5 @@ const manualStats = (() => {
         return nextPlayerData;
     }
 
-    return { createUpdatedPlayerData, normalizeSeasonId };
+    return { createUpdatedPlayerData, formatSeasonInputValue, normalizeSeasonId };
 })();

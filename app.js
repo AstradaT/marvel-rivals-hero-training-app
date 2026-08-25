@@ -80,6 +80,16 @@ const manualCompetitiveRank = document.getElementById('manual-competitive-rank')
 const manualMatchesPlayed = document.getElementById('manual-matches-played');
 const manualMetricFields = document.getElementById('manual-metric-fields');
 const manualStatsMessage = document.getElementById('manual-stats-message');
+const heroEvaluationPanel = document.getElementById('hero-evaluation-panel');
+const heroEvaluationSummary = document.getElementById('hero-evaluation-summary');
+const heroEvaluationBadge = document.getElementById('hero-evaluation-badge');
+const heroEvaluationComparison = document.getElementById('hero-evaluation-comparison');
+const heroEvaluationPlayerValue = document.getElementById('hero-evaluation-player-value');
+const heroEvaluationBenchmarkValue = document.getElementById('hero-evaluation-benchmark-value');
+const heroEvaluationEvidence = document.getElementById('hero-evaluation-evidence');
+const heroEvaluationExplanation = document.getElementById('hero-evaluation-explanation');
+const heroEvaluationSourceRow = document.getElementById('hero-evaluation-source-row');
+const heroEvaluationSource = document.getElementById('hero-evaluation-source');
 
 // Guardamos los roles activos. Por defecto arrancan los 3 seleccionados
 let activeRoles = new Set(savedPreferences.activeRoles);
@@ -91,6 +101,8 @@ let bannedHeroIds = new Set(
 );
 let banListRoleFilter = 'All';
 let playerData = playerDataStorage.load();
+let activeBenchmarkCatalog = benchmarkCatalog.create({ schemaVersion: 2, records: [] });
+let benchmarkCatalogState = 'loading';
 let heroStatsPromptDismissed = false;
 let quickRandomHero = null;
 
@@ -193,6 +205,124 @@ function hasSavedHeroStats(heroId) {
     return hasOverallStats || hasSeasonStats;
 }
 
+function formatPercentage(value) {
+    return `${(Number(value) * 100).toFixed(1)}%`;
+}
+
+function setEvaluationBadge(state, label) {
+    const stateClasses = {
+        known: ['border-emerald-700', 'bg-emerald-950/40', 'text-emerald-300'],
+        weak: ['border-red-800', 'bg-red-950/40', 'text-red-300'],
+        unknown: ['border-amber-700', 'bg-amber-950/40', 'text-amber-300'],
+        unrated: ['border-slate-700', 'bg-slate-900', 'text-slate-400']
+    };
+    const allClasses = Object.values(stateClasses).flat();
+    heroEvaluationBadge.classList.remove(...allClasses);
+    heroEvaluationBadge.classList.add(...(stateClasses[state] || stateClasses.unrated));
+    heroEvaluationBadge.innerText = label;
+}
+
+function getUnratedEvaluationCopy(resolved) {
+    const copy = {
+        missingSeason: ['Season required', 'Save a current-season Competitive snapshot to select a compatible benchmark.'],
+        missingCompetitiveRank: ['Rank required', 'Add your Competitive rank for the current season.'],
+        noCompatibleBenchmark: ['No matching benchmark', 'A benchmark must match hero, season, mode, and rank exactly.'],
+        noCompetitiveData: ['Competitive data required', 'Quick Play remains training evidence but cannot be used for peer evaluation.']
+    };
+    return copy[resolved.reason] || ['Not rated yet', 'Add compatible Competitive statistics to evaluate this hero.'];
+}
+
+function updateHeroEvaluation() {
+    const canShow = appMode === 'training'
+        && currentHero
+        && hasSavedHeroStats(currentHero.id);
+    if (!canShow) {
+        heroEvaluationPanel.classList.add('hidden');
+        return;
+    }
+
+    heroEvaluationPanel.classList.remove('hidden');
+    heroEvaluationComparison.classList.add('hidden');
+    heroEvaluationSourceRow.classList.add('hidden');
+
+    if (benchmarkCatalogState === 'loading') {
+        setEvaluationBadge('unrated', 'Loading');
+        heroEvaluationSummary.innerText = 'Loading peer benchmark…';
+        heroEvaluationEvidence.innerText = '';
+        heroEvaluationExplanation.innerText = 'Your saved statistics remain available while the catalog loads.';
+        return;
+    }
+
+    if (benchmarkCatalogState === 'error') {
+        setEvaluationBadge('unrated', 'Unavailable');
+        heroEvaluationSummary.innerText = 'Benchmark unavailable';
+        heroEvaluationEvidence.innerText = '';
+        heroEvaluationExplanation.innerText = 'Serve the app over HTTP and reload to fetch the local benchmark catalog.';
+        return;
+    }
+
+    const resolved = performanceResolver.resolve({
+        playerData,
+        catalog: activeBenchmarkCatalog,
+        heroId: currentHero.id
+    });
+    if (resolved.status !== 'resolved') {
+        const [summary, explanation] = getUnratedEvaluationCopy(resolved);
+        setEvaluationBadge(resolved.evaluationState, 'Not rated');
+        heroEvaluationSummary.innerText = summary;
+        heroEvaluationEvidence.innerText = '';
+        heroEvaluationExplanation.innerText = explanation;
+        return;
+    }
+
+    const evaluation = heroEvaluator.evaluate({
+        heroId: currentHero.id,
+        heroName: currentHero.name,
+        role: currentHero.role,
+        playerStats: resolved.playerStats,
+        benchmark: resolved.benchmark
+    });
+    const winRateComparison = evaluation.comparisons.find(
+        comparison => comparison.metricName === 'winRate'
+    );
+    const sourceMatches = resolved.source.sourceMatches;
+    const source = resolved.benchmark.source;
+
+    setEvaluationBadge(evaluation.evaluationState, evaluation.displayCategory.label);
+    heroEvaluationSummary.innerText = evaluation.summary;
+    heroEvaluationEvidence.innerText = `Confidence: ${evaluation.confidence.label} · Effective sample: ${evaluation.confidence.playerMatches} matches · Season ${sourceMatches.currentSeason}, overall ${sourceMatches.overall}`;
+    heroEvaluationExplanation.innerText = evaluation.evaluationState === 'unknown'
+        ? `Early signal only: ${evaluation.explanation} At least 16 compatible matches are required before assigning a performance category.`
+        : evaluation.explanation;
+
+    if (winRateComparison) {
+        heroEvaluationPlayerValue.innerText = formatPercentage(winRateComparison.playerValue);
+        heroEvaluationBenchmarkValue.innerText = formatPercentage(winRateComparison.benchmarkValue);
+        heroEvaluationComparison.classList.remove('hidden');
+    }
+
+    if (source?.url) {
+        heroEvaluationSource.href = source.url;
+        heroEvaluationSource.innerText = `${source.id} · ${resolved.benchmark.collectedAt} · ${resolved.benchmark.sampleSize.matches.toLocaleString()} matches`;
+        heroEvaluationSourceRow.classList.remove('hidden');
+    }
+}
+
+async function loadBenchmarkCatalog() {
+    try {
+        const response = await fetch('data/benchmarks.json');
+        if (!response.ok) throw new Error(`Benchmark request failed: ${response.status}`);
+
+        activeBenchmarkCatalog = benchmarkCatalog.create(await response.json());
+        benchmarkCatalogState = 'ready';
+    } catch (error) {
+        benchmarkCatalogState = 'error';
+        console.warn('Benchmark catalog could not be loaded.', error);
+    }
+
+    updateHeroEvaluation();
+}
+
 function updateHeroStatsPrompt() {
     if (appMode !== 'training' || !currentHero || isSpinning || heroStatsPromptDismissed) {
         heroStatsPrompt.classList.add('hidden');
@@ -214,16 +344,17 @@ function renderManualStatFields() {
     const scope = manualStatsScope.value;
     const mode = manualStatsMode.value;
     const isSeason = scope === 'season';
-    const seasonId = manualSeasonId.value || playerData.profile.currentSeasonId || '';
+    const seasonInput = manualSeasonId.value
+        || manualStats.formatSeasonInputValue(playerData.profile.currentSeasonId);
+    const seasonId = manualStats.normalizeSeasonId(seasonInput);
     const snapshot = getHeroStatsSnapshot(currentHero.id, scope, mode, seasonId);
 
     manualSeasonFields.classList.toggle('hidden', !isSeason);
     manualRankField.classList.toggle('hidden', !isSeason || mode !== 'competitive');
-    if (isSeason && !manualSeasonId.value) manualSeasonId.value = seasonId;
+    if (isSeason && !manualSeasonId.value) manualSeasonId.value = seasonInput;
 
-    const normalizedSeasonId = manualStats.normalizeSeasonId(seasonId);
-    manualCompetitiveRank.value = normalizedSeasonId
-        ? playerData.profile.competitiveRanks[normalizedSeasonId] || ''
+    manualCompetitiveRank.value = seasonId
+        ? playerData.profile.competitiveRanks[seasonId] || ''
         : '';
     manualMatchesPlayed.value = snapshot?.matchesPlayed ?? '';
 
@@ -254,7 +385,9 @@ function openManualStatsModal() {
     manualStatsMessage.classList.add('hidden');
     manualStatsMode.value = 'competitive';
     manualStatsScope.value = 'season';
-    manualSeasonId.value = playerData.profile.currentSeasonId || '';
+    manualSeasonId.value = manualStats.formatSeasonInputValue(
+        playerData.profile.currentSeasonId
+    );
     renderManualStatFields();
     manualStatsModal.classList.remove('hidden');
     manualStatsModal.classList.add('flex');
@@ -292,6 +425,7 @@ function saveManualStats(event) {
         heroStatsPromptDismissed = false;
         closeManualStatsModal(false);
         updateHeroStatsPrompt();
+        updateHeroEvaluation();
         addHeroStatsBtn.focus();
     } catch (error) {
         manualStatsMessage.innerText = error.message;
@@ -519,6 +653,7 @@ function updatePracticeUI() {
     if (appMode === 'quickRandom') {
         practicePanel.classList.add('hidden');
         heroStatsPrompt.classList.add('hidden');
+        heroEvaluationPanel.classList.add('hidden');
         spinBtn.disabled = isSpinning;
         if (!isSpinning) {
             spinBtn.innerText = quickRandomHero ? 'Randomize Again' : 'Spin Roulette';
@@ -529,6 +664,7 @@ function updatePracticeUI() {
     if (!currentHero) {
         practicePanel.classList.add('hidden');
         heroStatsPrompt.classList.add('hidden');
+        heroEvaluationPanel.classList.add('hidden');
         spinBtn.disabled = isSpinning;
         if (!isSpinning) spinBtn.innerText = 'Spin Roulette';
         return;
@@ -561,6 +697,7 @@ function updatePracticeUI() {
     spinBtn.disabled = isSpinning || !blockComplete;
     spinBtn.innerText = blockComplete ? 'Spin Next Hero' : `Practice ${currentHero.name}`;
     updateHeroStatsPrompt();
+    updateHeroEvaluation();
 }
 
 function startPracticeBlock(hero) {
@@ -620,6 +757,7 @@ function resetHeroSelectionUI() {
     heroRole.className = 'text-sm font-semibold tracking-widest uppercase text-slate-500 mt-1';
     heroStatsPromptDismissed = false;
     heroStatsPrompt.classList.add('hidden');
+    heroEvaluationPanel.classList.add('hidden');
     updateHeroPageLink(null, false);
 }
 
@@ -961,5 +1099,6 @@ window.addEventListener('DOMContentLoaded', () => {
     updateAppModeUI();
     updateMuteUI();
     renderBanList();
+    loadBenchmarkCatalog();
     restorePracticeState();
 });
