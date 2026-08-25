@@ -132,6 +132,7 @@ test('player data keeps Quick Play and Competitive hero stats separate', () => {
                 overall: {
                     quickPlay: {
                         matchesPlayed: 42,
+                        matchesWon: 21,
                         metrics: { winRate: 0.512, damagePerMinute: 1184 }
                     }
                 },
@@ -143,6 +144,7 @@ test('player data keeps Quick Play and Competitive hero stats separate', () => {
                         },
                         competitive: {
                             matchesPlayed: 12,
+                            matchesWon: 7,
                             metrics: { winRate: 0.583, damageTakenPerMinute: 1840 }
                         }
                     }
@@ -158,8 +160,10 @@ test('player data keeps Quick Play and Competitive hero stats separate', () => {
     assert.equal(stored.version, 2);
     assert.equal(restored.profile.competitiveRanks['season-5'], 'Gold');
     assert.equal(restored.heroStats.magneto.overall.quickPlay.matchesPlayed, 42);
+    assert.equal(restored.heroStats.magneto.overall.quickPlay.matchesWon, 21);
     assert.equal(restored.heroStats.magneto.seasons['season-5'].quickPlay.matchesPlayed, 8);
     assert.equal(restored.heroStats.magneto.seasons['season-5'].competitive.matchesPlayed, 12);
+    assert.equal(restored.heroStats.magneto.seasons['season-5'].competitive.matchesWon, 7);
     assert.equal(
         restored.heroStats.magneto.seasons['season-5'].competitive.metrics.damageTakenPerMinute,
         1840

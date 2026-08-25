@@ -111,8 +111,15 @@ const playerDataStorage = (() => {
     function sanitizeModeStats(modeStats) {
         if (!isPlainObject(modeStats)) return null;
 
+        const matchesPlayed = Math.max(0, Math.floor(Number(modeStats.matchesPlayed) || 0));
+        const numericMatchesWon = Number(modeStats.matchesWon);
+        const hasValidMatchesWon = Number.isInteger(numericMatchesWon)
+            && numericMatchesWon >= 0
+            && numericMatchesWon <= matchesPlayed;
+
         return {
-            matchesPlayed: Math.max(0, Math.floor(Number(modeStats.matchesPlayed) || 0)),
+            matchesPlayed,
+            ...(hasValidMatchesWon ? { matchesWon: numericMatchesWon } : {}),
             metrics: sanitizeMetrics(modeStats.metrics),
             updatedAt: sanitizeOptionalString(modeStats.updatedAt)
         };

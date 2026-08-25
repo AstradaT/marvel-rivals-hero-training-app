@@ -80,6 +80,8 @@ const manualSeasonId = document.getElementById('manual-season-id');
 const manualRankField = document.getElementById('manual-rank-field');
 const manualCompetitiveRank = document.getElementById('manual-competitive-rank');
 const manualMatchesPlayed = document.getElementById('manual-matches-played');
+const manualMatchesWon = document.getElementById('manual-matches-won');
+const manualWinRatePreview = document.getElementById('manual-win-rate-preview');
 const manualMetricFields = document.getElementById('manual-metric-fields');
 const manualStatsMessage = document.getElementById('manual-stats-message');
 const heroEvaluationPanel = document.getElementById('hero-evaluation-panel');
@@ -417,8 +419,12 @@ function renderManualStatFields() {
         ? playerData.profile.competitiveRanks[seasonId] || ''
         : '';
     manualMatchesPlayed.value = snapshot?.matchesPlayed ?? '';
+    manualMatchesWon.value = Number.isInteger(snapshot?.matchesWon)
+        ? snapshot.matchesWon
+        : inferMatchesWon(snapshot);
 
-    const statFields = getHeroStatFields(currentHero.role);
+    const statFields = getHeroStatFields(currentHero.role).filter(field => field.key !== 'winRate');
+    manualMetricFields.classList.toggle('hidden', statFields.length === 0);
     manualMetricFields.classList.toggle('grid-cols-1', statFields.length === 1);
     manualMetricFields.classList.toggle('grid-cols-2', statFields.length !== 1);
     manualMetricFields.innerHTML = statFields.map(field => {
@@ -436,6 +442,41 @@ function renderManualStatFields() {
             </label>
         `;
     }).join('');
+    updateManualWinRatePreview();
+}
+
+function inferMatchesWon(snapshot) {
+    const matchesPlayed = Number(snapshot?.matchesPlayed);
+    const winRate = Number(snapshot?.metrics?.winRate);
+    if (!Number.isInteger(matchesPlayed) || matchesPlayed < 0) return '';
+    if (!Number.isFinite(winRate) || winRate < 0 || winRate > 1) return '';
+
+    return Math.round(matchesPlayed * winRate);
+}
+
+function updateManualWinRatePreview() {
+    const matchesPlayed = Number(manualMatchesPlayed.value);
+    const matchesWon = Number(manualMatchesWon.value);
+    const hasBothValues = manualMatchesPlayed.value !== '' && manualMatchesWon.value !== '';
+    const isValid = hasBothValues
+        && Number.isInteger(matchesPlayed)
+        && Number.isInteger(matchesWon)
+        && matchesPlayed >= 0
+        && matchesWon >= 0
+        && matchesWon <= matchesPlayed;
+
+    manualWinRatePreview.classList.toggle('text-red-400', hasBothValues && !isValid);
+    manualWinRatePreview.classList.toggle('text-amber-300', !hasBothValues || isValid);
+
+    if (!hasBothValues) {
+        manualWinRatePreview.innerText = 'Calculated win rate: —';
+    } else if (!isValid) {
+        manualWinRatePreview.innerText = 'Matches won must be a whole number no greater than matches played.';
+    } else if (matchesPlayed === 0) {
+        manualWinRatePreview.innerText = 'Calculated win rate: unavailable with 0 matches';
+    } else {
+        manualWinRatePreview.innerText = `Calculated win rate: ${formatPercentage(matchesWon / matchesPlayed)}`;
+    }
 }
 
 function openManualStatsModal() {
@@ -477,6 +518,7 @@ function saveManualStats(event) {
             mode: manualStatsMode.value,
             competitiveRank: manualCompetitiveRank.value,
             matchesPlayed: manualMatchesPlayed.value,
+            matchesWon: manualMatchesWon.value,
             metrics,
             updatedAt: new Date().toISOString()
         });
@@ -1138,6 +1180,8 @@ cancelManualStatsBtn.addEventListener('click', () => {
 manualStatsForm.addEventListener('submit', saveManualStats);
 manualStatsMode.addEventListener('change', renderManualStatFields);
 manualStatsScope.addEventListener('change', renderManualStatFields);
+manualMatchesPlayed.addEventListener('input', updateManualWinRatePreview);
+manualMatchesWon.addEventListener('input', updateManualWinRatePreview);
 manualStatsModal.addEventListener('click', event => {
     if (event.target === manualStatsModal) closeManualStatsModal();
 });

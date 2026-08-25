@@ -34,6 +34,15 @@ const manualStats = (() => {
         return number;
     }
 
+    function requireNonNegativeInteger(value, fieldName) {
+        const number = requireNonNegativeNumber(value, fieldName);
+        if (!Number.isInteger(number)) {
+            throw new Error(`${fieldName} must be a whole number.`);
+        }
+
+        return number;
+    }
+
     function createUpdatedPlayerData(playerData, entry) {
         if (!entry || typeof entry !== 'object') throw new Error('Stat entry is required.');
         if (!VALID_MODES.includes(entry.mode)) throw new Error('Choose a supported game mode.');
@@ -47,10 +56,14 @@ const manualStats = (() => {
             throw new Error('Enter a numeric season such as 9 or 9.5.');
         }
 
-        const matchesPlayed = Math.floor(requireNonNegativeNumber(
+        const matchesPlayed = requireNonNegativeInteger(
             entry.matchesPlayed,
             'Matches played'
-        ));
+        );
+        const matchesWon = requireNonNegativeInteger(entry.matchesWon, 'Matches won');
+        if (matchesWon > matchesPlayed) {
+            throw new Error('Matches won cannot be greater than matches played.');
+        }
         const enteredMetrics = Object.fromEntries(
             Object.entries(entry.metrics || {}).map(([metricName, value]) => [
                 metricName,
@@ -58,13 +71,11 @@ const manualStats = (() => {
             ])
         );
 
-        if (typeof enteredMetrics.winRate === 'number' && enteredMetrics.winRate > 100) {
-            throw new Error('Win rate cannot be greater than 100%.');
-        }
+        delete enteredMetrics.winRate;
         const metrics = {
             ...enteredMetrics,
-            ...(typeof enteredMetrics.winRate === 'number'
-                ? { winRate: enteredMetrics.winRate / 100 }
+            ...(matchesPlayed > 0
+                ? { winRate: matchesWon / matchesPlayed }
                 : {})
         };
 
@@ -96,6 +107,7 @@ const manualStats = (() => {
 
         targetPeriod[entry.mode] = {
             matchesPlayed,
+            matchesWon,
             metrics,
             updatedAt: entry.updatedAt || new Date().toISOString()
         };

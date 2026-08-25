@@ -28,7 +28,7 @@ The project began as a simple hero roulette and is being developed incrementally
 - Static image fallback when an animated hero image cannot be loaded
 - Stable hero IDs and versioned saved data for future expansion
 - Versioned local player-data foundation for optional hero stats and training history
-- Optional role-based manual hero-stat entry for Quick Play, Competitive, overall, and current-season snapshots
+- Optional role-based manual hero-stat entry for Quick Play, Competitive, overall, and current-season snapshots; win rate is calculated from matches played and won
 - Versioned benchmark catalog covering all sourced Season 9.5 rank filters
 - Visible role-based peer evaluation with separate skill and confidence results
 - Strict Competitive proficiency resolver with separate Quick Play training evidence
@@ -108,7 +108,7 @@ Player-data schema version 2 uses canonical internal units:
 - rate metrics use `perMinute` keys;
 - percentages and per-10-minute values are presentation or import concerns.
 
-Version 1 player data is migrated automatically. The current manual-entry MVP asks only for match count and win rate, while the role model remains extensible for future compatible metrics. A visible Training-mode panel explains the matched benchmark, blended player value, effective sample, confidence, and source. Very-low and low-confidence samples remain `unknown`; at least medium confidence is required before assigning a performance category.
+Version 1 player data is migrated automatically. The current manual-entry MVP asks for matches played and matches won, then calculates and stores the canonical win-rate ratio automatically. Existing snapshots without a saved win count remain compatible. The role model remains extensible for future compatible metrics. A visible Training-mode panel explains the matched benchmark, blended player value, effective sample, confidence, and source. Very-low and low-confidence samples remain `unknown`; at least medium confidence is required before assigning a performance category.
 
 ## Practice-block flow
 

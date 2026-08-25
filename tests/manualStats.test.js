@@ -49,8 +49,8 @@ test('manual stats normalize a season snapshot without mutating existing player 
         mode: 'competitive',
         competitiveRank: 'Gold',
         matchesPlayed: '12',
+        matchesWon: '7',
         metrics: {
-            winRate: '58.3',
             deathsPerMinute: '0.58',
             damagePerMinute: '1184',
             damageTakenPerMinute: '1840'
@@ -66,8 +66,9 @@ test('manual stats normalize a season snapshot without mutating existing player 
     assert.equal(updated.profile.competitiveRanks['season-5'], 'Gold');
     assert.deepEqual(updated.heroStats.magneto.seasons['season-5'].competitive, {
         matchesPlayed: 12,
+        matchesWon: 7,
         metrics: {
-            winRate: 0.583,
+            winRate: 7 / 12,
             deathsPerMinute: 0.58,
             damagePerMinute: 1184,
             damageTakenPerMinute: 1840
@@ -103,7 +104,8 @@ test('manual overall Quick Play stats remain independent from season Competitive
         scope: 'overall',
         mode: 'quickPlay',
         matchesPlayed: 40,
-        metrics: { winRate: 51, healingPerMinute: 1420 },
+        matchesWon: 20,
+        metrics: { healingPerMinute: 1420 },
         updatedAt: '2026-08-24T12:00:00.000Z'
     })`);
     harness.evaluate(`playerData = manualStats.createUpdatedPlayerData(playerData, {
@@ -112,14 +114,16 @@ test('manual overall Quick Play stats remain independent from season Competitive
         seasonId: 'season-5',
         mode: 'competitive',
         matchesPlayed: 8,
-        metrics: { winRate: 62.5, healingPerMinute: 1510 },
+        matchesWon: 5,
+        metrics: { healingPerMinute: 1510 },
         updatedAt: '2026-08-24T13:00:00.000Z'
     })`);
     const playerData = JSON.parse(harness.evaluate('JSON.stringify(playerData)'));
 
     assert.equal(playerData.heroStats.loki.overall.quickPlay.matchesPlayed, 40);
     assert.equal(playerData.heroStats.loki.seasons['season-5'].competitive.matchesPlayed, 8);
-    assert.equal(playerData.heroStats.loki.overall.quickPlay.metrics.winRate, 0.51);
+    assert.equal(playerData.heroStats.loki.overall.quickPlay.matchesWon, 20);
+    assert.equal(playerData.heroStats.loki.overall.quickPlay.metrics.winRate, 0.5);
     assert.equal(playerData.heroStats.loki.seasons['season-5'].competitive.metrics.winRate, 0.625);
     assert.equal(playerData.heroStats.loki.overall.competitive, undefined);
     assert.equal(playerData.heroStats.loki.seasons['season-5'].quickPlay, undefined);
@@ -131,12 +135,12 @@ test('Deadpool forms store independent player snapshots', () => {
     harness.evaluate(`playerData = manualStats.createUpdatedPlayerData(playerData, {
         heroId: 'deadpool-duelist', scope: 'season', seasonId: '9.5',
         mode: 'competitive', competitiveRank: 'Gold', matchesPlayed: 10,
-        metrics: { winRate: 50 }
+        matchesWon: 5, metrics: {}
     })`);
     harness.evaluate(`playerData = manualStats.createUpdatedPlayerData(playerData, {
         heroId: 'deadpool-vanguard', scope: 'season', seasonId: '9.5',
         mode: 'competitive', competitiveRank: 'Gold', matchesPlayed: 4,
-        metrics: { winRate: 25 }
+        matchesWon: 1, metrics: {}
     })`);
     const playerData = JSON.parse(harness.evaluate('JSON.stringify(playerData)'));
 
@@ -162,7 +166,8 @@ test('manual stats reject invalid values before they reach storage', () => {
             seasonId: '',
             mode: 'quickPlay',
             matchesPlayed: 3,
-            metrics: { winRate: 50 }
+            matchesWon: 1,
+            metrics: {}
         })`),
         /numeric season/
     );
@@ -172,16 +177,47 @@ test('manual stats reject invalid values before they reach storage', () => {
             scope: 'overall',
             mode: 'quickPlay',
             matchesPlayed: 3,
-            metrics: { winRate: 101 }
+            matchesWon: 4,
+            metrics: {}
         })`),
-        /Win rate cannot be greater than 100%/
+        /cannot be greater than matches played/
     );
     assert.throws(
         () => harness.evaluate(`manualStats.createUpdatedPlayerData(playerData, {
             heroId: 'magneto', scope: 'season', seasonId: '9.5',
             mode: 'competitive', competitiveRank: 'Celestial+',
-            matchesPlayed: 3, metrics: { winRate: 50 }
+            matchesPlayed: 3, matchesWon: 1, metrics: {}
         })`),
         /exact Competitive rank/
     );
+});
+
+test('manual stats calculate win rate from whole match counts', () => {
+    const harness = loadBrowserScripts(['services/manualStats.js']);
+    harness.evaluate(`playerData = manualStats.createUpdatedPlayerData(${JSON.stringify(createEmptyPlayerData())}, {
+        heroId: 'emma-frost', scope: 'season', seasonId: '9.5',
+        mode: 'competitive', competitiveRank: 'Gold',
+        matchesPlayed: 8, matchesWon: 3, metrics: { winRate: 99 }
+    })`);
+    const snapshot = JSON.parse(harness.evaluate(
+        "JSON.stringify(playerData.heroStats['emma-frost'].seasons['season-9-5'].competitive)"
+    ));
+
+    assert.equal(snapshot.matchesPlayed, 8);
+    assert.equal(snapshot.matchesWon, 3);
+    assert.equal(snapshot.metrics.winRate, 0.375);
+});
+
+test('manual stats leave win rate unavailable when no matches were played', () => {
+    const harness = loadBrowserScripts(['services/manualStats.js']);
+    harness.evaluate(`playerData = manualStats.createUpdatedPlayerData(${JSON.stringify(createEmptyPlayerData())}, {
+        heroId: 'emma-frost', scope: 'overall', mode: 'quickPlay',
+        matchesPlayed: 0, matchesWon: 0, metrics: {}
+    })`);
+    const snapshot = JSON.parse(harness.evaluate(
+        "JSON.stringify(playerData.heroStats['emma-frost'].overall.quickPlay)"
+    ));
+
+    assert.equal(snapshot.matchesWon, 0);
+    assert.equal(snapshot.metrics.winRate, undefined);
 });
