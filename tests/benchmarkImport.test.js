@@ -7,8 +7,11 @@ const { buildDataset, parseCsv } = require('../scripts/buildBenchmarks');
 const { projectRoot } = require('./helpers/browserScriptHarness');
 
 const csvPaths = [
+    'marvel_rivals_bronze_s9_5_benchmark.csv',
+    'marvel_rivals_silver_s9_5_benchmark.csv',
     'marvel_rivals_gold_s9_5_benchmark.csv',
-    'marvel_rivals_platinum_s9_5_benchmark.csv'
+    'marvel_rivals_platinum_s9_5_benchmark.csv',
+    'marvel_rivals_diamond_s9_5_benchmark.csv'
 ].map(fileName => path.join(projectRoot, 'data', fileName));
 const supplementalPath = path.join(projectRoot, 'data', 'benchmarkSupplemental.json');
 
@@ -19,22 +22,43 @@ function buildProductionFixture() {
     );
 }
 
-test('the Gold and Platinum CSVs import 55 complete source entries each without averaging', () => {
+test('all five rank CSVs import 55 source entries each without averaging', () => {
     const dataset = buildProductionFixture();
     const seasonal = dataset.records.filter(record => record.context.type === 'seasonalRank');
 
-    assert.equal(seasonal.length, 110);
-    assert.equal(dataset.records.length, 115);
+    assert.equal(seasonal.length, 275);
+    assert.equal(dataset.records.length, 280);
     assert.deepEqual(
         [...new Set(seasonal.map(record => record.context.rankTier))].sort(),
-        ['gold', 'platinum']
+        ['bronze', 'diamond', 'gold', 'platinum', 'silver']
     );
     assert.ok(seasonal.every(record => (
         record.source.id === 'rivalstracker'
         && record.source.type === 'primary'
         && record.context.seasonId === 'season-9-5'
-        && Object.keys(record.metrics).sort().join('|') === 'banRate|pickRate|winRate'
     )));
+    assert.ok(seasonal.filter(record => ['gold', 'platinum', 'diamond'].includes(
+        record.context.rankTier
+    )).every(record => Object.keys(record.metrics).sort().join('|') === 'banRate|pickRate|winRate'));
+    assert.ok(seasonal.filter(record => ['bronze', 'silver'].includes(
+        record.context.rankTier
+    )).every(record => (
+        Object.keys(record.metrics).sort().join('|') === 'pickRate|winRate'
+        && record.sourceMetadata.unavailableMetrics.join('|') === 'banRate'
+    )));
+});
+
+test('empty Bronze and Silver ban rates remain unavailable rather than becoming zero', () => {
+    const seasonal = buildProductionFixture().records.filter(
+        record => record.context.type === 'seasonalRank'
+    );
+
+    ['bronze', 'silver'].forEach(rankTier => {
+        const rankRecords = seasonal.filter(record => record.context.rankTier === rankTier);
+        assert.equal(rankRecords.length, 55);
+        assert.ok(rankRecords.every(record => !Object.hasOwn(record.metrics, 'banRate')));
+        assert.ok(rankRecords.every(record => record.sampleSize.matches > 0));
+    });
 });
 
 test('the generated production JSON is synchronized with its CSV sources', () => {
@@ -79,7 +103,7 @@ test('Deadpool source forms stay distinct instead of being silently merged', () 
         record => record.context.rankTier
     );
 
-    ['gold', 'platinum'].forEach(rankTier => {
+    ['bronze', 'silver', 'gold', 'platinum', 'diamond'].forEach(rankTier => {
         assert.deepEqual(deadpoolIdsByRank[rankTier].map(record => record.heroId).sort(), [
             'deadpool-duelist',
             'deadpool-strategist',

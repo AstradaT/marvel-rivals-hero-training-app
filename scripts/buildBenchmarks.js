@@ -3,8 +3,11 @@ const path = require('node:path');
 
 const projectRoot = path.resolve(__dirname, '..');
 const defaultCsvPaths = [
+    'marvel_rivals_bronze_s9_5_benchmark.csv',
+    'marvel_rivals_silver_s9_5_benchmark.csv',
     'marvel_rivals_gold_s9_5_benchmark.csv',
-    'marvel_rivals_platinum_s9_5_benchmark.csv'
+    'marvel_rivals_platinum_s9_5_benchmark.csv',
+    'marvel_rivals_diamond_s9_5_benchmark.csv'
 ].map(fileName => path.join(projectRoot, 'data', fileName));
 const defaultSupplementalPath = path.join(projectRoot, 'data', 'benchmarkSupplemental.json');
 const defaultOutputPath = path.join(projectRoot, 'data', 'benchmarks.json');
@@ -132,16 +135,28 @@ function buildCsvRecords(csvText, supplemental) {
             throw new Error(`${groupId} must use Competitive data.`);
         }
 
-        const metrics = Object.fromEntries(groupRows.map(row => {
+        const rankTier = assertSame(groupId, groupRows, 'rank_tier');
+        const unavailableMetrics = [];
+        const metrics = Object.fromEntries(groupRows.flatMap(row => {
+            if (row.average === '') {
+                const canBeUnavailable = row.metric_name === 'banRate'
+                    && ['bronze', 'silver'].includes(rankTier);
+                if (!canBeUnavailable) {
+                    throw new Error(`${groupId} has an unexpected empty ${row.metric_name} average.`);
+                }
+                unavailableMetrics.push(row.metric_name);
+                return [];
+            }
+
             const average = Number(row.average);
             if (!Number.isFinite(average) || average < 0 || average > 1 || row.unit !== 'ratio') {
                 throw new Error(`${groupId} has an invalid ${row.metric_name} ratio.`);
             }
-            return [row.metric_name, {
+            return [[row.metric_name, {
                 average,
                 unit: 'ratio',
                 sampleSize: { matches: sampleMatches, players: samplePlayers }
-            }];
+            }]];
         }));
 
         const heroRank = nullableInteger(assertSame(groupId, groupRows, 'hero_rank'), `${groupId} hero_rank`);
@@ -161,7 +176,7 @@ function buildCsvRecords(csvText, supplemental) {
                 type: 'seasonalRank',
                 seasonId: normalizeSeasonId(assertSame(groupId, groupRows, 'season')),
                 gameMode: 'competitive',
-                rankTier: assertSame(groupId, groupRows, 'rank_tier')
+                rankTier
             },
             metrics,
             sampleSize: { matches: sampleMatches, players: samplePlayers },
@@ -179,7 +194,8 @@ function buildCsvRecords(csvText, supplemental) {
                 region,
                 tierLabel,
                 heroRank,
-                heroPoolSize
+                heroPoolSize,
+                ...(unavailableMetrics.length > 0 ? { unavailableMetrics } : {})
             },
             validations: supplemental.validationsByBenchmarkGroupId?.[groupId] || [],
             methodologyNotes: [
@@ -212,7 +228,7 @@ function buildDataset(csvTexts, supplemental) {
     const latestCollectionDate = rows.map(row => row.collected_at).sort().at(-1);
     return {
         schemaVersion: 2,
-        datasetVersion: 'season-9-5-gold-platinum-rivalstracker-2026-08-25',
+        datasetVersion: 'season-9-5-bronze-silver-gold-platinum-diamond-rivalstracker-2026-08-25',
         updatedAt: latestCollectionDate,
         records: [...seasonalRecords, ...(supplemental.records || [])]
     };

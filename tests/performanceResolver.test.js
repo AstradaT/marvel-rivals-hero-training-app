@@ -244,6 +244,27 @@ test('a Platinum profile resolves the Platinum benchmark without using Gold data
     assert.equal(resolved.benchmark.context.rankTier, 'platinum');
 });
 
+test('a Silver profile resolves with win rate even though ban rate is unavailable', () => {
+    const dataset = JSON.parse(
+        fs.readFileSync(path.join(projectRoot, 'data', 'benchmarks.json'), 'utf8')
+    );
+    const harness = createHarness();
+    harness.evaluate(`catalog = benchmarkCatalog.create(${JSON.stringify(dataset)})`);
+    installPlayerData(harness, {
+        rank: 'Silver',
+        competitive: `{ matchesPlayed: 20, metrics: { winRate: 0.48 } }`
+    });
+
+    const resolved = JSON.parse(harness.evaluate(`JSON.stringify(
+        performanceResolver.resolve({ playerData, catalog, heroId: 'emma-frost' })
+    )`));
+
+    assert.equal(resolved.status, 'resolved');
+    assert.equal(resolved.source.rankTier, 'silver');
+    assert.equal(resolved.benchmark.metrics.winRate.average, 0.4718);
+    assert.equal(Object.hasOwn(resolved.benchmark.metrics, 'banRate'), false);
+});
+
 test('the user Gold pilot remains unknown with four season and eight overall matches', () => {
     const dataset = JSON.parse(
         fs.readFileSync(path.join(projectRoot, 'data', 'benchmarks.json'), 'utf8')
