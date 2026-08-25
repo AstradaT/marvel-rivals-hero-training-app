@@ -40,8 +40,18 @@
         </div>
 
         <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.85fr)] lg:grid-rows-[auto_auto_auto_auto] lg:gap-x-8 lg:gap-y-4 lg:items-center">
+        <!-- App Mode -->
+        <div class="flex justify-center gap-2 mb-4 lg:mb-0 lg:col-start-2 lg:row-start-1 lg:self-start" aria-label="Selection mode">
+            <button data-app-mode="quickRandom" class="app-mode-btn px-4 py-2 rounded-lg border text-[10px] font-bold uppercase tracking-wider cursor-pointer transition-colors">
+                Quick Random
+            </button>
+            <button data-app-mode="training" class="app-mode-btn px-4 py-2 rounded-lg border text-[10px] font-bold uppercase tracking-wider cursor-pointer transition-colors">
+                Training
+            </button>
+        </div>
+
         <!-- Role Filters (Multiselect con Íconos) -->
-        <div class="flex justify-center gap-3 mb-6 lg:mb-0 lg:col-start-2 lg:row-start-1 lg:self-end">
+        <div class="flex justify-center gap-3 mb-6 lg:mb-0 lg:col-start-2 lg:row-start-1 lg:self-end lg:mt-12">
             <!-- Vanguard Button -->
             <button data-role="Vanguard" class="role-btn flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-900 text-blue-400 border-2 border-blue-500 shadow-md shadow-blue-950/50 cursor-pointer transition-all active:scale-95">
                 <img src="assets/icon-vanguard.webp" alt="Vanguard" class="w-4 h-4 object-contain">
@@ -88,6 +98,18 @@
                 <div id="practice-progress" class="h-full bg-gradient-to-r from-red-500 to-amber-400 transition-all duration-300" style="width: 0%"></div>
             </div>
 
+            <div id="hero-stats-prompt" class="hidden mb-4 rounded-lg border border-slate-700 bg-slate-950/50 p-3">
+                <p id="hero-stats-prompt-message" class="text-xs text-slate-300"></p>
+                <div class="flex gap-2 mt-3">
+                    <button id="add-hero-stats-btn" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-2 px-3 rounded-md uppercase tracking-wide text-[10px] cursor-pointer">
+                        Add my stats
+                    </button>
+                    <button id="dismiss-hero-stats-btn" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold py-2 px-3 rounded-md uppercase tracking-wide text-[10px] cursor-pointer">
+                        Not now
+                    </button>
+                </div>
+            </div>
+
             <div class="grid grid-cols-2 gap-3">
                 <button id="match-complete-btn" class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-800 disabled:text-slate-600 text-white font-bold py-3 px-3 rounded-lg uppercase tracking-wide text-xs transition-all cursor-pointer disabled:cursor-not-allowed">
                     Match Complete
@@ -110,6 +132,71 @@
         </button>
         </div>
     </main>
+
+    <!-- Optional Manual Hero Stats -->
+    <div id="manual-stats-modal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm p-0 sm:p-4 items-end sm:items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="manual-stats-title">
+        <section class="bg-slate-900 border border-slate-700 rounded-t-2xl sm:rounded-2xl shadow-2xl w-full max-w-lg max-h-[92dvh] overflow-y-auto text-left">
+            <header class="flex items-start justify-between gap-4 p-5 border-b border-slate-800">
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-widest text-amber-400">Optional hero profile</p>
+                    <h2 id="manual-stats-title" class="text-xl font-black uppercase tracking-wide mt-1">Add hero stats</h2>
+                    <p class="text-sm text-slate-400 mt-1">Enter a snapshot from your in-game Career Profile.</p>
+                </div>
+                <button id="close-manual-stats-btn" type="button" class="p-2 text-slate-400 hover:text-white cursor-pointer" aria-label="Close hero stats">
+                    <span aria-hidden="true" class="text-2xl leading-none">&times;</span>
+                </button>
+            </header>
+
+            <form id="manual-stats-form" class="p-5">
+                <div class="grid grid-cols-2 gap-3">
+                    <label class="text-xs font-bold uppercase tracking-wider text-slate-400">
+                        Game mode
+                        <select id="manual-stats-mode" class="block w-full mt-2 bg-slate-950 border border-slate-700 focus:border-amber-400 focus:outline-none rounded-lg px-3 py-3 text-sm normal-case tracking-normal text-white">
+                            <option value="quickPlay">Quick Play</option>
+                            <option value="competitive" selected>Competitive</option>
+                        </select>
+                    </label>
+                    <label class="text-xs font-bold uppercase tracking-wider text-slate-400">
+                        Time period
+                        <select id="manual-stats-scope" class="block w-full mt-2 bg-slate-950 border border-slate-700 focus:border-amber-400 focus:outline-none rounded-lg px-3 py-3 text-sm normal-case tracking-normal text-white">
+                            <option value="season">Current season</option>
+                            <option value="overall">Overall</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div id="manual-season-fields" class="grid grid-cols-2 gap-3 mt-3">
+                    <label class="text-xs font-bold uppercase tracking-wider text-slate-400">
+                        Season
+                        <input id="manual-season-id" type="text" autocomplete="off" placeholder="Season 5" class="block w-full mt-2 bg-slate-950 border border-slate-700 focus:border-amber-400 focus:outline-none rounded-lg px-3 py-3 text-sm normal-case tracking-normal text-white placeholder:text-slate-600">
+                    </label>
+                    <label id="manual-rank-field" class="hidden text-xs font-bold uppercase tracking-wider text-slate-400">
+                        Competitive rank <span class="normal-case text-slate-600">(optional)</span>
+                        <input id="manual-competitive-rank" type="text" autocomplete="off" placeholder="Gold" class="block w-full mt-2 bg-slate-950 border border-slate-700 focus:border-amber-400 focus:outline-none rounded-lg px-3 py-3 text-sm normal-case tracking-normal text-white placeholder:text-slate-600">
+                    </label>
+                </div>
+
+                <div class="mt-5 pt-5 border-t border-slate-800">
+                    <label class="text-xs font-bold uppercase tracking-wider text-slate-400">
+                        Matches played
+                        <input id="manual-matches-played" type="number" min="0" step="1" required class="block w-full mt-2 bg-slate-950 border border-slate-700 focus:border-amber-400 focus:outline-none rounded-lg px-3 py-3 text-sm normal-case tracking-normal text-white">
+                    </label>
+                    <div id="manual-metric-fields" class="grid grid-cols-2 gap-3 mt-3"></div>
+                    <p class="text-[11px] leading-relaxed text-slate-500 mt-3">Competitive snapshots may support peer evaluation when an exact benchmark exists. Quick Play data remains useful training history.</p>
+                </div>
+
+                <p id="manual-stats-message" class="hidden text-xs mt-4 text-red-400" role="alert"></p>
+                <div class="grid grid-cols-2 gap-3 mt-5">
+                    <button id="cancel-manual-stats-btn" type="button" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold py-3 px-3 rounded-lg uppercase tracking-wide text-xs cursor-pointer">
+                        Not now
+                    </button>
+                    <button type="submit" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-3 px-3 rounded-lg uppercase tracking-wide text-xs cursor-pointer">
+                        Save stats
+                    </button>
+                </div>
+            </form>
+        </section>
+    </div>
 
     <!-- External Player Stats -->
     <div id="external-stats-modal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm p-0 sm:p-4 items-end sm:items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="external-stats-title">
@@ -212,8 +299,11 @@
     </div>
 
     <script src="data/heroes.js"></script>
+    <script src="data/heroStatFields.js"></script>
     <script src="services/practiceStorage.js"></script>
     <script src="services/preferencesStorage.js"></script>
+    <script src="services/playerDataStorage.js"></script>
+    <script src="services/manualStats.js"></script>
     <script src="services/heroSelector.js"></script>
     <script src="app.js"></script>
 </body>

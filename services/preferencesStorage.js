@@ -6,6 +6,7 @@ const preferencesStorage = (() => {
         bannedHeroIds: [],
         activeRoles: ['Vanguard', 'Duelist', 'Strategist'],
         isMuted: false,
+        appMode: 'training',
         playerUid: '',
         playerUsername: ''
     };
@@ -29,6 +30,9 @@ const preferencesStorage = (() => {
                 bannedHeroIds: [...new Set(bannedHeroIds)],
                 activeRoles: [...new Set(activeRoles)],
                 isMuted: saved.preferences?.isMuted === true,
+                appMode: ['quickRandom', 'training'].includes(saved.preferences?.appMode)
+                    ? saved.preferences.appMode
+                    : defaultPreferences.appMode,
                 playerUid: typeof saved.preferences?.playerUid === 'string'
                     ? saved.preferences.playerUid.trim()
                     : '',

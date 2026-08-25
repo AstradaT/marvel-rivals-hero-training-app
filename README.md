@@ -11,6 +11,8 @@ The project began as a simple hero roulette and is being developed incrementally
 ## Current features
 
 - Random hero selection with Vanguard, Duelist, and Strategist role filters
+- Separate Quick Random and Training modes with a persisted mode preference
+- Free Quick Random rerolls that preserve unfinished Training blocks
 - Animated roulette with sound effects and a mute control
 - Selected hero image links to the hero's official Marvel Rivals page
 - Responsive mobile-first layout with a two-column desktop workspace
@@ -25,6 +27,11 @@ The project began as a simple hero roulette and is being developed incrementally
 - Automatic recovery of the active block after a page reload
 - Static image fallback when an animated hero image cannot be loaded
 - Stable hero IDs and versioned saved data for future expansion
+- Versioned local player-data foundation for optional hero stats and training history
+- Optional role-based manual hero-stat entry for Quick Play, Competitive, overall, and current-season snapshots
+- Versioned benchmark catalog with an initial sourced Emma Frost pilot dataset
+- Pure role-based evaluation foundation with separate skill and confidence results
+- Strict Competitive proficiency resolver with separate Quick Play training evidence
 
 ## Local development
 
@@ -46,8 +53,8 @@ An internet connection is currently required for Tailwind CSS, which is loaded f
 .
 |-- index.html             # Page structure and interface
 |-- app.js                 # Roulette, practice rules, and UI behavior
-|-- data/heroes.js         # Canonical hero roster
-|-- services/              # Practice state, preferences, and hero selection
+|-- data/                  # Hero roster, stat models, and benchmark catalog
+|-- services/              # Practice, preferences, player data, and hero selection
 |-- tests/                 # Dependency-free Node test suite
 |-- style.css              # Custom roulette animation styling
 |-- assets/                # Hero images, role icons, and sound effects
@@ -65,7 +72,31 @@ The test suite uses Node's built-in test runner, so no packages need to be insta
 npm test
 ```
 
-The tests currently cover roster integrity, asset references, stable hero identities, official page mappings, random selection boundaries, storage versioning, legacy migration, and preference validation.
+The tests currently cover roster integrity, asset references, stable hero identities, selector boundaries, storage versioning, manual-stat normalization, benchmark validation, role evaluation, confidence, legacy migration, and preference validation.
+
+## Benchmark philosophy
+
+Competitive is currently the app's measurement instrument, not its identity. Rank tiers provide the strongest available peer-comparison context, so benchmarked proficiency requires an exact match for:
+
+- season;
+- Competitive game mode;
+- rank tier;
+- hero;
+- compatible metric names and canonical units.
+
+Quick Play data is stored independently and remains useful for experience, recency, sessions, and future training-priority signals. It is never compared with a Competitive benchmark. A missing rank, wrong rank, wrong season, Quick Play-only profile, or missing compatible benchmark produces an unrated result instead of an inferred fallback.
+
+Seasonal rank records and rolling high-elo records are different schema contexts. A `Celestial+ / rolling 180 days` record can be retained as reference data, but it cannot satisfy a seasonal Gold peer lookup. Benchmark records preserve a primary source, collection date, sample metadata, methodology notes, and optional validation sources. Validation values remain separate rather than being averaged into the primary value.
+
+The initial pilot contains Emma Frost Season 9.5 Competitive Gold data plus separate Celestial+ rolling references. RivalsTracker is the primary seasonal source; RivalsMeta and the official Marvel Rivals snapshot remain independent validations. Conflicting tier and ban-rate values are documented in the record instead of being silently reconciled. Each source now includes its supplied public URL alongside the snapshot reference.
+
+Player-data schema version 2 uses canonical internal units:
+
+- win rate is stored as a `0–1` ratio;
+- rate metrics use `perMinute` keys;
+- percentages and per-10-minute values are presentation or import concerns.
+
+Version 1 player data is migrated automatically. The current manual-entry MVP asks only for match count and win rate, while the role model remains extensible for future compatible metrics.
 
 ## Practice-block flow
 
@@ -107,11 +138,11 @@ Planned capabilities include:
 - Weighted hero selection that balances improvement, variety, repetition, and fun
 - A data-source boundary that can integrate with a third-party Marvel Rivals statistics provider
 
-External account integration and smart weighting are not implemented yet. The current code is being prepared in small steps so those systems can be added without unnecessarily rewriting the app.
+The player-data layer keeps Quick Play and Competitive snapshots separate across overall and per-season time horizons. For proficiency, the resolver uses Competitive data only, progressively favors the current season, and uses capped overall history as supporting evidence. Quick Play remains available as non-comparative training evidence. Manual stat entry remains optional. Quick Random and Training use independent selector entry points, although Training remains uniformly random for now. The production benchmark catalog currently contains only the sourced Emma Frost pilot records. Evaluation is not displayed or used for selection yet, and smart weighting is not implemented.
 
 ## Data and privacy
 
-At present, the app does not connect to a Marvel Rivals account or send player information to a server. Practice-block progress is stored only in the browser's local storage.
+At present, the app does not connect to a Marvel Rivals account or send player information to a server. Practice progress, preferences, and optional player data are stored only in the browser's local storage.
 
 ## Status
 

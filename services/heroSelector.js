@@ -5,5 +5,15 @@ const heroSelector = (() => {
         return candidates[Math.floor(Math.random() * candidates.length)];
     }
 
-    return { selectRandom };
+    function selectQuickRandom(candidates) {
+        return selectRandom(candidates);
+    }
+
+    function selectTraining(candidates) {
+        // Training is intentionally uniform for now. Future priority weighting
+        // belongs here without changing Quick Random behavior.
+        return selectRandom(candidates);
+    }
+
+    return { selectQuickRandom, selectTraining };
 })();

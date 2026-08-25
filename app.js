@@ -27,6 +27,7 @@ const heroName = document.getElementById('hero-name');
 const heroRole = document.getElementById('hero-role');
 const cardContainer = document.getElementById('card-container');
 const roleButtons = document.querySelectorAll('.role-btn');
+const appModeButtons = document.querySelectorAll('.app-mode-btn');
 const muteBtn = document.getElementById('mute-btn');
 const muteIcon = document.getElementById('mute-icon');
 const practicePanel = document.getElementById('practice-panel');
@@ -61,15 +62,37 @@ const playerUidInput = document.getElementById('player-uid');
 const playerUsernameInput = document.getElementById('player-username');
 const playerProfileMessage = document.getElementById('player-profile-message');
 const externalStatsLinks = document.querySelectorAll('.external-stats-link');
+const heroStatsPrompt = document.getElementById('hero-stats-prompt');
+const heroStatsPromptMessage = document.getElementById('hero-stats-prompt-message');
+const addHeroStatsBtn = document.getElementById('add-hero-stats-btn');
+const dismissHeroStatsBtn = document.getElementById('dismiss-hero-stats-btn');
+const manualStatsModal = document.getElementById('manual-stats-modal');
+const manualStatsTitle = document.getElementById('manual-stats-title');
+const closeManualStatsBtn = document.getElementById('close-manual-stats-btn');
+const cancelManualStatsBtn = document.getElementById('cancel-manual-stats-btn');
+const manualStatsForm = document.getElementById('manual-stats-form');
+const manualStatsMode = document.getElementById('manual-stats-mode');
+const manualStatsScope = document.getElementById('manual-stats-scope');
+const manualSeasonFields = document.getElementById('manual-season-fields');
+const manualSeasonId = document.getElementById('manual-season-id');
+const manualRankField = document.getElementById('manual-rank-field');
+const manualCompetitiveRank = document.getElementById('manual-competitive-rank');
+const manualMatchesPlayed = document.getElementById('manual-matches-played');
+const manualMetricFields = document.getElementById('manual-metric-fields');
+const manualStatsMessage = document.getElementById('manual-stats-message');
 
 // Guardamos los roles activos. Por defecto arrancan los 3 seleccionados
 let activeRoles = new Set(savedPreferences.activeRoles);
+let appMode = savedPreferences.appMode;
 let isSpinning = false;
 const validHeroIds = new Set(heroes.map(hero => hero.id));
 let bannedHeroIds = new Set(
     savedPreferences.bannedHeroIds.filter(id => validHeroIds.has(id))
 );
 let banListRoleFilter = 'All';
+let playerData = playerDataStorage.load();
+let heroStatsPromptDismissed = false;
+let quickRandomHero = null;
 
 const uniqueHeroes = Array.from(heroes.reduce((heroMap, hero) => {
     if (!heroMap.has(hero.id)) {
@@ -109,9 +132,171 @@ function savePreferences() {
         bannedHeroIds: Array.from(bannedHeroIds),
         activeRoles: Array.from(activeRoles),
         isMuted,
+        appMode,
         playerUid,
         playerUsername
     });
+}
+
+function updateAppModeUI() {
+    appModeButtons.forEach(button => {
+        const isActive = button.dataset.appMode === appMode;
+        button.setAttribute('aria-pressed', String(isActive));
+        button.classList.toggle('border-amber-400', isActive);
+        button.classList.toggle('bg-amber-400/10', isActive);
+        button.classList.toggle('text-amber-300', isActive);
+        button.classList.toggle('border-slate-700', !isActive);
+        button.classList.toggle('text-slate-400', !isActive);
+    });
+}
+
+function switchAppMode(nextMode) {
+    if (isSpinning || nextMode === appMode) return;
+    if (!['quickRandom', 'training'].includes(nextMode)) return;
+
+    appMode = nextMode;
+    selectionMessage.classList.add('hidden');
+    savePreferences();
+    updateAppModeUI();
+
+    const heroToDisplay = appMode === 'training' ? currentHero : quickRandomHero;
+    if (heroToDisplay) {
+        updateUI(heroToDisplay, false);
+        updateHeroPageLink(heroToDisplay, true);
+    } else {
+        resetHeroSelectionUI();
+    }
+
+    updatePracticeUI();
+}
+
+function getHeroStatsSnapshot(heroId, scope, mode, seasonId) {
+    const heroStats = playerData.heroStats[heroId];
+    if (!heroStats) return null;
+
+    if (scope === 'overall') return heroStats.overall?.[mode] || null;
+
+    const normalizedSeasonId = manualStats.normalizeSeasonId(seasonId);
+    return normalizedSeasonId
+        ? heroStats.seasons?.[normalizedSeasonId]?.[mode] || null
+        : null;
+}
+
+function hasSavedHeroStats(heroId) {
+    const heroStats = playerData.heroStats[heroId];
+    if (!heroStats) return false;
+
+    const hasOverallStats = Object.keys(heroStats.overall || {}).length > 0;
+    const hasSeasonStats = Object.values(heroStats.seasons || {})
+        .some(season => Object.keys(season || {}).length > 0);
+
+    return hasOverallStats || hasSeasonStats;
+}
+
+function updateHeroStatsPrompt() {
+    if (appMode !== 'training' || !currentHero || isSpinning || heroStatsPromptDismissed) {
+        heroStatsPrompt.classList.add('hidden');
+        return;
+    }
+
+    const hasStats = hasSavedHeroStats(currentHero.id);
+    heroStatsPromptMessage.innerText = hasStats
+        ? `Your ${currentHero.name} stats are saved.`
+        : `We don't know your ${currentHero.name} yet.`;
+    addHeroStatsBtn.innerText = hasStats ? 'Update my stats' : 'Add my stats';
+    dismissHeroStatsBtn.classList.toggle('hidden', hasStats);
+    heroStatsPrompt.classList.remove('hidden');
+}
+
+function renderManualStatFields() {
+    if (!currentHero) return;
+
+    const scope = manualStatsScope.value;
+    const mode = manualStatsMode.value;
+    const isSeason = scope === 'season';
+    const seasonId = manualSeasonId.value || playerData.profile.currentSeasonId || '';
+    const snapshot = getHeroStatsSnapshot(currentHero.id, scope, mode, seasonId);
+
+    manualSeasonFields.classList.toggle('hidden', !isSeason);
+    manualRankField.classList.toggle('hidden', !isSeason || mode !== 'competitive');
+    if (isSeason && !manualSeasonId.value) manualSeasonId.value = seasonId;
+
+    const normalizedSeasonId = manualStats.normalizeSeasonId(seasonId);
+    manualCompetitiveRank.value = normalizedSeasonId
+        ? playerData.profile.competitiveRanks[normalizedSeasonId] || ''
+        : '';
+    manualMatchesPlayed.value = snapshot?.matchesPlayed ?? '';
+
+    const statFields = getHeroStatFields(currentHero.role);
+    manualMetricFields.classList.toggle('grid-cols-1', statFields.length === 1);
+    manualMetricFields.classList.toggle('grid-cols-2', statFields.length !== 1);
+    manualMetricFields.innerHTML = statFields.map(field => {
+        const storedValue = snapshot?.metrics?.[field.key];
+        const savedValue = typeof storedValue === 'number'
+            ? storedValue * (field.displayMultiplier || 1)
+            : '';
+        const maximum = field.max ? ` max="${field.max}"` : '';
+        const suffix = field.suffix ? ` <span class="normal-case text-slate-600">(${field.suffix})</span>` : '';
+
+        return `
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-400">
+                ${field.label}${suffix}
+                <input data-metric-key="${field.key}" type="number" min="0"${maximum} step="0.1" required value="${savedValue}" class="block w-full mt-2 bg-slate-950 border border-slate-700 focus:border-amber-400 focus:outline-none rounded-lg px-3 py-3 text-sm normal-case tracking-normal text-white">
+            </label>
+        `;
+    }).join('');
+}
+
+function openManualStatsModal() {
+    if (!currentHero || isSpinning) return;
+
+    manualStatsTitle.innerText = `${hasSavedHeroStats(currentHero.id) ? 'Update' : 'Add'} ${currentHero.name} stats`;
+    manualStatsMessage.classList.add('hidden');
+    manualStatsMode.value = 'competitive';
+    manualStatsScope.value = 'season';
+    manualSeasonId.value = playerData.profile.currentSeasonId || '';
+    renderManualStatFields();
+    manualStatsModal.classList.remove('hidden');
+    manualStatsModal.classList.add('flex');
+    (manualSeasonId.value ? manualMatchesPlayed : manualSeasonId).focus();
+}
+
+function closeManualStatsModal(returnFocus = true) {
+    manualStatsModal.classList.add('hidden');
+    manualStatsModal.classList.remove('flex');
+    if (returnFocus) addHeroStatsBtn.focus();
+}
+
+function saveManualStats(event) {
+    event.preventDefault();
+    if (!currentHero) return;
+
+    const metrics = Object.fromEntries(
+        Array.from(manualMetricFields.querySelectorAll('[data-metric-key]'))
+            .map(input => [input.dataset.metricKey, input.value])
+    );
+
+    try {
+        const updatedPlayerData = manualStats.createUpdatedPlayerData(playerData, {
+            heroId: currentHero.id,
+            scope: manualStatsScope.value,
+            seasonId: manualSeasonId.value,
+            mode: manualStatsMode.value,
+            competitiveRank: manualCompetitiveRank.value,
+            matchesPlayed: manualMatchesPlayed.value,
+            metrics,
+            updatedAt: new Date().toISOString()
+        });
+
+        playerData = playerDataStorage.save(updatedPlayerData);
+        heroStatsPromptDismissed = false;
+        closeManualStatsModal(false);
+        updateHeroStatsPrompt();
+        addHeroStatsBtn.focus();
+    } catch (error) {
+        manualStatsMessage.innerText = error.message;
+        manualStatsMessage.classList.remove('hidden');
+    }
 }
 
 function updateExternalStatsLinks() {
@@ -331,8 +516,19 @@ function closeBanModal() {
 }
 
 function updatePracticeUI() {
+    if (appMode === 'quickRandom') {
+        practicePanel.classList.add('hidden');
+        heroStatsPrompt.classList.add('hidden');
+        spinBtn.disabled = isSpinning;
+        if (!isSpinning) {
+            spinBtn.innerText = quickRandomHero ? 'Randomize Again' : 'Spin Roulette';
+        }
+        return;
+    }
+
     if (!currentHero) {
         practicePanel.classList.add('hidden');
+        heroStatsPrompt.classList.add('hidden');
         spinBtn.disabled = isSpinning;
         if (!isSpinning) spinBtn.innerText = 'Spin Roulette';
         return;
@@ -364,12 +560,14 @@ function updatePracticeUI() {
     // The roulette stays locked while the current practice block is unfinished.
     spinBtn.disabled = isSpinning || !blockComplete;
     spinBtn.innerText = blockComplete ? 'Spin Next Hero' : `Practice ${currentHero.name}`;
+    updateHeroStatsPrompt();
 }
 
 function startPracticeBlock(hero) {
     currentHero = hero;
     matchesCompleted = 0;
     matchTarget = 3;
+    heroStatsPromptDismissed = false;
     savePracticeState();
     updatePracticeUI();
 }
@@ -420,6 +618,8 @@ function resetHeroSelectionUI() {
     heroRole.innerText = '-';
     cardContainer.className = 'border-4 border-slate-700 bg-slate-900 rounded-2xl p-6 lg:p-4 shadow-2xl transition-all duration-300 transform mb-8 lg:mb-0 lg:col-start-1 lg:row-start-1 lg:row-span-4 lg:self-center lg:w-full lg:max-w-[460px]';
     heroRole.className = 'text-sm font-semibold tracking-widest uppercase text-slate-500 mt-1';
+    heroStatsPromptDismissed = false;
+    heroStatsPrompt.classList.add('hidden');
     updateHeroPageLink(null, false);
 }
 
@@ -466,15 +666,20 @@ function restorePracticeState() {
 
     // Re-save to migrate older storage formats after successful validation.
     savePracticeState();
-    updateUI(currentHero, false);
-    updateHeroPageLink(currentHero, true);
+    if (appMode === 'training') {
+        updateUI(currentHero, false);
+        updateHeroPageLink(currentHero, true);
+    }
     updatePracticeUI();
 }
 
 // Manejo de clicks con lógica Multiselect
 roleButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-        if (isSpinning || (currentHero && matchesCompleted < matchTarget)) return;
+        if (
+            isSpinning
+            || (appMode === 'training' && currentHero && matchesCompleted < matchTarget)
+        ) return;
 
         selectionMessage.classList.add('hidden');
 
@@ -491,10 +696,20 @@ roleButtons.forEach(btn => {
     });
 });
 
+appModeButtons.forEach(button => {
+    button.addEventListener('click', () => switchAppMode(button.dataset.appMode));
+});
+
+function selectHeroForActiveMode(candidates) {
+    return appMode === 'quickRandom'
+        ? heroSelector.selectQuickRandom(candidates)
+        : heroSelector.selectTraining(candidates);
+}
+
 // Función de la ruleta
 function spinRoulette() {
     if (isSpinning) return;
-    if (currentHero && matchesCompleted < matchTarget) return;
+    if (appMode === 'training' && currentHero && matchesCompleted < matchTarget) return;
     
     const rolesToFilter = activeRoles.size === 0 
         ? ['Vanguard', 'Duelist', 'Strategist'] 
@@ -512,11 +727,13 @@ function spinRoulette() {
 
     selectionMessage.classList.add('hidden');
 
-    // A completed block is replaced only when a valid new spin begins.
-    currentHero = null;
-    matchesCompleted = 0;
-    matchTarget = 3;
-    savePracticeState();
+    // A completed training block is replaced only when a valid training spin begins.
+    if (appMode === 'training') {
+        currentHero = null;
+        matchesCompleted = 0;
+        matchTarget = 3;
+        savePracticeState();
+    }
     updateHeroPageLink(null, false);
 
     isSpinning = true;
@@ -524,6 +741,7 @@ function spinRoulette() {
     spinBtn.innerText = "Choosing...";
     
     roleButtons.forEach(b => b.style.opacity = "0.4");
+    appModeButtons.forEach(b => b.style.opacity = "0.4");
 
     let duration = 2000; 
     let intervalSpeed = 70; 
@@ -532,7 +750,7 @@ function spinRoulette() {
 
     // Intervalo de giro (Efecto ruleta)
     const interval = setInterval(() => {
-        const randomHero = heroSelector.selectRandom(filteredPool);
+        const randomHero = selectHeroForActiveMode(filteredPool);
         
         // Pass a custom flag 'true' to show it's just spinning
         updateUI(randomHero, true);
@@ -548,7 +766,7 @@ function spinRoulette() {
     setTimeout(() => {
         clearInterval(interval);
         
-        const finalHero = heroSelector.selectRandom(filteredPool);
+        const finalHero = selectHeroForActiveMode(filteredPool);
         
         // Remove the spinning blur effect right away
         heroImg.classList.remove('roulette-blur', 'anim-ticking');
@@ -580,10 +798,17 @@ function spinRoulette() {
             cardContainer.classList.add('scale-105');
             setTimeout(() => cardContainer.classList.remove('scale-105'), 300);
 
-            // The selected hero now becomes a 3-match practice block.
             isSpinning = false;
-            startPracticeBlock(finalHero);
+            if (appMode === 'training') {
+                // Training selections become three-match practice blocks.
+                startPracticeBlock(finalHero);
+            } else {
+                // Quick Random results remain freely rerollable and untracked.
+                quickRandomHero = finalHero;
+                updatePracticeUI();
+            }
             roleButtons.forEach(b => b.style.opacity = "1");
+            appModeButtons.forEach(b => b.style.opacity = "1");
         };
 
         // Step C: Swap to the animation when available, but never leave the app
@@ -675,6 +900,24 @@ externalStatsModal.addEventListener('click', event => {
     if (event.target === externalStatsModal) closeExternalStatsModal();
 });
 
+addHeroStatsBtn.addEventListener('click', openManualStatsModal);
+dismissHeroStatsBtn.addEventListener('click', () => {
+    heroStatsPromptDismissed = true;
+    updateHeroStatsPrompt();
+});
+closeManualStatsBtn.addEventListener('click', closeManualStatsModal);
+cancelManualStatsBtn.addEventListener('click', () => {
+    heroStatsPromptDismissed = true;
+    closeManualStatsModal();
+    updateHeroStatsPrompt();
+});
+manualStatsForm.addEventListener('submit', saveManualStats);
+manualStatsMode.addEventListener('change', renderManualStatFields);
+manualStatsScope.addEventListener('change', renderManualStatFields);
+manualStatsModal.addEventListener('click', event => {
+    if (event.target === manualStatsModal) closeManualStatsModal();
+});
+
 document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && !abandonModal.classList.contains('hidden')) {
         closeAbandonModal();
@@ -683,6 +926,11 @@ document.addEventListener('keydown', event => {
 
     if (event.key === 'Escape' && !banModal.classList.contains('hidden')) {
         closeBanModal();
+        return;
+    }
+
+    if (event.key === 'Escape' && !manualStatsModal.classList.contains('hidden')) {
+        closeManualStatsModal();
         return;
     }
 
@@ -710,6 +958,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
     console.log(`Cached ${heroes.length} static assets for ultra-fast spinning.`);
     updateRoleFiltersUI();
+    updateAppModeUI();
     updateMuteUI();
     renderBanList();
     restorePracticeState();
