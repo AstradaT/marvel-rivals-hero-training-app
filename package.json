@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "build:benchmarks": "node scripts/buildBenchmarks.js",
     "test": "node --test"
   }
 }

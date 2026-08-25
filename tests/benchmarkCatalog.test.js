@@ -20,27 +20,32 @@ function seasonalRecord(overrides = '') {
     }`;
 }
 
-test('the production catalog contains the sourced Emma Frost pilot dataset', () => {
+test('the production catalog contains the complete sourced Season 9.5 Gold dataset', () => {
     const dataset = JSON.parse(
         fs.readFileSync(path.join(projectRoot, 'data', 'benchmarks.json'), 'utf8')
     );
 
     assert.equal(dataset.schemaVersion, 2);
-    assert.equal(dataset.datasetVersion, 'emma-frost-pilot-2026-08-25');
-    assert.equal(dataset.updatedAt, '2026-08-25');
-    assert.equal(dataset.records.length, 6);
+    assert.equal(dataset.datasetVersion, 'season-9-5-gold-rivalstracker-2026-08-25');
+    assert.equal(dataset.updatedAt, '2026-08-25T14:58:14.626Z');
+    assert.equal(dataset.records.length, 60);
 
-    const seasonal = dataset.records.find(record => record.context.type === 'seasonalRank');
+    const seasonalRecords = dataset.records.filter(record => record.context.type === 'seasonalRank');
+    const seasonal = seasonalRecords.find(record => record.heroId === 'emma-frost');
+    assert.equal(seasonalRecords.length, 55);
     assert.equal(seasonal.heroId, 'emma-frost');
     assert.equal(seasonal.context.seasonId, 'season-9-5');
     assert.equal(seasonal.context.rankTier, 'gold');
     assert.equal(seasonal.metrics.winRate.average, 0.4737);
     assert.equal(seasonal.sampleSize.matches, 11001);
     assert.equal(seasonal.source.id, 'rivalstracker');
+    assert.equal(seasonal.sourceMetadata.tierLabel, 'C');
+    assert.equal(seasonal.sourceMetadata.heroRank, 44);
+    assert.equal(seasonal.sourceMetadata.heroPoolSize, 55);
     assert.equal(seasonal.validations.length, 2);
 });
 
-test('the production pilot survives catalog validation and only exact Gold lookup resolves it', () => {
+test('the production dataset survives catalog validation and only exact Gold lookup resolves it', () => {
     const dataset = JSON.parse(
         fs.readFileSync(path.join(projectRoot, 'data', 'benchmarks.json'), 'utf8')
     );
@@ -53,7 +58,7 @@ test('the production pilot survives catalog validation and only exact Gold looku
         })
     )`));
 
-    assert.equal(harness.evaluate('catalog.records.length'), 6);
+    assert.equal(harness.evaluate('catalog.records.length'), 60);
     assert.equal(seasonal.metrics.winRate.average, 0.4737);
     assert.equal(seasonal.validations[0].metrics.banRate.average, 0.0366);
     assert.equal(seasonal.validations[0].sampleSize.matches, 11001);
@@ -74,6 +79,32 @@ test('the production pilot survives catalog validation and only exact Gold looku
     assert.equal(harness.evaluate(`catalog.findSeasonalCompetitive({
         seasonId: 'season-9-5', rankTier: 'platinum', heroId: 'emma-frost'
     })`), null);
+    assert.equal(harness.evaluate(`catalog.findSeasonalCompetitive({
+        seasonId: 'season-9-5', rankTier: 'gold', heroId: 'ultron'
+    }).metrics.winRate.average`), 0.6007);
+    assert.equal(harness.evaluate(`catalog.findSeasonalCompetitive({
+        seasonId: 'season-9-5', rankTier: 'gold', heroId: 'deadpool'
+    })`), null);
+});
+
+test('Gold benchmarks cover every directly compatible roster identity except shared Deadpool', () => {
+    const dataset = JSON.parse(
+        fs.readFileSync(path.join(projectRoot, 'data', 'benchmarks.json'), 'utf8')
+    );
+    const harness = loadBrowserScripts(['data/heroes.js', 'services/benchmarkCatalog.js']);
+    harness.evaluate(`catalog = benchmarkCatalog.create(${JSON.stringify(dataset)})`);
+    const coverage = JSON.parse(harness.evaluate(`JSON.stringify(
+        [...new Set(heroes.map(hero => hero.id))].map(heroId => ({
+            heroId,
+            covered: Boolean(catalog.findSeasonalCompetitive({
+                seasonId: 'season-9-5', rankTier: 'gold', heroId
+            }))
+        }))
+    )`));
+    const uncovered = coverage.filter(item => !item.covered).map(item => item.heroId);
+
+    assert.deepEqual(uncovered, ['deadpool']);
+    assert.equal(coverage.filter(item => item.covered).length, 52);
 });
 
 test('seasonal Competitive lookup requires exact season, rank, and hero compatibility', () => {

@@ -1,0 +1,557 @@
+{
+  "validationsByBenchmarkGroupId": {
+    "emma-frost-s9-5-gold": [
+      {
+        "source": {
+          "id": "rivalsmeta",
+          "type": "validation",
+          "url": "https://rivalsmeta.com/characters?rank=3",
+          "datasetId": null,
+          "reference": "codex-clipboard-4d16d926-5f07-4526-aa92-6b17dfaa755a.png"
+        },
+        "metrics": {
+          "winRate": {
+            "average": 0.4737,
+            "unit": "ratio",
+            "sampleSize": {
+              "matches": 11001,
+              "players": null
+            }
+          },
+          "pickRate": {
+            "average": 0.1967,
+            "unit": "ratio",
+            "sampleSize": {
+              "matches": 11001,
+              "players": null
+            }
+          },
+          "banRate": {
+            "average": 0.0366,
+            "unit": "ratio",
+            "sampleSize": {
+              "matches": 11001,
+              "players": null
+            }
+          }
+        },
+        "sampleSize": {
+          "matches": 11001,
+          "players": null
+        },
+        "collectedAt": "2026-08-25",
+        "methodologyNotes": "Competitive Gold Season 9.5 screenshot. It displays Tier B and a 3.66% ban rate; both differ from the typed primary snapshot and are intentionally not reconciled or averaged."
+      },
+      {
+        "source": {
+          "id": "marvel-rivals-official",
+          "type": "validation",
+          "url": "https://www.marvelrivals.com/heroes_data/",
+          "datasetId": null,
+          "reference": "User-provided official-site snapshot for Emma Frost, Competitive Gold, PC."
+        },
+        "metrics": {
+          "winRate": {
+            "average": 0.4944,
+            "unit": "ratio",
+            "sampleSize": {
+              "matches": null,
+              "players": null
+            }
+          },
+          "pickRate": {
+            "average": 0.144,
+            "unit": "ratio",
+            "sampleSize": {
+              "matches": null,
+              "players": null
+            }
+          }
+        },
+        "sampleSize": {
+          "matches": null,
+          "players": null
+        },
+        "collectedAt": "2026-08-04",
+        "methodologyNotes": "Official-site update time was 2026-08-04. No sample size was supplied."
+      }
+    ]
+  },
+  "records": [
+    {
+      "heroId": "emma-frost",
+      "context": {
+        "type": "rollingRankThreshold",
+        "gameMode": "competitive",
+        "population": {
+          "type": "rankThreshold",
+          "minimumRank": "celestial"
+        },
+        "timeWindow": {
+          "type": "rollingDays",
+          "days": 180
+        }
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.454,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.206,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.011,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "damagePerMinute": {
+          "average": 1662,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "kda": {
+          "average": 4.4,
+          "unit": "count",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.8,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "healingPerMinute": {
+          "average": 0,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "damageTakenPerMinute": {
+          "average": 2977,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "rivalstracker",
+        "type": "reference",
+        "url": "https://rivalstracker.com/heroes/emma-frost",
+        "datasetId": null,
+        "reference": "User-provided Celestial+ rolling 180-day snapshot."
+      },
+      "validations": [],
+      "methodologyNotes": "High-rank rolling reference with no supplied platform or sample size. It is not compatible with seasonal Gold evaluation."
+    },
+    {
+      "heroId": "emma-frost",
+      "context": {
+        "type": "rollingRankThreshold",
+        "gameMode": "competitive",
+        "population": {
+          "type": "rankThreshold",
+          "minimumRank": "celestial"
+        },
+        "timeWindow": {
+          "type": "rollingDays",
+          "days": 180
+        }
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4638,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 193802,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1919,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 193802,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0089,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 193802,
+            "players": null
+          }
+        },
+        "kda": {
+          "average": 4.1,
+          "unit": "count",
+          "sampleSize": {
+            "matches": 193802,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.81,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 193802,
+            "players": null
+          }
+        },
+        "damagePerMinute": {
+          "average": 1500,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 193802,
+            "players": null
+          }
+        },
+        "healingPerMinute": {
+          "average": 0.2,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 193802,
+            "players": null
+          }
+        },
+        "damageTakenPerMinute": {
+          "average": 2700,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 193802,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 193802,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "rivalsmeta",
+        "type": "reference",
+        "url": "https://rivalsmeta.com/characters/emma-frost/stats",
+        "datasetId": null,
+        "reference": "codex-clipboard-4710ac68-a1fc-41aa-a3a9-c8b540f524d5.png"
+      },
+      "validations": [],
+      "methodologyNotes": "Celestial+ PC rolling 180-day screenshot. Damage values displayed with K notation are stored at their shown precision: 1.5K as 1,500 and 2.7K as 2,700."
+    },
+    {
+      "heroId": "emma-frost",
+      "context": {
+        "type": "rollingRankThreshold",
+        "gameMode": "competitive",
+        "population": {
+          "type": "rankThreshold",
+          "minimumRank": "celestial"
+        },
+        "timeWindow": {
+          "type": "rollingDays",
+          "days": 90
+        }
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4638,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 113325,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1919,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 113325,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0089,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 113325,
+            "players": null
+          }
+        },
+        "kda": {
+          "average": 4.19,
+          "unit": "count",
+          "sampleSize": {
+            "matches": 113325,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.81,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 113325,
+            "players": null
+          }
+        },
+        "damagePerMinute": {
+          "average": 1600,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 113325,
+            "players": null
+          }
+        },
+        "healingPerMinute": {
+          "average": 0.2,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 113325,
+            "players": null
+          }
+        },
+        "damageTakenPerMinute": {
+          "average": 2800,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 113325,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 113325,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "rivalsmeta",
+        "type": "reference",
+        "url": "https://rivalsmeta.com/characters/emma-frost/stats",
+        "datasetId": null,
+        "reference": "codex-clipboard-54460fc8-c1b1-4df6-b480-c9bf45d3fbef.png"
+      },
+      "validations": [],
+      "methodologyNotes": "Celestial+ PC rolling 90-day screenshot. K-notation values are stored at the precision displayed by the source."
+    },
+    {
+      "heroId": "emma-frost",
+      "context": {
+        "type": "rollingRankThreshold",
+        "gameMode": "competitive",
+        "population": {
+          "type": "rankThreshold",
+          "minimumRank": "celestial"
+        },
+        "timeWindow": {
+          "type": "rollingDays",
+          "days": 30
+        }
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4638,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 25389,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1919,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 25389,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0089,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 25389,
+            "players": null
+          }
+        },
+        "kda": {
+          "average": 4.43,
+          "unit": "count",
+          "sampleSize": {
+            "matches": 25389,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.79,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 25389,
+            "players": null
+          }
+        },
+        "damagePerMinute": {
+          "average": 1700,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 25389,
+            "players": null
+          }
+        },
+        "healingPerMinute": {
+          "average": 0.1,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 25389,
+            "players": null
+          }
+        },
+        "damageTakenPerMinute": {
+          "average": 3000,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 25389,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 25389,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "rivalsmeta",
+        "type": "reference",
+        "url": "https://rivalsmeta.com/characters/emma-frost/stats",
+        "datasetId": null,
+        "reference": "codex-clipboard-e0780a50-0b6a-4014-b7c8-153b71767785.png"
+      },
+      "validations": [],
+      "methodologyNotes": "Celestial+ PC rolling 30-day screenshot. K-notation values are stored at the precision displayed by the source."
+    },
+    {
+      "heroId": "emma-frost",
+      "context": {
+        "type": "rollingRankThreshold",
+        "gameMode": "competitive",
+        "population": {
+          "type": "rankThreshold",
+          "minimumRank": "celestial"
+        },
+        "timeWindow": {
+          "type": "rollingDays",
+          "days": 7
+        }
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4638,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5336,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1919,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5336,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0089,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5336,
+            "players": null
+          }
+        },
+        "kda": {
+          "average": 4.36,
+          "unit": "count",
+          "sampleSize": {
+            "matches": 5336,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.81,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 5336,
+            "players": null
+          }
+        },
+        "damagePerMinute": {
+          "average": 1700,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 5336,
+            "players": null
+          }
+        },
+        "healingPerMinute": {
+          "average": 0.2,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 5336,
+            "players": null
+          }
+        },
+        "damageTakenPerMinute": {
+          "average": 3000,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 5336,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 5336,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "rivalsmeta",
+        "type": "reference",
+        "url": "https://rivalsmeta.com/characters/emma-frost/stats",
+        "datasetId": null,
+        "reference": "codex-clipboard-16b22072-bc2e-4d49-8570-ee03feac2a06.png"
+      },
+      "validations": [],
+      "methodologyNotes": "Celestial+ PC rolling 7-day screenshot. K-notation values are stored at the precision displayed by the source."
+    }
+  ]
+}

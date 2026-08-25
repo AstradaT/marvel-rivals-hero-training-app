@@ -1,8 +1,2459 @@
 {
   "schemaVersion": 2,
-  "datasetVersion": "emma-frost-pilot-2026-08-25",
-  "updatedAt": "2026-08-25",
+  "datasetVersion": "season-9-5-gold-rivalstracker-2026-08-25",
+  "updatedAt": "2026-08-25T14:58:14.626Z",
   "records": [
+    {
+      "heroId": "ultron",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.6007,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2563,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0458,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2563,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0019,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2563,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 2563,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/ultron",
+        "datasetId": "ultron-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 1,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 1 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "magik",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5886,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6723,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1202,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6723,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0796,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6723,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 6723,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/magik",
+        "datasetId": "magik-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "S",
+        "heroRank": 2,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier S, displayed rank 2 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "peni-parker",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5765,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3548,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0635,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3548,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.1966,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3548,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 3548,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/peni-parker",
+        "datasetId": "peni-parker-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "S",
+        "heroRank": 3,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier S, displayed rank 3 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "mantis",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.574,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5897,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1055,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5897,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.008,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5897,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 5897,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/mantis",
+        "datasetId": "mantis-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "S",
+        "heroRank": 4,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier S, displayed rank 4 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "daredevil",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5642,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2131,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0381,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2131,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0377,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2131,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 2131,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/daredevil",
+        "datasetId": "daredevil-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 5,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 5 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "black-cat",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5564,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2709,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0484,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2709,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.1579,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2709,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 2709,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/black-cat",
+        "datasetId": "black-cat-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "S",
+        "heroRank": 6,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier S, displayed rank 6 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "the-thing",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5462,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 7259,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1298,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 7259,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.1551,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 7259,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 7259,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/the-thing",
+        "datasetId": "the-thing-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "S",
+        "heroRank": 7,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier S, displayed rank 7 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "black-panther",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5432,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2165,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0387,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2165,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.2436,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2165,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 2165,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/black-panther",
+        "datasetId": "black-panther-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 8,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 8 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "rocket-raccoon",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5415,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 10163,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1818,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 10163,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0066,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 10163,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 10163,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/rocket-raccoon",
+        "datasetId": "rocket-raccoon-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "S",
+        "heroRank": 9,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier S, displayed rank 9 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "storm",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5412,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 1927,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0345,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 1927,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0019,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 1927,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 1927,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/storm",
+        "datasetId": "storm-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 10,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 10 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "iron-fist",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5377,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2996,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0536,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2996,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0148,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2996,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 2996,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/iron-fist",
+        "datasetId": "iron-fist-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 11,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 11 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "the-hood",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.534,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 18373,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.3286,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 18373,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0898,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 18373,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 18373,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/the-hood",
+        "datasetId": "the-hood-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "S",
+        "heroRank": 12,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier S, displayed rank 12 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "angela",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5331,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2055,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0368,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2055,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0083,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2055,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 2055,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/angela",
+        "datasetId": "angela-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 13,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 13 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "iron-man",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5331,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4086,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0731,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4086,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0161,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4086,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 4086,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/iron-man",
+        "datasetId": "iron-man-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 14,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 14 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "blade",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5305,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3472,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0621,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3472,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0211,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3472,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 3472,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/blade",
+        "datasetId": "blade-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 15,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 15 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "hulk",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5261,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2847,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0509,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2847,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0025,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2847,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 2847,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/hulk",
+        "datasetId": "hulk-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 16,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 16 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "spider-man",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5248,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5256,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.094,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5256,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.249,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5256,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 5256,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/spider-man",
+        "datasetId": "spider-man-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 17,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 17 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "mister-fantastic",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5209,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2350,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.042,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2350,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.003,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2350,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 2350,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/mister-fantastic",
+        "datasetId": "mister-fantastic-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 18,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 18 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "thor",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5194,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4606,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0824,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4606,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0063,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4606,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 4606,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/thor",
+        "datasetId": "thor-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 19,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 19 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "winter-soldier",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5165,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 9371,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1676,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 9371,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0361,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 9371,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 9371,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/winter-soldier",
+        "datasetId": "winter-soldier-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 20,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 20 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "hela",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5098,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5114,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0915,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5114,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0498,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5114,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 5114,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/hela",
+        "datasetId": "hela-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 21,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 21 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "adam-warlock",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5082,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 1545,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0276,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 1545,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.001,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 1545,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 1545,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/adam-warlock",
+        "datasetId": "adam-warlock-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 22,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 22 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "groot",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5065,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3472,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0621,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3472,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0815,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3472,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 3472,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/groot",
+        "datasetId": "groot-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 23,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 23 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "magneto",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5064,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 17688,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.3163,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 17688,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0638,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 17688,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 17688,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/magneto",
+        "datasetId": "magneto-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 24,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 24 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "human-torch",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5045,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 1481,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0265,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 1481,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0022,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 1481,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 1481,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/human-torch",
+        "datasetId": "human-torch-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 25,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 25 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "loki",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4994,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2541,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0454,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2541,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0035,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2541,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 2541,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/loki",
+        "datasetId": "loki-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 26,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 26 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "cloak-and-dagger",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4993,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 22290,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.3986,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 22290,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.1272,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 22290,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 22290,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/cloak-&-dagger",
+        "datasetId": "cloak-and-dagger-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 27,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 27 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "rogue",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4931,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3507,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0627,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3507,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0044,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3507,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 3507,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/rogue",
+        "datasetId": "rogue-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 28,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 28 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "psylocke",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4923,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2381,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0426,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2381,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0035,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2381,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 2381,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/psylocke",
+        "datasetId": "psylocke-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 29,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 29 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "wolverine",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4912,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 1612,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0288,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 1612,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0069,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 1612,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 1612,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/wolverine",
+        "datasetId": "wolverine-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "C",
+        "heroRank": 30,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier C, displayed rank 30 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "devil-dinosaur",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4907,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6744,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1206,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6744,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0519,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6744,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 6744,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/devil-dinosaur",
+        "datasetId": "devil-dinosaur-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 31,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 31 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "venom",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4904,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6574,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1176,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6574,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0631,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6574,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 6574,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/venom",
+        "datasetId": "venom-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 32,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 32 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "jubilee",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4903,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 19433,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.3476,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 19433,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0391,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 19433,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 19433,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/jubilee",
+        "datasetId": "jubilee-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 33,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 33 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "elsa-bloodstone",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4902,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4205,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0752,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4205,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0396,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4205,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 4205,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/elsa-bloodstone",
+        "datasetId": "elsa-bloodstone-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 34,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 34 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "black-widow",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4887,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3800,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.068,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3800,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0087,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3800,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 3800,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/black-widow",
+        "datasetId": "black-widow-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "C",
+        "heroRank": 35,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier C, displayed rank 35 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "hawkeye",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4835,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 1696,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0303,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 1696,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0035,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 1696,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 1696,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/hawkeye",
+        "datasetId": "hawkeye-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "C",
+        "heroRank": 36,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier C, displayed rank 36 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "moon-knight",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4831,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6904,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1235,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6904,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.028,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6904,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 6904,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/moon-knight",
+        "datasetId": "moon-knight-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 37,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 37 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "star-lord",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4829,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3170,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0567,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3170,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0036,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3170,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 3170,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/star-lord",
+        "datasetId": "star-lord-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "C",
+        "heroRank": 38,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier C, displayed rank 38 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "doctor-strange",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4809,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 8447,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1511,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 8447,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.01,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 8447,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 8447,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/doctor-strange",
+        "datasetId": "doctor-strange-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 39,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 39 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "namor",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4782,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6627,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1185,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6627,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.1689,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6627,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 6627,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/namor",
+        "datasetId": "namor-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 40,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 40 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "captain-america",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4758,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 1731,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.031,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 1731,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0022,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 1731,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 1731,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/captain-america",
+        "datasetId": "captain-america-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "D",
+        "heroRank": 41,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier D, displayed rank 41 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "invisible-woman",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4754,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 11971,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.2141,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 11971,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0125,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 11971,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 11971,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/invisible-woman",
+        "datasetId": "invisible-woman-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 42,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 42 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "white-fox",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4751,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 10342,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.185,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 10342,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.012,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 10342,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 10342,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/white-fox",
+        "datasetId": "white-fox-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "C",
+        "heroRank": 43,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier C, displayed rank 43 of 55, platform not stated, region not stated."
+    },
     {
       "heroId": "emma-frost",
       "context": {
@@ -15,27 +2466,47 @@
         "winRate": {
           "average": 0.4737,
           "unit": "ratio",
-          "sampleSize": { "matches": 11001, "players": null }
+          "sampleSize": {
+            "matches": 11001,
+            "players": null
+          }
         },
         "pickRate": {
           "average": 0.1967,
           "unit": "ratio",
-          "sampleSize": { "matches": 11001, "players": null }
+          "sampleSize": {
+            "matches": 11001,
+            "players": null
+          }
         },
         "banRate": {
           "average": 0.0183,
           "unit": "ratio",
-          "sampleSize": { "matches": 11001, "players": null }
+          "sampleSize": {
+            "matches": 11001,
+            "players": null
+          }
         }
       },
-      "sampleSize": { "matches": 11001, "players": null },
-      "collectedAt": "2026-08-25",
+      "sampleSize": {
+        "matches": 11001,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
       "source": {
         "id": "rivalstracker",
         "type": "primary",
         "url": "https://rivalstracker.com/heroes/emma-frost",
-        "datasetId": null,
-        "reference": "User-provided Season 9.5 Gold snapshot; reported as updated approximately three hours before collection."
+        "datasetId": "emma-frost-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "C",
+        "heroRank": 44,
+        "heroPoolSize": 55
       },
       "validations": [
         {
@@ -50,20 +2521,32 @@
             "winRate": {
               "average": 0.4737,
               "unit": "ratio",
-              "sampleSize": { "matches": 11001, "players": null }
+              "sampleSize": {
+                "matches": 11001,
+                "players": null
+              }
             },
             "pickRate": {
               "average": 0.1967,
               "unit": "ratio",
-              "sampleSize": { "matches": 11001, "players": null }
+              "sampleSize": {
+                "matches": 11001,
+                "players": null
+              }
             },
             "banRate": {
               "average": 0.0366,
               "unit": "ratio",
-              "sampleSize": { "matches": 11001, "players": null }
+              "sampleSize": {
+                "matches": 11001,
+                "players": null
+              }
             }
           },
-          "sampleSize": { "matches": 11001, "players": null },
+          "sampleSize": {
+            "matches": 11001,
+            "players": null
+          },
           "collectedAt": "2026-08-25",
           "methodologyNotes": "Competitive Gold Season 9.5 screenshot. It displays Tier B and a 3.66% ban rate; both differ from the typed primary snapshot and are intentionally not reconciled or averaged."
         },
@@ -79,40 +2562,741 @@
             "winRate": {
               "average": 0.4944,
               "unit": "ratio",
-              "sampleSize": { "matches": null, "players": null }
+              "sampleSize": {
+                "matches": null,
+                "players": null
+              }
             },
             "pickRate": {
               "average": 0.144,
               "unit": "ratio",
-              "sampleSize": { "matches": null, "players": null }
+              "sampleSize": {
+                "matches": null,
+                "players": null
+              }
             }
           },
-          "sampleSize": { "matches": null, "players": null },
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          },
           "collectedAt": "2026-08-04",
           "methodologyNotes": "Official-site update time was 2026-08-04. No sample size was supplied."
         }
       ],
-      "methodologyNotes": "Primary values: Tier C, rank 44 of 55, 47.37% win rate, 19.67% pick rate, 1.83% ban rate, and 11,001 matches. Tier and rank are retained as notes because they are not proficiency metrics. Validation-source differences remain separate."
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier C, displayed rank 44 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "deadpool-duelist",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4723,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 1861,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0333,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 1861,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0018,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 1861,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 1861,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/deadpool-duelist",
+        "datasetId": "deadpool-duelist-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "D",
+        "heroRank": 45,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier D, displayed rank 45 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "scarlet-witch",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4722,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 8118,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1452,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 8118,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0177,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 8118,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 8118,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/scarlet-witch",
+        "datasetId": "scarlet-witch-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "C",
+        "heroRank": 46,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier C, displayed rank 46 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "gambit",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4701,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 9826,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1757,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 9826,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.1228,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 9826,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 9826,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/gambit",
+        "datasetId": "gambit-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "C",
+        "heroRank": 47,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier C, displayed rank 47 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "luna-snow",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4643,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 9441,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1688,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 9441,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0163,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 9441,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 9441,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/luna-snow",
+        "datasetId": "luna-snow-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "C",
+        "heroRank": 48,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier C, displayed rank 48 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "the-punisher",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4634,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 7658,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.137,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 7658,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.039,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 7658,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 7658,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/the-punisher",
+        "datasetId": "the-punisher-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "C",
+        "heroRank": 49,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier C, displayed rank 49 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "cyclops",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.461,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 9508,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.17,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 9508,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0382,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 9508,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 9508,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/cyclops",
+        "datasetId": "cyclops-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "C",
+        "heroRank": 50,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier C, displayed rank 50 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "phoenix",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.446,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3499,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0626,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3499,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0057,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3499,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 3499,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/phoenix",
+        "datasetId": "phoenix-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "D",
+        "heroRank": 51,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier D, displayed rank 51 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "squirrel-girl",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4409,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6033,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1079,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6033,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0312,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6033,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 6033,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/squirrel-girl",
+        "datasetId": "squirrel-girl-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "D",
+        "heroRank": 52,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier D, displayed rank 52 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "deadpool-strategist",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4402,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4252,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.076,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4252,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0019,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4252,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 4252,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/deadpool-strategist",
+        "datasetId": "deadpool-strategist-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "D",
+        "heroRank": 53,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier D, displayed rank 53 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "deadpool-vanguard",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4339,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2585,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0462,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2585,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0019,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 2585,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 2585,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/deadpool-vanguard",
+        "datasetId": "deadpool-vanguard-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "D",
+        "heroRank": 54,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier D, displayed rank 54 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "jeff-the-land-shark",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "gold"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4229,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 7929,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1418,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 7929,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0065,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 7929,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 7929,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T14:58:14.626Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/jeff-the-land-shark",
+        "datasetId": "jeff-the-land-shark-s9-5-gold",
+        "reference": "Source updated at 2026-08-25T10:04:58.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T10:04:58.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "D",
+        "heroRank": 55,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier D, displayed rank 55 of 55, platform not stated, region not stated."
     },
     {
       "heroId": "emma-frost",
       "context": {
         "type": "rollingRankThreshold",
         "gameMode": "competitive",
-        "population": { "type": "rankThreshold", "minimumRank": "celestial" },
-        "timeWindow": { "type": "rollingDays", "days": 180 }
+        "population": {
+          "type": "rankThreshold",
+          "minimumRank": "celestial"
+        },
+        "timeWindow": {
+          "type": "rollingDays",
+          "days": 180
+        }
       },
       "metrics": {
-        "winRate": { "average": 0.454, "unit": "ratio", "sampleSize": { "matches": null, "players": null } },
-        "pickRate": { "average": 0.206, "unit": "ratio", "sampleSize": { "matches": null, "players": null } },
-        "banRate": { "average": 0.011, "unit": "ratio", "sampleSize": { "matches": null, "players": null } },
-        "damagePerMinute": { "average": 1662, "unit": "perMinute", "sampleSize": { "matches": null, "players": null } },
-        "kda": { "average": 4.4, "unit": "count", "sampleSize": { "matches": null, "players": null } },
-        "killsPerMinute": { "average": 1.8, "unit": "perMinute", "sampleSize": { "matches": null, "players": null } },
-        "healingPerMinute": { "average": 0, "unit": "perMinute", "sampleSize": { "matches": null, "players": null } },
-        "damageTakenPerMinute": { "average": 2977, "unit": "perMinute", "sampleSize": { "matches": null, "players": null } }
+        "winRate": {
+          "average": 0.454,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.206,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.011,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "damagePerMinute": {
+          "average": 1662,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "kda": {
+          "average": 4.4,
+          "unit": "count",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.8,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "healingPerMinute": {
+          "average": 0,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "damageTakenPerMinute": {
+          "average": 2977,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
       },
-      "sampleSize": { "matches": null, "players": null },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
       "collectedAt": "2026-08-25",
       "source": {
         "id": "rivalstracker",
@@ -129,22 +3313,93 @@
       "context": {
         "type": "rollingRankThreshold",
         "gameMode": "competitive",
-        "population": { "type": "rankThreshold", "minimumRank": "celestial" },
-        "timeWindow": { "type": "rollingDays", "days": 180 }
+        "population": {
+          "type": "rankThreshold",
+          "minimumRank": "celestial"
+        },
+        "timeWindow": {
+          "type": "rollingDays",
+          "days": 180
+        }
       },
       "metrics": {
-        "winRate": { "average": 0.4638, "unit": "ratio", "sampleSize": { "matches": 193802, "players": null } },
-        "pickRate": { "average": 0.1919, "unit": "ratio", "sampleSize": { "matches": 193802, "players": null } },
-        "banRate": { "average": 0.0089, "unit": "ratio", "sampleSize": { "matches": 193802, "players": null } },
-        "kda": { "average": 4.1, "unit": "count", "sampleSize": { "matches": 193802, "players": null } },
-        "killsPerMinute": { "average": 1.81, "unit": "perMinute", "sampleSize": { "matches": 193802, "players": null } },
-        "damagePerMinute": { "average": 1500, "unit": "perMinute", "sampleSize": { "matches": 193802, "players": null } },
-        "healingPerMinute": { "average": 0.2, "unit": "perMinute", "sampleSize": { "matches": 193802, "players": null } },
-        "damageTakenPerMinute": { "average": 2700, "unit": "perMinute", "sampleSize": { "matches": 193802, "players": null } }
+        "winRate": {
+          "average": 0.4638,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 193802,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1919,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 193802,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0089,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 193802,
+            "players": null
+          }
+        },
+        "kda": {
+          "average": 4.1,
+          "unit": "count",
+          "sampleSize": {
+            "matches": 193802,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.81,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 193802,
+            "players": null
+          }
+        },
+        "damagePerMinute": {
+          "average": 1500,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 193802,
+            "players": null
+          }
+        },
+        "healingPerMinute": {
+          "average": 0.2,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 193802,
+            "players": null
+          }
+        },
+        "damageTakenPerMinute": {
+          "average": 2700,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 193802,
+            "players": null
+          }
+        }
       },
-      "sampleSize": { "matches": 193802, "players": null },
+      "sampleSize": {
+        "matches": 193802,
+        "players": null
+      },
       "collectedAt": "2026-08-25",
-      "source": { "id": "rivalsmeta", "type": "reference", "url": "https://rivalsmeta.com/characters/emma-frost/stats", "datasetId": null, "reference": "codex-clipboard-4710ac68-a1fc-41aa-a3a9-c8b540f524d5.png" },
+      "source": {
+        "id": "rivalsmeta",
+        "type": "reference",
+        "url": "https://rivalsmeta.com/characters/emma-frost/stats",
+        "datasetId": null,
+        "reference": "codex-clipboard-4710ac68-a1fc-41aa-a3a9-c8b540f524d5.png"
+      },
       "validations": [],
       "methodologyNotes": "Celestial+ PC rolling 180-day screenshot. Damage values displayed with K notation are stored at their shown precision: 1.5K as 1,500 and 2.7K as 2,700."
     },
@@ -153,22 +3408,93 @@
       "context": {
         "type": "rollingRankThreshold",
         "gameMode": "competitive",
-        "population": { "type": "rankThreshold", "minimumRank": "celestial" },
-        "timeWindow": { "type": "rollingDays", "days": 90 }
+        "population": {
+          "type": "rankThreshold",
+          "minimumRank": "celestial"
+        },
+        "timeWindow": {
+          "type": "rollingDays",
+          "days": 90
+        }
       },
       "metrics": {
-        "winRate": { "average": 0.4638, "unit": "ratio", "sampleSize": { "matches": 113325, "players": null } },
-        "pickRate": { "average": 0.1919, "unit": "ratio", "sampleSize": { "matches": 113325, "players": null } },
-        "banRate": { "average": 0.0089, "unit": "ratio", "sampleSize": { "matches": 113325, "players": null } },
-        "kda": { "average": 4.19, "unit": "count", "sampleSize": { "matches": 113325, "players": null } },
-        "killsPerMinute": { "average": 1.81, "unit": "perMinute", "sampleSize": { "matches": 113325, "players": null } },
-        "damagePerMinute": { "average": 1600, "unit": "perMinute", "sampleSize": { "matches": 113325, "players": null } },
-        "healingPerMinute": { "average": 0.2, "unit": "perMinute", "sampleSize": { "matches": 113325, "players": null } },
-        "damageTakenPerMinute": { "average": 2800, "unit": "perMinute", "sampleSize": { "matches": 113325, "players": null } }
+        "winRate": {
+          "average": 0.4638,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 113325,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1919,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 113325,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0089,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 113325,
+            "players": null
+          }
+        },
+        "kda": {
+          "average": 4.19,
+          "unit": "count",
+          "sampleSize": {
+            "matches": 113325,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.81,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 113325,
+            "players": null
+          }
+        },
+        "damagePerMinute": {
+          "average": 1600,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 113325,
+            "players": null
+          }
+        },
+        "healingPerMinute": {
+          "average": 0.2,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 113325,
+            "players": null
+          }
+        },
+        "damageTakenPerMinute": {
+          "average": 2800,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 113325,
+            "players": null
+          }
+        }
       },
-      "sampleSize": { "matches": 113325, "players": null },
+      "sampleSize": {
+        "matches": 113325,
+        "players": null
+      },
       "collectedAt": "2026-08-25",
-      "source": { "id": "rivalsmeta", "type": "reference", "url": "https://rivalsmeta.com/characters/emma-frost/stats", "datasetId": null, "reference": "codex-clipboard-54460fc8-c1b1-4df6-b480-c9bf45d3fbef.png" },
+      "source": {
+        "id": "rivalsmeta",
+        "type": "reference",
+        "url": "https://rivalsmeta.com/characters/emma-frost/stats",
+        "datasetId": null,
+        "reference": "codex-clipboard-54460fc8-c1b1-4df6-b480-c9bf45d3fbef.png"
+      },
       "validations": [],
       "methodologyNotes": "Celestial+ PC rolling 90-day screenshot. K-notation values are stored at the precision displayed by the source."
     },
@@ -177,22 +3503,93 @@
       "context": {
         "type": "rollingRankThreshold",
         "gameMode": "competitive",
-        "population": { "type": "rankThreshold", "minimumRank": "celestial" },
-        "timeWindow": { "type": "rollingDays", "days": 30 }
+        "population": {
+          "type": "rankThreshold",
+          "minimumRank": "celestial"
+        },
+        "timeWindow": {
+          "type": "rollingDays",
+          "days": 30
+        }
       },
       "metrics": {
-        "winRate": { "average": 0.4638, "unit": "ratio", "sampleSize": { "matches": 25389, "players": null } },
-        "pickRate": { "average": 0.1919, "unit": "ratio", "sampleSize": { "matches": 25389, "players": null } },
-        "banRate": { "average": 0.0089, "unit": "ratio", "sampleSize": { "matches": 25389, "players": null } },
-        "kda": { "average": 4.43, "unit": "count", "sampleSize": { "matches": 25389, "players": null } },
-        "killsPerMinute": { "average": 1.79, "unit": "perMinute", "sampleSize": { "matches": 25389, "players": null } },
-        "damagePerMinute": { "average": 1700, "unit": "perMinute", "sampleSize": { "matches": 25389, "players": null } },
-        "healingPerMinute": { "average": 0.1, "unit": "perMinute", "sampleSize": { "matches": 25389, "players": null } },
-        "damageTakenPerMinute": { "average": 3000, "unit": "perMinute", "sampleSize": { "matches": 25389, "players": null } }
+        "winRate": {
+          "average": 0.4638,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 25389,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1919,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 25389,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0089,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 25389,
+            "players": null
+          }
+        },
+        "kda": {
+          "average": 4.43,
+          "unit": "count",
+          "sampleSize": {
+            "matches": 25389,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.79,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 25389,
+            "players": null
+          }
+        },
+        "damagePerMinute": {
+          "average": 1700,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 25389,
+            "players": null
+          }
+        },
+        "healingPerMinute": {
+          "average": 0.1,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 25389,
+            "players": null
+          }
+        },
+        "damageTakenPerMinute": {
+          "average": 3000,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 25389,
+            "players": null
+          }
+        }
       },
-      "sampleSize": { "matches": 25389, "players": null },
+      "sampleSize": {
+        "matches": 25389,
+        "players": null
+      },
       "collectedAt": "2026-08-25",
-      "source": { "id": "rivalsmeta", "type": "reference", "url": "https://rivalsmeta.com/characters/emma-frost/stats", "datasetId": null, "reference": "codex-clipboard-e0780a50-0b6a-4014-b7c8-153b71767785.png" },
+      "source": {
+        "id": "rivalsmeta",
+        "type": "reference",
+        "url": "https://rivalsmeta.com/characters/emma-frost/stats",
+        "datasetId": null,
+        "reference": "codex-clipboard-e0780a50-0b6a-4014-b7c8-153b71767785.png"
+      },
       "validations": [],
       "methodologyNotes": "Celestial+ PC rolling 30-day screenshot. K-notation values are stored at the precision displayed by the source."
     },
@@ -201,22 +3598,93 @@
       "context": {
         "type": "rollingRankThreshold",
         "gameMode": "competitive",
-        "population": { "type": "rankThreshold", "minimumRank": "celestial" },
-        "timeWindow": { "type": "rollingDays", "days": 7 }
+        "population": {
+          "type": "rankThreshold",
+          "minimumRank": "celestial"
+        },
+        "timeWindow": {
+          "type": "rollingDays",
+          "days": 7
+        }
       },
       "metrics": {
-        "winRate": { "average": 0.4638, "unit": "ratio", "sampleSize": { "matches": 5336, "players": null } },
-        "pickRate": { "average": 0.1919, "unit": "ratio", "sampleSize": { "matches": 5336, "players": null } },
-        "banRate": { "average": 0.0089, "unit": "ratio", "sampleSize": { "matches": 5336, "players": null } },
-        "kda": { "average": 4.36, "unit": "count", "sampleSize": { "matches": 5336, "players": null } },
-        "killsPerMinute": { "average": 1.81, "unit": "perMinute", "sampleSize": { "matches": 5336, "players": null } },
-        "damagePerMinute": { "average": 1700, "unit": "perMinute", "sampleSize": { "matches": 5336, "players": null } },
-        "healingPerMinute": { "average": 0.2, "unit": "perMinute", "sampleSize": { "matches": 5336, "players": null } },
-        "damageTakenPerMinute": { "average": 3000, "unit": "perMinute", "sampleSize": { "matches": 5336, "players": null } }
+        "winRate": {
+          "average": 0.4638,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5336,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1919,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5336,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0089,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5336,
+            "players": null
+          }
+        },
+        "kda": {
+          "average": 4.36,
+          "unit": "count",
+          "sampleSize": {
+            "matches": 5336,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.81,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 5336,
+            "players": null
+          }
+        },
+        "damagePerMinute": {
+          "average": 1700,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 5336,
+            "players": null
+          }
+        },
+        "healingPerMinute": {
+          "average": 0.2,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 5336,
+            "players": null
+          }
+        },
+        "damageTakenPerMinute": {
+          "average": 3000,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 5336,
+            "players": null
+          }
+        }
       },
-      "sampleSize": { "matches": 5336, "players": null },
+      "sampleSize": {
+        "matches": 5336,
+        "players": null
+      },
       "collectedAt": "2026-08-25",
-      "source": { "id": "rivalsmeta", "type": "reference", "url": "https://rivalsmeta.com/characters/emma-frost/stats", "datasetId": null, "reference": "codex-clipboard-16b22072-bc2e-4d49-8570-ee03feac2a06.png" },
+      "source": {
+        "id": "rivalsmeta",
+        "type": "reference",
+        "url": "https://rivalsmeta.com/characters/emma-frost/stats",
+        "datasetId": null,
+        "reference": "codex-clipboard-16b22072-bc2e-4d49-8570-ee03feac2a06.png"
+      },
       "validations": [],
       "methodologyNotes": "Celestial+ PC rolling 7-day screenshot. K-notation values are stored at the precision displayed by the source."
     }

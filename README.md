@@ -29,7 +29,7 @@ The project began as a simple hero roulette and is being developed incrementally
 - Stable hero IDs and versioned saved data for future expansion
 - Versioned local player-data foundation for optional hero stats and training history
 - Optional role-based manual hero-stat entry for Quick Play, Competitive, overall, and current-season snapshots
-- Versioned benchmark catalog with an initial sourced Emma Frost pilot dataset
+- Versioned benchmark catalog with the complete sourced Season 9.5 Gold dataset
 - Visible role-based peer evaluation with separate skill and confidence results
 - Strict Competitive proficiency resolver with separate Quick Play training evidence
 
@@ -53,7 +53,8 @@ An internet connection is currently required for Tailwind CSS, which is loaded f
 .
 |-- index.html             # Page structure and interface
 |-- app.js                 # Roulette, practice rules, and UI behavior
-|-- data/                  # Hero roster, stat models, and benchmark catalog
+|-- data/                  # Hero roster, source CSV, supplemental records, and generated catalog
+|-- scripts/               # Reproducible benchmark catalog generator
 |-- services/              # Practice, preferences, player data, and hero selection
 |-- tests/                 # Dependency-free Node test suite
 |-- style.css              # Custom roulette animation styling
@@ -88,7 +89,15 @@ Quick Play data is stored independently and remains useful for experience, recen
 
 Seasonal rank records and rolling high-elo records are different schema contexts. A `Celestial+ / rolling 180 days` record can be retained as reference data, but it cannot satisfy a seasonal Gold peer lookup. Benchmark records preserve a primary source, collection date, sample metadata, methodology notes, and optional validation sources. Validation values remain separate rather than being averaged into the primary value.
 
-The initial pilot contains Emma Frost Season 9.5 Competitive Gold data plus separate Celestial+ rolling references. RivalsTracker is the primary seasonal source; RivalsMeta and the official Marvel Rivals snapshot remain independent validations. Conflicting tier and ban-rate values are documented in the record instead of being silently reconciled. Each source now includes its supplied public URL alongside the snapshot reference.
+The production source CSV contains 55 Season 9.5 Competitive Gold entries from RivalsTracker, with win rate, pick rate, ban rate, match sample, tier, displayed rank, timestamps, and hero-specific source URLs. The generated catalog combines those entries with five separate Emma Frost Celestial+ rolling references. Emma's RivalsMeta and official Marvel Rivals snapshots remain independent validations and are never averaged into the primary values.
+
+RivalsTracker exposes Deadpool's Duelist, Strategist, and Vanguard forms as separate source entries. The CSV and generated catalog preserve all three IDs. The app roster currently uses one shared `deadpool` identity, so Deadpool intentionally remains unrated until player statistics can also be stored per form; the source values are not merged or averaged.
+
+Regenerate the catalog after updating the CSV or supplemental records with:
+
+```bash
+npm run build:benchmarks
+```
 
 Player-data schema version 2 uses canonical internal units:
 
@@ -138,7 +147,7 @@ Planned capabilities include:
 - Weighted hero selection that balances improvement, variety, repetition, and fun
 - A data-source boundary that can integrate with a third-party Marvel Rivals statistics provider
 
-The player-data layer keeps Quick Play and Competitive snapshots separate across overall and per-season time horizons. For proficiency, the resolver uses Competitive data only, progressively favors the current season, and uses capped overall history as supporting evidence. Quick Play remains available as non-comparative training evidence. Manual stat entry remains optional. Quick Random and Training use independent selector entry points, although Training remains uniformly random for now. The production benchmark catalog currently contains only the sourced Emma Frost pilot records. Evaluation is displayed for compatible saved stats but is not used for selection yet, and smart weighting is not implemented.
+The player-data layer keeps Quick Play and Competitive snapshots separate across overall and per-season time horizons. For proficiency, the resolver uses Competitive data only, progressively favors the current season, and uses capped overall history as supporting evidence. Quick Play remains available as non-comparative training evidence. Manual stat entry remains optional. Quick Random and Training use independent selector entry points, although Training remains uniformly random for now. The production catalog now covers every directly compatible roster hero in Season 9.5 Gold. Evaluation is displayed for compatible saved stats but is not used for selection yet, and smart weighting is not implemented.
 
 ## Data and privacy
 

@@ -209,6 +209,11 @@ function formatPercentage(value) {
     return `${(Number(value) * 100).toFixed(1)}%`;
 }
 
+function formatSourceDate(value) {
+    const date = new Date(value);
+    return Number.isNaN(date.getTime()) ? value : date.toISOString().slice(0, 10);
+}
+
 function setEvaluationBadge(state, label) {
     const stateClasses = {
         known: ['border-emerald-700', 'bg-emerald-950/40', 'text-emerald-300'],
@@ -303,14 +308,14 @@ function updateHeroEvaluation() {
 
     if (source?.url) {
         heroEvaluationSource.href = source.url;
-        heroEvaluationSource.innerText = `${source.id} · ${resolved.benchmark.collectedAt} · ${resolved.benchmark.sampleSize.matches.toLocaleString()} matches`;
+        heroEvaluationSource.innerText = `${source.id} · ${formatSourceDate(resolved.benchmark.collectedAt)} · ${resolved.benchmark.sampleSize.matches.toLocaleString()} matches`;
         heroEvaluationSourceRow.classList.remove('hidden');
     }
 }
 
 async function loadBenchmarkCatalog() {
     try {
-        const response = await fetch('data/benchmarks.json');
+        const response = await fetch('data/benchmarks.json', { cache: 'no-store' });
         if (!response.ok) throw new Error(`Benchmark request failed: ${response.status}`);
 
         activeBenchmarkCatalog = benchmarkCatalog.create(await response.json());

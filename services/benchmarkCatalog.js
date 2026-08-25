@@ -44,6 +44,23 @@ const benchmarkCatalog = (() => {
         };
     }
 
+    function sanitizeSourceMetadata(metadata) {
+        if (!isPlainObject(metadata)) return null;
+
+        return {
+            sourceUpdatedAt: typeof metadata.sourceUpdatedAt === 'string'
+                ? metadata.sourceUpdatedAt.trim() || null
+                : null,
+            platform: normalizeId(metadata.platform),
+            region: normalizeId(metadata.region),
+            tierLabel: typeof metadata.tierLabel === 'string'
+                ? metadata.tierLabel.trim() || null
+                : null,
+            heroRank: sanitizeSampleSize({ matches: metadata.heroRank }).matches,
+            heroPoolSize: sanitizeSampleSize({ matches: metadata.heroPoolSize }).matches
+        };
+    }
+
     function sanitizeMetrics(metrics) {
         if (!isPlainObject(metrics)) return {};
 
@@ -149,6 +166,7 @@ const benchmarkCatalog = (() => {
             sampleSize: sanitizeSampleSize(record.sampleSize),
             collectedAt,
             source,
+            sourceMetadata: sanitizeSourceMetadata(record.sourceMetadata),
             validations,
             methodologyNotes: typeof record.methodologyNotes === 'string'
                 ? record.methodologyNotes.trim() || null
