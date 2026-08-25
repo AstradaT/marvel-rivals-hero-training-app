@@ -86,6 +86,13 @@ test('bare numeric season labels normalize to benchmark-compatible IDs', () => {
     assert.equal(harness.evaluate("manualStats.normalizeSeasonId('nine')"), null);
     assert.equal(harness.evaluate("manualStats.formatSeasonInputValue('season-9-5')"), '9.5');
     assert.equal(harness.evaluate("manualStats.formatSeasonInputValue('season-9')"), '9');
+    assert.deepEqual(
+        JSON.parse(harness.evaluate('JSON.stringify(manualStats.validCompetitiveRanks)')),
+        [
+            'Bronze', 'Silver', 'Gold', 'Platinum', 'Diamond',
+            'Grandmaster', 'Celestial', 'Eternity', 'One Above All'
+        ]
+    );
 });
 
 test('manual overall Quick Play stats remain independent from season Competitive stats', () => {
@@ -168,5 +175,13 @@ test('manual stats reject invalid values before they reach storage', () => {
             metrics: { winRate: 101 }
         })`),
         /Win rate cannot be greater than 100%/
+    );
+    assert.throws(
+        () => harness.evaluate(`manualStats.createUpdatedPlayerData(playerData, {
+            heroId: 'magneto', scope: 'season', seasonId: '9.5',
+            mode: 'competitive', competitiveRank: 'Celestial+',
+            matchesPlayed: 3, metrics: { winRate: 50 }
+        })`),
+        /exact Competitive rank/
     );
 });

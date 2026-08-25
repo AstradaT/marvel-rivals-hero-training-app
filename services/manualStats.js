@@ -1,6 +1,10 @@
 const manualStats = (() => {
     const VALID_MODES = ['quickPlay', 'competitive'];
     const VALID_SCOPES = ['overall', 'season'];
+    const VALID_COMPETITIVE_RANKS = [
+        'Bronze', 'Silver', 'Gold', 'Platinum', 'Diamond',
+        'Grandmaster', 'Celestial', 'Eternity', 'One Above All'
+    ];
 
     function normalizeSeasonId(value) {
         if (typeof value !== 'string' && typeof value !== 'number') return null;
@@ -83,6 +87,9 @@ const manualStats = (() => {
                 ? entry.competitiveRank.trim()
                 : '';
             if (entry.mode === 'competitive' && competitiveRank) {
+                if (!VALID_COMPETITIVE_RANKS.includes(competitiveRank)) {
+                    throw new Error('Choose an exact Competitive rank.');
+                }
                 nextPlayerData.profile.competitiveRanks[seasonId] = competitiveRank;
             }
         }
@@ -96,5 +103,10 @@ const manualStats = (() => {
         return nextPlayerData;
     }
 
-    return { createUpdatedPlayerData, formatSeasonInputValue, normalizeSeasonId };
+    return {
+        createUpdatedPlayerData,
+        formatSeasonInputValue,
+        normalizeSeasonId,
+        validCompetitiveRanks: [...VALID_COMPETITIVE_RANKS]
+    };
 })();

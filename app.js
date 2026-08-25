@@ -34,6 +34,8 @@ const practicePanel = document.getElementById('practice-panel');
 const practiceStatus = document.getElementById('practice-status');
 const practiceCount = document.getElementById('practice-count');
 const practiceProgress = document.getElementById('practice-progress');
+const trainingRecommendation = document.getElementById('training-recommendation');
+const trainingRecommendationMessage = document.getElementById('training-recommendation-message');
 const matchCompleteBtn = document.getElementById('match-complete-btn');
 const undoMatchBtn = document.getElementById('undo-match-btn');
 const extendBtn = document.getElementById('extend-btn');
@@ -215,6 +217,43 @@ function hasSavedHeroStats(hero) {
     return hasOverallStats || hasSeasonStats;
 }
 
+function getPriorityEvaluation(hero) {
+    if (benchmarkCatalogState !== 'ready') return null;
+
+    const resolved = performanceResolver.resolve({
+        playerData,
+        catalog: activeBenchmarkCatalog,
+        heroId: hero.id
+    });
+    if (resolved.status !== 'resolved') {
+        return { evaluationState: resolved.evaluationState };
+    }
+
+    return heroEvaluator.evaluate({
+        heroId: hero.id,
+        heroName: getPerformanceHeroLabel(hero),
+        role: hero.role,
+        playerStats: resolved.playerStats,
+        benchmark: resolved.benchmark
+    });
+}
+
+function getTrainingPriority(hero) {
+    return trainingPriority.score({
+        heroId: hero.id,
+        heroStats: playerData.heroStats[hero.id] || null,
+        trainingSessions: playerData.trainingSessions,
+        evaluation: getPriorityEvaluation(hero)
+    });
+}
+
+function getTrainingPriorityWeights(candidates) {
+    return Object.fromEntries(candidates.map(hero => [
+        hero.id,
+        getTrainingPriority(hero).weight
+    ]));
+}
+
 function formatPercentage(value) {
     return `${(Number(value) * 100).toFixed(1)}%`;
 }
@@ -335,7 +374,7 @@ async function loadBenchmarkCatalog() {
         console.warn('Benchmark catalog could not be loaded.', error);
     }
 
-    updateHeroEvaluation();
+    updatePracticeUI();
 }
 
 function updateHeroStatsPrompt() {
@@ -445,8 +484,7 @@ function saveManualStats(event) {
         playerData = playerDataStorage.save(updatedPlayerData);
         heroStatsPromptDismissed = false;
         closeManualStatsModal(false);
-        updateHeroStatsPrompt();
-        updateHeroEvaluation();
+        updatePracticeUI();
         addHeroStatsBtn.focus();
     } catch (error) {
         manualStatsMessage.innerText = error.message;
@@ -673,6 +711,7 @@ function closeBanModal() {
 function updatePracticeUI() {
     if (appMode === 'quickRandom') {
         practicePanel.classList.add('hidden');
+        trainingRecommendation.classList.add('hidden');
         heroStatsPrompt.classList.add('hidden');
         heroEvaluationPanel.classList.add('hidden');
         spinBtn.disabled = isSpinning;
@@ -684,6 +723,7 @@ function updatePracticeUI() {
 
     if (!currentHero) {
         practicePanel.classList.add('hidden');
+        trainingRecommendation.classList.add('hidden');
         heroStatsPrompt.classList.add('hidden');
         heroEvaluationPanel.classList.add('hidden');
         spinBtn.disabled = isSpinning;
@@ -692,6 +732,8 @@ function updatePracticeUI() {
     }
 
     practicePanel.classList.remove('hidden');
+    trainingRecommendationMessage.innerText = getTrainingPriority(currentHero).reason;
+    trainingRecommendation.classList.remove('hidden');
 
     const blockComplete = matchesCompleted >= matchTarget;
     const percentage = Math.min(100, (matchesCompleted / matchTarget) * 100);
@@ -779,6 +821,7 @@ function resetHeroSelectionUI() {
     heroStatsPromptDismissed = false;
     heroStatsPrompt.classList.add('hidden');
     heroEvaluationPanel.classList.add('hidden');
+    trainingRecommendation.classList.add('hidden');
     updateHeroPageLink(null, false);
 }
 
@@ -834,6 +877,22 @@ function restorePracticeState() {
     updatePracticeUI();
 }
 
+function archiveCompletedPracticeBlock() {
+    if (!currentHero || matchesCompleted < matchTarget) return;
+
+    const playedAt = new Date().toISOString();
+    playerData.trainingSessions.push({
+        id: `training-${Date.now()}-${currentHero.id}`,
+        heroId: currentHero.id,
+        gameMode: null,
+        seasonId: playerData.profile.currentSeasonId,
+        playedAt,
+        matches: matchTarget,
+        metrics: {}
+    });
+    playerData = playerDataStorage.save(playerData);
+}
+
 // Manejo de clicks con lógica Multiselect
 roleButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -861,10 +920,10 @@ appModeButtons.forEach(button => {
     button.addEventListener('click', () => switchAppMode(button.dataset.appMode));
 });
 
-function selectHeroForActiveMode(candidates) {
+function selectHeroForActiveMode(candidates, trainingWeights = {}) {
     return appMode === 'quickRandom'
         ? heroSelector.selectQuickRandom(candidates)
-        : heroSelector.selectTraining(candidates);
+        : heroSelector.selectTraining(candidates, trainingWeights);
 }
 
 // Función de la ruleta
@@ -890,11 +949,15 @@ function spinRoulette() {
 
     // A completed training block is replaced only when a valid training spin begins.
     if (appMode === 'training') {
+        archiveCompletedPracticeBlock();
         currentHero = null;
         matchesCompleted = 0;
         matchTarget = 3;
         savePracticeState();
     }
+    const trainingWeights = appMode === 'training'
+        ? getTrainingPriorityWeights(filteredPool)
+        : {};
     updateHeroPageLink(null, false);
 
     isSpinning = true;
@@ -911,7 +974,7 @@ function spinRoulette() {
 
     // Intervalo de giro (Efecto ruleta)
     const interval = setInterval(() => {
-        const randomHero = selectHeroForActiveMode(filteredPool);
+        const randomHero = selectHeroForActiveMode(filteredPool, trainingWeights);
         
         // Pass a custom flag 'true' to show it's just spinning
         updateUI(randomHero, true);
@@ -927,7 +990,7 @@ function spinRoulette() {
     setTimeout(() => {
         clearInterval(interval);
         
-        const finalHero = selectHeroForActiveMode(filteredPool);
+        const finalHero = selectHeroForActiveMode(filteredPool, trainingWeights);
         
         // Remove the spinning blur effect right away
         heroImg.classList.remove('roulette-blur', 'anim-ticking');

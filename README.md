@@ -29,9 +29,12 @@ The project began as a simple hero roulette and is being developed incrementally
 - Stable hero IDs and versioned saved data for future expansion
 - Versioned local player-data foundation for optional hero stats and training history
 - Optional role-based manual hero-stat entry for Quick Play, Competitive, overall, and current-season snapshots
-- Versioned benchmark catalog with the complete sourced Season 9.5 Gold dataset
+- Versioned benchmark catalog covering all sourced Season 9.5 rank filters
 - Visible role-based peer evaluation with separate skill and confidence results
 - Strict Competitive proficiency resolver with separate Quick Play training evidence
+- Exact Competitive rank selector that excludes cumulative `+` filters
+- Explainable weighted Training selection using experience, performance, and recency
+- Automatic training-session history when completed blocks are replaced
 
 ## Local development
 
@@ -85,7 +88,7 @@ Competitive is currently the app's measurement instrument, not its identity. Ran
 - hero;
 - compatible metric names and canonical units.
 
-Quick Play data is stored independently and remains useful for experience, recency, sessions, and future training-priority signals. It is never compared with a Competitive benchmark. A missing rank, wrong rank, wrong season, Quick Play-only profile, or missing compatible benchmark produces an unrated result instead of an inferred fallback.
+Quick Play data is stored independently and remains useful for experience, recency, sessions, and training-priority signals. It is never compared with a Competitive benchmark. A missing rank, wrong rank, wrong season, Quick Play-only profile, or missing compatible benchmark produces an unrated result instead of an inferred fallback.
 
 Seasonal rank records and rolling high-elo records are different schema contexts. A `Celestial+ / rolling 180 days` record can be retained as reference data, but it cannot satisfy a seasonal Gold peer lookup. Benchmark records preserve a primary source, collection date, sample metadata, methodology notes, and optional validation sources. Validation values remain separate rather than being averaged into the primary value.
 
@@ -140,14 +143,14 @@ Training recommendations
 Smart hero randomization
 ```
 
-Planned capabilities include:
+Future capabilities include:
 
 - Per-hero performance and recency statistics sourced from external account data
-- Training priorities based on experience, performance, and time since last played
-- Weighted hero selection that balances improvement, variety, repetition, and fun
+- Further calibration of training priorities using real player feedback
+- More advanced weighting that balances improvement, variety, repetition, and fun
 - A data-source boundary that can integrate with a third-party Marvel Rivals statistics provider
 
-The player-data layer keeps Quick Play and Competitive snapshots separate across overall and per-season time horizons. For proficiency, the resolver uses Competitive data only, progressively favors the current season, and uses capped overall history as supporting evidence. Quick Play remains available as non-comparative training evidence. Manual stat entry remains optional. Quick Random and Training use independent selector entry points, although Training remains uniformly random for now. The production catalog now covers every directly compatible roster hero in Season 9.5 Gold. Evaluation is displayed for compatible saved stats but is not used for selection yet, and smart weighting is not implemented.
+The player-data layer keeps Quick Play and Competitive snapshots separate across overall and per-season time horizons. For proficiency, the resolver uses Competitive data only, progressively favors the current season, and uses capped overall history as supporting evidence. Quick Play remains available as non-comparative training evidence. Manual stat entry remains optional. Quick Random stays uniformly random, while Training now applies explainable weights from saved experience, compatible performance, and time since the latest completed practice block. The production catalog covers all published Season 9.5 exact-rank and cumulative rank-filter records without using cumulative populations as exact-rank fallbacks.
 
 ## Data and privacy
 

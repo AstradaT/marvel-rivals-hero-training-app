@@ -98,6 +98,11 @@
                 <div id="practice-progress" class="h-full bg-gradient-to-r from-red-500 to-amber-400 transition-all duration-300" style="width: 0%"></div>
             </div>
 
+            <div id="training-recommendation" class="hidden mb-4 rounded-lg border border-indigo-900/70 bg-indigo-950/30 p-3">
+                <p class="text-[9px] font-black uppercase tracking-widest text-indigo-300">Why this hero</p>
+                <p id="training-recommendation-message" class="text-xs leading-relaxed text-slate-300 mt-1"></p>
+            </div>
+
             <div id="hero-stats-prompt" class="hidden mb-4 rounded-lg border border-slate-700 bg-slate-950/50 p-3">
                 <p id="hero-stats-prompt-message" class="text-xs text-slate-300"></p>
                 <div class="flex gap-2 mt-3">
@@ -197,7 +202,18 @@
                     </label>
                     <label id="manual-rank-field" class="hidden text-xs font-bold uppercase tracking-wider text-slate-400">
                         Competitive rank <span class="normal-case text-slate-600">(optional)</span>
-                        <input id="manual-competitive-rank" type="text" autocomplete="off" placeholder="Gold" class="block w-full mt-2 bg-slate-950 border border-slate-700 focus:border-amber-400 focus:outline-none rounded-lg px-3 py-3 text-sm normal-case tracking-normal text-white placeholder:text-slate-600">
+                        <select id="manual-competitive-rank" class="block w-full mt-2 bg-slate-950 border border-slate-700 focus:border-amber-400 focus:outline-none rounded-lg px-3 py-3 text-sm normal-case tracking-normal text-white">
+                            <option value="">Not selected</option>
+                            <option value="Bronze">Bronze</option>
+                            <option value="Silver">Silver</option>
+                            <option value="Gold">Gold</option>
+                            <option value="Platinum">Platinum</option>
+                            <option value="Diamond">Diamond</option>
+                            <option value="Grandmaster">Grandmaster</option>
+                            <option value="Celestial">Celestial</option>
+                            <option value="Eternity">Eternity</option>
+                            <option value="One Above All">One Above All</option>
+                        </select>
                     </label>
                 </div>
 
@@ -333,7 +349,8 @@
     <script src="services/benchmarkCatalog.js?v=2"></script>
     <script src="services/performanceResolver.js?v=3"></script>
     <script src="services/heroEvaluator.js"></script>
-    <script src="services/heroSelector.js"></script>
-    <script src="app.js?v=7"></script>
+    <script src="services/trainingPriority.js"></script>
+    <script src="services/heroSelector.js?v=2"></script>
+    <script src="app.js?v=8"></script>
 </body>
 </html>

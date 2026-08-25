@@ -29,3 +29,29 @@ test('Training has an independent selection entry point', () => {
         'middle'
     );
 });
+
+test('Training uses priority weights while Quick Random remains uniform', () => {
+    const harness = loadBrowserScripts(['services/heroSelector.js']);
+    harness.evaluate(`candidates = [
+        { id: 'first' }, { id: 'priority' }, { id: 'last' }
+    ]`);
+    harness.evaluate('Math.random = () => 0.4');
+
+    assert.equal(
+        harness.evaluate("heroSelector.selectQuickRandom(candidates).id"),
+        'priority'
+    );
+    assert.equal(
+        harness.evaluate(`heroSelector.selectTraining(candidates, {
+            first: 1, priority: 10, last: 1
+        }).id`),
+        'priority'
+    );
+    harness.evaluate('Math.random = () => 0.2');
+    assert.equal(
+        harness.evaluate(`heroSelector.selectTraining(candidates, {
+            first: 1, priority: 1, last: 10
+        }).id`),
+        'last'
+    );
+});
