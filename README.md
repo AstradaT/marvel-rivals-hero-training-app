@@ -35,6 +35,7 @@ The project began as a simple hero roulette and is being developed incrementally
 - Exact Competitive rank selector that excludes cumulative `+` filters
 - Explainable weighted Training selection using experience, performance, and recency
 - Automatic training-session history when completed blocks are replaced
+- Portable JSON export/import for player stats, training history, preferences, bans, and the active practice block
 
 ## Local development
 
@@ -122,6 +123,10 @@ Version 1 player data is migrated automatically. The current manual-entry MVP as
 The current block is stored locally in the browser. Clearing site data will remove that saved progress.
 
 The ban list is also stored locally. Banning a multi-role hero excludes that hero from every role while leaving the current practice block unchanged.
+
+## Moving data to another browser
+
+Open **Player Stats**, then use **Export data** to download a private JSON backup. On the other computer, open the same panel, choose **Import data**, select that JSON file, and confirm the replacement of the destination browser's local data. The backup includes hero snapshots, training sessions, preferences, bans, player identifiers, and the active practice block. Benchmarks and application code are not included because they are distributed with the repository.
 
 ## Development direction
 

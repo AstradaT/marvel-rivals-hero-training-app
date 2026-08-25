@@ -287,6 +287,22 @@
                 </div>
                 <p class="text-[11px] leading-relaxed text-slate-500 mt-4">These independent websites may show delayed or incomplete data, especially when a profile is private.</p>
             </div>
+
+            <div class="p-5 border-t border-slate-800">
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Data backup</p>
+                <p class="text-sm text-slate-400 mt-2">Move your hero stats, training history, preferences, bans, and active practice block to another browser.</p>
+                <div class="grid grid-cols-2 gap-3 mt-4">
+                    <button id="export-data-btn" type="button" class="bg-emerald-700 hover:bg-emerald-600 text-white font-bold py-3 px-3 rounded-lg uppercase tracking-wide text-xs cursor-pointer">
+                        Export data
+                    </button>
+                    <button id="import-data-btn" type="button" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold py-3 px-3 rounded-lg uppercase tracking-wide text-xs cursor-pointer">
+                        Import data
+                    </button>
+                </div>
+                <input id="import-data-file" type="file" accept="application/json,.json" class="hidden">
+                <p id="data-transfer-message" class="hidden text-xs mt-3" role="status"></p>
+                <p class="text-[11px] leading-relaxed text-slate-500 mt-3">The backup may contain your saved player UID and username. Keep it private.</p>
+            </div>
         </section>
     </div>
 
@@ -352,12 +368,13 @@
     <script src="services/practiceStorage.js"></script>
     <script src="services/preferencesStorage.js"></script>
     <script src="services/playerDataStorage.js?v=3"></script>
+    <script src="services/appDataTransfer.js?v=1"></script>
     <script src="services/manualStats.js?v=4"></script>
     <script src="services/benchmarkCatalog.js?v=2"></script>
     <script src="services/performanceResolver.js?v=3"></script>
     <script src="services/heroEvaluator.js"></script>
     <script src="services/trainingPriority.js"></script>
     <script src="services/heroSelector.js?v=2"></script>
-    <script src="app.js?v=9"></script>
+    <script src="app.js?v=10"></script>
 </body>
 </html>

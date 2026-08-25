@@ -64,6 +64,10 @@ const playerUidInput = document.getElementById('player-uid');
 const playerUsernameInput = document.getElementById('player-username');
 const playerProfileMessage = document.getElementById('player-profile-message');
 const externalStatsLinks = document.querySelectorAll('.external-stats-link');
+const exportDataBtn = document.getElementById('export-data-btn');
+const importDataBtn = document.getElementById('import-data-btn');
+const importDataFile = document.getElementById('import-data-file');
+const dataTransferMessage = document.getElementById('data-transfer-message');
 const heroStatsPrompt = document.getElementById('hero-stats-prompt');
 const heroStatsPromptMessage = document.getElementById('hero-stats-prompt-message');
 const addHeroStatsBtn = document.getElementById('add-hero-stats-btn');
@@ -149,15 +153,19 @@ function savePracticeState() {
     });
 }
 
-function savePreferences() {
-    preferencesStorage.save({
+function getCurrentPreferences() {
+    return {
         bannedHeroIds: Array.from(bannedHeroIds),
         activeRoles: Array.from(activeRoles),
         isMuted,
         appMode,
         playerUid,
         playerUsername
-    });
+    };
+}
+
+function savePreferences() {
+    preferencesStorage.save(getCurrentPreferences());
 }
 
 function updateAppModeUI() {
@@ -562,6 +570,7 @@ function openExternalStatsModal() {
     playerUidInput.value = playerUid;
     playerUsernameInput.value = playerUsername;
     playerProfileMessage.classList.add('hidden');
+    dataTransferMessage.classList.add('hidden');
     updateExternalStatsLinks();
     externalStatsModal.classList.remove('hidden');
     externalStatsModal.classList.add('flex');
@@ -803,6 +812,62 @@ function updatePracticeUI() {
     spinBtn.innerText = blockComplete ? 'Spin Next Hero' : `Practice ${currentHero.name}`;
     updateHeroStatsPrompt();
     updateHeroEvaluation();
+}
+
+function showDataTransferMessage(message, isError = false) {
+    dataTransferMessage.innerText = message;
+    dataTransferMessage.className = `text-xs mt-3 ${isError ? 'text-red-400' : 'text-emerald-400'}`;
+}
+
+function exportAppData() {
+    try {
+        const backup = appDataTransfer.createBackup({
+            playerData,
+            preferences: getCurrentPreferences(),
+            practiceBlock: practiceStorage.load(),
+            exportedAt: new Date().toISOString()
+        });
+        const serializedBackup = `${JSON.stringify(backup, null, 2)}\n`;
+        const downloadLink = document.createElement('a');
+        const date = backup.exportedAt.slice(0, 10);
+
+        downloadLink.href = `data:application/json;charset=utf-8,${encodeURIComponent(serializedBackup)}`;
+        downloadLink.download = `marvel-rivals-training-backup-${date}.json`;
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        downloadLink.remove();
+        showDataTransferMessage('Backup downloaded. Keep the JSON file private.');
+    } catch (error) {
+        showDataTransferMessage(error.message, true);
+    }
+}
+
+async function importAppData(event) {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    try {
+        const importedData = appDataTransfer.parseBackup(await file.text());
+        const shouldReplace = window.confirm(
+            'Importing this backup will replace the player data currently saved in this browser. Continue?'
+        );
+        if (!shouldReplace) return;
+
+        playerDataStorage.save(importedData.playerData);
+        preferencesStorage.save(importedData.preferences);
+        if (importedData.practiceBlock) {
+            practiceStorage.save(importedData.practiceBlock);
+        } else {
+            practiceStorage.clear();
+        }
+
+        showDataTransferMessage('Backup imported. Reloading your data...');
+        window.setTimeout(() => window.location.reload(), 500);
+    } catch (error) {
+        showDataTransferMessage(error.message, true);
+    } finally {
+        importDataFile.value = '';
+    }
 }
 
 function startPracticeBlock(hero) {
@@ -1162,6 +1227,9 @@ banModal.addEventListener('click', event => {
 externalStatsBtn.addEventListener('click', openExternalStatsModal);
 closeExternalStatsBtn.addEventListener('click', closeExternalStatsModal);
 playerProfileForm.addEventListener('submit', savePlayerProfile);
+exportDataBtn.addEventListener('click', exportAppData);
+importDataBtn.addEventListener('click', () => importDataFile.click());
+importDataFile.addEventListener('change', importAppData);
 externalStatsModal.addEventListener('click', event => {
     if (event.target === externalStatsModal) closeExternalStatsModal();
 });

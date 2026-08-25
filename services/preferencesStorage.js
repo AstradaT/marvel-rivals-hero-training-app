@@ -11,6 +11,32 @@ const preferencesStorage = (() => {
         playerUsername: ''
     };
 
+    function sanitize(preferences) {
+        const source = preferences && typeof preferences === 'object'
+            ? preferences
+            : {};
+        const bannedHeroIds = Array.isArray(source.bannedHeroIds)
+            ? source.bannedHeroIds.filter(id => typeof id === 'string')
+            : [];
+        const validRoles = ['Vanguard', 'Duelist', 'Strategist'];
+        const activeRoles = Array.isArray(source.activeRoles)
+            ? source.activeRoles.filter(role => validRoles.includes(role))
+            : defaultPreferences.activeRoles;
+
+        return {
+            bannedHeroIds: [...new Set(bannedHeroIds)],
+            activeRoles: [...new Set(activeRoles)],
+            isMuted: source.isMuted === true,
+            appMode: ['quickRandom', 'training'].includes(source.appMode)
+                ? source.appMode
+                : defaultPreferences.appMode,
+            playerUid: typeof source.playerUid === 'string' ? source.playerUid.trim() : '',
+            playerUsername: typeof source.playerUsername === 'string'
+                ? source.playerUsername.trim()
+                : ''
+        };
+    }
+
     function load() {
         try {
             const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -18,28 +44,7 @@ const preferencesStorage = (() => {
                 return { ...defaultPreferences };
             }
 
-            const bannedHeroIds = Array.isArray(saved.preferences?.bannedHeroIds)
-                ? saved.preferences.bannedHeroIds.filter(id => typeof id === 'string')
-                : [];
-            const validRoles = ['Vanguard', 'Duelist', 'Strategist'];
-            const activeRoles = Array.isArray(saved.preferences?.activeRoles)
-                ? saved.preferences.activeRoles.filter(role => validRoles.includes(role))
-                : defaultPreferences.activeRoles;
-
-            return {
-                bannedHeroIds: [...new Set(bannedHeroIds)],
-                activeRoles: [...new Set(activeRoles)],
-                isMuted: saved.preferences?.isMuted === true,
-                appMode: ['quickRandom', 'training'].includes(saved.preferences?.appMode)
-                    ? saved.preferences.appMode
-                    : defaultPreferences.appMode,
-                playerUid: typeof saved.preferences?.playerUid === 'string'
-                    ? saved.preferences.playerUid.trim()
-                    : '',
-                playerUsername: typeof saved.preferences?.playerUsername === 'string'
-                    ? saved.preferences.playerUsername.trim()
-                    : ''
-            };
+            return sanitize(saved.preferences);
         } catch (error) {
             console.warn('Could not restore preferences:', error);
             return { ...defaultPreferences };
@@ -47,10 +52,13 @@ const preferencesStorage = (() => {
     }
 
     function save(preferences) {
+        const sanitizedPreferences = sanitize(preferences);
         localStorage.setItem(STORAGE_KEY, JSON.stringify({
             version: STORAGE_VERSION,
-            preferences
+            preferences: sanitizedPreferences
         }));
+
+        return sanitizedPreferences;
     }
 
     return { load, save };
