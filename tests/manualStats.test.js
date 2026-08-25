@@ -118,6 +118,32 @@ test('manual overall Quick Play stats remain independent from season Competitive
     assert.equal(playerData.heroStats.loki.seasons['season-5'].quickPlay, undefined);
 });
 
+test('Deadpool forms store independent player snapshots', () => {
+    const harness = loadBrowserScripts(['services/manualStats.js']);
+    harness.evaluate(`playerData = ${JSON.stringify(createEmptyPlayerData())}`);
+    harness.evaluate(`playerData = manualStats.createUpdatedPlayerData(playerData, {
+        heroId: 'deadpool-duelist', scope: 'season', seasonId: '9.5',
+        mode: 'competitive', competitiveRank: 'Gold', matchesPlayed: 10,
+        metrics: { winRate: 50 }
+    })`);
+    harness.evaluate(`playerData = manualStats.createUpdatedPlayerData(playerData, {
+        heroId: 'deadpool-vanguard', scope: 'season', seasonId: '9.5',
+        mode: 'competitive', competitiveRank: 'Gold', matchesPlayed: 4,
+        metrics: { winRate: 25 }
+    })`);
+    const playerData = JSON.parse(harness.evaluate('JSON.stringify(playerData)'));
+
+    assert.equal(
+        playerData.heroStats['deadpool-duelist'].seasons['season-9-5'].competitive.metrics.winRate,
+        0.5
+    );
+    assert.equal(
+        playerData.heroStats['deadpool-vanguard'].seasons['season-9-5'].competitive.metrics.winRate,
+        0.25
+    );
+    assert.equal(playerData.heroStats.deadpool, undefined);
+});
+
 test('manual stats reject invalid values before they reach storage', () => {
     const harness = loadBrowserScripts(['services/manualStats.js']);
     harness.evaluate(`playerData = ${JSON.stringify(createEmptyPlayerData())}`);

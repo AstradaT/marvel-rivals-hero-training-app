@@ -2,11 +2,10 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const projectRoot = path.resolve(__dirname, '..');
-const defaultCsvPath = path.join(
-    projectRoot,
-    'data',
-    'marvel_rivals_gold_s9_5_benchmark.csv'
-);
+const defaultCsvPaths = [
+    'marvel_rivals_gold_s9_5_benchmark.csv',
+    'marvel_rivals_platinum_s9_5_benchmark.csv'
+].map(fileName => path.join(projectRoot, 'data', fileName));
 const defaultSupplementalPath = path.join(projectRoot, 'data', 'benchmarkSupplemental.json');
 const defaultOutputPath = path.join(projectRoot, 'data', 'benchmarks.json');
 const REQUIRED_METRICS = ['winRate', 'pickRate', 'banRate'];
@@ -86,7 +85,7 @@ function assertSame(groupId, rows, fieldName) {
     return rows[0][fieldName];
 }
 
-function buildDataset(csvText, supplemental) {
+function buildCsvRecords(csvText, supplemental) {
     const parsedRows = parseCsv(csvText);
     const headers = parsedRows.shift();
     if (!headers || headers.join('|') !== EXPECTED_HEADERS.join('|')) {
@@ -192,21 +191,39 @@ function buildDataset(csvText, supplemental) {
     }).sort((left, right) => left._sortRank - right._sortRank)
         .map(({ _sortRank, ...record }) => record);
 
+    return { rows, seasonalRecords };
+}
+
+function buildDataset(csvTexts, supplemental) {
+    const sources = Array.isArray(csvTexts) ? csvTexts : [csvTexts];
+    const imported = sources.map(csvText => buildCsvRecords(csvText, supplemental));
+    const rows = imported.flatMap(source => source.rows);
+    const seasonalRecords = imported.flatMap(source => source.seasonalRecords);
+    const recordKeys = new Set(seasonalRecords.map(record => [
+        record.context.seasonId,
+        record.context.gameMode,
+        record.context.rankTier,
+        record.heroId
+    ].join('|')));
+    if (recordKeys.size !== seasonalRecords.length) {
+        throw new Error('CSV sources contain duplicate benchmark contexts.');
+    }
+
     const latestCollectionDate = rows.map(row => row.collected_at).sort().at(-1);
     return {
         schemaVersion: 2,
-        datasetVersion: 'season-9-5-gold-rivalstracker-2026-08-25',
+        datasetVersion: 'season-9-5-gold-platinum-rivalstracker-2026-08-25',
         updatedAt: latestCollectionDate,
         records: [...seasonalRecords, ...(supplemental.records || [])]
     };
 }
 
 function main() {
-    const csvText = fs.readFileSync(defaultCsvPath, 'utf8');
+    const csvTexts = defaultCsvPaths.map(csvPath => fs.readFileSync(csvPath, 'utf8'));
     const supplemental = JSON.parse(fs.readFileSync(defaultSupplementalPath, 'utf8'));
-    const dataset = buildDataset(csvText, supplemental);
+    const dataset = buildDataset(csvTexts, supplemental);
     fs.writeFileSync(defaultOutputPath, `${JSON.stringify(dataset, null, 2)}\n`);
-    console.log(`Built ${dataset.records.length} records: 55 Gold benchmarks and ${dataset.records.length - 55} supplemental references.`);
+    console.log(`Built ${dataset.records.length} records: ${dataset.records.length - (supplemental.records || []).length} seasonal benchmarks and ${(supplemental.records || []).length} supplemental references.`);
 }
 
 if (require.main === module) main();

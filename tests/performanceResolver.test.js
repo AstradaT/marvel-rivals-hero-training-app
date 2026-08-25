@@ -222,6 +222,28 @@ test('the real Emma Frost pilot flows through catalog, resolver, and evaluation'
     assert.equal(result.evaluation.confidence.benchmarkMatches, 11001);
 });
 
+test('a Platinum profile resolves the Platinum benchmark without using Gold data', () => {
+    const dataset = JSON.parse(
+        fs.readFileSync(path.join(projectRoot, 'data', 'benchmarks.json'), 'utf8')
+    );
+    const harness = createHarness();
+    harness.evaluate(`catalog = benchmarkCatalog.create(${JSON.stringify(dataset)})`);
+    installPlayerData(harness, {
+        rank: 'Platinum',
+        competitive: `{ matchesPlayed: 20, metrics: { winRate: 0.48 } }`
+    });
+
+    const resolved = JSON.parse(harness.evaluate(`JSON.stringify(
+        performanceResolver.resolve({ playerData, catalog, heroId: 'emma-frost' })
+    )`));
+
+    assert.equal(resolved.status, 'resolved');
+    assert.equal(resolved.source.rankTier, 'platinum');
+    assert.equal(resolved.benchmark.metrics.winRate.average, 0.4668);
+    assert.equal(resolved.benchmark.sampleSize.matches, 32912);
+    assert.equal(resolved.benchmark.context.rankTier, 'platinum');
+});
+
 test('the user Gold pilot remains unknown with four season and eight overall matches', () => {
     const dataset = JSON.parse(
         fs.readFileSync(path.join(projectRoot, 'data', 'benchmarks.json'), 'utf8')
@@ -250,4 +272,72 @@ test('the user Gold pilot remains unknown with four season and eight overall mat
     assert.equal(result.evaluation.evaluationState, 'unknown');
     assert.equal(result.evaluation.confidence.label, 'Low');
     assert.equal(result.evaluation.displayCategory.label, 'Needs more data');
+});
+
+test('Deadpool resolves player data, benchmarks, and sessions independently by form', () => {
+    const dataset = JSON.parse(
+        fs.readFileSync(path.join(projectRoot, 'data', 'benchmarks.json'), 'utf8')
+    );
+    const harness = createHarness();
+    harness.evaluate(`catalog = benchmarkCatalog.create(${JSON.stringify(dataset)})`);
+    harness.evaluate(`playerData = {
+        profile: {
+            currentSeasonId: 'season-9-5',
+            competitiveRanks: { 'season-9-5': 'Gold' }
+        },
+        heroStats: {
+            'deadpool-duelist': {
+                overall: {},
+                seasons: { 'season-9-5': { competitive: {
+                    matchesPlayed: 20, metrics: { winRate: 0.5 }
+                } } }
+            },
+            'deadpool-vanguard': {
+                overall: {},
+                seasons: { 'season-9-5': { competitive: {
+                    matchesPlayed: 16, metrics: { winRate: 0.4 }
+                } } }
+            },
+            deadpool: {
+                overall: { competitive: { matchesPlayed: 99, metrics: { winRate: 0.99 } } },
+                seasons: {}
+            }
+        },
+        trainingSessions: [
+            {
+                id: 'duelist-session', heroId: 'deadpool-duelist', gameMode: 'competitive',
+                seasonId: 'season-9-5', playedAt: '2026-08-25', matches: 3, metrics: {}
+            },
+            {
+                id: 'vanguard-session', heroId: 'deadpool-vanguard', gameMode: 'competitive',
+                seasonId: 'season-9-5', playedAt: '2026-08-25', matches: 2, metrics: {}
+            }
+        ]
+    }`);
+
+    const result = JSON.parse(harness.evaluate(`
+        duelist = performanceResolver.resolve({ playerData, catalog, heroId: 'deadpool-duelist' });
+        vanguard = performanceResolver.resolve({ playerData, catalog, heroId: 'deadpool-vanguard' });
+        strategist = performanceResolver.resolve({ playerData, catalog, heroId: 'deadpool-strategist' });
+        JSON.stringify({ duelist, vanguard, strategist })
+    `));
+
+    assert.equal(result.duelist.status, 'resolved');
+    assert.equal(result.duelist.playerStats.metrics.winRate, 0.5);
+    assert.equal(result.duelist.benchmark.heroId, 'deadpool-duelist');
+    assert.equal(result.duelist.benchmark.metrics.winRate.average, 0.4723);
+    assert.deepEqual(
+        result.duelist.trainingEvidence.sessions.map(session => session.id),
+        ['duelist-session']
+    );
+    assert.equal(result.vanguard.status, 'resolved');
+    assert.equal(result.vanguard.playerStats.metrics.winRate, 0.4);
+    assert.equal(result.vanguard.benchmark.heroId, 'deadpool-vanguard');
+    assert.equal(result.vanguard.benchmark.metrics.winRate.average, 0.4339);
+    assert.deepEqual(
+        result.vanguard.trainingEvidence.sessions.map(session => session.id),
+        ['vanguard-session']
+    );
+    assert.equal(result.strategist.status, 'unresolved');
+    assert.equal(result.strategist.reason, 'noPlayerData');
 });

@@ -96,8 +96,14 @@ let activeRoles = new Set(savedPreferences.activeRoles);
 let appMode = savedPreferences.appMode;
 let isSpinning = false;
 const validHeroIds = new Set(heroes.map(hero => hero.id));
+const legacyDeadpoolHeroIds = heroes
+    .filter(hero => hero.id.startsWith('deadpool-'))
+    .map(hero => hero.id);
+const migratedBannedHeroIds = savedPreferences.bannedHeroIds.flatMap(
+    id => id === 'deadpool' ? legacyDeadpoolHeroIds : [id]
+);
 let bannedHeroIds = new Set(
-    savedPreferences.bannedHeroIds.filter(id => validHeroIds.has(id))
+    migratedBannedHeroIds.filter(id => validHeroIds.has(id))
 );
 let banListRoleFilter = 'All';
 let playerData = playerDataStorage.load();
@@ -194,8 +200,12 @@ function getHeroStatsSnapshot(heroId, scope, mode, seasonId) {
         : null;
 }
 
-function hasSavedHeroStats(heroId) {
-    const heroStats = playerData.heroStats[heroId];
+function getPerformanceHeroLabel(hero) {
+    return hero?.id?.startsWith('deadpool-') ? `${hero.name} (${hero.role})` : hero?.name;
+}
+
+function hasSavedHeroStats(hero) {
+    const heroStats = playerData.heroStats[hero?.id];
     if (!heroStats) return false;
 
     const hasOverallStats = Object.keys(heroStats.overall || {}).length > 0;
@@ -240,7 +250,7 @@ function getUnratedEvaluationCopy(resolved) {
 function updateHeroEvaluation() {
     const canShow = appMode === 'training'
         && currentHero
-        && hasSavedHeroStats(currentHero.id);
+        && hasSavedHeroStats(currentHero);
     if (!canShow) {
         heroEvaluationPanel.classList.add('hidden');
         return;
@@ -282,7 +292,7 @@ function updateHeroEvaluation() {
 
     const evaluation = heroEvaluator.evaluate({
         heroId: currentHero.id,
-        heroName: currentHero.name,
+        heroName: getPerformanceHeroLabel(currentHero),
         role: currentHero.role,
         playerStats: resolved.playerStats,
         benchmark: resolved.benchmark
@@ -334,10 +344,11 @@ function updateHeroStatsPrompt() {
         return;
     }
 
-    const hasStats = hasSavedHeroStats(currentHero.id);
+    const hasStats = hasSavedHeroStats(currentHero);
+    const heroLabel = getPerformanceHeroLabel(currentHero);
     heroStatsPromptMessage.innerText = hasStats
-        ? `Your ${currentHero.name} stats are saved.`
-        : `We don't know your ${currentHero.name} yet.`;
+        ? `Your ${heroLabel} stats are saved.`
+        : `We don't know your ${heroLabel} yet.`;
     addHeroStatsBtn.innerText = hasStats ? 'Update my stats' : 'Add my stats';
     dismissHeroStatsBtn.classList.toggle('hidden', hasStats);
     heroStatsPrompt.classList.remove('hidden');
@@ -352,7 +363,12 @@ function renderManualStatFields() {
     const seasonInput = manualSeasonId.value
         || manualStats.formatSeasonInputValue(playerData.profile.currentSeasonId);
     const seasonId = manualStats.normalizeSeasonId(seasonInput);
-    const snapshot = getHeroStatsSnapshot(currentHero.id, scope, mode, seasonId);
+    const snapshot = getHeroStatsSnapshot(
+        currentHero.id,
+        scope,
+        mode,
+        seasonId
+    );
 
     manualSeasonFields.classList.toggle('hidden', !isSeason);
     manualRankField.classList.toggle('hidden', !isSeason || mode !== 'competitive');
@@ -386,7 +402,7 @@ function renderManualStatFields() {
 function openManualStatsModal() {
     if (!currentHero || isSpinning) return;
 
-    manualStatsTitle.innerText = `${hasSavedHeroStats(currentHero.id) ? 'Update' : 'Add'} ${currentHero.name} stats`;
+    manualStatsTitle.innerText = `${hasSavedHeroStats(currentHero) ? 'Update' : 'Add'} ${getPerformanceHeroLabel(currentHero)} stats`;
     manualStatsMessage.classList.add('hidden');
     manualStatsMode.value = 'competitive';
     manualStatsScope.value = 'season';
@@ -788,8 +804,10 @@ function restorePracticeState() {
 
     const hero = heroes.find(h => {
         const hasStableId = typeof savedBlock.heroId === 'string';
+        const legacyDeadpoolMatches = savedBlock.heroId === 'deadpool'
+            && h.id.startsWith('deadpool-');
         const heroMatches = hasStableId
-            ? h.id === savedBlock.heroId
+            ? h.id === savedBlock.heroId || legacyDeadpoolMatches
             : h.name === savedBlock.heroName;
 
         return heroMatches && h.role === savedBlock.heroRole;

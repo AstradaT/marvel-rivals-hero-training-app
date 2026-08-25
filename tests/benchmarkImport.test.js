@@ -6,27 +6,33 @@ const assert = require('node:assert/strict');
 const { buildDataset, parseCsv } = require('../scripts/buildBenchmarks');
 const { projectRoot } = require('./helpers/browserScriptHarness');
 
-const csvPath = path.join(projectRoot, 'data', 'marvel_rivals_gold_s9_5_benchmark.csv');
+const csvPaths = [
+    'marvel_rivals_gold_s9_5_benchmark.csv',
+    'marvel_rivals_platinum_s9_5_benchmark.csv'
+].map(fileName => path.join(projectRoot, 'data', fileName));
 const supplementalPath = path.join(projectRoot, 'data', 'benchmarkSupplemental.json');
 
 function buildProductionFixture() {
     return buildDataset(
-        fs.readFileSync(csvPath, 'utf8'),
+        csvPaths.map(csvPath => fs.readFileSync(csvPath, 'utf8')),
         JSON.parse(fs.readFileSync(supplementalPath, 'utf8'))
     );
 }
 
-test('the Gold CSV imports 55 complete source entries without averaging', () => {
+test('the Gold and Platinum CSVs import 55 complete source entries each without averaging', () => {
     const dataset = buildProductionFixture();
     const seasonal = dataset.records.filter(record => record.context.type === 'seasonalRank');
 
-    assert.equal(seasonal.length, 55);
-    assert.equal(dataset.records.length, 60);
+    assert.equal(seasonal.length, 110);
+    assert.equal(dataset.records.length, 115);
+    assert.deepEqual(
+        [...new Set(seasonal.map(record => record.context.rankTier))].sort(),
+        ['gold', 'platinum']
+    );
     assert.ok(seasonal.every(record => (
         record.source.id === 'rivalstracker'
         && record.source.type === 'primary'
         && record.context.seasonId === 'season-9-5'
-        && record.context.rankTier === 'gold'
         && Object.keys(record.metrics).sort().join('|') === 'banRate|pickRate|winRate'
     )));
 });
@@ -43,7 +49,9 @@ test('the generated production JSON is synchronized with its CSV sources', () =>
 test('Emma Frost retains primary CSV values and independent pilot validations', () => {
     const dataset = buildProductionFixture();
     const emma = dataset.records.find(record => (
-        record.context.type === 'seasonalRank' && record.heroId === 'emma-frost'
+        record.context.type === 'seasonalRank'
+        && record.context.rankTier === 'gold'
+        && record.heroId === 'emma-frost'
     ));
 
     assert.equal(emma.metrics.winRate.average, 0.4737);
@@ -64,16 +72,20 @@ test('Emma Frost retains primary CSV values and independent pilot validations', 
 
 test('Deadpool source forms stay distinct instead of being silently merged', () => {
     const dataset = buildProductionFixture();
-    const deadpoolIds = dataset.records
+    const deadpoolRecords = dataset.records
         .filter(record => record.context.type === 'seasonalRank' && record.heroId.startsWith('deadpool-'))
-        .map(record => record.heroId)
-        .sort();
+    const deadpoolIdsByRank = Object.groupBy(
+        deadpoolRecords,
+        record => record.context.rankTier
+    );
 
-    assert.deepEqual(deadpoolIds, [
-        'deadpool-duelist',
-        'deadpool-strategist',
-        'deadpool-vanguard'
-    ]);
+    ['gold', 'platinum'].forEach(rankTier => {
+        assert.deepEqual(deadpoolIdsByRank[rankTier].map(record => record.heroId).sort(), [
+            'deadpool-duelist',
+            'deadpool-strategist',
+            'deadpool-vanguard'
+        ]);
+    });
     assert.equal(dataset.records.some(record => (
         record.context.type === 'seasonalRank' && record.heroId === 'deadpool'
     )), false);

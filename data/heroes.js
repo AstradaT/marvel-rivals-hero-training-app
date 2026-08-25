@@ -1,5 +1,5 @@
-// Canonical hero roster. Multi-role heroes share one stable id so future
-// player statistics can identify the hero independently from the selected role.
+// Canonical hero roster. Every entry has its own stable identity, even when
+// multiple heroes share the same character model or official hero page.
 const officialHeroPageIds = Object.freeze({
     "adam-warlock": "ef4511de-a2ff-43f0-b061-d915f0ccb37d",
     "angela": "03af29d0-1a53-4077-9062-8201ed327635",
@@ -11,7 +11,9 @@ const officialHeroPageIds = Object.freeze({
     "cloak-and-dagger": "5b5a8c7a-c9c0-4f4c-89a3-dae465db8c7f",
     "cyclops": "4b46591b-a837-43ba-ae41-571de988c190",
     "daredevil": "043108d4-fd6b-4884-aee1-1ccbefb79790",
-    "deadpool": "3ef6b679-d1b4-4757-a8ee-0ea53379c754",
+    "deadpool-duelist": "3ef6b679-d1b4-4757-a8ee-0ea53379c754",
+    "deadpool-strategist": "3ef6b679-d1b4-4757-a8ee-0ea53379c754",
+    "deadpool-vanguard": "3ef6b679-d1b4-4757-a8ee-0ea53379c754",
     "devil-dinosaur": "d579e90a-46a7-45fd-975f-4d63c7755d27",
     "doctor-strange": "692c786c-08f4-4502-9803-a55f3bc8f83b",
     "elsa-bloodstone": "91b586e3-4d55-455c-bd7d-69fbe0563d26",
@@ -71,7 +73,7 @@ const heroes = [
     { id: "blade", name: "Blade", role: "Duelist", img: "assets/blade.webp", staticImg: "assets/static/blade.jpg" },
     { id: "cyclops", name: "Cyclops", role: "Duelist", img: "assets/cyclops.webp", staticImg: "assets/static/cyclops.jpg" },
     { id: "daredevil", name: "Daredevil", role: "Duelist", img: "assets/daredevil.webp", staticImg: "assets/static/daredevil.jpg" },
-    { id: "deadpool", name: "Deadpool", role: "Duelist", img: "assets/deadpool.webp", staticImg: "assets/static/deadpool.jpg" },
+    { id: "deadpool-duelist", name: "Deadpool", role: "Duelist", img: "assets/deadpool.webp", staticImg: "assets/static/deadpool.jpg" },
     { id: "elsa-bloodstone", name: "Elsa Bloodstone", role: "Duelist", img: "assets/elsabloodstone.webp", staticImg: "assets/static/elsabloodstone.jpg" },
     { id: "hawkeye", name: "Hawkeye", role: "Duelist", img: "assets/hawkeye.webp", staticImg: "assets/static/hawkeye.jpg" },
     { id: "hela", name: "Hela", role: "Duelist", img: "assets/hela.webp", staticImg: "assets/static/hela.jpg" },
@@ -96,7 +98,7 @@ const heroes = [
     // --- VANGUARDS ---
     { id: "angela", name: "Angela", role: "Vanguard", img: "assets/angela.webp", staticImg: "assets/static/angela.jpg" },
     { id: "captain-america", name: "Captain America", role: "Vanguard", img: "assets/captainamerica.webp", staticImg: "assets/static/captainamerica.jpg" },
-    { id: "deadpool", name: "Deadpool", role: "Vanguard", img: "assets/deadpool.webp", staticImg: "assets/static/deadpool.jpg" },
+    { id: "deadpool-vanguard", name: "Deadpool", role: "Vanguard", img: "assets/deadpool.webp", staticImg: "assets/static/deadpool.jpg" },
     { id: "devil-dinosaur", name: "Devil Dinosaur", role: "Vanguard", img: "assets/devildinosaur.webp", staticImg: "assets/static/devildinosaur.jpg" },
     { id: "doctor-strange", name: "Doctor Strange", role: "Vanguard", img: "assets/doctorstrange.webp", staticImg: "assets/static/doctorstrange.jpg" },
     { id: "emma-frost", name: "Emma Frost", role: "Vanguard", img: "assets/emmafrost.webp", staticImg: "assets/static/emmafrost.jpg" },
@@ -113,7 +115,7 @@ const heroes = [
     // --- STRATEGISTS ---
     { id: "adam-warlock", name: "Adam Warlock", role: "Strategist", img: "assets/adamwarlock.webp", staticImg: "assets/static/adamwarlock.jpg" },
     { id: "cloak-and-dagger", name: "Cloak & Dagger", role: "Strategist", img: "assets/cloakanddagger.webp", staticImg: "assets/static/cloakanddagger.jpg" },
-    { id: "deadpool", name: "Deadpool", role: "Strategist", img: "assets/deadpool.webp", staticImg: "assets/static/deadpool.jpg" },
+    { id: "deadpool-strategist", name: "Deadpool", role: "Strategist", img: "assets/deadpool.webp", staticImg: "assets/static/deadpool.jpg" },
     { id: "gambit", name: "Gambit", role: "Strategist", img: "assets/gambit.webp", staticImg: "assets/static/gambit.jpg" },
     { id: "invisible-woman", name: "Invisible Woman", role: "Strategist", img: "assets/invisiblewoman.webp", staticImg: "assets/static/invisiblewoman.jpg" },
     { id: "jeff-the-land-shark", name: "Jeff the Land Shark", role: "Strategist", img: "assets/jeffthelandshark.webp", staticImg: "assets/static/jeffthelandshark.jpg" },

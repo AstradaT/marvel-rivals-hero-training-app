@@ -41,15 +41,19 @@ test('every roster entry references existing image assets', () => {
     });
 });
 
-test('multi-role heroes share one stable identity', () => {
+test('each Deadpool form has a distinct stable identity', () => {
     const { heroes } = loadHeroData();
     const uniqueHeroIds = new Set(heroes.map(hero => hero.id));
-    const deadpoolEntries = heroes.filter(hero => hero.id === 'deadpool');
+    const deadpoolEntries = heroes.filter(hero => hero.id.startsWith('deadpool-'));
 
-    assert.equal(uniqueHeroIds.size, 53);
+    assert.equal(uniqueHeroIds.size, 55);
     assert.deepEqual(
         deadpoolEntries.map(hero => hero.role).sort(),
         ['Duelist', 'Strategist', 'Vanguard']
+    );
+    assert.deepEqual(
+        deadpoolEntries.map(hero => hero.id).sort(),
+        ['deadpool-duelist', 'deadpool-strategist', 'deadpool-vanguard']
     );
 });
 

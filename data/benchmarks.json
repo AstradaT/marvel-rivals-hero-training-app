@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "datasetVersion": "season-9-5-gold-rivalstracker-2026-08-25",
-  "updatedAt": "2026-08-25T14:58:14.626Z",
+  "datasetVersion": "season-9-5-gold-platinum-rivalstracker-2026-08-25",
+  "updatedAt": "2026-08-25T16:13:31.923Z",
   "records": [
     {
       "heroId": "ultron",
@@ -3212,6 +3212,3141 @@
       },
       "validations": [],
       "methodologyNotes": "Filters: Season 9.5, Competitive, Gold. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier D, displayed rank 55 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "peni-parker",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.6127,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6898,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0465,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6898,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.2648,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6898,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 6898,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/peni-parker",
+        "datasetId": "peni-parker-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "S",
+        "heroRank": 1,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier S, displayed rank 1 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "magik",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5968,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 18120,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1221,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 18120,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.1222,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 18120,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 18120,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/magik",
+        "datasetId": "magik-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "S",
+        "heroRank": 2,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier S, displayed rank 2 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "mantis",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5751,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 16016,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.108,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 16016,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0078,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 16016,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 16016,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/mantis",
+        "datasetId": "mantis-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "S",
+        "heroRank": 3,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier S, displayed rank 3 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "ultron",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5636,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6029,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0406,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6029,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0015,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6029,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 6029,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/ultron",
+        "datasetId": "ultron-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 4,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 4 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "storm",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.559,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5509,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0371,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5509,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0024,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5509,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 5509,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/storm",
+        "datasetId": "storm-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 5,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 5 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "daredevil",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5568,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5813,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0392,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5813,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0329,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5813,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 5813,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/daredevil",
+        "datasetId": "daredevil-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 6,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 6 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "the-thing",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.552,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 19866,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1339,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 19866,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.2085,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 19866,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 19866,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/the-thing",
+        "datasetId": "the-thing-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "S",
+        "heroRank": 7,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier S, displayed rank 7 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "black-cat",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5461,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6996,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0472,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6996,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.2064,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6996,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 6996,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/black-cat",
+        "datasetId": "black-cat-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 8,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 8 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "rocket-raccoon",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5459,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 31804,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.2144,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 31804,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0086,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 31804,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 31804,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/rocket-raccoon",
+        "datasetId": "rocket-raccoon-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "S",
+        "heroRank": 9,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier S, displayed rank 9 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "black-panther",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5442,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5567,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0375,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5567,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.3194,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5567,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 5567,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/black-panther",
+        "datasetId": "black-panther-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 10,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 10 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "the-hood",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5404,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 50165,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.3381,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 50165,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0808,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 50165,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 50165,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/the-hood",
+        "datasetId": "the-hood-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "S",
+        "heroRank": 11,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier S, displayed rank 11 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "iron-man",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5398,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 10365,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0699,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 10365,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0125,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 10365,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 10365,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/iron-man",
+        "datasetId": "iron-man-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 12,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 12 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "human-torch",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5381,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3943,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0266,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3943,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0026,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3943,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 3943,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/human-torch",
+        "datasetId": "human-torch-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 13,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 13 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "iron-fist",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5353,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 8835,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0596,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 8835,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0123,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 8835,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 8835,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/iron-fist",
+        "datasetId": "iron-fist-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 14,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 14 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "mister-fantastic",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5218,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 7626,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0514,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 7626,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0029,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 7626,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 7626,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/mister-fantastic",
+        "datasetId": "mister-fantastic-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 15,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 15 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "blade",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5189,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 9526,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0642,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 9526,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0192,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 9526,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 9526,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/blade",
+        "datasetId": "blade-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 16,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 16 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "hulk",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5182,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 8093,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0546,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 8093,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0034,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 8093,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 8093,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/hulk",
+        "datasetId": "hulk-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 17,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 17 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "thor",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5158,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 13224,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0891,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 13224,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0059,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 13224,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 13224,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/thor",
+        "datasetId": "thor-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 18,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 18 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "spider-man",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5153,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 14210,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0958,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 14210,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.2199,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 14210,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 14210,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/spider-man",
+        "datasetId": "spider-man-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 19,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 19 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "angela",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.515,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5499,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0371,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5499,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0069,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5499,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 5499,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/angela",
+        "datasetId": "angela-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 20,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 20 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "loki",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5119,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6249,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0421,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6249,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0021,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 6249,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 6249,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/loki",
+        "datasetId": "loki-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 21,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 21 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "winter-soldier",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5117,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 29801,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.2009,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 29801,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0575,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 29801,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 29801,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/winter-soldier",
+        "datasetId": "winter-soldier-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 22,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 22 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "magneto",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5038,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 53624,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.3615,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 53624,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0823,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 53624,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 53624,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/magneto",
+        "datasetId": "magneto-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 23,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 23 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "groot",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5028,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 8545,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0576,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 8545,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.1001,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 8545,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 8545,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/groot",
+        "datasetId": "groot-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 24,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 24 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "adam-warlock",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.502,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3695,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0249,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3695,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0012,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 3695,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 3695,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/adam-warlock",
+        "datasetId": "adam-warlock-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "C",
+        "heroRank": 25,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier C, displayed rank 25 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "cloak-and-dagger",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5019,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 59344,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.4,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 59344,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.1653,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 59344,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 59344,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/cloak-&-dagger",
+        "datasetId": "cloak-and-dagger-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "A",
+        "heroRank": 26,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier A, displayed rank 26 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "wolverine",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4997,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4445,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.03,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4445,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0051,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4445,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 4445,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/wolverine",
+        "datasetId": "wolverine-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 27,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 27 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "psylocke",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4994,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5366,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0362,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5366,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0029,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5366,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 5366,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/psylocke",
+        "datasetId": "psylocke-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 28,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 28 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "hela",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4985,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 13435,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0906,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 13435,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0655,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 13435,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 13435,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/hela",
+        "datasetId": "hela-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 29,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 29 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "venom",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.498,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 15384,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1037,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 15384,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.1052,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 15384,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 15384,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/venom",
+        "datasetId": "venom-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 30,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 30 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "rogue",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4935,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 8313,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.056,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 8313,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0033,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 8313,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 8313,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/rogue",
+        "datasetId": "rogue-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 31,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 31 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "jubilee",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4933,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 51086,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.3443,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 51086,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.027,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 51086,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 51086,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/jubilee",
+        "datasetId": "jubilee-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 32,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 32 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "black-widow",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4926,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 9566,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0645,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 9566,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0076,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 9566,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 9566,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/black-widow",
+        "datasetId": "black-widow-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 33,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 33 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "hawkeye",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4924,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4117,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0278,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4117,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0034,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4117,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 4117,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/hawkeye",
+        "datasetId": "hawkeye-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "C",
+        "heroRank": 34,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier C, displayed rank 34 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "doctor-strange",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4916,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 25324,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1707,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 25324,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0087,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 25324,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 25324,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/doctor-strange",
+        "datasetId": "doctor-strange-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 35,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 35 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "devil-dinosaur",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4872,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 15218,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1026,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 15218,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.035,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 15218,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 15218,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/devil-dinosaur",
+        "datasetId": "devil-dinosaur-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 36,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 36 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "moon-knight",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.487,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 16108,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1086,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 16108,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0195,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 16108,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 16108,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/moon-knight",
+        "datasetId": "moon-knight-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 37,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 37 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "star-lord",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4854,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 7978,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0538,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 7978,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0035,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 7978,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 7978,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/star-lord",
+        "datasetId": "star-lord-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "C",
+        "heroRank": 38,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier C, displayed rank 38 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "elsa-bloodstone",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4843,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 11922,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0804,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 11922,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0625,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 11922,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 11922,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/elsa-bloodstone",
+        "datasetId": "elsa-bloodstone-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "C",
+        "heroRank": 39,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier C, displayed rank 39 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "captain-america",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4843,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4171,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0281,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4171,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0017,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4171,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 4171,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/captain-america",
+        "datasetId": "captain-america-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "D",
+        "heroRank": 40,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier D, displayed rank 40 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "white-fox",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4727,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 24460,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1649,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 24460,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0085,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 24460,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 24460,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/white-fox",
+        "datasetId": "white-fox-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "C",
+        "heroRank": 41,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier C, displayed rank 41 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "scarlet-witch",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4714,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 17416,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1174,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 17416,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.009,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 17416,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 17416,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/scarlet-witch",
+        "datasetId": "scarlet-witch-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "C",
+        "heroRank": 42,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier C, displayed rank 42 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "invisible-woman",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4696,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 35301,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.2379,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 35301,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0124,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 35301,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 35301,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/invisible-woman",
+        "datasetId": "invisible-woman-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 43,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 43 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "gambit",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4688,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 27325,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1842,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 27325,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.1347,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 27325,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 27325,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/gambit",
+        "datasetId": "gambit-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "B",
+        "heroRank": 44,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier B, displayed rank 44 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "namor",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.468,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 17404,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1173,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 17404,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.202,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 17404,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 17404,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/namor",
+        "datasetId": "namor-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "C",
+        "heroRank": 45,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier C, displayed rank 45 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "emma-frost",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4668,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 32912,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.2218,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 32912,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.022,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 32912,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 32912,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/emma-frost",
+        "datasetId": "emma-frost-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "C",
+        "heroRank": 46,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier C, displayed rank 46 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "deadpool-duelist",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.463,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4950,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0334,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4950,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0018,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 4950,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 4950,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/deadpool-duelist",
+        "datasetId": "deadpool-duelist-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "D",
+        "heroRank": 47,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier D, displayed rank 47 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "the-punisher",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4581,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 17978,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1212,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 17978,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0699,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 17978,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 17978,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/the-punisher",
+        "datasetId": "the-punisher-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "C",
+        "heroRank": 48,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier C, displayed rank 48 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "cyclops",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4557,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 23711,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1598,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 23711,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.035,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 23711,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 23711,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/cyclops",
+        "datasetId": "cyclops-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "C",
+        "heroRank": 49,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier C, displayed rank 49 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "luna-snow",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4506,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 26431,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1782,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 26431,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0101,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 26431,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 26431,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/luna-snow",
+        "datasetId": "luna-snow-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "C",
+        "heroRank": 50,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier C, displayed rank 50 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "squirrel-girl",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4418,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 13638,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0919,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 13638,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0203,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 13638,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 13638,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/squirrel-girl",
+        "datasetId": "squirrel-girl-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "D",
+        "heroRank": 51,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier D, displayed rank 51 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "phoenix",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4417,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 8383,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0565,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 8383,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0082,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 8383,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 8383,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/phoenix",
+        "datasetId": "phoenix-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "D",
+        "heroRank": 52,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier D, displayed rank 52 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "deadpool-strategist",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4404,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 11304,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0762,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 11304,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0013,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 11304,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 11304,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/deadpool-strategist",
+        "datasetId": "deadpool-strategist-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "D",
+        "heroRank": 53,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier D, displayed rank 53 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "jeff-the-land-shark",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.433,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 15836,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1067,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 15836,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0036,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 15836,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 15836,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/jeff-the-land-shark",
+        "datasetId": "jeff-the-land-shark-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "D",
+        "heroRank": 54,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier D, displayed rank 54 of 55, platform not stated, region not stated."
+    },
+    {
+      "heroId": "deadpool-vanguard",
+      "context": {
+        "type": "seasonalRank",
+        "seasonId": "season-9-5",
+        "gameMode": "competitive",
+        "rankTier": "platinum"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.42,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5302,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0357,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5302,
+            "players": null
+          }
+        },
+        "banRate": {
+          "average": 0.0011,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 5302,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 5302,
+        "players": null
+      },
+      "collectedAt": "2026-08-25T16:13:31.923Z",
+      "source": {
+        "id": "rivalstracker",
+        "type": "primary",
+        "url": "https://rivalstracker.com/heroes/deadpool-vanguard",
+        "datasetId": "deadpool-vanguard-s9-5-platinum",
+        "reference": "Source updated at 2026-08-25T14:02:59.000Z."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25T14:02:59.000Z",
+        "platform": null,
+        "region": null,
+        "tierLabel": "D",
+        "heroRank": 55,
+        "heroPoolSize": 55
+      },
+      "validations": [],
+      "methodologyNotes": "Filters: Season 9.5, Competitive, Platinum. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. Source metadata: tier D, displayed rank 55 of 55, platform not stated, region not stated."
     },
     {
       "heroId": "emma-frost",

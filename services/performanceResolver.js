@@ -172,7 +172,7 @@ const performanceResolver = (() => {
                 provenance: benchmark.source
             },
             trainingEvidence,
-            details: {}
+            details: { heroId }
         };
     }
 

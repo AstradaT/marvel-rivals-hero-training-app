@@ -20,19 +20,24 @@ function seasonalRecord(overrides = '') {
     }`;
 }
 
-test('the production catalog contains the complete sourced Season 9.5 Gold dataset', () => {
+test('the production catalog contains complete sourced Season 9.5 Gold and Platinum datasets', () => {
     const dataset = JSON.parse(
         fs.readFileSync(path.join(projectRoot, 'data', 'benchmarks.json'), 'utf8')
     );
 
     assert.equal(dataset.schemaVersion, 2);
-    assert.equal(dataset.datasetVersion, 'season-9-5-gold-rivalstracker-2026-08-25');
-    assert.equal(dataset.updatedAt, '2026-08-25T14:58:14.626Z');
-    assert.equal(dataset.records.length, 60);
+    assert.equal(dataset.datasetVersion, 'season-9-5-gold-platinum-rivalstracker-2026-08-25');
+    assert.equal(dataset.updatedAt, '2026-08-25T16:13:31.923Z');
+    assert.equal(dataset.records.length, 115);
 
     const seasonalRecords = dataset.records.filter(record => record.context.type === 'seasonalRank');
-    const seasonal = seasonalRecords.find(record => record.heroId === 'emma-frost');
-    assert.equal(seasonalRecords.length, 55);
+    const seasonal = seasonalRecords.find(record => (
+        record.heroId === 'emma-frost' && record.context.rankTier === 'gold'
+    ));
+    const platinum = seasonalRecords.find(record => (
+        record.heroId === 'emma-frost' && record.context.rankTier === 'platinum'
+    ));
+    assert.equal(seasonalRecords.length, 110);
     assert.equal(seasonal.heroId, 'emma-frost');
     assert.equal(seasonal.context.seasonId, 'season-9-5');
     assert.equal(seasonal.context.rankTier, 'gold');
@@ -43,9 +48,12 @@ test('the production catalog contains the complete sourced Season 9.5 Gold datas
     assert.equal(seasonal.sourceMetadata.heroRank, 44);
     assert.equal(seasonal.sourceMetadata.heroPoolSize, 55);
     assert.equal(seasonal.validations.length, 2);
+    assert.equal(platinum.metrics.winRate.average, 0.4668);
+    assert.equal(platinum.sampleSize.matches, 32912);
+    assert.equal(platinum.validations.length, 0);
 });
 
-test('the production dataset survives catalog validation and only exact Gold lookup resolves it', () => {
+test('the production dataset survives validation and resolves only an exact rank lookup', () => {
     const dataset = JSON.parse(
         fs.readFileSync(path.join(projectRoot, 'data', 'benchmarks.json'), 'utf8')
     );
@@ -58,7 +66,7 @@ test('the production dataset survives catalog validation and only exact Gold loo
         })
     )`));
 
-    assert.equal(harness.evaluate('catalog.records.length'), 60);
+    assert.equal(harness.evaluate('catalog.records.length'), 115);
     assert.equal(seasonal.metrics.winRate.average, 0.4737);
     assert.equal(seasonal.validations[0].metrics.banRate.average, 0.0366);
     assert.equal(seasonal.validations[0].sampleSize.matches, 11001);
@@ -78,6 +86,9 @@ test('the production dataset survives catalog validation and only exact Gold loo
     assert.match(seasonal.validations[0].methodologyNotes, /not reconciled or averaged/);
     assert.equal(harness.evaluate(`catalog.findSeasonalCompetitive({
         seasonId: 'season-9-5', rankTier: 'platinum', heroId: 'emma-frost'
+    }).metrics.winRate.average`), 0.4668);
+    assert.equal(harness.evaluate(`catalog.findSeasonalCompetitive({
+        seasonId: 'season-9-5', rankTier: 'diamond', heroId: 'emma-frost'
     })`), null);
     assert.equal(harness.evaluate(`catalog.findSeasonalCompetitive({
         seasonId: 'season-9-5', rankTier: 'gold', heroId: 'ultron'
@@ -87,24 +98,25 @@ test('the production dataset survives catalog validation and only exact Gold loo
     })`), null);
 });
 
-test('Gold benchmarks cover every directly compatible roster identity except shared Deadpool', () => {
+test('Gold and Platinum benchmarks cover every roster identity, including each Deadpool form', () => {
     const dataset = JSON.parse(
         fs.readFileSync(path.join(projectRoot, 'data', 'benchmarks.json'), 'utf8')
     );
     const harness = loadBrowserScripts(['data/heroes.js', 'services/benchmarkCatalog.js']);
     harness.evaluate(`catalog = benchmarkCatalog.create(${JSON.stringify(dataset)})`);
     const coverage = JSON.parse(harness.evaluate(`JSON.stringify(
-        [...new Set(heroes.map(hero => hero.id))].map(heroId => ({
-            heroId,
+        ['gold', 'platinum'].flatMap(rankTier => heroes.map(hero => ({
+            rankTier,
+            heroId: hero.id,
             covered: Boolean(catalog.findSeasonalCompetitive({
-                seasonId: 'season-9-5', rankTier: 'gold', heroId
+                seasonId: 'season-9-5', rankTier, heroId: hero.id
             }))
-        }))
+        })))
     )`));
     const uncovered = coverage.filter(item => !item.covered).map(item => item.heroId);
 
-    assert.deepEqual(uncovered, ['deadpool']);
-    assert.equal(coverage.filter(item => item.covered).length, 52);
+    assert.deepEqual(uncovered, []);
+    assert.equal(coverage.filter(item => item.covered).length, 110);
 });
 
 test('seasonal Competitive lookup requires exact season, rank, and hero compatibility', () => {
