@@ -31,10 +31,11 @@ The project began as a simple hero roulette and is being developed incrementally
 - Optional role-based manual hero-stat entry for Quick Play, Competitive, overall, and current-season snapshots; win rate is calculated from matches played and won
 - Versioned benchmark catalog covering all sourced Season 9.5 rank filters
 - Official Season 9 Quick Match benchmark snapshots for PC and console
+- Counterwatch Season 9 Quick Match community snapshot with per-hero samples and Bayesian shrinkage metadata
 - Visible role-based peer evaluation with separate skill and confidence results
 - Strict Competitive proficiency resolver with separate Quick Play training evidence
 - Exact Competitive rank selector that excludes cumulative `+` filters
-- Explainable weighted Training selection using experience, performance, and recency
+- Explainable Quick Match-first Training selection using experience, evidence quality, performance, and recency
 - Automatic training-session history when completed blocks are replaced
 - Portable JSON export/import for player stats, training history, preferences, bans, and the active practice block
 
@@ -96,7 +97,11 @@ Seasonal rank records and rolling high-elo records are different schema contexts
 
 The production source CSVs cover all 13 RivalsTracker Season 9.5 Competitive rank filters. Exact-rank contexts include Bronze, Silver, Gold, Platinum, Diamond, Grandmaster, Celestial, Eternity, and One Above All. Diamond+, Grandmaster+, Celestial+, and Eternity+ remain separate seasonal threshold populations and never substitute for an exact-rank benchmark. Every complete filter contains 55 hero entries; One Above All contains only the 43 heroes published by the source, and omitted heroes are not fabricated. RivalsTracker does not publish ban rate below Gold, so Bronze and Silver preserve it as explicitly unavailable rather than converting empty cells to zero.
 
-The catalog also contains 108 primary Quick Match records captured from the official Marvel Rivals Hero Hot List: 54 for PC and 54 for console. The snapshot was updated on August 4, 2026, during Season 9 and publishes pick rate and win rate without match or player sample counts. Platform contexts remain separate. The Hood is intentionally absent because the snapshot predates the hero's release. These Quick Match records never satisfy a Competitive rank lookup. The generated catalog combines 703 RivalsTracker seasonal Competitive entries, 108 official Quick Match entries, and five separate Emma Frost rolling references. Emma's RivalsMeta and official Marvel Rivals snapshots remain independent validations of the Gold pilot and are never averaged into the primary values.
+The catalog also contains 108 primary Quick Match records captured from the official Marvel Rivals Hero Hot List: 54 for PC and 54 for console. The snapshot was updated on August 4, 2026, during Season 9 and publishes pick rate and win rate without match or player sample counts. Platform contexts remain separate. The Hood is intentionally absent because the snapshot predates the hero's release. These Quick Match records never satisfy a Competitive rank lookup.
+
+A separate Counterwatch snapshot contributes 55 Season 9 Quick Match / All Ranks community records collected on August 26, 2026 from a source update dated August 25. Counterwatch observes matches from opted-in desktop-app users, so its population is self-selected and is never treated as the full game population. Its displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as `shrunkWinRate`, never raw `winRate`. Per-hero match counts, 95% confidence intervals, displayed pick rate, and K/10, D/10, and A/10 are preserved; per-10 rates are converted to canonical per-minute units. Platform, region, and player count remain unavailable.
+
+The generated catalog combines 703 RivalsTracker seasonal Competitive entries, 108 official Quick Match entries, 55 Counterwatch community Quick Match entries, and five separate Emma Frost rolling references. Contexts and source populations remain separate and are never averaged automatically. Emma's RivalsMeta and official Marvel Rivals snapshots remain independent validations of the Gold pilot.
 
 RivalsTracker exposes Deadpool's Duelist, Strategist, and Vanguard forms as separate source entries. The app likewise treats `deadpool-duelist`, `deadpool-strategist`, and `deadpool-vanguard` as three complete hero identities for roulette selection, bans, training sessions, manual statistics, and benchmark lookup. They only share visual assets and the official Marvel Rivals page. Player snapshots and source values remain separate and are never merged or averaged. Legacy statistics stored under the former shared `deadpool` ID remain preserved but are not guessed into a form.
 
@@ -158,7 +163,11 @@ Future capabilities include:
 - More advanced weighting that balances improvement, variety, repetition, and fun
 - A data-source boundary that can integrate with a third-party Marvel Rivals statistics provider
 
-The player-data layer keeps Quick Play and Competitive snapshots separate across overall and per-season time horizons. For proficiency, the resolver uses Competitive data only, progressively favors the current season, and uses capped overall history as supporting evidence. Quick Play remains available as non-comparative training evidence. Manual stat entry remains optional. Quick Random stays uniformly random, while Training now applies explainable weights from saved experience, compatible performance, and time since the latest completed practice block. The production catalog covers all published Season 9.5 exact-rank and cumulative rank-filter records without using cumulative populations as exact-rank fallbacks.
+The player-data layer keeps Quick Play and Competitive snapshots separate across overall and per-season time horizons. For formal proficiency, the resolver uses Competitive data only, progressively favors the current season, and uses capped overall history as supporting evidence. Manual stat entry remains optional. Quick Random stays uniformly random.
+
+Training is Quick Match-first. It compares compatible personal Quick Match win rate with Counterwatch's latest community `shrunkWinRate`, while official PC and console values validate agreement without being averaged into the baseline. Personal reliability grows smoothly as `n / (n + 8)`, so there is no 16-match cliff: weak results add practice priority progressively and strong early results provide only modest relief. Quick Match experience counts fully, Competitive familiarity counts at `0.35`, and a compatible weak Competitive evaluation adds only a small secondary signal. Older seasonal Quick Match data remains usable with reduced context compatibility. **Why this hero** shows at most the two strongest reasons.
+
+The production catalog covers all published Season 9.5 exact-rank and cumulative rank-filter records without using cumulative populations as exact-rank fallbacks.
 
 ## Data and privacy
 

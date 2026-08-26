@@ -1,6 +1,6 @@
 # Continuidad del proyecto
 
-Última actualización: 2026-08-25
+Última actualización: 2026-08-26
 
 Este documento es la memoria durable del desarrollo de **Marvel Rivals Hero Training Assistant**. Debe leerse junto con `README.md` y el historial Git antes de continuar el trabajo desde otra computadora o desde una nueva tarea de Codex.
 
@@ -20,7 +20,7 @@ El usuario no necesita conocimientos técnicos. La interfaz debe explicar por qu
 - Training usa selección ponderada y muestra una explicación de la recomendación.
 - Los datos del jugador se guardan localmente en el navegador.
 - La interfaz permite exportar e importar un respaldo JSON portable.
-- La batería actual contiene 71 pruebas y debe permanecer completamente verde.
+- La batería actual contiene 78 pruebas y debe permanecer completamente verde.
 
 ## Decisiones de benchmark
 
@@ -37,7 +37,7 @@ No existe fallback entre temporadas, rangos, Quick Play o poblaciones acumulativ
 
 Los filtros `Diamond+`, `Grandmaster+`, `Celestial+` y `Eternity+` son poblaciones de referencia distintas. Nunca representan el rango exacto del jugador y no pueden satisfacer una búsqueda exacta.
 
-Quick Play se conserva para experiencia, volumen, recencia e historial de entrenamiento, pero nunca altera una evaluación de habilidad Competitive.
+Quick Play se conserva para experiencia, volumen, recencia e historial de entrenamiento. Training puede compararlo exclusivamente con benchmarks Quick Match; nunca altera una evaluación de habilidad Competitive.
 
 Las fuentes de validación permanecen separadas de la fuente primaria. Sus valores no se promedian.
 
@@ -66,6 +66,20 @@ Las fuentes de validación permanecen separadas de la fuente primaria. Sus valor
 - Estos registros se almacenan como `seasonalMode` y nunca satisfacen búsquedas Competitive.
 - Fuente reproducible: `data/marvel_rivals_official_quickplay_s9_2026-08-04.csv`.
 - `marvelrivalsapi.com` está descartada y no debe proponerse como fuente futura.
+
+## Datos comunitarios de Counterwatch
+
+- Fuente: Counterwatch, snapshot diario actualizado el 2026-08-25 y recolectado el 2026-08-26.
+- Contexto exacto: Season 9, Quick Match, All Ranks.
+- Cobertura: 55 héroes/formas, incluyendo The Hood y las tres formas de Deadpool.
+- Población: partidas observadas de usuarios que aceptaron compartir datos mediante la app de escritorio de Counterwatch; no representa a toda la población del juego.
+- Métricas: `shrunkWinRate`, `pickRate`, partidas por héroe, intervalo de confianza 95%, K/10, D/10 y A/10.
+- Counterwatch reduce el win rate hacia 50% con un prior bayesiano de 400 partidas. Ese valor se conserva como `shrunkWinRate` y nunca se presenta como win rate crudo.
+- K/10, D/10 y A/10 se convierten a claves canónicas por minuto al generar el catálogo.
+- La fuente no declara plataforma, región ni cantidad de jugadores; permanecen no disponibles.
+- Los IDs fuente `bruce-banner` y `cloak-dagger` se normalizan a `hulk` y `cloak-and-dagger`, conservando el ID original en metadata.
+- Fuente reproducible: `data/counterwatch_quickplay_s9_all_ranks_2026-08-25.csv`.
+- Lookups separados: `findCommunityQuickPlay` para contexto exacto y `findLatestCommunityQuickPlay` para el snapshot operativo más reciente; nunca satisfacen búsquedas oficiales de Quick Match ni Competitive.
 
 ## Identidad de Deadpool
 
@@ -111,15 +125,21 @@ El Competitive de la temporada actual es primario. El Competitive overall aporta
 
 ## Prioridad de entrenamiento
 
-Quick Random permanece uniforme. Training pondera candidatos usando:
+Quick Random permanece uniforme. Training es Quick Match-first y pondera candidatos usando:
 
 - exploración cuando no existen datos;
-- experiencia baja;
+- experiencia baja, donde una partida Quick Match vale `1` y una Competitive vale `0.35` como familiaridad secundaria;
 - recencia de sesiones;
-- estado de evaluación `weak` o `unknown`;
+- necesidad de reunir evidencia Quick Match;
+- diferencia gradual entre el win rate personal Quick Match y el `shrunkWinRate` de Counterwatch;
+- estado Competitive `weak` solamente como señal secundaria pequeña;
 - penalización por práctica muy reciente.
 
-La interfaz muestra **Why this hero**. Los pesos se mantienen estables durante cada animación de ruleta.
+La confiabilidad personal de Quick Match crece como `n / (n + 8)`: no existe un corte duro de 16 partidas para Training. Un resultado débil gana influencia gradualmente; un resultado fuerte solo reduce un poco la prioridad para no castigar la exploración temprana.
+
+Counterwatch es el baseline operativo porque publica tamaño de muestra y win rate estabilizado. Los valores oficiales PC y consola no se promedian con Counterwatch: solo validan su grado de acuerdo y reducen la influencia cuando divergen. Season 9 y 9.5 se consideran cercanas pero no idénticas; datos de temporadas más antiguas pueden aportar evidencia con compatibilidad reducida.
+
+La interfaz muestra como máximo las dos razones principales en **Why this hero**. Los pesos se mantienen estables durante cada animación de ruleta.
 
 Cuando un bloque completado es reemplazado por el siguiente giro, se archiva una sesión en `playerData.trainingSessions` para alimentar la recencia.
 
@@ -170,7 +190,7 @@ El respaldo puede contener identificadores del jugador y debe mantenerse privado
 
 1. Probar el respaldo exportado en un segundo navegador o perfil vacío.
 2. Publicar la versión con exportación/importación para que los datos puedan moverse entre dominios sin herramientas técnicas.
-3. Cargar datos reales de 5–10 héroes y observar si las recomendaciones de Training resultan intuitivas.
+3. Seguir observando las recomendaciones con el respaldo real ya cargado y registrar casos contraintuitivos.
 4. Ajustar pesos y mensajes solamente con evidencia de uso; no agregar precisión artificial.
 5. Considerar una pantalla para revisar y editar todas las estadísticas guardadas sin depender del héroe actualmente seleccionado.
 6. Considerar sincronización opcional con cuenta o backend en una etapa posterior. No asumirla como disponible hoy.

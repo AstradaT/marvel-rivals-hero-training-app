@@ -43,12 +43,12 @@ test('weak compatible performance is an explicit priority signal', () => {
         now: '2026-08-25T12:00:00.000Z'
     }))`));
 
-    assert.equal(priority.signals.performance, 2);
-    assert.match(priority.reason, /below the benchmark/);
-    assert.ok(priority.weight > 3);
+    assert.equal(priority.signals.competitive, 0.35);
+    assert.equal(priority.evaluationState, 'weak');
+    assert.ok(priority.weight > 2);
 });
 
-test('experience uses the larger overall or seasonal view instead of double counting history', () => {
+test('experience avoids double counting history and discounts Competitive familiarity', () => {
     const harness = loadBrowserScripts(['services/trainingPriority.js']);
     assert.equal(harness.evaluate(`trainingPriority.getExperienceMatches({
         overall: {
@@ -58,5 +58,111 @@ test('experience uses the larger overall or seasonal view instead of double coun
             'season-9': { competitive: { matchesPlayed: 12 } },
             'season-9-5': { competitive: { matchesPlayed: 8 } }
         }
-    })`), 30);
+    })`), 27);
+});
+
+test('Quick Match weakness grows gradually as personal evidence becomes more reliable', () => {
+    const harness = loadBrowserScripts(['services/trainingPriority.js']);
+    harness.evaluate(`benchmark = {
+        context: { seasonId: 'season-9' },
+        metrics: { shrunkWinRate: { average: 0.55 } },
+        sampleSize: { matches: 20000 }
+    }`);
+    harness.evaluate(`official = [{ metrics: { winRate: { average: 0.54 } } }]`);
+    const result = JSON.parse(harness.evaluate(`JSON.stringify({
+        early: trainingPriority.score({
+            heroId: 'storm', currentSeasonId: 'season-9',
+            heroStats: { overall: {}, seasons: {
+                'season-9': { quickPlay: { matchesPlayed: 3, metrics: { winRate: 0.33 } } }
+            } },
+            trainingSessions: [{
+                heroId: 'storm', playedAt: '2026-08-23T12:00:00.000Z'
+            }],
+            now: '2026-08-25T12:00:00.000Z',
+            communityBenchmark: benchmark, officialBenchmarks: official
+        }),
+        established: trainingPriority.score({
+            heroId: 'storm', currentSeasonId: 'season-9',
+            heroStats: { overall: {}, seasons: {
+                'season-9': { quickPlay: { matchesPlayed: 16, metrics: { winRate: 0.33 } } }
+            } },
+            communityBenchmark: benchmark, officialBenchmarks: official
+        })
+    })`));
+
+    assert.ok(result.early.signals.quickPlayPerformance > 0);
+    assert.ok(result.established.signals.quickPlayPerformance
+        > result.early.signals.quickPlayPerformance);
+    assert.match(result.early.reason, /Counterwatch community baseline/);
+    assert.ok(result.early.reasons.length <= 2);
+});
+
+test('strong early Quick Match results only apply a small relief to priority', () => {
+    const harness = loadBrowserScripts(['services/trainingPriority.js']);
+    const priority = JSON.parse(harness.evaluate(`JSON.stringify(trainingPriority.score({
+        heroId: 'rogue', currentSeasonId: 'season-9',
+        heroStats: { overall: {}, seasons: {
+            'season-9': { quickPlay: { matchesPlayed: 4, metrics: { winRate: 0.75 } } }
+        } },
+        communityBenchmark: {
+            context: { seasonId: 'season-9' },
+            metrics: { shrunkWinRate: { average: 0.51 } },
+            sampleSize: { matches: 10000 }
+        },
+        officialBenchmarks: [{ metrics: { winRate: { average: 0.52 } } }]
+    }))`));
+
+    assert.ok(priority.signals.quickPlayPerformance < 0);
+    assert.ok(priority.signals.quickPlayPerformance >= -0.25);
+    assert.ok(priority.signals.evidenceCollection > 0);
+});
+
+test('official values validate agreement without replacing the Counterwatch baseline', () => {
+    const harness = loadBrowserScripts(['services/trainingPriority.js']);
+    harness.evaluate(`heroStats = { overall: {}, seasons: {
+        'season-9': { quickPlay: { matchesPlayed: 16, metrics: { winRate: 0.4 } } }
+    } }`);
+    harness.evaluate(`community = {
+        context: { seasonId: 'season-9' },
+        metrics: { shrunkWinRate: { average: 0.55 } },
+        sampleSize: { matches: 20000 }
+    }`);
+    const result = JSON.parse(harness.evaluate(`JSON.stringify({
+        agreed: trainingPriority.getQuickPlayPerformance({
+            heroStats, currentSeasonId: 'season-9', communityBenchmark: community,
+            officialBenchmarks: [{ metrics: { winRate: { average: 0.54 } } }]
+        }),
+        disagreed: trainingPriority.getQuickPlayPerformance({
+            heroStats, currentSeasonId: 'season-9', communityBenchmark: community,
+            officialBenchmarks: [{ metrics: { winRate: { average: 0.45 } } }]
+        })
+    })`));
+
+    assert.equal(result.agreed.benchmarkValue, 0.55);
+    assert.equal(result.disagreed.benchmarkValue, 0.55);
+    assert.ok(result.agreed.signal > result.disagreed.signal);
+});
+
+test('older seasonal Quick Match data remains evidence with reduced context compatibility', () => {
+    const harness = loadBrowserScripts(['services/trainingPriority.js']);
+    const result = JSON.parse(harness.evaluate(`JSON.stringify(trainingPriority.score({
+        heroId: 'psylocke', currentSeasonId: 'season-9-5',
+        heroStats: { overall: {}, seasons: {
+            'season-5': { quickPlay: {
+                matchesPlayed: 12, metrics: { winRate: 0.4 },
+                updatedAt: '2026-08-25T02:32:06.000Z'
+            } }
+        } },
+        communityBenchmark: {
+            context: { seasonId: 'season-9' },
+            metrics: { shrunkWinRate: { average: 0.52 } },
+            sampleSize: { matches: 10000 }
+        },
+        officialBenchmarks: [{ metrics: { winRate: { average: 0.51 } } }]
+    }))`));
+
+    assert.equal(result.quickPlayPerformance.playerMatches, 12);
+    assert.ok(result.quickPlayPerformance.signal > 0);
+    assert.ok(result.quickPlayPerformance.quality < 0.6);
+    assert.doesNotMatch(result.reason, /No Quick Match results are saved/);
 });

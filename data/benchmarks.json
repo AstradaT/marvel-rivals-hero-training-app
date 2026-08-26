@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "datasetVersion": "multi-source-season-9-and-9-5-2026-08-25",
-  "updatedAt": "2026-08-25T18:57:56.232Z",
+  "datasetVersion": "multi-source-season-9-and-9-5-2026-08-26",
+  "updatedAt": "2026-08-26",
   "records": [
     {
       "heroId": "mantis",
@@ -45770,6 +45770,4461 @@
       },
       "validations": [],
       "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "mantis",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.562,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 49642,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.23,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 49642,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.1,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 49642,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.6900000000000001,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 49642,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 2.65,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 49642,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 49642,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "mantis-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 1,
+        "heroPoolSize": 55,
+        "sourceHeroId": "mantis",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.004,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "peni-parker",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.555,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 45165,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.21,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 45165,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.59,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 45165,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.6799999999999999,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 45165,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 1.54,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 45165,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 45165,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "peni-parker-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 2,
+        "heroPoolSize": 55,
+        "sourceHeroId": "peni-parker",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.005,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "magik",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.55,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 45179,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.21,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 45179,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.7100000000000002,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 45179,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.8,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 45179,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.06,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 45179,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 45179,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "magik-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 3,
+        "heroPoolSize": 55,
+        "sourceHeroId": "magik",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.005,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "storm",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.539,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 21536,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 21536,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 2.02,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 21536,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.77,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 21536,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 1.9600000000000002,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 21536,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 21536,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "storm-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 4,
+        "heroPoolSize": 55,
+        "sourceHeroId": "storm",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.007,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "the-hood",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.534,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 60879,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.28,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 60879,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.9600000000000002,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 60879,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.52,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 60879,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.22000000000000003,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 60879,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 60879,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "the-hood-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 5,
+        "heroPoolSize": 55,
+        "sourceHeroId": "the-hood",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.004,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "rocket-raccoon",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.534,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 55533,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.26,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 55533,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 0.8,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 55533,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.5900000000000001,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 55533,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 2.09,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 55533,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 55533,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "rocket-raccoon-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 6,
+        "heroPoolSize": 55,
+        "sourceHeroId": "rocket-raccoon",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.004,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "ultron",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.532,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 33484,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.15,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 33484,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.34,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 33484,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.6799999999999999,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 33484,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 2.42,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 33484,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 33484,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "ultron-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 7,
+        "heroPoolSize": 55,
+        "sourceHeroId": "ultron",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.005,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "blade",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.528,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 28392,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.13,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 28392,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.8199999999999998,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 28392,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.9400000000000001,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 28392,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.45,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 28392,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 28392,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "blade-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 8,
+        "heroPoolSize": 55,
+        "sourceHeroId": "blade",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.006,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "hela",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.525,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 44418,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.21,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 44418,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 2.09,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 44418,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.6900000000000001,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 44418,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.13,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 44418,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 44418,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "hela-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 9,
+        "heroPoolSize": 55,
+        "sourceHeroId": "hela",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.005,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "iron-fist",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.523,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 28951,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.13,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 28951,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.54,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 28951,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.86,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 28951,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.15,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 28951,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 28951,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "iron-fist-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 10,
+        "heroPoolSize": 55,
+        "sourceHeroId": "iron-fist",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.006,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "mister-fantastic",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.512,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 19921,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.09,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 19921,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.7100000000000002,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 19921,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.75,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 19921,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.12,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 19921,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 19921,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "mister-fantastic-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 11,
+        "heroPoolSize": 55,
+        "sourceHeroId": "mister-fantastic",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.007,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "spider-man",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.512,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 78922,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.36,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 78922,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.41,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 78922,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.76,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 78922,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.27,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 78922,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 78922,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "spider-man-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 12,
+        "heroPoolSize": 55,
+        "sourceHeroId": "spider-man",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.003,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "black-panther",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.511,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 33060,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.15,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 33060,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.51,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 33060,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.9,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 33060,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.13999999999999999,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 33060,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 33060,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "black-panther-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 13,
+        "heroPoolSize": 55,
+        "sourceHeroId": "black-panther",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.005,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "jubilee",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.511,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 148349,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.68,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 148349,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.72,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 148349,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.61,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 148349,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 1.9600000000000002,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 148349,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 148349,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "jubilee-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 14,
+        "heroPoolSize": 55,
+        "sourceHeroId": "jubilee",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.003,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "the-thing",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.511,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 48885,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.23,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 48885,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.7,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 48885,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.8099999999999999,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 48885,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.61,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 48885,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 48885,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "the-thing-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 15,
+        "heroPoolSize": 55,
+        "sourceHeroId": "the-thing",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.004,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "venom",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.506,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 58248,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.27,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 58248,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.54,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 58248,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.76,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 58248,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.42000000000000004,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 58248,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 58248,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "venom-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 16,
+        "heroPoolSize": 55,
+        "sourceHeroId": "venom",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.004,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "magneto",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.504,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 78688,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.36,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 78688,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.7,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 78688,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.6,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 78688,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.27,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 78688,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 78688,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "magneto-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 17,
+        "heroPoolSize": 55,
+        "sourceHeroId": "magneto",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.003,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "daredevil",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.504,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 23816,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.11,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 23816,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.59,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 23816,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.95,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 23816,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.58,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 23816,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 23816,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "daredevil-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 18,
+        "heroPoolSize": 55,
+        "sourceHeroId": "daredevil",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.006,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "white-fox",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.504,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 107877,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.5,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 107877,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.67,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 107877,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.6599999999999999,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 107877,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 1.7600000000000002,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 107877,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 107877,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "white-fox-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 19,
+        "heroPoolSize": 55,
+        "sourceHeroId": "white-fox",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.003,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "iron-man",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.503,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 31736,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.15,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 31736,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.95,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 31736,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.85,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 31736,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.02,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 31736,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 31736,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "iron-man-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 20,
+        "heroPoolSize": 55,
+        "sourceHeroId": "iron-man",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.006,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "winter-soldier",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.501,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 52103,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.24,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 52103,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.9600000000000002,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 52103,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.73,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 52103,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.5599999999999999,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 52103,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 52103,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "winter-soldier-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 21,
+        "heroPoolSize": 55,
+        "sourceHeroId": "winter-soldier",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.004,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "thor",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.501,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 38042,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.18,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 38042,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.6600000000000001,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 38042,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.82,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 38042,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.32,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 38042,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 38042,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "thor-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 22,
+        "heroPoolSize": 55,
+        "sourceHeroId": "thor",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.005,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "hulk",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.5,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 35477,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.16,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 35477,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.3800000000000001,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 35477,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.65,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 35477,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.36,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 35477,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 35477,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "hulk-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 23,
+        "heroPoolSize": 55,
+        "sourceHeroId": "bruce-banner",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.005,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "scarlet-witch",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.5,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 47590,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.22,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 47590,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 2.06,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 47590,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.74,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 47590,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.3,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 47590,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 47590,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "scarlet-witch-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 24,
+        "heroPoolSize": 55,
+        "sourceHeroId": "scarlet-witch",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.004,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "black-cat",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.5,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 31319,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.14,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 31319,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.49,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 31319,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.79,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 31319,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.22000000000000003,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 31319,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 31319,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "black-cat-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 25,
+        "heroPoolSize": 55,
+        "sourceHeroId": "black-cat",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.006,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "devil-dinosaur",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.499,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 63827,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.29,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 63827,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.78,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 63827,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.8099999999999999,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 63827,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 1.27,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 63827,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 63827,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "devil-dinosaur-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 26,
+        "heroPoolSize": 55,
+        "sourceHeroId": "devil-dinosaur",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.004,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "rogue",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.495,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 45139,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.21,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 45139,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.54,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 45139,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.85,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 45139,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.45,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 45139,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 45139,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "rogue-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 27,
+        "heroPoolSize": 55,
+        "sourceHeroId": "rogue",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.005,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "angela",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.494,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 26941,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.12,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 26941,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.35,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 26941,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.8099999999999999,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 26941,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.21000000000000002,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 26941,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 26941,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "angela-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 28,
+        "heroPoolSize": 55,
+        "sourceHeroId": "angela",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.006,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "cloak-and-dagger",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.492,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 102821,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.47,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 102821,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.3,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 102821,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.5599999999999999,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 102821,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 2.3,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 102821,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 102821,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "cloak-and-dagger-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 29,
+        "heroPoolSize": 55,
+        "sourceHeroId": "cloak-dagger",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.003,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "psylocke",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.489,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 27758,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.13,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 27758,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.75,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 27758,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.76,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 27758,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.05,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 27758,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 27758,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "psylocke-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 30,
+        "heroPoolSize": 55,
+        "sourceHeroId": "psylocke",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.006,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "captain-america",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.489,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 27673,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.13,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 27673,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.27,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 27673,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.8300000000000001,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 27673,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.22999999999999998,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 27673,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 27673,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "captain-america-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 31,
+        "heroPoolSize": 55,
+        "sourceHeroId": "captain-america",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.006,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "gambit",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.488,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 77327,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.36,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 77327,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.29,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 77327,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.6599999999999999,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 77327,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 1.8800000000000001,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 77327,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 77327,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "gambit-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 32,
+        "heroPoolSize": 55,
+        "sourceHeroId": "gambit",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.004,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "star-lord",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.487,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 29457,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.14,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 29457,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.7899999999999998,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 29457,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.85,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 29457,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.06,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 29457,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 29457,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "star-lord-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 33,
+        "heroPoolSize": 55,
+        "sourceHeroId": "star-lord",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.006,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "emma-frost",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.487,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 69029,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.32,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 69029,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.69,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 69029,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.6900000000000001,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 69029,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.44000000000000006,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 69029,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 69029,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "emma-frost-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 34,
+        "heroPoolSize": 55,
+        "sourceHeroId": "emma-frost",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.004,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "black-widow",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.487,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 45967,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.21,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 45967,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.89,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 45967,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.74,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 45967,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.32,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 45967,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 45967,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "black-widow-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 35,
+        "heroPoolSize": 55,
+        "sourceHeroId": "black-widow",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.005,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "elsa-bloodstone",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.486,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 42422,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.2,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 42422,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.8399999999999999,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 42422,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.76,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 42422,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.33999999999999997,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 42422,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 42422,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "elsa-bloodstone-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 36,
+        "heroPoolSize": 55,
+        "sourceHeroId": "elsa-bloodstone",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.005,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "adam-warlock",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.486,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 26698,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.12,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 26698,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.06,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 26698,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.86,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 26698,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 1.3900000000000001,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 26698,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 26698,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "adam-warlock-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 37,
+        "heroPoolSize": 55,
+        "sourceHeroId": "adam-warlock",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.006,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "luna-snow",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.486,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 89869,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.41,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 89869,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.34,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 89869,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.65,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 89869,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 1.64,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 89869,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 89869,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "luna-snow-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 38,
+        "heroPoolSize": 55,
+        "sourceHeroId": "luna-snow",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.003,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "cyclops",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.485,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 83412,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.39,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 83412,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 2.19,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 83412,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.72,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 83412,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.4,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 83412,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 83412,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "cyclops-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 39,
+        "heroPoolSize": 55,
+        "sourceHeroId": "cyclops",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.003,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "doctor-strange",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.482,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 46303,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.21,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 46303,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.5699999999999998,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 46303,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.72,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 46303,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.15,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 46303,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 46303,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "doctor-strange-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 40,
+        "heroPoolSize": 55,
+        "sourceHeroId": "doctor-strange",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.005,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "namor",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.478,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 45361,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.21,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 45361,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 2.02,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 45361,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.6599999999999999,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 45361,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.08,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 45361,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 45361,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "namor-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 41,
+        "heroPoolSize": 55,
+        "sourceHeroId": "namor",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.005,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "deadpool-duelist",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.476,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 20220,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.09,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 20220,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.6199999999999999,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 20220,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.8800000000000001,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 20220,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.03,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 20220,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 20220,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "deadpool-duelist-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 42,
+        "heroPoolSize": 55,
+        "sourceHeroId": "deadpool-duelist",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.007,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "wolverine",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.476,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 18780,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.09,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 18780,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.3800000000000001,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 18780,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.9199999999999999,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 18780,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.16999999999999998,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 18780,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 18780,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "wolverine-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 43,
+        "heroPoolSize": 55,
+        "sourceHeroId": "wolverine",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.007,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "human-torch",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.474,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 18031,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.08,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 18031,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.69,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 18031,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.8400000000000001,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 18031,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.11000000000000001,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 18031,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 18031,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "human-torch-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 44,
+        "heroPoolSize": 55,
+        "sourceHeroId": "human-torch",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.007,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "loki",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.474,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 33995,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.16,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 33995,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.23,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 33995,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.6599999999999999,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 33995,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 1.72,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 33995,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 33995,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "loki-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 45,
+        "heroPoolSize": 55,
+        "sourceHeroId": "loki",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.005,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "hawkeye",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.472,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 20564,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.09,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 20564,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.69,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 20564,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.8699999999999999,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 20564,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.18,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 20564,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 20564,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "hawkeye-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 46,
+        "heroPoolSize": 55,
+        "sourceHeroId": "hawkeye",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.007,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "invisible-woman",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.472,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 66946,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.31,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 66946,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.25,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 66946,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.62,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 66946,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 1.86,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 66946,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 66946,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "invisible-woman-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 47,
+        "heroPoolSize": 55,
+        "sourceHeroId": "invisible-woman",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.004,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "the-punisher",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.47,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 48519,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.22,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 48519,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.8399999999999999,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 48519,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.8400000000000001,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 48519,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.03,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 48519,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 48519,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "the-punisher-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 48,
+        "heroPoolSize": 55,
+        "sourceHeroId": "the-punisher",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.004,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "jeff-the-land-shark",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.47,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 73486,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.34,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 73486,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.54,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 73486,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.73,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 73486,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 2.06,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 73486,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 73486,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "jeff-the-land-shark-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 49,
+        "heroPoolSize": 55,
+        "sourceHeroId": "jeff-the-land-shark",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.004,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "groot",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.469,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 27068,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.12,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 27068,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.44,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 27068,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.78,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 27068,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.48,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 27068,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 27068,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "groot-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 50,
+        "heroPoolSize": 55,
+        "sourceHeroId": "groot",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.006,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "deadpool-strategist",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.469,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 38704,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.18,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 38704,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.35,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 38704,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.71,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 38704,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 1.56,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 38704,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 38704,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "deadpool-strategist-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 51,
+        "heroPoolSize": 55,
+        "sourceHeroId": "deadpool-strategist",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.005,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "squirrel-girl",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.466,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 35949,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.17,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 35949,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.78,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 35949,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.75,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 35949,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.13999999999999999,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 35949,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 35949,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "squirrel-girl-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 52,
+        "heroPoolSize": 55,
+        "sourceHeroId": "squirrel-girl",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.005,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "deadpool-vanguard",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.463,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 32513,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.15,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 32513,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.44,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 32513,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.77,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 32513,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.2,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 32513,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 32513,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "deadpool-vanguard-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 53,
+        "heroPoolSize": 55,
+        "sourceHeroId": "deadpool-vanguard",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.005,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "moon-knight",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.462,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 32956,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.15,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 32956,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.8,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 32956,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.78,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 32956,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.05,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 32956,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 32956,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "moon-knight-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 54,
+        "heroPoolSize": 55,
+        "sourceHeroId": "moon-knight",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.005,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
+    },
+    {
+      "heroId": "phoenix",
+      "context": {
+        "type": "communitySeasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "rankTier": "all-ranks",
+        "population": {
+          "type": "optInTrackerUsers",
+          "tracker": "counterwatch"
+        }
+      },
+      "metrics": {
+        "shrunkWinRate": {
+          "average": 0.453,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 34527,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.16,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": 34527,
+            "players": null
+          }
+        },
+        "killsPerMinute": {
+          "average": 1.6300000000000001,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 34527,
+            "players": null
+          }
+        },
+        "deathsPerMinute": {
+          "average": 0.74,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 34527,
+            "players": null
+          }
+        },
+        "assistsPerMinute": {
+          "average": 0.37,
+          "unit": "perMinute",
+          "sampleSize": {
+            "matches": 34527,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": 34527,
+        "players": null
+      },
+      "collectedAt": "2026-08-26",
+      "source": {
+        "id": "counterwatch",
+        "type": "primary",
+        "url": "https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match",
+        "datasetId": "phoenix-s9-quickplay-all-ranks-2026-08-25",
+        "reference": "Daily community snapshot updated 2026-08-25."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-25",
+        "platform": null,
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 55,
+        "heroPoolSize": 55,
+        "sourceHeroId": "phoenix",
+        "confidenceLabel": "very-high",
+        "confidenceInterval95": 0.005,
+        "shrinkagePriorMatches": 400
+      },
+      "validations": [],
+      "methodologyNotes": "Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published."
     },
     {
       "heroId": "emma-frost",

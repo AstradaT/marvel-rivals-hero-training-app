@@ -62,6 +62,12 @@ const benchmarkCatalog = (() => {
                 typeof metricName === 'string' && /^[a-z][a-zA-Z0-9]*$/.test(metricName)
             ))
             : [];
+        const sourceHeroId = normalizeId(metadata.sourceHeroId);
+        const confidenceLabel = normalizeId(metadata.confidenceLabel);
+        const confidenceInterval95 = Number(metadata.confidenceInterval95);
+        const shrinkagePriorMatches = sanitizeSampleSize({
+            matches: metadata.shrinkagePriorMatches
+        }).matches;
 
         return {
             sourceUpdatedAt: typeof metadata.sourceUpdatedAt === 'string'
@@ -74,6 +80,12 @@ const benchmarkCatalog = (() => {
                 : null,
             heroRank: sanitizeSampleSize({ matches: metadata.heroRank }).matches,
             heroPoolSize: sanitizeSampleSize({ matches: metadata.heroPoolSize }).matches,
+            ...(sourceHeroId ? { sourceHeroId } : {}),
+            ...(confidenceLabel ? { confidenceLabel } : {}),
+            ...(Number.isFinite(confidenceInterval95) && confidenceInterval95 >= 0
+                ? { confidenceInterval95 }
+                : {}),
+            ...(shrinkagePriorMatches ? { shrinkagePriorMatches } : {}),
             ...(unavailableMetrics.length > 0 ? { unavailableMetrics } : {})
         };
     }
@@ -119,6 +131,28 @@ const benchmarkCatalog = (() => {
                 seasonId,
                 gameMode: 'quickPlay',
                 platform
+            };
+        }
+
+        if (context.type === 'communitySeasonalMode') {
+            const seasonId = normalizeId(context.seasonId);
+            const rankTier = normalizeRankTier(context.rankTier);
+            const tracker = context.population?.type === 'optInTrackerUsers'
+                ? normalizeId(context.population.tracker)
+                : null;
+            if (
+                context.gameMode !== 'quickPlay'
+                || !seasonId
+                || !rankTier
+                || !tracker
+            ) return null;
+
+            return {
+                type: 'communitySeasonalMode',
+                seasonId,
+                gameMode: 'quickPlay',
+                rankTier,
+                population: { type: 'optInTrackerUsers', tracker }
             };
         }
 
@@ -274,6 +308,44 @@ const benchmarkCatalog = (() => {
             )) || null;
         }
 
+        function findCommunityQuickPlay({ seasonId, rankTier = 'all-ranks', tracker, heroId }) {
+            const normalizedSeasonId = normalizeId(seasonId);
+            const normalizedRank = normalizeRankTier(rankTier);
+            const normalizedTracker = normalizeId(tracker);
+            const normalizedHeroId = normalizeId(heroId);
+
+            return records.find(record => (
+                record.context.type === 'communitySeasonalMode'
+                && record.context.gameMode === 'quickPlay'
+                && record.context.seasonId === normalizedSeasonId
+                && record.context.rankTier === normalizedRank
+                && record.context.population.tracker === normalizedTracker
+                && record.heroId === normalizedHeroId
+            )) || null;
+        }
+
+        function findLatestCommunityQuickPlay({
+            rankTier = 'all-ranks',
+            tracker,
+            heroId
+        }) {
+            const normalizedRank = normalizeRankTier(rankTier);
+            const normalizedTracker = normalizeId(tracker);
+            const normalizedHeroId = normalizeId(heroId);
+
+            return records.filter(record => (
+                record.context.type === 'communitySeasonalMode'
+                && record.context.gameMode === 'quickPlay'
+                && record.context.rankTier === normalizedRank
+                && record.context.population.tracker === normalizedTracker
+                && record.heroId === normalizedHeroId
+            )).sort((left, right) => {
+                const leftDate = left.sourceMetadata?.sourceUpdatedAt || left.collectedAt;
+                const rightDate = right.sourceMetadata?.sourceUpdatedAt || right.collectedAt;
+                return String(rightDate).localeCompare(String(leftDate));
+            })[0] || null;
+        }
+
         return {
             schemaVersion: SCHEMA_VERSION,
             datasetVersion: typeof source.datasetVersion === 'string'
@@ -283,7 +355,9 @@ const benchmarkCatalog = (() => {
             records,
             findSeasonalCompetitive,
             findSeasonalCompetitiveThreshold,
-            findSeasonalQuickPlay
+            findSeasonalQuickPlay,
+            findCommunityQuickPlay,
+            findLatestCommunityQuickPlay
         };
     }
 

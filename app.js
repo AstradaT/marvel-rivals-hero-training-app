@@ -248,12 +248,37 @@ function getPriorityEvaluation(hero) {
     });
 }
 
+function getTrainingBenchmarks(hero) {
+    if (benchmarkCatalogState !== 'ready') {
+        return { communityBenchmark: null, officialBenchmarks: [] };
+    }
+
+    const communityBenchmark = activeBenchmarkCatalog.findLatestCommunityQuickPlay({
+        rankTier: 'all-ranks',
+        tracker: 'counterwatch',
+        heroId: hero.id
+    });
+    const benchmarkSeasonId = communityBenchmark?.context?.seasonId;
+    const officialBenchmarks = benchmarkSeasonId
+        ? ['pc', 'console'].map(platform => activeBenchmarkCatalog.findSeasonalQuickPlay({
+            seasonId: benchmarkSeasonId,
+            platform,
+            heroId: hero.id
+        })).filter(Boolean)
+        : [];
+
+    return { communityBenchmark, officialBenchmarks };
+}
+
 function getTrainingPriority(hero) {
+    const benchmarks = getTrainingBenchmarks(hero);
     return trainingPriority.score({
         heroId: hero.id,
         heroStats: playerData.heroStats[hero.id] || null,
         trainingSessions: playerData.trainingSessions,
-        evaluation: getPriorityEvaluation(hero)
+        evaluation: getPriorityEvaluation(hero),
+        currentSeasonId: playerData.profile.currentSeasonId,
+        ...benchmarks
     });
 }
 

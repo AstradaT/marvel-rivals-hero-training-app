@@ -34,12 +34,18 @@ const quickPlayPath = path.join(
     'data',
     'marvel_rivals_official_quickplay_s9_2026-08-04.csv'
 );
+const counterwatchPath = path.join(
+    projectRoot,
+    'data',
+    'counterwatch_quickplay_s9_all_ranks_2026-08-25.csv'
+);
 
 function buildProductionFixture() {
     return buildDataset(
         csvPaths.map(csvPath => fs.readFileSync(csvPath, 'utf8')),
         JSON.parse(fs.readFileSync(supplementalPath, 'utf8')),
-        fs.readFileSync(quickPlayPath, 'utf8')
+        fs.readFileSync(quickPlayPath, 'utf8'),
+        fs.readFileSync(counterwatchPath, 'utf8')
     );
 }
 
@@ -53,7 +59,7 @@ test('all 13 rank-filter CSVs import without averaging or changing context', () 
 
     assert.equal(exact.length, 483);
     assert.equal(thresholds.length, 220);
-    assert.equal(dataset.records.length, 816);
+    assert.equal(dataset.records.length, 871);
     assert.deepEqual(
         [...new Set(seasonal.map(record => record.context.rankTier))].sort(),
         [...FULL_EXACT_RANKS, ...THRESHOLD_RANKS, 'one-above-all'].sort()
@@ -76,6 +82,37 @@ test('all 13 rank-filter CSVs import without averaging or changing context', () 
         record.context.population.type === 'rankThreshold'
         && record.context.rankTier === `${record.context.population.minimumRank}-plus`
     )));
+});
+
+test('Counterwatch Quick Match snapshot preserves community population and shrinkage', () => {
+    const community = buildProductionFixture().records.filter(
+        record => record.context.type === 'communitySeasonalMode'
+    );
+
+    assert.equal(community.length, 55);
+    assert.ok(community.every(record => (
+        record.context.seasonId === 'season-9'
+        && record.context.gameMode === 'quickPlay'
+        && record.context.rankTier === 'all-ranks'
+        && record.context.population.type === 'optInTrackerUsers'
+        && record.context.population.tracker === 'counterwatch'
+        && record.source.id === 'counterwatch'
+        && record.sourceMetadata.shrinkagePriorMatches === 400
+        && !Object.hasOwn(record.metrics, 'winRate')
+    )));
+
+    const mantis = community.find(record => record.heroId === 'mantis');
+    assert.equal(mantis.metrics.shrunkWinRate.average, 0.562);
+    assert.equal(mantis.metrics.pickRate.average, 0.23);
+    assert.equal(mantis.metrics.killsPerMinute.average, 1.1);
+    assert.equal(mantis.sampleSize.matches, 49642);
+    assert.equal(mantis.sourceMetadata.confidenceInterval95, 0.004);
+
+    const hulk = community.find(record => record.heroId === 'hulk');
+    const cloakAndDagger = community.find(record => record.heroId === 'cloak-and-dagger');
+    assert.equal(hulk.sourceMetadata.sourceHeroId, 'bruce-banner');
+    assert.equal(cloakAndDagger.sourceMetadata.sourceHeroId, 'cloak-dagger');
+    assert.equal(community.filter(record => record.heroId.startsWith('deadpool-')).length, 3);
 });
 
 test('official Season 9 Quick Match snapshots preserve PC and console separately', () => {

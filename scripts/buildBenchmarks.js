@@ -23,6 +23,11 @@ const defaultQuickPlayPath = path.join(
     'data',
     'marvel_rivals_official_quickplay_s9_2026-08-04.csv'
 );
+const defaultCounterwatchPath = path.join(
+    projectRoot,
+    'data',
+    'counterwatch_quickplay_s9_all_ranks_2026-08-25.csv'
+);
 const defaultOutputPath = path.join(projectRoot, 'data', 'benchmarks.json');
 const REQUIRED_METRICS = ['winRate', 'pickRate', 'banRate'];
 const EXPECTED_HEADERS = [
@@ -39,6 +44,16 @@ const QUICK_PLAY_HEADERS = [
 const QUICK_PLAY_SOURCE_URL = 'https://www.marvelrivals.com/heroes_data/index.html';
 const QUICK_PLAY_SOURCE_UPDATED_AT = '2026-08-04';
 const QUICK_PLAY_COLLECTED_AT = '2026-08-25';
+const COUNTERWATCH_HEADERS = [
+    'hero_id', 'source_hero_id', 'hero_name', 'role', 'shrunk_win_rate',
+    'pick_rate', 'kills_per_10', 'deaths_per_10', 'assists_per_10',
+    'sample_matches', 'confidence_label', 'confidence_interval_95',
+    'display_rank'
+];
+const COUNTERWATCH_SOURCE_URL = 'https://www.counterwatch.gg/stats/marvel-rivals/tier-list?type=Quick+Match';
+const COUNTERWATCH_SOURCE_UPDATED_AT = '2026-08-25';
+const COUNTERWATCH_COLLECTED_AT = '2026-08-26';
+const COUNTERWATCH_SHRINKAGE_PRIOR_MATCHES = 400;
 
 function parseCsv(csvText) {
     const rows = [];
@@ -333,7 +348,98 @@ function buildQuickPlayRecords(csvText) {
     });
 }
 
-function buildDataset(csvTexts, supplemental, quickPlayCsvText = null) {
+function buildCounterwatchRecords(csvText) {
+    const parsedRows = parseCsv(csvText);
+    const headers = parsedRows.shift();
+    if (!headers || headers.join('|') !== COUNTERWATCH_HEADERS.join('|')) {
+        throw new Error('Counterwatch CSV headers do not match the import contract.');
+    }
+
+    const rows = parsedRows.filter(row => row.some(value => value !== '')).map((values, index) => {
+        if (values.length !== headers.length) {
+            throw new Error(`Counterwatch CSV row ${index + 2} has ${values.length} fields; expected ${headers.length}.`);
+        }
+        return Object.fromEntries(headers.map((header, column) => [header, values[column]]));
+    });
+    if (rows.length !== 55 || new Set(rows.map(row => row.hero_id)).size !== 55) {
+        throw new Error('Counterwatch Quick Match snapshot must contain 55 unique canonical hero IDs.');
+    }
+
+    return rows.map((row, index) => {
+        const displayRank = nullableInteger(row.display_rank, `${row.hero_id} display_rank`);
+        const sampleMatches = nullableInteger(row.sample_matches, `${row.hero_id} sample_matches`);
+        const ratios = {
+            shrunkWinRate: Number(row.shrunk_win_rate),
+            pickRate: Number(row.pick_rate),
+            confidenceInterval95: Number(row.confidence_interval_95)
+        };
+        const per10 = {
+            killsPerMinute: Number(row.kills_per_10),
+            deathsPerMinute: Number(row.deaths_per_10),
+            assistsPerMinute: Number(row.assists_per_10)
+        };
+        if (
+            displayRank !== index + 1
+            || Object.values(ratios).some(value => !Number.isFinite(value) || value < 0 || value > 1)
+            || Object.values(per10).some(value => !Number.isFinite(value) || value < 0)
+            || row.confidence_label !== 'very-high'
+        ) {
+            throw new Error(`Invalid Counterwatch values for ${row.hero_id}.`);
+        }
+
+        const metricSample = { matches: sampleMatches, players: null };
+        return {
+            heroId: row.hero_id,
+            context: {
+                type: 'communitySeasonalMode',
+                seasonId: 'season-9',
+                gameMode: 'quickPlay',
+                rankTier: 'all-ranks',
+                population: {
+                    type: 'optInTrackerUsers',
+                    tracker: 'counterwatch'
+                }
+            },
+            metrics: {
+                shrunkWinRate: { average: ratios.shrunkWinRate, unit: 'ratio', sampleSize: metricSample },
+                pickRate: { average: ratios.pickRate, unit: 'ratio', sampleSize: metricSample },
+                killsPerMinute: { average: per10.killsPerMinute / 10, unit: 'perMinute', sampleSize: metricSample },
+                deathsPerMinute: { average: per10.deathsPerMinute / 10, unit: 'perMinute', sampleSize: metricSample },
+                assistsPerMinute: { average: per10.assistsPerMinute / 10, unit: 'perMinute', sampleSize: metricSample }
+            },
+            sampleSize: metricSample,
+            collectedAt: COUNTERWATCH_COLLECTED_AT,
+            source: {
+                id: 'counterwatch',
+                type: 'primary',
+                url: COUNTERWATCH_SOURCE_URL,
+                datasetId: `${row.hero_id}-s9-quickplay-all-ranks-2026-08-25`,
+                reference: `Daily community snapshot updated ${COUNTERWATCH_SOURCE_UPDATED_AT}.`
+            },
+            sourceMetadata: {
+                sourceUpdatedAt: COUNTERWATCH_SOURCE_UPDATED_AT,
+                platform: null,
+                region: null,
+                tierLabel: null,
+                heroRank: displayRank,
+                heroPoolSize: 55,
+                sourceHeroId: row.source_hero_id,
+                confidenceLabel: row.confidence_label,
+                confidenceInterval95: ratios.confidenceInterval95,
+                shrinkagePriorMatches: COUNTERWATCH_SHRINKAGE_PRIOR_MATCHES
+            },
+            validations: [],
+            methodologyNotes: 'Counterwatch Season 9 Quick Match / All Ranks daily snapshot from matches recorded by opted-in Counterwatch desktop-app users. This is a self-selected community population, not the full Marvel Rivals population. Displayed win rate is Bayesian-shrunk toward 50% with a 400-match prior and is stored as shrunkWinRate, never raw winRate. Pick rate is the displayed share of matches under the selected filters. K/10, D/10, and A/10 are converted to canonical per-minute units by dividing by 10. Platform, region, and player count are not published.'
+        };
+    });
+}
+
+function buildDataset(
+    csvTexts,
+    supplemental,
+    quickPlayCsvText = null,
+    counterwatchCsvText = null
+) {
     const sources = Array.isArray(csvTexts) ? csvTexts : [csvTexts];
     const imported = sources.map(csvText => buildCsvRecords(csvText, supplemental));
     const rows = imported.flatMap(source => source.rows);
@@ -350,21 +456,38 @@ function buildDataset(csvTexts, supplemental, quickPlayCsvText = null) {
 
     const latestCollectionDate = rows.map(row => row.collected_at).sort().at(-1);
     const quickPlayRecords = quickPlayCsvText ? buildQuickPlayRecords(quickPlayCsvText) : [];
+    const counterwatchRecords = counterwatchCsvText
+        ? buildCounterwatchRecords(counterwatchCsvText)
+        : [];
+    const records = [
+        ...seasonalRecords,
+        ...quickPlayRecords,
+        ...counterwatchRecords,
+        ...(supplemental.records || [])
+    ];
     return {
         schemaVersion: 2,
-        datasetVersion: quickPlayRecords.length > 0
-            ? 'multi-source-season-9-and-9-5-2026-08-25'
-            : 'season-9-5-all-rivalstracker-rank-filters-2026-08-25',
-        updatedAt: latestCollectionDate,
-        records: [...seasonalRecords, ...quickPlayRecords, ...(supplemental.records || [])]
+        datasetVersion: counterwatchRecords.length > 0
+            ? 'multi-source-season-9-and-9-5-2026-08-26'
+            : quickPlayRecords.length > 0
+                ? 'multi-source-season-9-and-9-5-2026-08-25'
+                : 'season-9-5-all-rivalstracker-rank-filters-2026-08-25',
+        updatedAt: records.map(record => record.collectedAt).sort().at(-1) || latestCollectionDate,
+        records
     };
 }
 
 function main() {
     const csvTexts = defaultCsvPaths.map(csvPath => fs.readFileSync(csvPath, 'utf8'));
     const quickPlayCsvText = fs.readFileSync(defaultQuickPlayPath, 'utf8');
+    const counterwatchCsvText = fs.readFileSync(defaultCounterwatchPath, 'utf8');
     const supplemental = JSON.parse(fs.readFileSync(defaultSupplementalPath, 'utf8'));
-    const dataset = buildDataset(csvTexts, supplemental, quickPlayCsvText);
+    const dataset = buildDataset(
+        csvTexts,
+        supplemental,
+        quickPlayCsvText,
+        counterwatchCsvText
+    );
     fs.writeFileSync(defaultOutputPath, `${JSON.stringify(dataset, null, 2)}\n`);
     console.log(`Built ${dataset.records.length} records: ${dataset.records.length - (supplemental.records || []).length} primary benchmarks and ${(supplemental.records || []).length} supplemental references.`);
 }
@@ -373,6 +496,7 @@ if (require.main === module) main();
 
 module.exports = {
     buildDataset,
+    buildCounterwatchRecords,
     buildQuickPlayRecords,
     normalizeRankTier,
     normalizeSeasonId,

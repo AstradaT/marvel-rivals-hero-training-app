@@ -26,9 +26,9 @@ test('the production catalog contains all sourced Season 9.5 rank datasets', () 
     );
 
     assert.equal(dataset.schemaVersion, 2);
-    assert.equal(dataset.datasetVersion, 'multi-source-season-9-and-9-5-2026-08-25');
-    assert.equal(dataset.updatedAt, '2026-08-25T18:57:56.232Z');
-    assert.equal(dataset.records.length, 816);
+    assert.equal(dataset.datasetVersion, 'multi-source-season-9-and-9-5-2026-08-26');
+    assert.equal(dataset.updatedAt, '2026-08-26');
+    assert.equal(dataset.records.length, 871);
 
     const seasonalRecords = dataset.records.filter(record => record.context.type === 'seasonalRank');
     const thresholdRecords = dataset.records.filter(
@@ -86,7 +86,7 @@ test('the production dataset survives validation and resolves only an exact rank
         })
     )`));
 
-    assert.equal(harness.evaluate('catalog.records.length'), 816);
+    assert.equal(harness.evaluate('catalog.records.length'), 871);
     assert.equal(seasonal.metrics.winRate.average, 0.4737);
     assert.equal(seasonal.validations[0].metrics.banRate.average, 0.0366);
     assert.equal(seasonal.validations[0].sampleSize.matches, 11001);
@@ -148,6 +148,63 @@ test('Season 9 Quick Match lookup requires exact platform, season, and hero', ()
     })`), null);
     assert.equal(harness.evaluate(`catalog.findSeasonalQuickPlay({
         seasonId: 'season-9', platform: 'pc', heroId: 'the-hood'
+    })`), null);
+});
+
+test('community Quick Match lookup preserves tracker population and shrunk win rate', () => {
+    const dataset = JSON.parse(
+        fs.readFileSync(path.join(projectRoot, 'data', 'benchmarks.json'), 'utf8')
+    );
+    const harness = loadBrowserScripts(['services/benchmarkCatalog.js']);
+    harness.evaluate(`catalog = benchmarkCatalog.create(${JSON.stringify(dataset)})`);
+
+    const mantis = JSON.parse(harness.evaluate(`JSON.stringify(
+        catalog.findCommunityQuickPlay({
+            seasonId: 'season-9', tracker: 'counterwatch', heroId: 'mantis'
+        })
+    )`));
+    assert.equal(mantis.context.rankTier, 'all-ranks');
+    assert.equal(mantis.context.population.type, 'optInTrackerUsers');
+    assert.equal(mantis.metrics.shrunkWinRate.average, 0.562);
+    assert.equal(mantis.metrics.winRate, undefined);
+    assert.equal(mantis.sampleSize.matches, 49642);
+    assert.equal(mantis.sourceMetadata.shrinkagePriorMatches, 400);
+    assert.equal(harness.evaluate(`catalog.findCommunityQuickPlay({
+        seasonId: 'season-9-5', tracker: 'counterwatch', heroId: 'mantis'
+    })`), null);
+    assert.equal(harness.evaluate(`catalog.findCommunityQuickPlay({
+        seasonId: 'season-9', tracker: 'other', heroId: 'mantis'
+    })`), null);
+});
+
+test('latest community Quick Match lookup chooses the newest compatible snapshot', () => {
+    const harness = loadBrowserScripts(['services/benchmarkCatalog.js']);
+    harness.evaluate(`catalog = benchmarkCatalog.create({ schemaVersion: 2, records: [
+        {
+            heroId: 'mantis',
+            context: { type: 'communitySeasonalMode', seasonId: 'season-8',
+                gameMode: 'quickPlay', rankTier: 'all-ranks',
+                population: { type: 'optInTrackerUsers', tracker: 'counterwatch' } },
+            metrics: { shrunkWinRate: { average: 0.51, unit: 'ratio' } },
+            collectedAt: '2026-06-01', source: { id: 'counterwatch', type: 'primary' },
+            sourceMetadata: { sourceUpdatedAt: '2026-05-31' }
+        },
+        {
+            heroId: 'mantis',
+            context: { type: 'communitySeasonalMode', seasonId: 'season-9',
+                gameMode: 'quickPlay', rankTier: 'all-ranks',
+                population: { type: 'optInTrackerUsers', tracker: 'counterwatch' } },
+            metrics: { shrunkWinRate: { average: 0.56, unit: 'ratio' } },
+            collectedAt: '2026-08-26', source: { id: 'counterwatch', type: 'primary' },
+            sourceMetadata: { sourceUpdatedAt: '2026-08-25' }
+        }
+    ] })`);
+
+    assert.equal(harness.evaluate(`catalog.findLatestCommunityQuickPlay({
+        tracker: 'counterwatch', heroId: 'mantis'
+    }).context.seasonId`), 'season-9');
+    assert.equal(harness.evaluate(`catalog.findLatestCommunityQuickPlay({
+        tracker: 'other', heroId: 'mantis'
     })`), null);
 });
 
