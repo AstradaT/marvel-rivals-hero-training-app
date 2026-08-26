@@ -29,11 +29,17 @@ const THRESHOLD_RANKS = [
     'diamond-plus', 'grandmaster-plus', 'celestial-plus', 'eternity-plus'
 ];
 const supplementalPath = path.join(projectRoot, 'data', 'benchmarkSupplemental.json');
+const quickPlayPath = path.join(
+    projectRoot,
+    'data',
+    'marvel_rivals_official_quickplay_s9_2026-08-04.csv'
+);
 
 function buildProductionFixture() {
     return buildDataset(
         csvPaths.map(csvPath => fs.readFileSync(csvPath, 'utf8')),
-        JSON.parse(fs.readFileSync(supplementalPath, 'utf8'))
+        JSON.parse(fs.readFileSync(supplementalPath, 'utf8')),
+        fs.readFileSync(quickPlayPath, 'utf8')
     );
 }
 
@@ -47,7 +53,7 @@ test('all 13 rank-filter CSVs import without averaging or changing context', () 
 
     assert.equal(exact.length, 483);
     assert.equal(thresholds.length, 220);
-    assert.equal(dataset.records.length, 708);
+    assert.equal(dataset.records.length, 816);
     assert.deepEqual(
         [...new Set(seasonal.map(record => record.context.rankTier))].sort(),
         [...FULL_EXACT_RANKS, ...THRESHOLD_RANKS, 'one-above-all'].sort()
@@ -70,6 +76,36 @@ test('all 13 rank-filter CSVs import without averaging or changing context', () 
         record.context.population.type === 'rankThreshold'
         && record.context.rankTier === `${record.context.population.minimumRank}-plus`
     )));
+});
+
+test('official Season 9 Quick Match snapshots preserve PC and console separately', () => {
+    const quickPlay = buildProductionFixture().records.filter(
+        record => record.context.type === 'seasonalMode'
+    );
+
+    assert.equal(quickPlay.length, 108);
+    assert.equal(quickPlay.filter(record => record.context.platform === 'pc').length, 54);
+    assert.equal(quickPlay.filter(record => record.context.platform === 'console').length, 54);
+    assert.ok(quickPlay.every(record => (
+        record.context.gameMode === 'quickPlay'
+        && record.context.seasonId === 'season-9'
+        && record.source.id === 'marvel-rivals-official'
+        && record.sourceMetadata.sourceUpdatedAt === '2026-08-04'
+        && record.sampleSize.matches === null
+        && Object.keys(record.metrics).sort().join('|') === 'pickRate|winRate'
+    )));
+
+    const pcMagneto = quickPlay.find(record => (
+        record.heroId === 'magneto' && record.context.platform === 'pc'
+    ));
+    const consoleMagneto = quickPlay.find(record => (
+        record.heroId === 'magneto' && record.context.platform === 'console'
+    ));
+    assert.equal(pcMagneto.metrics.pickRate.average, 0.1227);
+    assert.equal(pcMagneto.metrics.winRate.average, 0.5233);
+    assert.equal(consoleMagneto.metrics.pickRate.average, 0.1229);
+    assert.equal(consoleMagneto.metrics.winRate.average, 0.5256);
+    assert.equal(quickPlay.some(record => record.heroId === 'the-hood'), false);
 });
 
 test('empty Bronze and Silver ban rates remain unavailable rather than becoming zero', () => {

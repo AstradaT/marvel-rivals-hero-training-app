@@ -18,6 +18,11 @@ const defaultCsvPaths = [
     'marvel_rivals_one_above_all_s9_5_benchmark.csv'
 ].map(fileName => path.join(projectRoot, 'data', fileName));
 const defaultSupplementalPath = path.join(projectRoot, 'data', 'benchmarkSupplemental.json');
+const defaultQuickPlayPath = path.join(
+    projectRoot,
+    'data',
+    'marvel_rivals_official_quickplay_s9_2026-08-04.csv'
+);
 const defaultOutputPath = path.join(projectRoot, 'data', 'benchmarks.json');
 const REQUIRED_METRICS = ['winRate', 'pickRate', 'banRate'];
 const EXPECTED_HEADERS = [
@@ -27,6 +32,13 @@ const EXPECTED_HEADERS = [
     'source_url', 'source_updated_at', 'collected_at', 'tier_label', 'hero_rank',
     'hero_pool_size', 'methodology_notes'
 ];
+const QUICK_PLAY_HEADERS = [
+    'hero_id', 'hero_name', 'role', 'platform', 'pick_rate', 'win_rate',
+    'display_rank'
+];
+const QUICK_PLAY_SOURCE_URL = 'https://www.marvelrivals.com/heroes_data/index.html';
+const QUICK_PLAY_SOURCE_UPDATED_AT = '2026-08-04';
+const QUICK_PLAY_COLLECTED_AT = '2026-08-25';
 
 function parseCsv(csvText) {
     const rows = [];
@@ -244,7 +256,84 @@ function buildCsvRecords(csvText, supplemental) {
     return { rows, seasonalRecords };
 }
 
-function buildDataset(csvTexts, supplemental) {
+function buildQuickPlayRecords(csvText) {
+    const parsedRows = parseCsv(csvText);
+    const headers = parsedRows.shift();
+    if (!headers || headers.join('|') !== QUICK_PLAY_HEADERS.join('|')) {
+        throw new Error('Quick Match CSV headers do not match the import contract.');
+    }
+
+    const rows = parsedRows.filter(row => row.some(value => value !== '')).map((values, index) => {
+        if (values.length !== headers.length) {
+            throw new Error(`Quick Match CSV row ${index + 2} has ${values.length} fields; expected ${headers.length}.`);
+        }
+        return Object.fromEntries(headers.map((header, column) => [header, values[column]]));
+    });
+    const platforms = ['pc', 'console'];
+    const roles = ['Vanguard', 'Duelist', 'Strategist'];
+
+    platforms.forEach(platform => {
+        const platformRows = rows.filter(row => row.platform === platform);
+        if (platformRows.length !== 54) {
+            throw new Error(`Official Quick Match ${platform} snapshot must contain 54 entries.`);
+        }
+        if (new Set(platformRows.map(row => row.hero_id)).size !== platformRows.length) {
+            throw new Error(`Official Quick Match ${platform} snapshot contains duplicate hero IDs.`);
+        }
+    });
+
+    return rows.map(row => {
+        if (!platforms.includes(row.platform) || !roles.includes(row.role)) {
+            throw new Error(`Invalid Quick Match context for ${row.hero_id}.`);
+        }
+        const pickRate = Number(row.pick_rate);
+        const winRate = Number(row.win_rate);
+        const heroRank = nullableInteger(row.display_rank, `${row.hero_id} display_rank`);
+        if (
+            !Number.isFinite(pickRate) || pickRate < 0 || pickRate > 1
+            || !Number.isFinite(winRate) || winRate < 0 || winRate > 1
+            || heroRank > 54
+        ) {
+            throw new Error(`Invalid Quick Match values for ${row.hero_id}.`);
+        }
+
+        const datasetId = `${row.hero_id}-s9-quickplay-${row.platform}`;
+        return {
+            heroId: row.hero_id,
+            context: {
+                type: 'seasonalMode',
+                seasonId: 'season-9',
+                gameMode: 'quickPlay',
+                platform: row.platform
+            },
+            metrics: {
+                winRate: { average: winRate, unit: 'ratio', sampleSize: { matches: null, players: null } },
+                pickRate: { average: pickRate, unit: 'ratio', sampleSize: { matches: null, players: null } }
+            },
+            sampleSize: { matches: null, players: null },
+            collectedAt: QUICK_PLAY_COLLECTED_AT,
+            source: {
+                id: 'marvel-rivals-official',
+                type: 'primary',
+                url: QUICK_PLAY_SOURCE_URL,
+                datasetId,
+                reference: `Hero Hot List updated ${QUICK_PLAY_SOURCE_UPDATED_AT}.`
+            },
+            sourceMetadata: {
+                sourceUpdatedAt: QUICK_PLAY_SOURCE_UPDATED_AT,
+                platform: row.platform,
+                region: null,
+                tierLabel: null,
+                heroRank,
+                heroPoolSize: 54
+            },
+            validations: [],
+            methodologyNotes: `Official Hero Hot List snapshot: Season 9, Quick Match, ${row.platform === 'pc' ? 'PC' : 'Console'}, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role.`
+        };
+    });
+}
+
+function buildDataset(csvTexts, supplemental, quickPlayCsvText = null) {
     const sources = Array.isArray(csvTexts) ? csvTexts : [csvTexts];
     const imported = sources.map(csvText => buildCsvRecords(csvText, supplemental));
     const rows = imported.flatMap(source => source.rows);
@@ -260,22 +349,32 @@ function buildDataset(csvTexts, supplemental) {
     }
 
     const latestCollectionDate = rows.map(row => row.collected_at).sort().at(-1);
+    const quickPlayRecords = quickPlayCsvText ? buildQuickPlayRecords(quickPlayCsvText) : [];
     return {
         schemaVersion: 2,
-        datasetVersion: 'season-9-5-all-rivalstracker-rank-filters-2026-08-25',
+        datasetVersion: quickPlayRecords.length > 0
+            ? 'multi-source-season-9-and-9-5-2026-08-25'
+            : 'season-9-5-all-rivalstracker-rank-filters-2026-08-25',
         updatedAt: latestCollectionDate,
-        records: [...seasonalRecords, ...(supplemental.records || [])]
+        records: [...seasonalRecords, ...quickPlayRecords, ...(supplemental.records || [])]
     };
 }
 
 function main() {
     const csvTexts = defaultCsvPaths.map(csvPath => fs.readFileSync(csvPath, 'utf8'));
+    const quickPlayCsvText = fs.readFileSync(defaultQuickPlayPath, 'utf8');
     const supplemental = JSON.parse(fs.readFileSync(defaultSupplementalPath, 'utf8'));
-    const dataset = buildDataset(csvTexts, supplemental);
+    const dataset = buildDataset(csvTexts, supplemental, quickPlayCsvText);
     fs.writeFileSync(defaultOutputPath, `${JSON.stringify(dataset, null, 2)}\n`);
-    console.log(`Built ${dataset.records.length} records: ${dataset.records.length - (supplemental.records || []).length} seasonal benchmarks and ${(supplemental.records || []).length} supplemental references.`);
+    console.log(`Built ${dataset.records.length} records: ${dataset.records.length - (supplemental.records || []).length} primary benchmarks and ${(supplemental.records || []).length} supplemental references.`);
 }
 
 if (require.main === module) main();
 
-module.exports = { buildDataset, normalizeRankTier, normalizeSeasonId, parseCsv };
+module.exports = {
+    buildDataset,
+    buildQuickPlayRecords,
+    normalizeRankTier,
+    normalizeSeasonId,
+    parseCsv
+};

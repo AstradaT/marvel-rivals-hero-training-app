@@ -20,7 +20,7 @@ El usuario no necesita conocimientos técnicos. La interfaz debe explicar por qu
 - Training usa selección ponderada y muestra una explicación de la recomendación.
 - Los datos del jugador se guardan localmente en el navegador.
 - La interfaz permite exportar e importar un respaldo JSON portable.
-- La batería actual contiene 69 pruebas y debe permanecer completamente verde.
+- La batería actual contiene 71 pruebas y debe permanecer completamente verde.
 
 ## Decisiones de benchmark
 
@@ -51,8 +51,21 @@ Las fuentes de validación permanecen separadas de la fuente primaria. Sus valor
 - One Above All conserva solamente los héroes publicados por la fuente; no se rellenan ausencias.
 - Bronze y Silver no publican `banRate`; esos valores permanecen no disponibles, no se convierten en cero.
 - Los porcentajes se almacenan como ratios entre `0` y `1`.
-- Los CSV fuente están en `data/benchmark-sources/` y el catálogo generado está en `data/benchmarks.json`.
+- Los CSV fuente están en `data/` y el catálogo generado está en `data/benchmarks.json`.
 - `npm run build:benchmarks` regenera el catálogo.
+
+## Datos oficiales de Quick Match
+
+- Fuente primaria: Hero Hot List oficial de Marvel Rivals.
+- Snapshot actualizado por la fuente el 2026-08-04, durante Season 9.
+- Contextos independientes: PC Quick Match y Console Quick Match.
+- Cada plataforma contiene 54 héroes/formas con `pickRate` y `winRate`.
+- La fuente no publica tamaños de muestra; permanecen explícitamente no disponibles.
+- The Hood no se rellena porque el snapshot precede su lanzamiento.
+- Las tres formas de Deadpool se preservan por el rol mostrado.
+- Estos registros se almacenan como `seasonalMode` y nunca satisfacen búsquedas Competitive.
+- Fuente reproducible: `data/marvel_rivals_official_quickplay_s9_2026-08-04.csv`.
+- `marvelrivalsapi.com` está descartada y no debe proponerse como fuente futura.
 
 ## Identidad de Deadpool
 

@@ -26,9 +26,9 @@ test('the production catalog contains all sourced Season 9.5 rank datasets', () 
     );
 
     assert.equal(dataset.schemaVersion, 2);
-    assert.equal(dataset.datasetVersion, 'season-9-5-all-rivalstracker-rank-filters-2026-08-25');
+    assert.equal(dataset.datasetVersion, 'multi-source-season-9-and-9-5-2026-08-25');
     assert.equal(dataset.updatedAt, '2026-08-25T18:57:56.232Z');
-    assert.equal(dataset.records.length, 708);
+    assert.equal(dataset.records.length, 816);
 
     const seasonalRecords = dataset.records.filter(record => record.context.type === 'seasonalRank');
     const thresholdRecords = dataset.records.filter(
@@ -86,7 +86,7 @@ test('the production dataset survives validation and resolves only an exact rank
         })
     )`));
 
-    assert.equal(harness.evaluate('catalog.records.length'), 708);
+    assert.equal(harness.evaluate('catalog.records.length'), 816);
     assert.equal(seasonal.metrics.winRate.average, 0.4737);
     assert.equal(seasonal.validations[0].metrics.banRate.average, 0.0366);
     assert.equal(seasonal.validations[0].sampleSize.matches, 11001);
@@ -127,6 +127,27 @@ test('the production dataset survives validation and resolves only an exact rank
     }).metrics.winRate.average`), 0.6007);
     assert.equal(harness.evaluate(`catalog.findSeasonalCompetitive({
         seasonId: 'season-9-5', rankTier: 'gold', heroId: 'deadpool'
+    })`), null);
+});
+
+test('Season 9 Quick Match lookup requires exact platform, season, and hero', () => {
+    const dataset = JSON.parse(
+        fs.readFileSync(path.join(projectRoot, 'data', 'benchmarks.json'), 'utf8')
+    );
+    const harness = loadBrowserScripts(['services/benchmarkCatalog.js']);
+    harness.evaluate(`catalog = benchmarkCatalog.create(${JSON.stringify(dataset)})`);
+
+    assert.equal(harness.evaluate(`catalog.findSeasonalQuickPlay({
+        seasonId: 'season-9', platform: 'pc', heroId: 'magneto'
+    }).metrics.winRate.average`), 0.5233);
+    assert.equal(harness.evaluate(`catalog.findSeasonalQuickPlay({
+        seasonId: 'season-9', platform: 'console', heroId: 'magneto'
+    }).metrics.winRate.average`), 0.5256);
+    assert.equal(harness.evaluate(`catalog.findSeasonalQuickPlay({
+        seasonId: 'season-9-5', platform: 'pc', heroId: 'magneto'
+    })`), null);
+    assert.equal(harness.evaluate(`catalog.findSeasonalQuickPlay({
+        seasonId: 'season-9', platform: 'pc', heroId: 'the-hood'
     })`), null);
 });
 

@@ -103,7 +103,26 @@ const benchmarkCatalog = (() => {
     }
 
     function sanitizeContext(context) {
-        if (!isPlainObject(context) || context.gameMode !== 'competitive') return null;
+        if (!isPlainObject(context)) return null;
+
+        if (context.type === 'seasonalMode') {
+            const seasonId = normalizeId(context.seasonId);
+            const platform = normalizeId(context.platform);
+            if (
+                context.gameMode !== 'quickPlay'
+                || !seasonId
+                || !['pc', 'console'].includes(platform)
+            ) return null;
+
+            return {
+                type: 'seasonalMode',
+                seasonId,
+                gameMode: 'quickPlay',
+                platform
+            };
+        }
+
+        if (context.gameMode !== 'competitive') return null;
 
         if (context.type === 'seasonalRank') {
             const seasonId = normalizeId(context.seasonId);
@@ -241,6 +260,20 @@ const benchmarkCatalog = (() => {
             )) || null;
         }
 
+        function findSeasonalQuickPlay({ seasonId, platform, heroId }) {
+            const normalizedSeasonId = normalizeId(seasonId);
+            const normalizedPlatform = normalizeId(platform);
+            const normalizedHeroId = normalizeId(heroId);
+
+            return records.find(record => (
+                record.context.type === 'seasonalMode'
+                && record.context.gameMode === 'quickPlay'
+                && record.context.seasonId === normalizedSeasonId
+                && record.context.platform === normalizedPlatform
+                && record.heroId === normalizedHeroId
+            )) || null;
+        }
+
         return {
             schemaVersion: SCHEMA_VERSION,
             datasetVersion: typeof source.datasetVersion === 'string'
@@ -249,7 +282,8 @@ const benchmarkCatalog = (() => {
             updatedAt: typeof source.updatedAt === 'string' ? source.updatedAt : null,
             records,
             findSeasonalCompetitive,
-            findSeasonalCompetitiveThreshold
+            findSeasonalCompetitiveThreshold,
+            findSeasonalQuickPlay
         };
     }
 

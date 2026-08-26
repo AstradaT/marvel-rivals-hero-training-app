@@ -1,0 +1,109 @@
+hero_id,hero_name,role,platform,pick_rate,win_rate,display_rank
+jubilee,Jubilee,Strategist,pc,0.2452,0.5015,1
+magneto,Magneto,Vanguard,pc,0.1227,0.5233,2
+devil-dinosaur,Devil Dinosaur,Vanguard,pc,0.1083,0.4988,3
+emma-frost,Emma Frost,Vanguard,pc,0.1050,0.4951,4
+white-fox,White Fox,Strategist,pc,0.1044,0.4975,5
+venom,Venom,Vanguard,pc,0.1040,0.5164,6
+cloak-and-dagger,Cloak & Dagger,Strategist,pc,0.0949,0.4956,7
+luna-snow,Luna Snow,Strategist,pc,0.0928,0.4769,8
+gambit,Gambit,Strategist,pc,0.0835,0.4820,9
+the-thing,The Thing,Vanguard,pc,0.0759,0.5395,10
+jeff-the-land-shark,Jeff the Land Shark,Strategist,pc,0.0755,0.4669,11
+peni-parker,Peni Parker,Vanguard,pc,0.0742,0.5795,12
+spider-man,Spider-Man,Duelist,pc,0.0729,0.5064,13
+cyclops,Cyclops,Duelist,pc,0.0723,0.4684,14
+black-widow,Black Widow,Duelist,pc,0.0699,0.4894,15
+doctor-strange,Doctor Strange,Vanguard,pc,0.0685,0.4717,16
+invisible-woman,Invisible Woman,Strategist,pc,0.0665,0.4820,17
+rocket-raccoon,Rocket Raccoon,Strategist,pc,0.0629,0.5585,18
+thor,Thor,Vanguard,pc,0.0626,0.5404,19
+rogue,Rogue,Vanguard,pc,0.0617,0.4951,20
+deadpool-vanguard,Deadpool,Vanguard,pc,0.0559,0.4644,21
+hela,Hela,Duelist,pc,0.0559,0.5230,22
+the-punisher,The Punisher,Duelist,pc,0.0526,0.4684,23
+mantis,Mantis,Strategist,pc,0.0526,0.5888,24
+winter-soldier,Winter Soldier,Duelist,pc,0.0491,0.5079,25
+namor,Namor,Duelist,pc,0.0490,0.5007,26
+hulk,Hulk,Vanguard,pc,0.0474,0.5281,27
+elsa-bloodstone,Elsa Bloodstone,Duelist,pc,0.0473,0.4849,28
+scarlet-witch,Scarlet Witch,Duelist,pc,0.0431,0.4973,29
+black-panther,Black Panther,Duelist,pc,0.0393,0.5232,30
+angela,Angela,Vanguard,pc,0.0385,0.5226,31
+squirrel-girl,Squirrel Girl,Duelist,pc,0.0381,0.4787,32
+groot,Groot,Vanguard,pc,0.0379,0.5036,33
+captain-america,Captain America,Vanguard,pc,0.0374,0.5050,34
+phoenix,Phoenix,Duelist,pc,0.0363,0.4507,35
+iron-man,Iron Man,Duelist,pc,0.0349,0.5242,36
+deadpool-strategist,Deadpool,Strategist,pc,0.0342,0.4722,37
+ultron,Ultron,Strategist,pc,0.0331,0.5809,38
+magik,Magik,Duelist,pc,0.0330,0.5475,39
+psylocke,Psylocke,Duelist,pc,0.0308,0.4982,40
+star-lord,Star-Lord,Duelist,pc,0.0303,0.4903,41
+moon-knight,Moon Knight,Duelist,pc,0.0291,0.4435,42
+blade,Blade,Duelist,pc,0.0289,0.5432,43
+loki,Loki,Strategist,pc,0.0277,0.5041,44
+adam-warlock,Adam Warlock,Strategist,pc,0.0266,0.5252,45
+iron-fist,Iron Fist,Duelist,pc,0.0255,0.5225,46
+black-cat,Black Cat,Duelist,pc,0.0242,0.5015,47
+hawkeye,Hawkeye,Duelist,pc,0.0235,0.4885,48
+storm,Storm,Duelist,pc,0.0227,0.5719,49
+deadpool-duelist,Deadpool,Duelist,pc,0.0202,0.4727,50
+daredevil,Daredevil,Duelist,pc,0.0192,0.5084,51
+human-torch,Human Torch,Duelist,pc,0.0183,0.4990,52
+mister-fantastic,Mister Fantastic,Duelist,pc,0.0176,0.5592,53
+wolverine,Wolverine,Duelist,pc,0.0158,0.4805,54
+jubilee,Jubilee,Strategist,console,0.2469,0.4987,1
+magneto,Magneto,Vanguard,console,0.1229,0.5256,2
+devil-dinosaur,Devil Dinosaur,Vanguard,console,0.1188,0.4968,3
+venom,Venom,Vanguard,console,0.1184,0.5123,4
+cloak-and-dagger,Cloak & Dagger,Strategist,console,0.1032,0.4979,5
+white-fox,White Fox,Strategist,console,0.0972,0.4987,6
+emma-frost,Emma Frost,Vanguard,console,0.0896,0.4905,7
+gambit,Gambit,Strategist,console,0.0856,0.4751,8
+cyclops,Cyclops,Duelist,console,0.0847,0.4694,9
+jeff-the-land-shark,Jeff the Land Shark,Strategist,console,0.0847,0.4512,10
+spider-man,Spider-Man,Duelist,console,0.0764,0.4922,11
+the-thing,The Thing,Vanguard,console,0.0752,0.5411,12
+luna-snow,Luna Snow,Strategist,console,0.0744,0.4790,13
+peni-parker,Peni Parker,Vanguard,console,0.0742,0.5753,14
+invisible-woman,Invisible Woman,Strategist,console,0.0721,0.4829,15
+doctor-strange,Doctor Strange,Vanguard,console,0.0651,0.4707,16
+rogue,Rogue,Vanguard,console,0.0629,0.4912,17
+thor,Thor,Vanguard,console,0.0614,0.5223,18
+black-widow,Black Widow,Duelist,console,0.0593,0.4740,19
+rocket-raccoon,Rocket Raccoon,Strategist,console,0.0582,0.5437,20
+hulk,Hulk,Vanguard,console,0.0572,0.5204,21
+deadpool-vanguard,Deadpool,Vanguard,console,0.0527,0.4425,22
+namor,Namor,Duelist,console,0.0523,0.4980,23
+scarlet-witch,Scarlet Witch,Duelist,console,0.0493,0.4890,24
+the-punisher,The Punisher,Duelist,console,0.0484,0.4497,25
+winter-soldier,Winter Soldier,Duelist,console,0.0472,0.5021,26
+mantis,Mantis,Strategist,console,0.0468,0.5819,27
+deadpool-strategist,Deadpool,Strategist,console,0.0431,0.4708,28
+hela,Hela,Duelist,console,0.0421,0.5117,29
+elsa-bloodstone,Elsa Bloodstone,Duelist,console,0.0412,0.4820,30
+iron-man,Iron Man,Duelist,console,0.0389,0.5004,31
+captain-america,Captain America,Vanguard,console,0.0381,0.5001,32
+black-panther,Black Panther,Duelist,console,0.0378,0.5100,33
+magik,Magik,Duelist,console,0.0363,0.5470,34
+blade,Blade,Duelist,console,0.0343,0.5339,35
+groot,Groot,Vanguard,console,0.0339,0.4934,36
+squirrel-girl,Squirrel Girl,Duelist,console,0.0339,0.4703,37
+ultron,Ultron,Strategist,console,0.0333,0.5752,38
+iron-fist,Iron Fist,Duelist,console,0.0314,0.5135,39
+phoenix,Phoenix,Duelist,console,0.0314,0.4456,40
+moon-knight,Moon Knight,Duelist,console,0.0308,0.4404,41
+angela,Angela,Vanguard,console,0.0295,0.5088,42
+star-lord,Star-Lord,Duelist,console,0.0293,0.4685,43
+loki,Loki,Strategist,console,0.0278,0.5007,44
+psylocke,Psylocke,Duelist,console,0.0273,0.4799,45
+adam-warlock,Adam Warlock,Strategist,console,0.0265,0.5194,46
+daredevil,Daredevil,Duelist,console,0.0245,0.5084,47
+storm,Storm,Duelist,console,0.0230,0.5600,48
+deadpool-duelist,Deadpool,Duelist,console,0.0221,0.4578,49
+hawkeye,Hawkeye,Duelist,console,0.0217,0.4656,50
+mister-fantastic,Mister Fantastic,Duelist,console,0.0208,0.5501,51
+black-cat,Black Cat,Duelist,console,0.0196,0.4805,52
+wolverine,Wolverine,Duelist,console,0.0184,0.4738,53
+human-torch,Human Torch,Duelist,console,0.0173,0.4848,54

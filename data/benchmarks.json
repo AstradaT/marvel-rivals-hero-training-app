@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "datasetVersion": "season-9-5-all-rivalstracker-rank-filters-2026-08-25",
+  "datasetVersion": "multi-source-season-9-and-9-5-2026-08-25",
   "updatedAt": "2026-08-25T18:57:56.232Z",
   "records": [
     {
@@ -40478,6 +40478,5298 @@
       },
       "validations": [],
       "methodologyNotes": "Filters: Season 9.5, Competitive, One Above All. Percentages are displayed by RivalsTracker to two decimal places and converted to ratios without further precision. sample_matches repeats the source Matches field for each metric row. hero_rank is the displayed table order (win rate descending); tier_label is source-provided. Platform, region, and sample_players are not stated by the source and are left empty. RivalsTracker publishes 43 heroes for this filter; omitted heroes are not fabricated. Source metadata: tier Unrated, displayed rank 43 of 43, platform not stated, region not stated."
+    },
+    {
+      "heroId": "jubilee",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5015,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.2452,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "jubilee-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 1,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "magneto",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5233,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1227,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "magneto-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 2,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "devil-dinosaur",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4988,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1083,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "devil-dinosaur-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 3,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "emma-frost",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4951,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.105,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "emma-frost-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 4,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "white-fox",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4975,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1044,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "white-fox-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 5,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "venom",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5164,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.104,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "venom-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 6,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "cloak-and-dagger",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4956,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0949,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "cloak-and-dagger-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 7,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "luna-snow",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4769,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0928,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "luna-snow-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 8,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "gambit",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.482,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0835,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "gambit-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 9,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "the-thing",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5395,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0759,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "the-thing-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 10,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "jeff-the-land-shark",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4669,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0755,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "jeff-the-land-shark-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 11,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "peni-parker",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5795,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0742,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "peni-parker-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 12,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "spider-man",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5064,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0729,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "spider-man-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 13,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "cyclops",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4684,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0723,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "cyclops-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 14,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "black-widow",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4894,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0699,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "black-widow-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 15,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "doctor-strange",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4717,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0685,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "doctor-strange-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 16,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "invisible-woman",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.482,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0665,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "invisible-woman-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 17,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "rocket-raccoon",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5585,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0629,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "rocket-raccoon-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 18,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "thor",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5404,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0626,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "thor-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 19,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "rogue",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4951,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0617,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "rogue-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 20,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "deadpool-vanguard",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4644,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0559,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "deadpool-vanguard-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 21,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "hela",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.523,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0559,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "hela-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 22,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "the-punisher",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4684,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0526,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "the-punisher-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 23,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "mantis",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5888,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0526,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "mantis-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 24,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "winter-soldier",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5079,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0491,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "winter-soldier-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 25,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "namor",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5007,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.049,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "namor-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 26,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "hulk",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5281,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0474,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "hulk-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 27,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "elsa-bloodstone",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4849,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0473,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "elsa-bloodstone-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 28,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "scarlet-witch",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4973,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0431,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "scarlet-witch-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 29,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "black-panther",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5232,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0393,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "black-panther-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 30,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "angela",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5226,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0385,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "angela-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 31,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "squirrel-girl",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4787,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0381,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "squirrel-girl-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 32,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "groot",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5036,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0379,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "groot-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 33,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "captain-america",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.505,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0374,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "captain-america-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 34,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "phoenix",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4507,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0363,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "phoenix-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 35,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "iron-man",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5242,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0349,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "iron-man-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 36,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "deadpool-strategist",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4722,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0342,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "deadpool-strategist-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 37,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "ultron",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5809,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0331,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "ultron-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 38,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "magik",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5475,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.033,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "magik-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 39,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "psylocke",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4982,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0308,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "psylocke-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 40,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "star-lord",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4903,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0303,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "star-lord-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 41,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "moon-knight",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4435,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0291,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "moon-knight-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 42,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "blade",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5432,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0289,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "blade-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 43,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "loki",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5041,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0277,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "loki-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 44,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "adam-warlock",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5252,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0266,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "adam-warlock-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 45,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "iron-fist",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5225,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0255,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "iron-fist-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 46,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "black-cat",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5015,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0242,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "black-cat-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 47,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "hawkeye",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4885,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0235,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "hawkeye-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 48,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "storm",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5719,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0227,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "storm-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 49,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "deadpool-duelist",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4727,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0202,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "deadpool-duelist-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 50,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "daredevil",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5084,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0192,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "daredevil-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 51,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "human-torch",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.499,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0183,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "human-torch-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 52,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "mister-fantastic",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5592,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0176,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "mister-fantastic-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 53,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "wolverine",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "pc"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4805,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0158,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "wolverine-s9-quickplay-pc",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "pc",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 54,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, PC, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "jubilee",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4987,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.2469,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "jubilee-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 1,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "magneto",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5256,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1229,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "magneto-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 2,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "devil-dinosaur",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4968,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1188,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "devil-dinosaur-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 3,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "venom",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5123,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1184,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "venom-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 4,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "cloak-and-dagger",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4979,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.1032,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "cloak-and-dagger-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 5,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "white-fox",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4987,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0972,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "white-fox-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 6,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "emma-frost",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4905,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0896,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "emma-frost-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 7,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "gambit",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4751,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0856,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "gambit-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 8,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "cyclops",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4694,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0847,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "cyclops-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 9,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "jeff-the-land-shark",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4512,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0847,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "jeff-the-land-shark-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 10,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "spider-man",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4922,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0764,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "spider-man-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 11,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "the-thing",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5411,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0752,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "the-thing-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 12,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "luna-snow",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.479,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0744,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "luna-snow-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 13,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "peni-parker",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5753,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0742,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "peni-parker-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 14,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "invisible-woman",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4829,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0721,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "invisible-woman-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 15,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "doctor-strange",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4707,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0651,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "doctor-strange-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 16,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "rogue",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4912,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0629,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "rogue-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 17,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "thor",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5223,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0614,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "thor-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 18,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "black-widow",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.474,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0593,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "black-widow-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 19,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "rocket-raccoon",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5437,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0582,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "rocket-raccoon-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 20,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "hulk",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5204,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0572,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "hulk-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 21,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "deadpool-vanguard",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4425,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0527,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "deadpool-vanguard-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 22,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "namor",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.498,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0523,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "namor-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 23,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "scarlet-witch",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.489,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0493,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "scarlet-witch-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 24,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "the-punisher",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4497,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0484,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "the-punisher-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 25,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "winter-soldier",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5021,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0472,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "winter-soldier-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 26,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "mantis",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5819,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0468,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "mantis-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 27,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "deadpool-strategist",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4708,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0431,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "deadpool-strategist-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 28,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "hela",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5117,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0421,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "hela-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 29,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "elsa-bloodstone",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.482,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0412,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "elsa-bloodstone-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 30,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "iron-man",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5004,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0389,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "iron-man-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 31,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "captain-america",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5001,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0381,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "captain-america-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 32,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "black-panther",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.51,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0378,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "black-panther-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 33,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "magik",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.547,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0363,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "magik-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 34,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "blade",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5339,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0343,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "blade-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 35,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "groot",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4934,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0339,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "groot-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 36,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "squirrel-girl",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4703,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0339,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "squirrel-girl-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 37,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "ultron",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5752,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0333,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "ultron-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 38,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "iron-fist",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5135,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0314,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "iron-fist-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 39,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "phoenix",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4456,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0314,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "phoenix-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 40,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "moon-knight",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4404,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0308,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "moon-knight-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 41,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "angela",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5088,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0295,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "angela-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 42,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "star-lord",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4685,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0293,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "star-lord-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 43,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "loki",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5007,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0278,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "loki-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 44,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "psylocke",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4799,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0273,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "psylocke-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 45,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "adam-warlock",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5194,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0265,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "adam-warlock-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 46,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "daredevil",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5084,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0245,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "daredevil-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 47,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "storm",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.56,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.023,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "storm-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 48,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "deadpool-duelist",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4578,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0221,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "deadpool-duelist-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 49,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "hawkeye",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4656,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0217,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "hawkeye-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 50,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "mister-fantastic",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.5501,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0208,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "mister-fantastic-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 51,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "black-cat",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4805,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0196,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "black-cat-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 52,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "wolverine",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4738,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0184,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "wolverine-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 53,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
+    },
+    {
+      "heroId": "human-torch",
+      "context": {
+        "type": "seasonalMode",
+        "seasonId": "season-9",
+        "gameMode": "quickPlay",
+        "platform": "console"
+      },
+      "metrics": {
+        "winRate": {
+          "average": 0.4848,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        },
+        "pickRate": {
+          "average": 0.0173,
+          "unit": "ratio",
+          "sampleSize": {
+            "matches": null,
+            "players": null
+          }
+        }
+      },
+      "sampleSize": {
+        "matches": null,
+        "players": null
+      },
+      "collectedAt": "2026-08-25",
+      "source": {
+        "id": "marvel-rivals-official",
+        "type": "primary",
+        "url": "https://www.marvelrivals.com/heroes_data/index.html",
+        "datasetId": "human-torch-s9-quickplay-console",
+        "reference": "Hero Hot List updated 2026-08-04."
+      },
+      "sourceMetadata": {
+        "sourceUpdatedAt": "2026-08-04",
+        "platform": "console",
+        "region": null,
+        "tierLabel": null,
+        "heroRank": 54,
+        "heroPoolSize": 54
+      },
+      "validations": [],
+      "methodologyNotes": "Official Hero Hot List snapshot: Season 9, Quick Match, Console, all roles. The source publishes pick rate and win rate without match or player sample counts. Season 9 is established from the official update date; Season 9.5 arrived on 2026-08-07. The Hood is absent because the snapshot predates that hero's release. Deadpool forms remain separate by displayed role."
     },
     {
       "heroId": "emma-frost",
