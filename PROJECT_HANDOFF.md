@@ -2,7 +2,7 @@
 
 Última actualización: 2026-08-26
 
-Este documento es la memoria durable del desarrollo de **Marvel Rivals Hero Training Assistant**. Debe leerse junto con `README.md` y el historial Git antes de continuar el trabajo desde otra computadora o desde una nueva tarea de Codex.
+Este documento es la memoria durable del desarrollo de **Marvel Rivals Hero Training Assistant**. Debe leerse junto con `README.md`, `PRODUCT_ROADMAP.md` y el historial Git antes de continuar el trabajo desde otra computadora o desde una nueva tarea de Codex.
 
 ## Objetivo del producto
 
@@ -187,6 +187,8 @@ El respaldo puede contener identificadores del jugador y debe mantenerse privado
 6. Mantener `work/` fuera de los commits salvo decisión explícita del usuario; contiene descargas, capturas y scripts auxiliares de recolección.
 
 ## Próximos pasos sugeridos
+
+La hoja de ruta detallada y priorizada se conserva en `PRODUCT_ROADMAP.md`.
 
 1. Probar el respaldo exportado en un segundo navegador o perfil vacío.
 2. Publicar la versión con exportación/importación para que los datos puedan moverse entre dominios sin herramientas técnicas.
