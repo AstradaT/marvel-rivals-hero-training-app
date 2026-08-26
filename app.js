@@ -98,6 +98,18 @@ const heroEvaluationEvidence = document.getElementById('hero-evaluation-evidence
 const heroEvaluationExplanation = document.getElementById('hero-evaluation-explanation');
 const heroEvaluationSourceRow = document.getElementById('hero-evaluation-source-row');
 const heroEvaluationSource = document.getElementById('hero-evaluation-source');
+const progressDashboardBtn = document.getElementById('progress-dashboard-btn');
+const progressDashboardModal = document.getElementById('progress-dashboard-modal');
+const closeProgressDashboardBtn = document.getElementById('close-progress-dashboard-btn');
+const progressSummary = document.getElementById('progress-summary');
+const progressSearch = document.getElementById('progress-search');
+const progressRoleFilter = document.getElementById('progress-role-filter');
+const progressStatusFilter = document.getElementById('progress-status-filter');
+const progressSort = document.getElementById('progress-sort');
+const progressResultsCount = document.getElementById('progress-results-count');
+const progressCatalogNote = document.getElementById('progress-catalog-note');
+const progressHeroList = document.getElementById('progress-hero-list');
+const progressEmptyState = document.getElementById('progress-empty-state');
 
 // Guardamos los roles activos. Por defecto arrancan los 3 seleccionados
 let activeRoles = new Set(savedPreferences.activeRoles);
@@ -289,6 +301,144 @@ function getTrainingPriorityWeights(candidates) {
     ]));
 }
 
+function formatProgressNumber(value) {
+    const numericValue = Number(value) || 0;
+    return Number.isInteger(numericValue)
+        ? numericValue.toLocaleString()
+        : numericValue.toFixed(1);
+}
+
+function formatProgressRecency(daysSincePlayed) {
+    if (daysSincePlayed === null) return 'Never';
+    if (daysSincePlayed < 1) return 'Today';
+    const days = Math.floor(daysSincePlayed);
+    if (days === 1) return '1 day ago';
+    if (days < 30) return `${days} days ago`;
+    const months = Math.floor(days / 30);
+    return months === 1 ? '1 month ago' : `${months} months ago`;
+}
+
+function getHeroProgressEntries() {
+    return heroes.map(hero => trainingProgress.createEntry({
+        hero,
+        priority: getTrainingPriority(hero),
+        isBanned: bannedHeroIds.has(hero.id)
+    }));
+}
+
+function renderProgressSummary(entries) {
+    const summary = trainingProgress.summarize(entries);
+    const summaryItems = [
+        ['untried', 'Untried'],
+        ['gathering', 'Gathering data'],
+        ['needsPractice', 'Needs practice'],
+        ['maintenance', 'Maintenance'],
+        ['wellCovered', 'Well covered']
+    ];
+
+    progressSummary.innerHTML = summaryItems.map(([status, label]) => `
+        <div class="progress-summary-card progress-status--${status} rounded-lg border bg-slate-950/60 px-3 py-2.5">
+            <p class="text-xl font-black text-white">${summary[status]}</p>
+            <p class="text-[9px] font-black uppercase tracking-wider mt-0.5">${label}</p>
+        </div>
+    `).join('');
+}
+
+function renderProgressDashboard() {
+    const entries = getHeroProgressEntries();
+    const visibleEntries = trainingProgress.filterAndSort(entries, {
+        search: progressSearch.value,
+        role: progressRoleFilter.value,
+        status: progressStatusFilter.value,
+        sort: progressSort.value
+    });
+
+    renderProgressSummary(entries);
+    progressResultsCount.innerText = `Showing ${visibleEntries.length} of ${entries.length} heroes`;
+    progressCatalogNote.innerText = benchmarkCatalogState === 'ready'
+        ? 'Quick Match-first · Counterwatch baseline · Competitive familiarity ×0.35'
+        : benchmarkCatalogState === 'loading'
+            ? 'Loading community benchmarks…'
+            : 'Community benchmarks unavailable · Experience and recency only';
+    progressEmptyState.classList.toggle('hidden', visibleEntries.length !== 0);
+
+    progressHeroList.innerHTML = visibleEntries.map(entry => {
+        const roleClass = entry.role === 'Vanguard'
+            ? 'text-blue-400'
+            : entry.role === 'Duelist'
+                ? 'text-red-400'
+                : 'text-emerald-400';
+        const priorityWidth = Math.min(100, Math.max(5, (entry.priorityWeight / 5) * 100));
+        const competitiveCopy = entry.competitiveMatches > 0
+            ? `${formatProgressNumber(entry.competitiveMatches)} Competitive ×0.35`
+            : 'No Competitive history';
+
+        return `
+            <article class="hero-progress-card progress-status--${entry.status} p-4" data-progress-hero-id="${entry.heroId}">
+                <div class="flex items-start gap-3 min-w-0">
+                    <img src="${entry.staticImg}" alt="" class="w-14 h-14 rounded-lg object-cover bg-slate-900 shrink-0">
+                    <div class="min-w-0 flex-1">
+                        <div class="flex items-start justify-between gap-2">
+                            <div class="min-w-0">
+                                <h3 class="font-black text-base leading-tight truncate">${entry.heroName}</h3>
+                                <p class="${roleClass} text-[10px] font-bold uppercase tracking-wider mt-1">${entry.role}</p>
+                            </div>
+                            <span class="progress-status shrink-0 rounded-full border bg-slate-950/70 px-2 py-1 text-[8px] font-black uppercase tracking-wider">${entry.statusLabel}</span>
+                        </div>
+                        ${entry.isBanned ? '<span class="inline-block mt-2 rounded bg-red-950/70 px-2 py-0.5 text-[8px] font-black uppercase tracking-wider text-red-300">Banned from roulette</span>' : ''}
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-2 mt-4">
+                    <div class="rounded-lg bg-slate-900/70 p-2.5">
+                        <p class="text-[8px] font-bold uppercase tracking-wider text-slate-500">Effective</p>
+                        <p class="text-base font-black text-white mt-0.5">${formatProgressNumber(entry.experienceMatches)}</p>
+                    </div>
+                    <div class="rounded-lg bg-slate-900/70 p-2.5">
+                        <p class="text-[8px] font-bold uppercase tracking-wider text-slate-500">Quick Match</p>
+                        <p class="text-base font-black text-white mt-0.5">${formatProgressNumber(entry.quickPlayMatches)}</p>
+                    </div>
+                    <div class="rounded-lg bg-slate-900/70 p-2.5">
+                        <p class="text-[8px] font-bold uppercase tracking-wider text-slate-500">Last trained</p>
+                        <p class="text-xs font-black text-white mt-1">${formatProgressRecency(entry.daysSincePlayed)}</p>
+                    </div>
+                </div>
+
+                <div class="mt-3">
+                    <div class="flex items-center justify-between gap-3 text-[9px] font-bold uppercase tracking-wider">
+                        <span class="text-slate-500">Training priority</span>
+                        <span class="text-amber-300">${entry.priorityWeight.toFixed(2)} / 5</span>
+                    </div>
+                    <div class="progress-priority-track mt-1.5">
+                        <div class="progress-priority-fill" style="width: ${priorityWidth}%"></div>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between gap-2 mt-3 text-[9px] text-slate-500">
+                    <span>${competitiveCopy}</span>
+                    <span>Evidence: <strong class="text-slate-300">${entry.reliabilityLabel}</strong></span>
+                </div>
+                <p class="progress-reason text-[10px] leading-relaxed text-slate-500 mt-2">${entry.reason}</p>
+            </article>
+        `;
+    }).join('');
+}
+
+function openProgressDashboard() {
+    renderProgressDashboard();
+    progressDashboardModal.classList.remove('hidden');
+    progressDashboardModal.classList.add('flex');
+    document.body.classList.add('overflow-hidden');
+    progressSearch.focus();
+}
+
+function closeProgressDashboard() {
+    progressDashboardModal.classList.add('hidden');
+    progressDashboardModal.classList.remove('flex');
+    document.body.classList.remove('overflow-hidden');
+    progressDashboardBtn.focus();
+}
+
 function formatPercentage(value) {
     return `${(Number(value) * 100).toFixed(1)}%`;
 }
@@ -410,6 +560,9 @@ async function loadBenchmarkCatalog() {
     }
 
     updatePracticeUI();
+    if (!progressDashboardModal.classList.contains('hidden')) {
+        renderProgressDashboard();
+    }
 }
 
 function updateHeroStatsPrompt() {
@@ -1259,6 +1412,16 @@ externalStatsModal.addEventListener('click', event => {
     if (event.target === externalStatsModal) closeExternalStatsModal();
 });
 
+progressDashboardBtn.addEventListener('click', openProgressDashboard);
+closeProgressDashboardBtn.addEventListener('click', closeProgressDashboard);
+progressSearch.addEventListener('input', renderProgressDashboard);
+progressRoleFilter.addEventListener('change', renderProgressDashboard);
+progressStatusFilter.addEventListener('change', renderProgressDashboard);
+progressSort.addEventListener('change', renderProgressDashboard);
+progressDashboardModal.addEventListener('click', event => {
+    if (event.target === progressDashboardModal) closeProgressDashboard();
+});
+
 addHeroStatsBtn.addEventListener('click', openManualStatsModal);
 dismissHeroStatsBtn.addEventListener('click', () => {
     heroStatsPromptDismissed = true;
@@ -1280,6 +1443,11 @@ manualStatsModal.addEventListener('click', event => {
 });
 
 document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !progressDashboardModal.classList.contains('hidden')) {
+        closeProgressDashboard();
+        return;
+    }
+
     if (event.key === 'Escape' && !abandonModal.classList.contains('hidden')) {
         closeAbandonModal();
         return;

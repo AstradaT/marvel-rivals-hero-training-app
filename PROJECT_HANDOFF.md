@@ -18,9 +18,10 @@ El usuario no necesita conocimientos técnicos. La interfaz debe explicar por qu
 - Catálogo de benchmarks de Season 9.5 generado desde CSV reproducibles.
 - Modos separados: **Quick Random** y **Training**.
 - Training usa selección ponderada y muestra una explicación de la recomendación.
+- **Hero Progress** muestra los 55 héroes/formas con estado, prioridad, evidencia, recencia, búsqueda, filtros y ordenamiento.
 - Los datos del jugador se guardan localmente en el navegador.
 - La interfaz permite exportar e importar un respaldo JSON portable.
-- La batería actual contiene 78 pruebas y debe permanecer completamente verde.
+- La batería actual contiene 82 pruebas y debe permanecer completamente verde.
 
 ## Decisiones de benchmark
 
@@ -173,6 +174,7 @@ El respaldo puede contener identificadores del jugador y debe mantenerse privado
 - `services/performanceResolver.js`: resolución estricta de contexto Competitive.
 - `services/heroEvaluator.js`: evaluación conservadora y confianza.
 - `services/trainingPriority.js`: pesos explicables de Training.
+- `services/trainingProgress.js`: estados y modelo de presentación del panel general.
 - `services/heroSelector.js`: selección uniforme o ponderada.
 - `services/benchmarkCatalog.js`: validación y búsqueda de benchmarks.
 - `scripts/buildBenchmarks.js`: importación reproducible de los CSV.

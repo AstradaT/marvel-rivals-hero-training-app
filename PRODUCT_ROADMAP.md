@@ -16,6 +16,8 @@ El principal riesgo actual es que cargar datos manualmente requiera más esfuerz
 
 ## Prioridad 1 — Panel de progreso general
 
+**Estado: primera versión implementada el 2026-08-26.**
+
 Crear una vista que permita entender el estado completo del hero pool sin depender de girar la ruleta.
 
 Por cada héroe debería mostrar:
@@ -28,6 +30,10 @@ Por cada héroe debería mostrar:
 - estado legible: `Sin probar`, `Reuniendo datos`, `Necesita práctica`, `En mantenimiento` o `Bien cubierto`.
 
 La vista debería permitir ordenar o filtrar por prioridad, rol, estado y recencia. Los estados deben derivarse de las señales ya calculadas por `trainingPriority`, sin crear una segunda lógica contradictoria.
+
+La primera versión incluye los 55 héroes/formas, resumen por estado, búsqueda, filtros por rol y estado, orden por prioridad, experiencia, recencia o nombre, y tarjetas responsive con las señales principales. Los estados se derivan en `services/trainingProgress.js` a partir del resultado de `trainingPriority`.
+
+Antes de considerarla cerrada definitivamente, debe recibir la evaluación visual y de claridad del usuario. Posibles iteraciones posteriores: hacer clic en un estado del resumen para filtrarlo, abrir la edición de estadísticas desde una tarjeta y ajustar densidad o vocabulario según uso real.
 
 Se considera terminada cuando el usuario puede abrir la pantalla y responder rápidamente: “¿qué héroes conozco poco, cuáles necesitan trabajo y cuáles ya están cubiertos?”.
 

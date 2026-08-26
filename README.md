@@ -36,6 +36,7 @@ The project began as a simple hero roulette and is being developed incrementally
 - Strict Competitive proficiency resolver with separate Quick Play training evidence
 - Exact Competitive rank selector that excludes cumulative `+` filters
 - Explainable Quick Match-first Training selection using experience, evidence quality, performance, and recency
+- Responsive Hero Progress dashboard with roster-wide status, priority, evidence, recency, search, filters, and sorting
 - Automatic training-session history when completed blocks are replaced
 - Portable JSON export/import for player stats, training history, preferences, bans, and the active practice block
 
