@@ -39,6 +39,8 @@ Se considera terminada cuando el usuario puede abrir la pantalla y responder rá
 
 ## Prioridad 2 — Registro rápido al finalizar un bloque
 
+**Estado: primera versión implementada el 2026-08-26.**
+
 Convertir cada bloque de práctica en una fuente de datos propia para la app.
 
 Al completar el bloque, pedir únicamente:
@@ -47,9 +49,21 @@ Al completar el bloque, pedir únicamente:
 - derrotas o partidas totales;
 - opcionalmente, una valoración subjetiva breve como `Me costó`, `Normal` o `Me sentí cómodo`.
 
-La aplicación debe sumar automáticamente el resultado al snapshot Quick Match correspondiente y archivar la sesión. El formulario debe permitir omitir el resultado si el usuario no quiere registrarlo.
+La aplicación debe incorporar automáticamente el resultado como evidencia Quick Match y archivar la sesión. El formulario debe permitir omitir el resultado si el usuario no quiere registrarlo.
 
 Es importante evitar dobles conteos entre estadísticas acumuladas introducidas manualmente y partidas registradas por Training. Antes de implementarlo se debe definir si la app mantiene un ledger propio de partidas, snapshots acumulados o ambos con procedencia explícita.
+
+La primera versión registra cada partida en un ledger propio con Quick Play como modo predeterminado y Competitive como alternativa. Guarda victoria/derrota, MVP o SVP cuando corresponde y una sensación opcional (`Me costó`, `Normal`, `Me sentí cómodo`). También conserva la finalización sin detalles y permite deshacer el último registro.
+
+El ledger se persiste dentro del bloque activo y pasa a `playerData.trainingSessions` cuando se gira el siguiente héroe. No modifica los snapshots manuales. Para aportar experiencia y win rate sin doble conteo, cada snapshot fechado funciona como base y el modelo agrega solamente partidas de Training posteriores a `updatedAt`. Al cargar un snapshot más nuevo, este reemplaza la base y absorbe todo lo anterior. Si una fecha falta o es inválida, la app no inventa una combinación.
+
+## Decisión de arquitectura — Training y Competitive Pool
+
+**Estado: primera versión implementada el 2026-08-26.**
+
+Training y evaluación competitiva son flujos distintos. Training continúa siendo Quick Match-first y muestra un `Training Insight` basado en experiencia, resultados, recencia y baseline comunitario compatible. La comparación formal por rango se presenta en **Competitive Pool**, fuera de la ruleta.
+
+Competitive Pool no elige un héroe al azar. Ordena recomendaciones estables entre los héroes con evaluación Competitive conocida, priorizando habilidad comparada y usando confianza y práctica reciente como apoyo. Evaluaciones débiles, de confianza baja o sin contexto exacto quedan en cobertura, no se convierten en recomendaciones. Las partidas Competitive registradas durante Training conservan historial y familiaridad, pero no asignan por sí solas habilidad ranked.
 
 Se considera terminada cuando el usuario puede practicar, registrar el resultado en pocos segundos y obtener una recomendación actualizada sin abrir Player Stats.
 
@@ -146,4 +160,4 @@ El panel debería construirse primero porque hace visible el modelo actual y per
 
 ## Decisión para la próxima iteración
 
-La próxima mejora recomendada es el **panel de progreso general**. Antes de programarlo conviene definir un pequeño wireframe y los estados derivados del modelo actual. Luego se puede probar con el respaldo real para comprobar que la clasificación resulte intuitiva.
+Las prioridades 1 y 2 y la separación Training/Competitive Pool ya tienen una primera versión funcional. La próxima mejora recomendada es validar visualmente la nueva jerarquía con uso real y luego hacer las explicaciones de **Why this hero** más concretas. Quedan como ajustes posibles registrar `hero unavailable/banned` durante una incursión opcional en Competitive, traducir completamente las etiquetas y agregar historial por héroe.

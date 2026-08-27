@@ -34,6 +34,7 @@ const practicePanel = document.getElementById('practice-panel');
 const practiceStatus = document.getElementById('practice-status');
 const practiceCount = document.getElementById('practice-count');
 const practiceProgress = document.getElementById('practice-progress');
+const practiceResultsSummary = document.getElementById('practice-results-summary');
 const trainingRecommendation = document.getElementById('training-recommendation');
 const trainingRecommendationMessage = document.getElementById('training-recommendation-message');
 const matchCompleteBtn = document.getElementById('match-complete-btn');
@@ -44,6 +45,16 @@ const abandonModal = document.getElementById('abandon-modal');
 const abandonModalDescription = document.getElementById('abandon-modal-description');
 const keepPracticingBtn = document.getElementById('keep-practicing-btn');
 const confirmAbandonBtn = document.getElementById('confirm-abandon-btn');
+const matchResultModal = document.getElementById('match-result-modal');
+const closeMatchResultBtn = document.getElementById('close-match-result-btn');
+const matchResultStep = document.getElementById('match-result-step');
+const matchResultMode = document.getElementById('match-result-mode');
+const matchOutcomeButtons = document.querySelectorAll('[data-match-outcome]');
+const matchRecognitionButtons = document.querySelectorAll('[data-match-recognition]');
+const matchFeelingButtons = document.querySelectorAll('[data-match-feeling]');
+const matchRecognitionHint = document.getElementById('match-recognition-hint');
+const skipMatchResultBtn = document.getElementById('skip-match-result-btn');
+const saveMatchResultBtn = document.getElementById('save-match-result-btn');
 const banListBtn = document.getElementById('ban-list-btn');
 const banCount = document.getElementById('ban-count');
 const banModal = document.getElementById('ban-modal');
@@ -99,6 +110,21 @@ const heroEvaluationExplanation = document.getElementById('hero-evaluation-expla
 const heroEvaluationSourceRow = document.getElementById('hero-evaluation-source-row');
 const heroEvaluationSource = document.getElementById('hero-evaluation-source');
 const progressDashboardBtn = document.getElementById('progress-dashboard-btn');
+const trainingHomeBtn = document.getElementById('training-home-btn');
+const competitivePoolBtn = document.getElementById('competitive-pool-btn');
+const competitivePoolModal = document.getElementById('competitive-pool-modal');
+const closeCompetitivePoolBtn = document.getElementById('close-competitive-pool-btn');
+const competitivePoolContext = document.getElementById('competitive-pool-context');
+const competitivePoolRoleFilter = document.getElementById('competitive-pool-role-filter');
+const competitivePoolSummary = document.getElementById('competitive-pool-summary');
+const competitiveRecommendedSection = document.getElementById('competitive-recommended-section');
+const competitiveRecommendedList = document.getElementById('competitive-recommended-list');
+const competitiveRecommendedCount = document.getElementById('competitive-recommended-count');
+const competitiveRecommendedEmpty = document.getElementById('competitive-recommended-empty');
+const competitiveCoverageList = document.getElementById('competitive-coverage-list');
+const competitiveCoverageCount = document.getElementById('competitive-coverage-count');
+const competitiveUnratedSummary = document.getElementById('competitive-unrated-summary');
+const competitiveAddStatsBtn = document.getElementById('competitive-add-stats-btn');
 const progressDashboardModal = document.getElementById('progress-dashboard-modal');
 const closeProgressDashboardBtn = document.getElementById('close-progress-dashboard-btn');
 const progressSummary = document.getElementById('progress-summary');
@@ -150,6 +176,8 @@ const uniqueHeroes = Array.from(heroes.reduce((heroMap, hero) => {
 let currentHero = null;
 let matchesCompleted = 0;
 let matchTarget = 3;
+let matchResults = [];
+let pendingMatchResult = { outcome: null, recognition: null, feeling: null };
 
 function savePracticeState() {
     if (!currentHero) {
@@ -161,7 +189,8 @@ function savePracticeState() {
         heroId: currentHero.id,
         heroRole: currentHero.role,
         matchesCompleted,
-        matchTarget
+        matchTarget,
+        matchResults
     });
 }
 
@@ -239,25 +268,32 @@ function hasSavedHeroStats(hero) {
     return hasOverallStats || hasSeasonStats;
 }
 
-function getPriorityEvaluation(hero) {
-    if (benchmarkCatalogState !== 'ready') return null;
-
+function getCompetitiveEvaluation(hero) {
+    if (benchmarkCatalogState !== 'ready') {
+        return { resolution: { status: 'unresolved', reason: 'catalogUnavailable', evaluationState: 'unrated' }, evaluation: null };
+    }
     const resolved = performanceResolver.resolve({
         playerData,
         catalog: activeBenchmarkCatalog,
         heroId: hero.id
     });
     if (resolved.status !== 'resolved') {
-        return { evaluationState: resolved.evaluationState };
+        return { resolution: resolved, evaluation: null };
     }
 
-    return heroEvaluator.evaluate({
+    const evaluation = heroEvaluator.evaluate({
         heroId: hero.id,
         heroName: getPerformanceHeroLabel(hero),
         role: hero.role,
         playerStats: resolved.playerStats,
         benchmark: resolved.benchmark
     });
+    return { resolution: resolved, evaluation };
+}
+
+function getPriorityEvaluation(hero) {
+    const { resolution, evaluation } = getCompetitiveEvaluation(hero);
+    return evaluation || { evaluationState: resolution.evaluationState };
 }
 
 function getTrainingBenchmarks(hero) {
@@ -439,6 +475,142 @@ function closeProgressDashboard() {
     progressDashboardBtn.focus();
 }
 
+function formatSeasonLabel(seasonId) {
+    const value = manualStats.formatSeasonInputValue(seasonId);
+    return value ? `Season ${value}` : 'Season not selected';
+}
+
+function getCompetitivePoolEntries() {
+    return heroes.map(hero => {
+        const { resolution, evaluation } = getCompetitiveEvaluation(hero);
+        return competitivePool.createEntry({
+            hero,
+            resolution,
+            evaluation,
+            priority: getTrainingPriority(hero),
+            isBanned: bannedHeroIds.has(hero.id)
+        });
+    });
+}
+
+function renderCompetitivePoolCard(entry, position = null) {
+    const roleClasses = {
+        Vanguard: 'text-blue-300 border-blue-900/70',
+        Duelist: 'text-rose-300 border-rose-900/70',
+        Strategist: 'text-emerald-300 border-emerald-900/70'
+    };
+    const stateClasses = {
+        ready: 'competitive-state--ready',
+        needsMoreData: 'competitive-state--evidence',
+        developing: 'competitive-state--developing',
+        unrated: 'competitive-state--unrated'
+    };
+    const scoreCopy = entry.skillScore === null
+        ? '—'
+        : entry.skillScore.toFixed(1);
+    const positionCopy = position === null
+        ? ''
+        : `<span class="competitive-rank-number">${position}</span>`;
+
+    return `
+        <article class="competitive-card ${stateClasses[entry.state]}">
+            ${positionCopy}
+            <div class="flex gap-3 min-w-0">
+                <img src="${entry.staticImg}" alt="" class="w-16 h-16 rounded-lg object-cover bg-slate-900 shrink-0">
+                <div class="min-w-0 flex-1">
+                    <div class="flex items-start justify-between gap-2">
+                        <div class="min-w-0">
+                            <h4 class="font-black text-white truncate">${entry.heroName}</h4>
+                            <p class="text-[10px] font-bold ${roleClasses[entry.role] || 'text-slate-400'}">${entry.role}</p>
+                        </div>
+                        <span class="competitive-state-badge">${entry.stateLabel}</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 mt-3">
+                        <div><span class="competitive-metric-label">Skill</span><strong>${scoreCopy}</strong></div>
+                        <div><span class="competitive-metric-label">Confidence</span><strong>${entry.confidenceLabel}</strong></div>
+                        <div><span class="competitive-metric-label">Matches</span><strong>${formatProgressNumber(entry.competitiveMatches)}</strong></div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-xs leading-relaxed text-slate-400 mt-3">${entry.summary}</p>
+            <div class="flex items-center justify-between gap-2 mt-3 text-[10px] text-slate-600">
+                <span>${entry.rankTier ? `${entry.rankTier} · ${formatSeasonLabel(entry.seasonId)}` : 'Competitive context incomplete'}</span>
+                <span>${entry.daysSinceTrained === null ? 'Never trained' : `Trained ${formatProgressRecency(entry.daysSinceTrained)}`}</span>
+            </div>
+            ${entry.isBanned ? '<p class="text-[10px] text-rose-400 mt-2">Excluded from Training recommendations by your ban list.</p>' : ''}
+        </article>
+    `;
+}
+
+function renderCompetitivePool() {
+    const entries = getCompetitivePoolEntries();
+    const role = competitivePoolRoleFilter.value;
+    const filteredEntries = competitivePool.rank(entries, { role });
+    const recommended = competitivePool.getRecommended(
+        role === 'All' ? entries : entries.filter(entry => entry.role === role)
+    );
+    const coverage = filteredEntries.filter(entry => (
+        entry.state === 'needsMoreData' || entry.state === 'developing'
+    ));
+    const unratedCount = filteredEntries.filter(entry => entry.state === 'unrated').length;
+    const summary = competitivePool.summarize(filteredEntries);
+    const seasonId = playerData.profile.currentSeasonId;
+    const rank = seasonId
+        ? playerData.profile.competitiveRanks?.[seasonId]
+        : null;
+
+    competitivePoolContext.innerHTML = `
+        <span class="context-chip">${formatSeasonLabel(seasonId)}</span>
+        <span class="context-chip">${rank || 'Rank not selected'}</span>
+        <span class="text-[11px] text-slate-600">Competitive snapshots update this pool; Training results do not assign ranked skill.</span>
+    `;
+    competitivePoolSummary.innerHTML = [
+        ['ready', 'Recommended', summary.ready],
+        ['needsMoreData', 'Needs evidence', summary.needsMoreData],
+        ['developing', 'Developing', summary.developing],
+        ['unrated', 'Not evaluated', summary.unrated]
+    ].map(([state, label, count]) => `
+        <div class="competitive-summary competitive-state--${state}">
+            <strong>${count}</strong><span>${label}</span>
+        </div>
+    `).join('');
+
+    competitiveRecommendedList.innerHTML = recommended
+        .map((entry, index) => renderCompetitivePoolCard(entry, index + 1))
+        .join('');
+    competitiveRecommendedCount.textContent = `${recommended.length} heroes`;
+    competitiveRecommendedEmpty.classList.toggle('hidden', recommended.length > 0);
+    competitiveAddStatsBtn.textContent = currentHero
+        ? `Update ${getPerformanceHeroLabel(currentHero)} stats`
+        : 'Return to Training';
+
+    competitiveCoverageList.innerHTML = coverage.map(entry => renderCompetitivePoolCard(entry)).join('');
+    competitiveCoverageCount.textContent = `${coverage.length} ${coverage.length === 1 ? 'hero' : 'heroes'}`;
+    competitiveUnratedSummary.classList.toggle('hidden', unratedCount === 0);
+    competitiveUnratedSummary.innerHTML = unratedCount === 0 ? '' : `
+        <div>
+            <strong>${unratedCount} ${unratedCount === 1 ? 'hero is' : 'heroes are'} not evaluated yet</strong>
+            <p>Add a current-season Competitive snapshot when you want to consider them for ranked.</p>
+        </div>
+        <span aria-hidden="true">Not in the pool</span>
+    `;
+}
+
+function openCompetitivePool() {
+    renderCompetitivePool();
+    competitivePoolModal.classList.remove('hidden');
+    competitivePoolModal.classList.add('flex');
+    document.body.classList.add('overflow-hidden');
+    closeCompetitivePoolBtn.focus();
+}
+
+function closeCompetitivePool(returnFocus = true) {
+    competitivePoolModal.classList.add('hidden');
+    competitivePoolModal.classList.remove('flex');
+    document.body.classList.remove('overflow-hidden');
+    if (returnFocus) competitivePoolBtn.focus();
+}
+
 function formatPercentage(value) {
     return `${(Number(value) * 100).toFixed(1)}%`;
 }
@@ -472,9 +644,7 @@ function getUnratedEvaluationCopy(resolved) {
 }
 
 function updateHeroEvaluation() {
-    const canShow = appMode === 'training'
-        && currentHero
-        && hasSavedHeroStats(currentHero);
+    const canShow = appMode === 'training' && currentHero;
     if (!canShow) {
         heroEvaluationPanel.classList.add('hidden');
         return;
@@ -484,65 +654,46 @@ function updateHeroEvaluation() {
     heroEvaluationComparison.classList.add('hidden');
     heroEvaluationSourceRow.classList.add('hidden');
 
-    if (benchmarkCatalogState === 'loading') {
-        setEvaluationBadge('unrated', 'Loading');
-        heroEvaluationSummary.innerText = 'Loading peer benchmark…';
-        heroEvaluationEvidence.innerText = '';
-        heroEvaluationExplanation.innerText = 'Your saved statistics remain available while the catalog loads.';
-        return;
-    }
+    const priority = getTrainingPriority(currentHero);
+    const performance = priority.quickPlayPerformance;
+    const quickPlayExperience = priority.experience.quickPlayMatches;
+    const reliabilityLabel = performance.playerMatches === 0
+        ? 'No results'
+        : performance.reliability < 0.5
+            ? 'Growing'
+            : performance.reliability < 0.75
+                ? 'Useful'
+                : 'Strong';
+    const insightState = performance.signal >= 0.1
+        ? 'weak'
+        : performance.playerMatches > 0
+            ? 'known'
+            : 'unknown';
 
-    if (benchmarkCatalogState === 'error') {
-        setEvaluationBadge('unrated', 'Unavailable');
-        heroEvaluationSummary.innerText = 'Benchmark unavailable';
-        heroEvaluationEvidence.innerText = '';
-        heroEvaluationExplanation.innerText = 'Serve the app over HTTP and reload to fetch the local benchmark catalog.';
-        return;
-    }
+    setEvaluationBadge(insightState, reliabilityLabel);
+    heroEvaluationSummary.innerText = performance.playerMatches === 0
+        ? quickPlayExperience > 0
+            ? 'Experience saved; match outcomes would improve the signal.'
+            : 'Start building a Quick Play baseline.'
+        : performance.signal >= 0.1
+            ? 'Your Quick Play results suggest more practice.'
+            : 'Your Quick Play evidence is becoming useful.';
+    heroEvaluationEvidence.innerText = `Experience: ${formatProgressNumber(quickPlayExperience)} Quick Play · Results: ${formatProgressNumber(performance.playerMatches)} · Last trained: ${formatProgressRecency(priority.daysSincePlayed)}`;
+    heroEvaluationExplanation.innerText = priority.reason;
 
-    const resolved = performanceResolver.resolve({
-        playerData,
-        catalog: activeBenchmarkCatalog,
-        heroId: currentHero.id
-    });
-    if (resolved.status !== 'resolved') {
-        const [summary, explanation] = getUnratedEvaluationCopy(resolved);
-        setEvaluationBadge(resolved.evaluationState, 'Not rated');
-        heroEvaluationSummary.innerText = summary;
-        heroEvaluationEvidence.innerText = '';
-        heroEvaluationExplanation.innerText = explanation;
-        return;
-    }
-
-    const evaluation = heroEvaluator.evaluate({
-        heroId: currentHero.id,
-        heroName: getPerformanceHeroLabel(currentHero),
-        role: currentHero.role,
-        playerStats: resolved.playerStats,
-        benchmark: resolved.benchmark
-    });
-    const winRateComparison = evaluation.comparisons.find(
-        comparison => comparison.metricName === 'winRate'
-    );
-    const sourceMatches = resolved.source.sourceMatches;
-    const source = resolved.benchmark.source;
-
-    setEvaluationBadge(evaluation.evaluationState, evaluation.displayCategory.label);
-    heroEvaluationSummary.innerText = evaluation.summary;
-    heroEvaluationEvidence.innerText = `Confidence: ${evaluation.confidence.label} · Effective sample: ${evaluation.confidence.playerMatches} matches · Season ${sourceMatches.currentSeason}, overall ${sourceMatches.overall}`;
-    heroEvaluationExplanation.innerText = evaluation.evaluationState === 'unknown'
-        ? `Early signal only: ${evaluation.explanation} At least 16 compatible matches are required before assigning a performance category.`
-        : evaluation.explanation;
-
-    if (winRateComparison) {
-        heroEvaluationPlayerValue.innerText = formatPercentage(winRateComparison.playerValue);
-        heroEvaluationBenchmarkValue.innerText = formatPercentage(winRateComparison.benchmarkValue);
+    if (
+        Number.isFinite(performance.playerWinRate)
+        && Number.isFinite(performance.benchmarkWinRate)
+    ) {
+        heroEvaluationPlayerValue.innerText = formatPercentage(performance.playerWinRate);
+        heroEvaluationBenchmarkValue.innerText = formatPercentage(performance.benchmarkWinRate);
         heroEvaluationComparison.classList.remove('hidden');
     }
 
-    if (source?.url) {
-        heroEvaluationSource.href = source.url;
-        heroEvaluationSource.innerText = `${source.id} · ${formatSourceDate(resolved.benchmark.collectedAt)} · ${resolved.benchmark.sampleSize.matches.toLocaleString()} matches`;
+    const benchmark = getTrainingBenchmarks(currentHero).communityBenchmark;
+    if (benchmark?.source?.url) {
+        heroEvaluationSource.href = benchmark.source.url;
+        heroEvaluationSource.innerText = `${benchmark.source.id} · ${formatSourceDate(benchmark.collectedAt)} · ${benchmark.sampleSize.matches.toLocaleString()} matches`;
         heroEvaluationSourceRow.classList.remove('hidden');
     }
 }
@@ -562,6 +713,9 @@ async function loadBenchmarkCatalog() {
     updatePracticeUI();
     if (!progressDashboardModal.classList.contains('hidden')) {
         renderProgressDashboard();
+    }
+    if (!competitivePoolModal.classList.contains('hidden')) {
+        renderCompetitivePool();
     }
 }
 
@@ -937,6 +1091,36 @@ function closeBanModal() {
     banListBtn.focus();
 }
 
+function updatePracticeResultsSummary() {
+    const summary = matchResult.summarize(matchResults);
+    practiceResultsSummary.replaceChildren();
+
+    if (summary.recorded === 0) {
+        practiceResultsSummary.classList.add('hidden');
+        practiceResultsSummary.classList.remove('flex');
+        return;
+    }
+
+    const badges = [
+        summary.wins ? `${summary.wins}W` : null,
+        summary.losses ? `${summary.losses}L` : null,
+        summary.mvpAwards ? `${summary.mvpAwards} MVP` : null,
+        summary.svpAwards ? `${summary.svpAwards} SVP` : null
+    ].filter(Boolean);
+    const omittedCount = summary.recorded - summary.wins - summary.losses;
+    if (omittedCount) badges.push(`${omittedCount} without details`);
+
+    badges.forEach(label => {
+        const badge = document.createElement('span');
+        badge.className = 'rounded-full border border-slate-700 bg-slate-950/60 px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-slate-300';
+        badge.textContent = label;
+        practiceResultsSummary.appendChild(badge);
+    });
+
+    practiceResultsSummary.classList.remove('hidden');
+    practiceResultsSummary.classList.add('flex');
+}
+
 function updatePracticeUI() {
     if (appMode === 'quickRandom') {
         practicePanel.classList.add('hidden');
@@ -969,6 +1153,7 @@ function updatePracticeUI() {
 
     practiceCount.innerText = `${matchesCompleted} / ${matchTarget}`;
     practiceProgress.style.width = `${percentage}%`;
+    updatePracticeResultsSummary();
 
     if (blockComplete) {
         practiceStatus.innerText = matchTarget === 3
@@ -1052,23 +1237,94 @@ function startPracticeBlock(hero) {
     currentHero = hero;
     matchesCompleted = 0;
     matchTarget = 3;
+    matchResults = [];
     heroStatsPromptDismissed = false;
     savePracticeState();
     updatePracticeUI();
 }
 
-function finishMatch() {
+function updateMatchResultOptions() {
+    matchOutcomeButtons.forEach(button => {
+        const selected = button.dataset.matchOutcome === pendingMatchResult.outcome;
+        button.setAttribute('aria-pressed', String(selected));
+        button.classList.toggle('border-amber-400', selected);
+        button.classList.toggle('bg-slate-800', selected);
+        button.classList.toggle('border-slate-700', !selected);
+    });
+
+    matchRecognitionButtons.forEach(button => {
+        const recognition = button.dataset.matchRecognition || null;
+        const isCompatible = !recognition
+            || (recognition === 'mvp' && pendingMatchResult.outcome === 'win')
+            || (recognition === 'svp' && pendingMatchResult.outcome === 'loss');
+        const selected = recognition === pendingMatchResult.recognition;
+        button.disabled = !isCompatible;
+        button.setAttribute('aria-pressed', String(selected));
+        button.classList.toggle('border-amber-400', selected);
+        button.classList.toggle('bg-slate-800', selected);
+        button.classList.toggle('border-slate-700', !selected);
+        button.classList.toggle('opacity-35', !isCompatible);
+        button.classList.toggle('cursor-not-allowed', !isCompatible);
+    });
+
+    matchFeelingButtons.forEach(button => {
+        const selected = button.dataset.matchFeeling === pendingMatchResult.feeling;
+        button.setAttribute('aria-pressed', String(selected));
+        button.classList.toggle('border-amber-400', selected);
+        button.classList.toggle('bg-slate-800', selected);
+        button.classList.toggle('border-slate-700', !selected);
+    });
+
+    saveMatchResultBtn.disabled = !pendingMatchResult.outcome;
+    matchRecognitionHint.textContent = pendingMatchResult.outcome === 'win'
+        ? 'MVP is available for a victory.'
+        : pendingMatchResult.outcome === 'loss'
+            ? 'SVP is available for a defeat.'
+            : 'Choose a result first to enable the matching recognition.';
+}
+
+function openMatchResultModal() {
     if (!currentHero || matchesCompleted >= matchTarget || isSpinning) return;
 
+    pendingMatchResult = { outcome: null, recognition: null, feeling: null };
+    matchResultMode.value = 'quickPlay';
+    matchResultStep.textContent = `${currentHero.name} · Match ${matchesCompleted + 1} of ${matchTarget}`;
+    updateMatchResultOptions();
+    matchResultModal.classList.remove('hidden');
+    matchResultModal.classList.add('flex');
+    matchOutcomeButtons[0].focus();
+}
+
+function closeMatchResultModal(returnFocus = true) {
+    matchResultModal.classList.add('hidden');
+    matchResultModal.classList.remove('flex');
+    if (returnFocus) matchCompleteBtn.focus();
+}
+
+function finishMatch({ withDetails = true } = {}) {
+    if (!currentHero || matchesCompleted >= matchTarget || isSpinning) return;
+    if (withDetails && !pendingMatchResult.outcome) return;
+
+    matchResults.push(matchResult.create({
+        id: `match-${Date.now()}-${currentHero.id}-${matchesCompleted + 1}`,
+        playedAt: new Date().toISOString(),
+        gameMode: matchResultMode.value,
+        outcome: withDetails ? pendingMatchResult.outcome : null,
+        recognition: withDetails ? pendingMatchResult.recognition : null,
+        feeling: withDetails ? pendingMatchResult.feeling : null
+    }));
     matchesCompleted += 1;
     savePracticeState();
     updatePracticeUI();
+    closeMatchResultModal(false);
+    (matchesCompleted >= matchTarget ? spinBtn : matchCompleteBtn).focus();
 }
 
 function undoMatch() {
     if (!currentHero || matchesCompleted === 0 || isSpinning) return;
 
     matchesCompleted -= 1;
+    matchResults.pop();
     savePracticeState();
     updatePracticeUI();
 }
@@ -1119,6 +1375,7 @@ function confirmAbandonPracticeBlock() {
     currentHero = null;
     matchesCompleted = 0;
     matchTarget = 3;
+    matchResults = [];
     savePracticeState();
     resetHeroSelectionUI();
     updatePracticeUI();
@@ -1152,6 +1409,7 @@ function restorePracticeState() {
         matchTarget,
         Math.max(0, Math.floor(Number(savedBlock.matchesCompleted) || 0))
     );
+    matchResults = matchResult.sanitizeMany(savedBlock.matchResults, matchesCompleted);
 
     // Re-save to migrate older storage formats after successful validation.
     savePracticeState();
@@ -1166,14 +1424,21 @@ function archiveCompletedPracticeBlock() {
     if (!currentHero || matchesCompleted < matchTarget) return;
 
     const playedAt = new Date().toISOString();
+    const resultSummary = matchResult.summarize(matchResults);
     playerData.trainingSessions.push({
         id: `training-${Date.now()}-${currentHero.id}`,
         heroId: currentHero.id,
-        gameMode: null,
+        gameMode: matchResult.getSessionGameMode(matchResults),
         seasonId: playerData.profile.currentSeasonId,
         playedAt,
         matches: matchTarget,
-        metrics: {}
+        metrics: {
+            wins: resultSummary.wins,
+            losses: resultSummary.losses,
+            mvpAwards: resultSummary.mvpAwards,
+            svpAwards: resultSummary.svpAwards
+        },
+        matchResults
     });
     playerData = playerDataStorage.save(playerData);
 }
@@ -1238,6 +1503,7 @@ function spinRoulette() {
         currentHero = null;
         matchesCompleted = 0;
         matchTarget = 3;
+        matchResults = [];
         savePracticeState();
     }
     const trainingWeights = appMode === 'training'
@@ -1372,12 +1638,45 @@ function updateUI(hero, isSpinningPhase) {
 // Main button Event Listener
 spinBtn.addEventListener('click', spinRoulette);
 
-matchCompleteBtn.addEventListener('click', finishMatch);
+matchCompleteBtn.addEventListener('click', openMatchResultModal);
 undoMatchBtn.addEventListener('click', undoMatch);
 extendBtn.addEventListener('click', extendPracticeBlock);
 abandonBlockBtn.addEventListener('click', openAbandonModal);
 keepPracticingBtn.addEventListener('click', closeAbandonModal);
 confirmAbandonBtn.addEventListener('click', confirmAbandonPracticeBlock);
+
+closeMatchResultBtn.addEventListener('click', closeMatchResultModal);
+skipMatchResultBtn.addEventListener('click', () => finishMatch({ withDetails: false }));
+saveMatchResultBtn.addEventListener('click', () => finishMatch({ withDetails: true }));
+matchOutcomeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        pendingMatchResult.outcome = button.dataset.matchOutcome;
+        if (
+            (pendingMatchResult.recognition === 'mvp' && pendingMatchResult.outcome !== 'win')
+            || (pendingMatchResult.recognition === 'svp' && pendingMatchResult.outcome !== 'loss')
+        ) pendingMatchResult.recognition = null;
+        updateMatchResultOptions();
+    });
+});
+matchRecognitionButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        if (button.disabled) return;
+        pendingMatchResult.recognition = button.dataset.matchRecognition || null;
+        updateMatchResultOptions();
+    });
+});
+matchFeelingButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const selectedFeeling = button.dataset.matchFeeling;
+        pendingMatchResult.feeling = pendingMatchResult.feeling === selectedFeeling
+            ? null
+            : selectedFeeling;
+        updateMatchResultOptions();
+    });
+});
+matchResultModal.addEventListener('click', event => {
+    if (event.target === matchResultModal) closeMatchResultModal();
+});
 
 abandonModal.addEventListener('click', event => {
     if (event.target === abandonModal) closeAbandonModal();
@@ -1413,6 +1712,22 @@ externalStatsModal.addEventListener('click', event => {
 });
 
 progressDashboardBtn.addEventListener('click', openProgressDashboard);
+trainingHomeBtn.addEventListener('click', () => {
+    if (!competitivePoolModal.classList.contains('hidden')) closeCompetitivePool(false);
+    if (!progressDashboardModal.classList.contains('hidden')) closeProgressDashboard();
+    trainingHomeBtn.focus();
+});
+competitivePoolBtn.addEventListener('click', openCompetitivePool);
+closeCompetitivePoolBtn.addEventListener('click', closeCompetitivePool);
+competitivePoolRoleFilter.addEventListener('change', renderCompetitivePool);
+competitiveAddStatsBtn.addEventListener('click', () => {
+    closeCompetitivePool(false);
+    if (currentHero) openManualStatsModal();
+    else trainingHomeBtn.focus();
+});
+competitivePoolModal.addEventListener('click', event => {
+    if (event.target === competitivePoolModal) closeCompetitivePool();
+});
 closeProgressDashboardBtn.addEventListener('click', closeProgressDashboard);
 progressSearch.addEventListener('input', renderProgressDashboard);
 progressRoleFilter.addEventListener('change', renderProgressDashboard);
@@ -1443,6 +1758,16 @@ manualStatsModal.addEventListener('click', event => {
 });
 
 document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !competitivePoolModal.classList.contains('hidden')) {
+        closeCompetitivePool();
+        return;
+    }
+
+    if (event.key === 'Escape' && !matchResultModal.classList.contains('hidden')) {
+        closeMatchResultModal();
+        return;
+    }
+
     if (event.key === 'Escape' && !progressDashboardModal.classList.contains('hidden')) {
         closeProgressDashboard();
         return;

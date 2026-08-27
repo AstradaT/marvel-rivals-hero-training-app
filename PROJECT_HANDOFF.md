@@ -19,9 +19,11 @@ El usuario no necesita conocimientos técnicos. La interfaz debe explicar por qu
 - Modos separados: **Quick Random** y **Training**.
 - Training usa selección ponderada y muestra una explicación de la recomendación.
 - **Hero Progress** muestra los 55 héroes/formas con estado, prioridad, evidencia, recencia, búsqueda, filtros y ordenamiento.
+- **Competitive Pool** está separado de la ruleta y recomienda únicamente héroes con evaluación Competitive compatible y conocida; habilidad es la señal principal, con confianza y recencia como apoyo.
+- La pantalla Training muestra un **Training Insight** Quick Play en vez de presentar la evaluación ranked como requisito del bloque.
 - Los datos del jugador se guardan localmente en el navegador.
 - La interfaz permite exportar e importar un respaldo JSON portable.
-- La batería actual contiene 82 pruebas y debe permanecer completamente verde.
+- La batería actual contiene 95 pruebas y debe permanecer completamente verde.
 
 ## Decisiones de benchmark
 
@@ -142,7 +144,9 @@ Counterwatch es el baseline operativo porque publica tamaño de muestra y win ra
 
 La interfaz muestra como máximo las dos razones principales en **Why this hero**. Los pesos se mantienen estables durante cada animación de ruleta.
 
-Cuando un bloque completado es reemplazado por el siguiente giro, se archiva una sesión en `playerData.trainingSessions` para alimentar la recencia.
+Cuando un bloque completado es reemplazado por el siguiente giro, se archiva una sesión en `playerData.trainingSessions` para alimentar la recencia. Cada partida completada puede conservar modo, victoria/derrota, MVP/SVP opcional y sensación `struggled`/`okay`/`comfortable`. El ledger activo permanece dentro del bloque persistido hasta archivarse.
+
+La procedencia de los resultados de Training queda separada de los snapshots manuales del Career Profile. Cada snapshot manual usa `updatedAt` como ancla: `trainingPriority` toma ese acumulado como base y agrega solamente resultados del ledger jugados después. Un snapshot nuevo absorbe los resultados anteriores y se convierte en la nueva base. Si falta una fecha válida, la app no suma partidas potencialmente solapadas y conserva el comportamiento conservador. El usuario también puede completar una partida sin detalles.
 
 ## Respaldo y migración entre computadoras
 
@@ -170,9 +174,11 @@ El respaldo puede contener identificadores del jugador y debe mantenerse privado
 - `services/playerDataStorage.js`: esquema y sanitización de datos del jugador.
 - `services/preferencesStorage.js`: preferencias persistentes.
 - `services/practiceStorage.js`: bloque activo.
+- `services/matchResult.js`: contrato, sanitización, resumen y modo de los resultados por partida.
 - `services/appDataTransfer.js`: contrato del respaldo portable.
 - `services/performanceResolver.js`: resolución estricta de contexto Competitive.
 - `services/heroEvaluator.js`: evaluación conservadora y confianza.
+- `services/competitivePool.js`: clasificación estable de recomendaciones competitivas y cobertura de evaluación.
 - `services/trainingPriority.js`: pesos explicables de Training.
 - `services/trainingProgress.js`: estados y modelo de presentación del panel general.
 - `services/heroSelector.js`: selección uniforme o ponderada.

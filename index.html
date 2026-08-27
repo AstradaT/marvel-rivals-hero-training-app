@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marvel Rivals Roulette</title>
+    <title>Marvel Rivals Training Assistant</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=6">
     <style>
         /* Animación de parpadeo para el efecto de carga */
         @keyframes pulse-fast {
@@ -16,33 +16,39 @@
         .anim-ticking { animation: pulse-fast 0.1s infinite; }
     </style>
 </head>
-<body class="bg-slate-950 text-white min-h-screen lg:h-dvh lg:overflow-y-hidden flex flex-col items-center justify-center font-sans py-4 lg:py-3">
+<body class="bg-slate-950 text-white min-h-screen lg:h-dvh lg:overflow-y-hidden flex flex-col items-center font-sans">
 
-    <main class="text-center max-w-md lg:max-w-5xl w-full px-4 lg:px-6">
-        <!-- Mute Toggle Button -->
-        <div class="flex justify-between lg:justify-end lg:gap-3 mb-4">
-            <div class="flex gap-2">
-                <button id="ban-list-btn" class="px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-600 text-slate-300 cursor-pointer transition-all active:scale-95 text-xs font-bold uppercase tracking-wider" aria-haspopup="dialog" aria-controls="ban-modal">
-                    Ban List <span id="ban-count" class="text-red-400">0</span>
-                </button>
-                <button id="external-stats-btn" class="px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-amber-500 text-slate-300 hover:text-amber-300 cursor-pointer transition-all active:scale-95 text-xs font-bold uppercase tracking-wider" aria-haspopup="dialog" aria-controls="external-stats-modal">
-                    Player Stats
-                </button>
-                <button id="progress-dashboard-btn" class="px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-indigo-500 text-slate-300 hover:text-indigo-300 cursor-pointer transition-all active:scale-95 text-xs font-bold uppercase tracking-wider" aria-haspopup="dialog" aria-controls="progress-dashboard-modal">
-                    Hero Progress
-                </button>
+    <header class="app-topbar w-full border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-3 sm:px-5 py-3 flex flex-wrap items-center gap-2">
+            <div class="hidden md:block mr-auto text-left">
+                <h1 class="text-sm font-black text-white">Rivals Training</h1>
+                <p class="text-[10px] text-slate-500">Practice with intent</p>
             </div>
-            <button id="mute-btn" class="p-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-600 text-slate-400 cursor-pointer transition-all active:scale-95 flex items-center justify-center" title="Toggle Sound">
+            <nav class="order-2 md:order-none w-full md:w-auto grid grid-cols-3 gap-1 rounded-xl bg-slate-900/80 p-1" aria-label="Main sections">
+                <button id="training-home-btn" class="main-nav-btn main-nav-btn--active rounded-lg px-3 py-2 text-[10px] sm:text-xs font-bold cursor-pointer">Training</button>
+                <button id="competitive-pool-btn" class="main-nav-btn rounded-lg px-3 py-2 text-[10px] sm:text-xs font-bold text-slate-400 hover:text-white cursor-pointer" aria-haspopup="dialog" aria-controls="competitive-pool-modal">Competitive Pool</button>
+                <button id="progress-dashboard-btn" class="main-nav-btn rounded-lg px-3 py-2 text-[10px] sm:text-xs font-bold text-slate-400 hover:text-white cursor-pointer" aria-haspopup="dialog" aria-controls="progress-dashboard-modal">Hero Progress</button>
+            </nav>
+            <div class="ml-auto flex items-center gap-1.5">
+                <button id="ban-list-btn" class="utility-btn" aria-haspopup="dialog" aria-controls="ban-modal">
+                    Bans <span id="ban-count" class="ban-count-badge">0</span>
+                </button>
+                <button id="external-stats-btn" class="utility-btn" aria-haspopup="dialog" aria-controls="external-stats-modal">Profile</button>
+                <button id="mute-btn" class="utility-btn p-2 flex items-center justify-center" title="Toggle Sound" aria-label="Toggle sound">
                 <!-- Speaker Icon (SVG) -->
                 <svg id="mute-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
                     <path id="audio-wave-1" d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
                     <path id="audio-wave-2" d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
                 </svg>
-            </button>
+                </button>
+            </div>
         </div>
+    </header>
 
-        <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.85fr)] lg:grid-rows-[auto_auto_auto_auto] lg:gap-x-8 lg:gap-y-4 lg:items-center">
+    <main class="text-center max-w-md lg:max-w-6xl w-full px-4 lg:px-6 py-5 lg:py-4 flex-1 flex flex-col justify-center">
+
+        <div class="lg:grid lg:grid-cols-[minmax(0,0.9fr)_minmax(400px,1fr)] lg:grid-rows-[auto_auto_auto_auto] lg:gap-x-10 lg:gap-y-4 lg:items-center">
         <!-- App Mode -->
         <div class="flex justify-center gap-2 mb-4 lg:mb-0 lg:col-start-2 lg:row-start-1 lg:self-start" aria-label="Selection mode">
             <button data-app-mode="quickRandom" class="app-mode-btn px-4 py-2 rounded-lg border text-[10px] font-bold uppercase tracking-wider cursor-pointer transition-colors">
@@ -78,8 +84,8 @@
         <div id="card-container" class="bg-slate-900 border-4 border-slate-700 rounded-2xl p-6 lg:p-4 shadow-2xl transition-all duration-300 transform mb-8 lg:mb-0 lg:col-start-1 lg:row-start-1 lg:row-span-4 lg:self-center lg:w-full lg:max-w-[460px]">
             <a id="hero-page-link" class="group w-full aspect-square flex items-center justify-center overflow-hidden rounded-lg bg-slate-950/50 mb-4 relative pointer-events-none focus:outline-none focus:ring-2 focus:ring-amber-400" target="_blank" rel="noopener noreferrer" aria-disabled="true" tabindex="-1">
                 <img id="hero-img" src="https://placehold.co/300x300/1e293b/ffffff?text=?" alt="Selected Hero" class="w-full h-full object-cover transition-all duration-150 group-hover:scale-[1.02]">
-                <span id="hero-page-hint" class="hidden absolute bottom-3 right-3 bg-slate-950/85 border border-slate-600 rounded-lg px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-white shadow-lg group-hover:border-amber-400 group-hover:text-amber-300 transition-colors">
-                    Official Hero Page &#8599;
+                <span id="hero-page-hint" class="hero-page-hint hidden absolute bottom-3 right-3" aria-hidden="true">
+                    <span class="hero-page-hint-label">Official Hero Page</span><span class="hero-page-hint-icon">&#8599;</span>
                 </span>
             </a>
             
@@ -101,8 +107,10 @@
                 <div id="practice-progress" class="h-full bg-gradient-to-r from-red-500 to-amber-400 transition-all duration-300" style="width: 0%"></div>
             </div>
 
-            <div id="training-recommendation" class="hidden mb-4 rounded-lg border border-indigo-900/70 bg-indigo-950/30 p-3">
-                <p class="text-[9px] font-black uppercase tracking-widest text-indigo-300">Why this hero</p>
+            <div id="practice-results-summary" class="hidden mb-4 flex-wrap items-center gap-2" aria-live="polite"></div>
+
+            <div id="training-recommendation" class="hidden mb-4 border-l-2 border-amber-400 bg-amber-400/5 px-3 py-2.5">
+                <p class="text-[10px] font-bold text-amber-300">Why this hero</p>
                 <p id="training-recommendation-message" class="text-xs leading-relaxed text-slate-300 mt-1"></p>
             </div>
 
@@ -118,43 +126,50 @@
                 </div>
             </div>
 
-            <section id="hero-evaluation-panel" class="hidden mb-4 rounded-lg border border-slate-700 bg-slate-950/60 p-4" aria-live="polite">
-                <div class="flex items-start justify-between gap-3">
-                    <div>
-                        <p class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Rank peer evaluation</p>
-                        <p id="hero-evaluation-summary" class="text-sm font-bold text-white mt-1"></p>
+            <section id="hero-evaluation-panel" class="hidden mb-4 border-t border-slate-800 pt-3" aria-live="polite">
+                <details class="training-insight-details">
+                    <summary class="training-insight-summary">
+                        <div class="min-w-0">
+                            <p class="text-[10px] font-bold text-slate-500">Training insight · Quick Play</p>
+                            <p id="hero-evaluation-summary" class="text-xs sm:text-sm font-bold text-white mt-0.5 truncate"></p>
+                        </div>
+                        <div class="flex items-center gap-2 shrink-0">
+                            <span id="hero-evaluation-badge" class="rounded-full border px-2.5 py-1 text-[9px] font-black uppercase tracking-wider"></span>
+                            <span class="training-insight-chevron" aria-hidden="true">⌄</span>
+                        </div>
+                    </summary>
+                    <div class="training-insight-body">
+                        <div id="hero-evaluation-comparison" class="hidden grid grid-cols-2 gap-2">
+                            <div class="rounded-md bg-slate-900/80 p-2.5">
+                                <p class="text-[9px] font-bold text-slate-500">Your Quick Play results</p>
+                                <p id="hero-evaluation-player-value" class="text-lg font-black text-white mt-0.5"></p>
+                            </div>
+                            <div class="rounded-md bg-slate-900/80 p-2.5">
+                                <p class="text-[9px] font-bold text-slate-500">Community baseline</p>
+                                <p id="hero-evaluation-benchmark-value" class="text-lg font-black text-white mt-0.5"></p>
+                            </div>
+                        </div>
+                        <p id="hero-evaluation-evidence" class="text-[11px] text-slate-400 mt-3"></p>
+                        <p id="hero-evaluation-explanation" class="text-[11px] leading-relaxed text-slate-500 mt-1"></p>
+                        <p id="hero-evaluation-source-row" class="hidden text-[10px] text-slate-600 mt-2">
+                            Source: <a id="hero-evaluation-source" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:text-amber-300 underline underline-offset-2"></a>
+                        </p>
                     </div>
-                    <span id="hero-evaluation-badge" class="shrink-0 rounded-full border px-2.5 py-1 text-[9px] font-black uppercase tracking-wider"></span>
-                </div>
-                <div id="hero-evaluation-comparison" class="hidden grid grid-cols-2 gap-2 mt-3">
-                    <div class="rounded-md bg-slate-900/80 p-2.5">
-                        <p class="text-[9px] font-bold uppercase tracking-wider text-slate-500">Your blended win rate</p>
-                        <p id="hero-evaluation-player-value" class="text-lg font-black text-white mt-0.5"></p>
-                    </div>
-                    <div class="rounded-md bg-slate-900/80 p-2.5">
-                        <p class="text-[9px] font-bold uppercase tracking-wider text-slate-500">Peer benchmark</p>
-                        <p id="hero-evaluation-benchmark-value" class="text-lg font-black text-white mt-0.5"></p>
-                    </div>
-                </div>
-                <p id="hero-evaluation-evidence" class="text-[11px] text-slate-400 mt-3"></p>
-                <p id="hero-evaluation-explanation" class="text-[11px] leading-relaxed text-slate-500 mt-1"></p>
-                <p id="hero-evaluation-source-row" class="hidden text-[10px] text-slate-600 mt-2">
-                    Source: <a id="hero-evaluation-source" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:text-amber-300 underline underline-offset-2"></a>
-                </p>
+                </details>
             </section>
 
-            <div class="grid grid-cols-2 gap-3">
-                <button id="match-complete-btn" class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-800 disabled:text-slate-600 text-white font-bold py-3 px-3 rounded-lg uppercase tracking-wide text-xs transition-all cursor-pointer disabled:cursor-not-allowed">
+            <div class="grid grid-cols-3 gap-2">
+                <button id="match-complete-btn" class="col-span-3 bg-amber-500 hover:bg-amber-400 disabled:bg-slate-800 disabled:text-slate-600 text-slate-950 font-black py-3 px-3 rounded-lg text-sm transition-all cursor-pointer disabled:cursor-not-allowed">
                     Match Complete
                 </button>
-                <button id="undo-match-btn" class="bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-slate-200 font-bold py-3 px-3 rounded-lg uppercase tracking-wide text-xs transition-all cursor-pointer disabled:cursor-not-allowed">
-                    Undo Match
+                <button id="undo-match-btn" class="bg-transparent hover:bg-slate-800 disabled:opacity-40 text-slate-400 font-bold py-2.5 px-2 rounded-lg text-xs transition-all cursor-pointer disabled:cursor-not-allowed">
+                    Undo
                 </button>
-                <button id="extend-btn" class="bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-slate-200 font-bold py-3 px-3 rounded-lg uppercase tracking-wide text-xs transition-all cursor-pointer disabled:cursor-not-allowed">
+                <button id="extend-btn" class="bg-transparent hover:bg-slate-800 disabled:opacity-40 text-slate-400 font-bold py-2.5 px-2 rounded-lg text-xs transition-all cursor-pointer disabled:cursor-not-allowed">
                     Extend to 5
                 </button>
-                <button id="abandon-block-btn" class="bg-red-950/40 hover:bg-red-950/70 border border-red-900/60 disabled:opacity-40 text-red-300 font-bold py-3 px-3 rounded-lg uppercase tracking-wide text-xs transition-all cursor-pointer disabled:cursor-not-allowed">
-                    Abandon Hero
+                <button id="abandon-block-btn" class="bg-transparent hover:bg-rose-950/40 disabled:opacity-40 text-rose-400 font-bold py-2.5 px-2 rounded-lg text-xs transition-all cursor-pointer disabled:cursor-not-allowed">
+                    Abandon
                 </button>
             </div>
         </section>
@@ -223,6 +238,68 @@
             <div class="min-h-0 flex-1 overflow-y-auto p-4 sm:p-6">
                 <div id="progress-hero-list" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3"></div>
                 <p id="progress-empty-state" class="hidden py-16 text-center text-sm text-slate-500">No heroes match these filters.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Competitive Pool -->
+    <div id="competitive-pool-modal" class="hidden fixed inset-0 z-50 bg-slate-950/92 backdrop-blur-sm p-0 sm:p-4 items-end sm:items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="competitive-pool-title">
+        <section class="bg-slate-950 border border-slate-800 rounded-t-2xl sm:rounded-2xl shadow-2xl w-full max-w-6xl h-[96dvh] sm:h-[90dvh] flex flex-col text-left overflow-hidden">
+            <header class="flex items-start justify-between gap-4 p-5 sm:p-6 border-b border-slate-800 shrink-0">
+                <div>
+                    <p class="text-[10px] font-bold text-sky-300">Ranked readiness</p>
+                    <h2 id="competitive-pool-title" class="text-2xl sm:text-3xl font-black mt-1">Competitive Pool</h2>
+                    <p class="text-sm text-slate-400 mt-1 max-w-2xl">Your most reliable heroes for ranked, ordered by peer evaluation and evidence confidence — never by roulette.</p>
+                </div>
+                <button id="close-competitive-pool-btn" type="button" class="p-2 text-slate-400 hover:text-white cursor-pointer" aria-label="Close competitive pool">
+                    <span aria-hidden="true" class="text-3xl leading-none">&times;</span>
+                </button>
+            </header>
+
+            <div class="shrink-0 border-b border-slate-800 bg-slate-900/35 p-4 sm:px-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div id="competitive-pool-context" class="flex flex-wrap items-center gap-2"></div>
+                    <label class="text-xs text-slate-500">
+                        Role
+                        <select id="competitive-pool-role-filter" class="ml-2 bg-slate-950 border border-slate-700 focus:border-sky-400 focus:outline-none rounded-lg px-3 py-2 text-xs font-bold text-slate-300">
+                            <option value="All">All roles</option>
+                            <option value="Vanguard">Vanguard</option>
+                            <option value="Duelist">Duelist</option>
+                            <option value="Strategist">Strategist</option>
+                        </select>
+                    </label>
+                </div>
+                <div id="competitive-pool-summary" class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-4"></div>
+            </div>
+
+            <div class="min-h-0 flex-1 overflow-y-auto p-4 sm:p-6">
+                <section id="competitive-recommended-section">
+                    <div class="flex items-end justify-between gap-3 mb-3">
+                        <div>
+                            <h3 class="text-lg font-black">Best prepared</h3>
+                            <p class="text-xs text-slate-500 mt-0.5">Skill comparison leads; confidence and recent practice break close calls.</p>
+                        </div>
+                        <span id="competitive-recommended-count" class="text-xs text-slate-500"></span>
+                    </div>
+                    <div id="competitive-recommended-list" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3"></div>
+                    <div id="competitive-recommended-empty" class="hidden rounded-xl border border-dashed border-slate-700 px-5 py-8 text-center">
+                        <p class="font-bold text-slate-300">No ranked recommendations yet</p>
+                        <p class="text-sm text-slate-500 mt-1">Add a current-season Competitive snapshot and exact rank for a hero to build this pool.</p>
+                        <button id="competitive-add-stats-btn" type="button" class="mt-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black px-4 py-2.5 rounded-lg text-xs cursor-pointer">Add hero stats from Training</button>
+                    </div>
+                </section>
+
+                <section class="mt-8 pt-6 border-t border-slate-800">
+                    <div class="flex items-end justify-between gap-3 mb-3">
+                        <div>
+                            <h3 class="text-lg font-black">Building evidence</h3>
+                            <p class="text-xs text-slate-500 mt-0.5">Heroes close enough to evaluate, but not ready to recommend yet.</p>
+                        </div>
+                        <span id="competitive-coverage-count" class="text-xs text-slate-500"></span>
+                    </div>
+                    <div id="competitive-coverage-list" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3"></div>
+                    <div id="competitive-unrated-summary" class="competitive-unrated-summary hidden"></div>
+                </section>
             </div>
         </section>
     </div>
@@ -370,6 +447,74 @@
         </section>
     </div>
 
+    <!-- Quick Match Result -->
+    <div id="match-result-modal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm p-0 sm:p-4 items-end sm:items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="match-result-title" aria-describedby="match-result-description">
+        <section class="bg-slate-900 border border-slate-700 rounded-t-2xl sm:rounded-2xl shadow-2xl w-full max-w-lg max-h-[96dvh] overflow-y-auto text-left">
+            <header class="flex items-start justify-between gap-4 p-5 border-b border-slate-800">
+                <div>
+                    <p id="match-result-step" class="text-[10px] font-black uppercase tracking-[0.18em] text-emerald-400">Training match</p>
+                    <h2 id="match-result-title" class="text-xl font-black uppercase tracking-wide mt-1">How did it go?</h2>
+                    <p id="match-result-description" class="text-sm text-slate-400 mt-1">Save only what you remember. The result takes a few seconds.</p>
+                </div>
+                <button id="close-match-result-btn" type="button" class="p-2 text-slate-400 hover:text-white cursor-pointer" aria-label="Close match result">
+                    <span aria-hidden="true" class="text-2xl leading-none">&times;</span>
+                </button>
+            </header>
+
+            <div class="p-5 space-y-5">
+                <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500">
+                    Game mode
+                    <select id="match-result-mode" class="block w-full mt-2 bg-slate-950 border border-slate-700 focus:border-emerald-400 focus:outline-none rounded-lg px-3 py-3 text-sm normal-case tracking-normal text-white">
+                        <option value="quickPlay">Quick Play</option>
+                        <option value="competitive">Competitive</option>
+                    </select>
+                </label>
+
+                <fieldset>
+                    <legend class="text-[10px] font-black uppercase tracking-widest text-slate-500">Result</legend>
+                    <div class="grid grid-cols-2 gap-3 mt-2">
+                        <button type="button" data-match-outcome="win" class="match-result-option border border-slate-700 bg-slate-950/70 hover:border-emerald-500 rounded-xl p-4 text-left cursor-pointer" aria-pressed="false">
+                            <span class="block text-lg font-black text-emerald-400">Victory</span>
+                            <span class="block text-xs text-slate-500 mt-1">Match won</span>
+                        </button>
+                        <button type="button" data-match-outcome="loss" class="match-result-option border border-slate-700 bg-slate-950/70 hover:border-rose-500 rounded-xl p-4 text-left cursor-pointer" aria-pressed="false">
+                            <span class="block text-lg font-black text-rose-400">Defeat</span>
+                            <span class="block text-xs text-slate-500 mt-1">Match lost</span>
+                        </button>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend class="text-[10px] font-black uppercase tracking-widest text-slate-500">Recognition <span class="normal-case tracking-normal font-medium">(optional)</span></legend>
+                    <div class="grid grid-cols-3 gap-2 mt-2">
+                        <button type="button" data-match-recognition="" class="match-result-option border border-slate-700 bg-slate-950/70 rounded-lg py-3 px-2 text-xs font-bold uppercase tracking-wide cursor-pointer" aria-pressed="true">None</button>
+                        <button type="button" data-match-recognition="mvp" class="match-result-option border border-slate-700 bg-slate-950/70 rounded-lg py-3 px-2 text-xs font-bold uppercase tracking-wide cursor-pointer" aria-pressed="false">MVP</button>
+                        <button type="button" data-match-recognition="svp" class="match-result-option border border-slate-700 bg-slate-950/70 rounded-lg py-3 px-2 text-xs font-bold uppercase tracking-wide cursor-pointer" aria-pressed="false">SVP</button>
+                    </div>
+                    <p id="match-recognition-hint" class="text-[11px] text-slate-600 mt-2">Choose a result first to enable the matching recognition.</p>
+                </fieldset>
+
+                <fieldset>
+                    <legend class="text-[10px] font-black uppercase tracking-widest text-slate-500">How did the hero feel? <span class="normal-case tracking-normal font-medium">(optional)</span></legend>
+                    <div class="grid grid-cols-3 gap-2 mt-2">
+                        <button type="button" data-match-feeling="struggled" class="match-result-option border border-slate-700 bg-slate-950/70 rounded-lg py-3 px-2 text-xs font-bold cursor-pointer" aria-pressed="false">Struggled</button>
+                        <button type="button" data-match-feeling="okay" class="match-result-option border border-slate-700 bg-slate-950/70 rounded-lg py-3 px-2 text-xs font-bold cursor-pointer" aria-pressed="false">Okay</button>
+                        <button type="button" data-match-feeling="comfortable" class="match-result-option border border-slate-700 bg-slate-950/70 rounded-lg py-3 px-2 text-xs font-bold cursor-pointer" aria-pressed="false">Comfortable</button>
+                    </div>
+                </fieldset>
+
+                <div class="grid grid-cols-2 gap-3 pt-1">
+                    <button id="skip-match-result-btn" type="button" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold py-3 px-3 rounded-lg uppercase tracking-wide text-[10px] sm:text-xs cursor-pointer">
+                        Complete without details
+                    </button>
+                    <button id="save-match-result-btn" type="button" disabled class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-800 disabled:text-slate-600 text-white font-black py-3 px-3 rounded-lg uppercase tracking-wide text-xs cursor-pointer disabled:cursor-not-allowed">
+                        Save result
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <!-- Abandon Practice Confirmation -->
     <div id="abandon-modal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm p-4 items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="abandon-modal-title" aria-describedby="abandon-modal-description">
         <section class="bg-slate-900 border border-red-900/60 rounded-2xl shadow-2xl w-full max-w-sm p-5 text-left">
@@ -430,6 +575,7 @@
     <script src="data/heroStatFields.js"></script>
     <script src="data/evaluationModels.js"></script>
     <script src="services/practiceStorage.js"></script>
+    <script src="services/matchResult.js?v=1"></script>
     <script src="services/preferencesStorage.js"></script>
     <script src="services/playerDataStorage.js?v=3"></script>
     <script src="services/appDataTransfer.js?v=1"></script>
@@ -437,9 +583,10 @@
     <script src="services/benchmarkCatalog.js?v=3"></script>
     <script src="services/performanceResolver.js?v=3"></script>
     <script src="services/heroEvaluator.js"></script>
-    <script src="services/trainingPriority.js?v=2"></script>
+    <script src="services/trainingPriority.js?v=3"></script>
+    <script src="services/competitivePool.js?v=1"></script>
     <script src="services/trainingProgress.js?v=1"></script>
     <script src="services/heroSelector.js?v=2"></script>
-    <script src="app.js?v=12"></script>
+    <script src="app.js?v=15"></script>
 </body>
 </html>

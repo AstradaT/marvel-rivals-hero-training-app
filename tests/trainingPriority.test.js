@@ -61,6 +61,109 @@ test('experience avoids double counting history and discounts Competitive famili
     })`), 27);
 });
 
+test('Training ledger results become Quick Match evidence without manual stats', () => {
+    const harness = loadBrowserScripts(['services/trainingPriority.js']);
+    const priority = JSON.parse(harness.evaluate(`JSON.stringify(trainingPriority.score({
+        heroId: 'ultron',
+        heroStats: null,
+        currentSeasonId: 'season-9',
+        trainingSessions: [{
+            heroId: 'ultron',
+            seasonId: 'season-9',
+            playedAt: '2026-08-26T12:00:00.000Z',
+            matchResults: [
+                { gameMode: 'quickPlay', outcome: 'win' },
+                { gameMode: 'quickPlay', outcome: 'loss' },
+                { gameMode: 'quickPlay', outcome: 'loss' }
+            ]
+        }]
+    }))`));
+
+    assert.equal(priority.experience.quickPlayMatches, 3);
+    assert.equal(priority.quickPlayPerformance.playerMatches, 3);
+    assert.equal(priority.quickPlayPerformance.playerWinRate, 1 / 3);
+    assert.equal(priority.quickPlayPerformance.evidenceSource, 'trainingLedger');
+});
+
+test('snapshots without a reliable timestamp do not absorb possibly overlapping ledger matches', () => {
+    const harness = loadBrowserScripts(['services/trainingPriority.js']);
+    const priority = JSON.parse(harness.evaluate(`JSON.stringify(trainingPriority.score({
+        heroId: 'ultron',
+        heroStats: { overall: { quickPlay: {
+            matchesPlayed: 20, metrics: { winRate: 0.55 }
+        } }, seasons: {} },
+        trainingSessions: [{
+            heroId: 'ultron',
+            playedAt: '2026-08-26T12:00:00.000Z',
+            matchResults: [
+                { gameMode: 'quickPlay', outcome: 'loss' },
+                { gameMode: 'quickPlay', outcome: 'loss' },
+                { gameMode: 'quickPlay', outcome: 'loss' }
+            ]
+        }]
+    }))`));
+
+    assert.equal(priority.experience.quickPlayMatches, 20);
+    assert.equal(priority.quickPlayPerformance.playerMatches, 20);
+    assert.equal(priority.quickPlayPerformance.playerWinRate, 0.55);
+    assert.equal(priority.quickPlayPerformance.evidenceSource, 'manualSnapshot');
+});
+
+test('only Training matches after a manual snapshot are appended to its evidence', () => {
+    const harness = loadBrowserScripts(['services/trainingPriority.js']);
+    const priority = JSON.parse(harness.evaluate(`JSON.stringify(trainingPriority.score({
+        heroId: 'ultron',
+        heroStats: { overall: { quickPlay: {
+            matchesPlayed: 20,
+            matchesWon: 11,
+            metrics: { winRate: 0.55 },
+            updatedAt: '2026-08-26T12:00:00.000Z'
+        } }, seasons: {} },
+        trainingSessions: [{
+            heroId: 'ultron',
+            playedAt: '2026-08-26T13:00:00.000Z',
+            matchResults: [
+                { playedAt: '2026-08-26T11:00:00.000Z', gameMode: 'quickPlay', outcome: 'loss' },
+                { playedAt: '2026-08-26T13:00:00.000Z', gameMode: 'quickPlay', outcome: 'win' },
+                { playedAt: '2026-08-26T14:00:00.000Z', gameMode: 'quickPlay', outcome: 'loss' }
+            ]
+        }]
+    }))`));
+
+    assert.equal(priority.experience.quickPlayMatches, 22);
+    assert.equal(priority.quickPlayPerformance.playerMatches, 22);
+    assert.equal(priority.quickPlayPerformance.playerWinRate, 12 / 22);
+    assert.equal(
+        priority.quickPlayPerformance.evidenceSource,
+        'manualSnapshot+trainingLedger'
+    );
+});
+
+test('a newer snapshot supersedes ledger matches recorded before it', () => {
+    const harness = loadBrowserScripts(['services/trainingPriority.js']);
+    const priority = JSON.parse(harness.evaluate(`JSON.stringify(trainingPriority.score({
+        heroId: 'ultron',
+        heroStats: { overall: { quickPlay: {
+            matchesPlayed: 25,
+            metrics: { winRate: 0.6 },
+            updatedAt: '2026-08-26T15:00:00.000Z'
+        } }, seasons: {} },
+        trainingSessions: [{
+            heroId: 'ultron',
+            playedAt: '2026-08-26T14:00:00.000Z',
+            matchResults: [
+                { playedAt: '2026-08-26T13:00:00.000Z', gameMode: 'quickPlay', outcome: 'loss' },
+                { playedAt: '2026-08-26T14:00:00.000Z', gameMode: 'quickPlay', outcome: 'win' }
+            ]
+        }]
+    }))`));
+
+    assert.equal(priority.experience.quickPlayMatches, 25);
+    assert.equal(priority.quickPlayPerformance.playerMatches, 25);
+    assert.equal(priority.quickPlayPerformance.playerWinRate, 0.6);
+    assert.equal(priority.quickPlayPerformance.evidenceSource, 'manualSnapshot');
+});
+
 test('Quick Match weakness grows gradually as personal evidence becomes more reliable', () => {
     const harness = loadBrowserScripts(['services/trainingPriority.js']);
     harness.evaluate(`benchmark = {

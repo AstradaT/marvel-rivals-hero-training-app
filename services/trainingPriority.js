@@ -14,19 +14,66 @@ const trainingPriority = (() => {
         return Math.round(value * multiplier) / multiplier;
     }
 
-    function getModeMatches(heroStats, mode) {
-        if (!heroStats) return 0;
-        const overallMatches = Math.max(0, Number(heroStats.overall?.[mode]?.matchesPlayed) || 0);
-        const seasonalMatches = Object.values(heroStats.seasons || {}).reduce(
-            (total, period) => total + Math.max(0, Number(period?.[mode]?.matchesPlayed) || 0),
-            0
-        );
-        return Math.max(overallMatches, seasonalMatches);
+    function getRecordedMatchResults(heroId, trainingSessions) {
+        return (trainingSessions || [])
+            .filter(session => session.heroId === heroId)
+            .flatMap(session => (session.matchResults || []).map(result => ({
+                ...result,
+                playedAt: result.playedAt || session.playedAt,
+                seasonId: session.seasonId
+            })));
     }
 
-    function getExperience(heroStats) {
-        const quickPlayMatches = getModeMatches(heroStats, 'quickPlay');
-        const competitiveMatches = getModeMatches(heroStats, 'competitive');
+    function getTimestamp(value) {
+        if (typeof value !== 'string' || !value.trim()) return null;
+        const timestamp = new Date(value).getTime();
+        return Number.isFinite(timestamp) ? timestamp : null;
+    }
+
+    function countResultsAfter(results, updatedAt) {
+        const boundary = getTimestamp(updatedAt);
+        if (boundary === null) return 0;
+        return results.filter(result => {
+            const playedAt = getTimestamp(result.playedAt);
+            return playedAt !== null && playedAt > boundary;
+        }).length;
+    }
+
+    function getModeExperience(heroStats, mode, recordedResults) {
+        const modeResults = recordedResults.filter(result => result.gameMode === mode);
+        const ledgerMatches = modeResults.length;
+        const overall = heroStats?.overall?.[mode];
+        const overallMatches = Math.max(0, Number(overall?.matchesPlayed) || 0);
+        const overallCandidate = overall
+            ? overallMatches + countResultsAfter(modeResults, overall.updatedAt)
+            : ledgerMatches;
+
+        const seasonEntries = Object.entries(heroStats?.seasons || {})
+            .filter(([, period]) => period?.[mode]);
+        const seasonsWithSnapshots = new Set(seasonEntries.map(([seasonId]) => seasonId));
+        const seasonalBase = seasonEntries.reduce((total, [seasonId, period]) => {
+            const snapshot = period[mode];
+            const seasonResults = modeResults.filter(result => result.seasonId === seasonId);
+            return total
+                + Math.max(0, Number(snapshot.matchesPlayed) || 0)
+                + countResultsAfter(seasonResults, snapshot.updatedAt);
+        }, 0);
+        const unsnapshottedSeasonMatches = modeResults.filter(result => (
+            result.seasonId && !seasonsWithSnapshots.has(result.seasonId)
+        )).length;
+        const seasonalCandidate = seasonEntries.length > 0
+            ? seasonalBase + unsnapshottedSeasonMatches
+            : ledgerMatches;
+
+        return Math.max(overallCandidate, seasonalCandidate, ledgerMatches);
+    }
+
+    function getExperience(heroStats, trainingSessions = [], heroId = null) {
+        const recordedResults = heroId
+            ? getRecordedMatchResults(heroId, trainingSessions)
+            : [];
+        const quickPlayMatches = getModeExperience(heroStats, 'quickPlay', recordedResults);
+        const competitiveMatches = getModeExperience(heroStats, 'competitive', recordedResults);
         return {
             quickPlayMatches,
             competitiveMatches,
@@ -66,6 +113,8 @@ const trainingPriority = (() => {
             return {
                 matchesPlayed: Number(latestSeasonal[1].quickPlay.matchesPlayed),
                 winRate: Number(latestSeasonal[1].quickPlay.metrics.winRate),
+                source: 'manualSnapshot',
+                updatedAt: latestSeasonal[1].quickPlay.updatedAt || null,
                 seasonWeight: 1,
                 overallWeight: 0,
                 scope: 'season',
@@ -76,6 +125,8 @@ const trainingPriority = (() => {
             return {
                 matchesPlayed: Number(current.matchesPlayed),
                 winRate: Number(current.metrics.winRate),
+                source: 'manualSnapshot',
+                updatedAt: current.updatedAt || null,
                 seasonWeight: 1,
                 overallWeight: 0,
                 scope: 'season',
@@ -86,6 +137,8 @@ const trainingPriority = (() => {
             return {
                 matchesPlayed: Number(overall.matchesPlayed),
                 winRate: Number(overall.metrics.winRate),
+                source: 'manualSnapshot',
+                updatedAt: overall.updatedAt || null,
                 seasonWeight: 0,
                 overallWeight: 1,
                 scope: 'overall'
@@ -96,16 +149,89 @@ const trainingPriority = (() => {
         const overallMatches = Number(overall.matchesPlayed);
         const seasonWeight = Math.min(1, 0.25 + ((currentMatches / 30) * 0.75));
         const overallWeight = 1 - seasonWeight;
+        const currentUpdatedAt = getTimestamp(current.updatedAt);
+        const overallUpdatedAt = getTimestamp(overall.updatedAt);
+        const combinedUpdatedAt = currentUpdatedAt !== null && overallUpdatedAt !== null
+            ? new Date(Math.max(currentUpdatedAt, overallUpdatedAt)).toISOString()
+            : null;
         return {
             matchesPlayed: currentMatches + (Math.min(30, overallMatches) * overallWeight),
             winRate: (
                 (Number(current.metrics.winRate) * seasonWeight)
                 + (Number(overall.metrics.winRate) * overallWeight)
             ),
+            source: 'manualSnapshot',
+            updatedAt: combinedUpdatedAt,
             seasonWeight,
             overallWeight,
             scope: 'blended',
             seasonId: currentSeasonId
+        };
+    }
+
+    function getTrainingLedgerEvidence(
+        heroId,
+        trainingSessions,
+        currentSeasonId,
+        manualEvidence = null
+    ) {
+        const quickPlayResults = getRecordedMatchResults(heroId, trainingSessions)
+            .filter(result => (
+                result.gameMode === 'quickPlay'
+                && ['win', 'loss'].includes(result.outcome)
+            ));
+        const currentSeasonResults = currentSeasonId
+            ? quickPlayResults.filter(result => result.seasonId === currentSeasonId)
+            : [];
+        let evidenceResults;
+        if (manualEvidence) {
+            const boundary = getTimestamp(manualEvidence.updatedAt);
+            if (boundary === null) return null;
+            const contextResults = manualEvidence.scope === 'overall'
+                ? quickPlayResults
+                : quickPlayResults.filter(result => result.seasonId === manualEvidence.seasonId);
+            evidenceResults = contextResults.filter(result => {
+                const playedAt = getTimestamp(result.playedAt);
+                return playedAt !== null && playedAt > boundary;
+            });
+        } else {
+            evidenceResults = currentSeasonResults.length > 0
+                ? currentSeasonResults
+                : quickPlayResults;
+        }
+        if (evidenceResults.length === 0) return null;
+
+        return {
+            matchesPlayed: evidenceResults.length,
+            winRate: evidenceResults.filter(result => result.outcome === 'win').length
+                / evidenceResults.length,
+            source: 'trainingLedger',
+            seasonWeight: manualEvidence?.seasonWeight
+                ?? (currentSeasonResults.length > 0 ? 1 : 0),
+            overallWeight: manualEvidence?.overallWeight
+                ?? (currentSeasonResults.length > 0 ? 0 : 1),
+            scope: manualEvidence?.scope
+                || (currentSeasonResults.length > 0 ? 'season' : 'overall'),
+            ...(manualEvidence?.seasonId || currentSeasonResults.length > 0
+                ? { seasonId: manualEvidence?.seasonId || currentSeasonId }
+                : {})
+        };
+    }
+
+    function combineQuickPlayEvidence(manualEvidence, ledgerEvidence) {
+        if (!manualEvidence) return ledgerEvidence;
+        if (!ledgerEvidence) return manualEvidence;
+
+        const matchesPlayed = manualEvidence.matchesPlayed + ledgerEvidence.matchesPlayed;
+        return {
+            ...manualEvidence,
+            matchesPlayed,
+            winRate: (
+                (manualEvidence.winRate * manualEvidence.matchesPlayed)
+                + (ledgerEvidence.winRate * ledgerEvidence.matchesPlayed)
+            ) / matchesPlayed,
+            source: 'manualSnapshot+trainingLedger',
+            ledgerMatchesAdded: ledgerEvidence.matchesPlayed
         };
     }
 
@@ -157,12 +283,21 @@ const trainingPriority = (() => {
     }
 
     function getQuickPlayPerformance({
+        heroId,
         heroStats,
+        trainingSessions = [],
         currentSeasonId,
         communityBenchmark,
         officialBenchmarks = []
     }) {
-        const evidence = getQuickPlayEvidence(heroStats, currentSeasonId);
+        const manualEvidence = getQuickPlayEvidence(heroStats, currentSeasonId);
+        const ledgerEvidence = getTrainingLedgerEvidence(
+            heroId,
+            trainingSessions,
+            currentSeasonId,
+            manualEvidence
+        );
+        const evidence = combineQuickPlayEvidence(manualEvidence, ledgerEvidence);
         const benchmarkValue = Number(communityBenchmark?.metrics?.shrunkWinRate?.average);
         if (!evidence || !Number.isFinite(benchmarkValue)) {
             return {
@@ -287,7 +422,7 @@ const trainingPriority = (() => {
     }) {
         const nowTimestamp = new Date(now).getTime();
         const safeNow = Number.isFinite(nowTimestamp) ? nowTimestamp : Date.now();
-        const experience = getExperience(heroStats);
+        const experience = getExperience(heroStats, trainingSessions, heroId);
         const recency = getRecency(heroId, trainingSessions, safeNow);
         const exploration = experience.effectiveMatches === 0 ? 1.25 : 0;
         const lowExperience = Math.exp(-experience.effectiveMatches / EXPERIENCE_DECAY_MATCHES);
@@ -295,7 +430,9 @@ const trainingPriority = (() => {
             ? 1
             : clamp(recency.daysSincePlayed / 30, 0, 1);
         const quickPlayPerformance = getQuickPlayPerformance({
+            heroId,
             heroStats,
+            trainingSessions,
             currentSeasonId,
             communityBenchmark,
             officialBenchmarks
@@ -342,6 +479,7 @@ const trainingPriority = (() => {
             quickPlayPerformance: {
                 playerMatches: round(quickPlayPerformance.evidence?.matchesPlayed || 0),
                 playerWinRate: quickPlayPerformance.evidence?.winRate ?? null,
+                evidenceSource: quickPlayPerformance.evidence?.source || null,
                 benchmarkWinRate: quickPlayPerformance.benchmarkValue,
                 reliability: round(quickPlayPerformance.reliability, 4),
                 quality: round(quickPlayPerformance.quality, 4),
@@ -364,6 +502,8 @@ const trainingPriority = (() => {
         getExperience,
         getExperienceMatches,
         getQuickPlayEvidence,
+        getTrainingLedgerEvidence,
+        combineQuickPlayEvidence,
         getQuickPlayPerformance,
         score
     };

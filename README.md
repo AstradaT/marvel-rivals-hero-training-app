@@ -19,6 +19,7 @@ The project began as a simple hero roulette and is being developed incrementally
 - Three-match practice blocks
 - Optional extension from three to five matches
 - Undo control for accidental match completions
+- Quick per-match result capture with mode, victory/defeat, optional MVP/SVP, and optional comfort rating
 - Confirmed abandonment of unfinished practice blocks
 - Persistent, searchable hero ban list with role browsing and portraits
 - Persistent mute and roulette role-filter preferences
@@ -37,6 +38,8 @@ The project began as a simple hero roulette and is being developed incrementally
 - Exact Competitive rank selector that excludes cumulative `+` filters
 - Explainable Quick Match-first Training selection using experience, evidence quality, performance, and recency
 - Responsive Hero Progress dashboard with roster-wide status, priority, evidence, recency, search, filters, and sorting
+- Separate Competitive Pool with stable ranked recommendations based on compatible peer evaluation, skill, confidence, and recent practice
+- Quick Play Training Insight in the practice screen, with ranked evaluation kept out of the roulette workflow
 - Automatic training-session history when completed blocks are replaced
 - Portable JSON export/import for player stats, training history, preferences, bans, and the active practice block
 
@@ -80,7 +83,7 @@ The test suite uses Node's built-in test runner, so no packages need to be insta
 npm test
 ```
 
-The tests currently cover roster integrity, asset references, stable hero identities, selector boundaries, storage versioning, manual-stat normalization, benchmark validation, role evaluation, confidence, legacy migration, and preference validation.
+The tests currently cover roster integrity, asset references, stable hero identities, selector boundaries, storage versioning, per-match Training results, manual-stat normalization, benchmark validation, role evaluation, confidence, legacy migration, and preference validation.
 
 ## Benchmark philosophy
 
@@ -93,6 +96,8 @@ Competitive is currently the app's measurement instrument, not its identity. Ran
 - compatible metric names and canonical units.
 
 Quick Play data is stored independently and remains useful for experience, recency, sessions, and training-priority signals. It is never compared with a Competitive benchmark. A missing rank, wrong rank, wrong season, Quick Play-only profile, or missing compatible benchmark produces an unrated result instead of an inferred fallback.
+
+The interface reflects this separation. **Training** is Quick Play-first and presents a Quick Play Training Insight. **Competitive Pool** is not a roulette: it ranks only heroes with compatible Competitive peer evaluations, using skill as the primary signal and confidence plus recent practice as supporting signals. Low-confidence, weak, missing, or incompatible contexts remain visible as evaluation coverage but do not become ranked recommendations.
 
 Seasonal rank records and rolling high-elo records are different schema contexts. A `Celestial+ / rolling 180 days` record can be retained as reference data, but it cannot satisfy a seasonal Gold peer lookup. Benchmark records preserve a primary source, collection date, sample metadata, methodology notes, and optional validation sources. Validation values remain separate rather than being averaged into the primary value.
 
@@ -125,11 +130,11 @@ Version 1 player data is migrated automatically. The current manual-entry MVP as
 1. Select the roles to include in the hero pool.
 2. Spin the roulette to choose a training hero.
 3. Play three matches with that hero.
-4. Mark each match as complete in the app.
+4. Mark each match as complete and optionally record its result, MVP/SVP, and how the hero felt.
 5. Optionally extend the block to five matches.
 6. Spin again after the block is complete.
 
-The current block is stored locally in the browser. Clearing site data will remove that saved progress.
+The current block and its per-match results are stored locally in the browser. Completed blocks become Training sessions. A manual Career Profile snapshot acts as a dated baseline; Training adds only ledger matches played after that snapshot. Saving a newer snapshot therefore supersedes earlier ledger matches while later matches continue accumulating. Snapshots without a reliable timestamp remain conservatively separate. Clearing site data will remove that saved progress.
 
 The ban list is also stored locally. Banning a multi-role hero excludes that hero from every role while leaving the current practice block unchanged.
 

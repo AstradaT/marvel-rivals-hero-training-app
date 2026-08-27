@@ -1,4 +1,305 @@
 /* Custom motion blur effect for the spinning phase */
+body {
+    background:
+        radial-gradient(circle at 20% 10%, rgb(30 41 59 / 0.36), transparent 34rem),
+        rgb(2 6 23);
+}
+
+.app-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+}
+
+.main-nav-btn {
+    transition: background-color 150ms, color 150ms;
+}
+
+.main-nav-btn--active {
+    background: rgb(251 191 36);
+    color: rgb(15 23 42);
+}
+
+.utility-btn {
+    align-items: center;
+    background: transparent;
+    border-radius: 0.5rem;
+    color: rgb(148 163 184);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.7rem;
+    font-weight: 700;
+    min-height: 2.25rem;
+    padding: 0.5rem 0.65rem;
+    transition: background-color 150ms, color 150ms;
+}
+
+.utility-btn:hover {
+    background: rgb(30 41 59 / 0.8);
+    color: white;
+}
+
+#ban-list-btn {
+    gap: 0.35rem;
+}
+
+.ban-count-badge {
+    align-items: center;
+    background: rgb(244 63 94 / 0.12);
+    border-radius: 999px;
+    color: rgb(251 113 133);
+    display: inline-flex;
+    font-size: 0.62rem;
+    justify-content: center;
+    min-width: 1.15rem;
+    padding: 0.1rem 0.3rem;
+}
+
+.hero-page-hint {
+    align-items: center;
+    background: rgb(2 6 23 / 0.88);
+    border: 1px solid rgb(71 85 105);
+    border-radius: 0.55rem;
+    color: white;
+    display: flex;
+    font-size: 0.65rem;
+    font-weight: 800;
+    height: 2rem;
+    justify-content: flex-end;
+    overflow: hidden;
+    padding: 0 0.6rem;
+    text-transform: uppercase;
+    transition: border-color 160ms, color 160ms;
+    white-space: nowrap;
+}
+
+.hero-page-hint-label {
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-width 220ms ease, opacity 140ms ease, margin-right 220ms ease;
+}
+
+#hero-page-link:hover .hero-page-hint,
+#hero-page-link:focus-visible .hero-page-hint {
+    border-color: rgb(251 191 36);
+    color: rgb(252 211 77);
+}
+
+#hero-page-link:hover .hero-page-hint-label,
+#hero-page-link:focus-visible .hero-page-hint-label {
+    margin-right: 0.35rem;
+    max-width: 8rem;
+    opacity: 1;
+}
+
+.training-insight-details {
+    border-radius: 0.65rem;
+}
+
+.training-insight-summary {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    gap: 0.75rem;
+    justify-content: space-between;
+    list-style: none;
+    min-height: 3.25rem;
+    padding: 0.45rem 0;
+}
+
+.training-insight-summary::-webkit-details-marker {
+    display: none;
+}
+
+.training-insight-summary:focus-visible {
+    border-radius: 0.5rem;
+    outline: 2px solid rgb(56 189 248);
+    outline-offset: 3px;
+}
+
+.training-insight-chevron {
+    color: rgb(100 116 139);
+    font-size: 1.15rem;
+    line-height: 1;
+    transform: rotate(0deg);
+    transition: transform 160ms ease;
+}
+
+.training-insight-details[open] .training-insight-chevron {
+    transform: rotate(180deg);
+}
+
+.training-insight-body {
+    border-top: 1px solid rgb(30 41 59);
+    padding-top: 0.75rem;
+}
+
+#card-container {
+    background: linear-gradient(155deg, rgb(15 23 42 / 0.94), rgb(2 6 23 / 0.96));
+    border-width: 1px !important;
+}
+
+.role-btn {
+    border-width: 1px !important;
+    box-shadow: none !important;
+}
+
+#spin-btn:not(:disabled) {
+    background: rgb(251 191 36) !important;
+    box-shadow: 0 12px 32px rgb(245 158 11 / 0.16);
+}
+
+#spin-btn:not(:disabled):hover {
+    background: rgb(252 211 77) !important;
+}
+
+.context-chip {
+    background: rgb(15 23 42);
+    border: 1px solid rgb(51 65 85);
+    border-radius: 999px;
+    color: rgb(203 213 225);
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 0.4rem 0.7rem;
+}
+
+.competitive-card {
+    background: linear-gradient(145deg, rgb(15 23 42 / 0.94), rgb(2 6 23 / 0.94));
+    border: 1px solid rgb(51 65 85 / 0.8);
+    border-radius: 0.85rem;
+    min-width: 0;
+    padding: 1rem;
+    position: relative;
+}
+
+.competitive-card::before {
+    background: var(--competitive-color, rgb(100 116 139));
+    border-radius: 0.85rem 0 0 0.85rem;
+    content: "";
+    inset: 0 auto 0 0;
+    position: absolute;
+    width: 3px;
+}
+
+.competitive-state--ready {
+    --competitive-color: rgb(56 189 248);
+}
+
+.competitive-state--needsMoreData,
+.competitive-state--evidence {
+    --competitive-color: rgb(251 191 36);
+}
+
+.competitive-state--developing {
+    --competitive-color: rgb(251 113 133);
+}
+
+.competitive-state--unrated {
+    --competitive-color: rgb(100 116 139);
+}
+
+.competitive-state-badge {
+    border: 1px solid color-mix(in srgb, var(--competitive-color) 45%, transparent);
+    border-radius: 999px;
+    color: var(--competitive-color);
+    flex-shrink: 0;
+    font-size: 0.55rem;
+    font-weight: 800;
+    padding: 0.3rem 0.5rem;
+}
+
+.competitive-rank-number {
+    align-items: center;
+    background: rgb(14 165 233);
+    border-radius: 999px;
+    color: rgb(2 6 23);
+    display: flex;
+    font-size: 0.65rem;
+    font-weight: 900;
+    height: 1.5rem;
+    justify-content: center;
+    position: absolute;
+    right: -0.35rem;
+    top: -0.35rem;
+    width: 1.5rem;
+}
+
+.competitive-metric-label {
+    color: rgb(100 116 139);
+    display: block;
+    font-size: 0.55rem;
+    margin-bottom: 0.15rem;
+}
+
+.competitive-card strong {
+    color: rgb(226 232 240);
+    display: block;
+    font-size: 0.72rem;
+}
+
+.competitive-summary {
+    background: rgb(2 6 23 / 0.58);
+    border: 1px solid color-mix(in srgb, var(--competitive-color) 35%, rgb(51 65 85));
+    border-radius: 0.65rem;
+    padding: 0.65rem 0.8rem;
+}
+
+.competitive-summary strong {
+    color: white;
+    display: block;
+    font-size: 1.1rem;
+}
+
+.competitive-summary span {
+    color: var(--competitive-color);
+    display: block;
+    font-size: 0.58rem;
+    font-weight: 800;
+    margin-top: 0.1rem;
+}
+
+.competitive-unrated-summary {
+    align-items: center;
+    background: rgb(15 23 42 / 0.48);
+    border: 1px dashed rgb(51 65 85);
+    border-radius: 0.8rem;
+    color: rgb(100 116 139);
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-top: 0.85rem;
+    padding: 0.9rem 1rem;
+}
+
+.competitive-unrated-summary strong {
+    color: rgb(148 163 184);
+    display: block;
+    font-size: 0.75rem;
+}
+
+.competitive-unrated-summary p,
+.competitive-unrated-summary > span {
+    font-size: 0.65rem;
+    margin-top: 0.2rem;
+}
+
+.competitive-unrated-summary > span {
+    border: 1px solid rgb(51 65 85);
+    border-radius: 999px;
+    flex-shrink: 0;
+    font-weight: 700;
+    margin-top: 0;
+    padding: 0.35rem 0.55rem;
+}
+
+@media (max-width: 480px) {
+    .competitive-unrated-summary {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
 .roulette-blur {
     filter: blur(8px); /* Adjust the pixels to get the perfect amount of blur */
     image-rendering: auto; /* Forces the browser to smooth out low-res pixels instead of pixelating them */

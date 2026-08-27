@@ -11,7 +11,13 @@ test('practice storage saves and restores its versioned format', () => {
     const localStorage = createLocalStorage();
     const harness = loadBrowserScripts(['services/practiceStorage.js'], { localStorage });
 
-    harness.evaluate("practiceStorage.save({ heroId: 'magneto', heroRole: 'Vanguard', matchesCompleted: 2, matchTarget: 3 })");
+    harness.evaluate(`practiceStorage.save({
+        heroId: 'magneto',
+        heroRole: 'Vanguard',
+        matchesCompleted: 2,
+        matchTarget: 3,
+        matchResults: [{ id: 'match-001', outcome: 'win' }]
+    })`);
 
     const stored = JSON.parse(localStorage.snapshot()[PRACTICE_KEY]);
     const loaded = JSON.parse(harness.evaluate('JSON.stringify(practiceStorage.load())'));
@@ -19,6 +25,7 @@ test('practice storage saves and restores its versioned format', () => {
     assert.equal(stored.version, 1);
     assert.equal(stored.activePracticeBlock.heroId, 'magneto');
     assert.equal(loaded.matchesCompleted, 2);
+    assert.equal(loaded.matchResults[0].outcome, 'win');
 });
 
 test('practice storage loads legacy unversioned blocks', () => {
@@ -194,7 +201,15 @@ test('player data supports extensible numeric metrics and separate training sess
             seasonId: 'season-5',
             playedAt: '2026-08-24T12:00:00.000Z',
             matches: 3,
-            metrics: { wins: 2, healingPerMinute: 1510 }
+            metrics: { wins: 2, healingPerMinute: 1510 },
+            matchResults: [{
+                id: 'match-001',
+                playedAt: '2026-08-24T12:00:00.000Z',
+                gameMode: 'quickPlay',
+                outcome: 'win',
+                recognition: 'mvp',
+                feeling: 'comfortable'
+            }]
         }]
     })`);
 
@@ -211,7 +226,15 @@ test('player data supports extensible numeric metrics and separate training sess
         seasonId: 'season-5',
         playedAt: '2026-08-24T12:00:00.000Z',
         matches: 3,
-        metrics: { wins: 2, healingPerMinute: 1510 }
+        metrics: { wins: 2, healingPerMinute: 1510 },
+        matchResults: [{
+            id: 'match-001',
+            playedAt: '2026-08-24T12:00:00.000Z',
+            gameMode: 'quickPlay',
+            outcome: 'win',
+            recognition: 'mvp',
+            feeling: 'comfortable'
+        }]
     });
 });
 

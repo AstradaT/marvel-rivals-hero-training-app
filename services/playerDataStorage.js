@@ -2,6 +2,9 @@ const playerDataStorage = (() => {
     const STORAGE_KEY = 'marvelRivalsPlayerData';
     const STORAGE_VERSION = 2;
     const GAME_MODES = ['quickPlay', 'competitive'];
+    const MATCH_OUTCOMES = ['win', 'loss'];
+    const MATCH_RECOGNITIONS = ['mvp', 'svp'];
+    const MATCH_FEELINGS = ['struggled', 'okay', 'comfortable'];
     const LEGACY_PER_10_METRICS = {
         killsPer10: 'killsPerMinute',
         deathsPer10: 'deathsPerMinute',
@@ -179,7 +182,7 @@ const playerDataStorage = (() => {
 
         if (!id || !heroId || !playedAt || matches === 0) return null;
 
-        return {
+        const sanitizedSession = {
             id,
             heroId,
             gameMode: GAME_MODES.includes(session.gameMode) ? session.gameMode : null,
@@ -187,6 +190,43 @@ const playerDataStorage = (() => {
             playedAt,
             matches,
             metrics: sanitizeMetrics(session.metrics)
+        };
+
+        if (Array.isArray(session.matchResults)) {
+            sanitizedSession.matchResults = session.matchResults
+                .map(result => sanitizeMatchResult(result, sanitizedSession.gameMode))
+                .filter(Boolean)
+                .slice(0, matches);
+        }
+
+        return sanitizedSession;
+    }
+
+    function sanitizeMatchResult(result, fallbackGameMode) {
+        if (!isPlainObject(result)) return null;
+
+        const id = sanitizeOptionalString(result.id);
+        const playedAt = sanitizeOptionalString(result.playedAt);
+        if (!id || !playedAt) return null;
+
+        const outcome = MATCH_OUTCOMES.includes(result.outcome) ? result.outcome : null;
+        let recognition = MATCH_RECOGNITIONS.includes(result.recognition)
+            ? result.recognition
+            : null;
+        if (
+            (recognition === 'mvp' && outcome !== 'win')
+            || (recognition === 'svp' && outcome !== 'loss')
+        ) recognition = null;
+
+        return {
+            id,
+            playedAt,
+            gameMode: GAME_MODES.includes(result.gameMode)
+                ? result.gameMode
+                : fallbackGameMode,
+            outcome,
+            recognition,
+            feeling: MATCH_FEELINGS.includes(result.feeling) ? result.feeling : null
         };
     }
 
